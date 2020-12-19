@@ -1,0 +1,11 @@
+{
+  "lang_menu_arabic" : "العربية",
+  "lang_menu_english" : "الانكليزية",
+  "home_title" : "الرئيسية",
+  "home_subtitle" : "الصفحة الرئيسية",
+  "login_email_hint" : "البريد الالكتروني",
+  "login_sign_in_btn" : "تسجيل الدخول",
+  "login_sign_later_btn" : "التسجيل لاحقاً",
+  "login_sign_up_btn" : "إنشاء حساب",
+  "login_password_hint" : "كلمة المرور"
+}

@@ -1,0 +1,11 @@
+{
+  "lang_menu_arabic" : "Arabic",
+  "lang_menu_english" : "English",
+  "home_title" : "Home",
+  "home_subtitle" : "Home Page",
+  "login_email_hint" : "E-mail",
+  "login_sign_in_btn" : "Sign in",
+  "login_sign_later_btn" : "Sign in Later",
+  "login_sign_up_btn" : "Sign up",
+  "login_password_hint" : "Password"
+}
