@@ -11,7 +11,8 @@ class _TermsState extends State<Terms> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF2f3640),
+        //backgroundColor: Color(0xFF2f3640),
+        elevation: 0,
         centerTitle: true,
         title: Text(getTranslated(context, 'terms_title')),
       ),

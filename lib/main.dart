@@ -76,7 +76,7 @@ class _MyAppState extends State<MyApp> {
         },
         title: 'بوابة الكوبونات',
         theme: ThemeData(
-          primarySwatch: Colors.green,
+          primaryColor: Colors.white,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         debugShowCheckedModeBanner: false,
