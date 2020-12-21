@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fa83d736-4f00-493d-aee2-dd8f1abe403c" name="Default Changelist" comment="" />
+    <list default="true" id="fa83d736-4f00-493d-aee2-dd8f1abe403c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/couponsgate-app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/couponsgate-app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,22 +60,22 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="201" key="GridCell.Tab.0.bottom" timestamp="1608479618371">
+    <state width="1398" height="200" key="GridCell.Tab.0.bottom" timestamp="1608556527969">
       <screen x="0" y="25" width="1440" height="794" />
     </state>
-    <state width="1398" height="201" key="GridCell.Tab.0.bottom/0.25.1440.794@0.25.1440.794" timestamp="1608479618371" />
-    <state width="1398" height="201" key="GridCell.Tab.0.center" timestamp="1608479618371">
+    <state width="1398" height="200" key="GridCell.Tab.0.bottom/0.25.1440.794@0.25.1440.794" timestamp="1608556527969" />
+    <state width="1398" height="200" key="GridCell.Tab.0.center" timestamp="1608556527969">
       <screen x="0" y="25" width="1440" height="794" />
     </state>
-    <state width="1398" height="201" key="GridCell.Tab.0.center/0.25.1440.794@0.25.1440.794" timestamp="1608479618371" />
-    <state width="1398" height="201" key="GridCell.Tab.0.left" timestamp="1608479618371">
+    <state width="1398" height="200" key="GridCell.Tab.0.center/0.25.1440.794@0.25.1440.794" timestamp="1608556527969" />
+    <state width="1398" height="200" key="GridCell.Tab.0.left" timestamp="1608556527968">
       <screen x="0" y="25" width="1440" height="794" />
     </state>
-    <state width="1398" height="201" key="GridCell.Tab.0.left/0.25.1440.794@0.25.1440.794" timestamp="1608479618371" />
-    <state width="1398" height="201" key="GridCell.Tab.0.right" timestamp="1608479618371">
+    <state width="1398" height="200" key="GridCell.Tab.0.left/0.25.1440.794@0.25.1440.794" timestamp="1608556527968" />
+    <state width="1398" height="200" key="GridCell.Tab.0.right" timestamp="1608556527969">
       <screen x="0" y="25" width="1440" height="794" />
     </state>
-    <state width="1398" height="201" key="GridCell.Tab.0.right/0.25.1440.794@0.25.1440.794" timestamp="1608479618371" />
+    <state width="1398" height="200" key="GridCell.Tab.0.right/0.25.1440.794@0.25.1440.794" timestamp="1608556527969" />
     <state x="221" y="58" key="SettingsEditor" timestamp="1608554898744">
       <screen x="0" y="25" width="1440" height="797" />
     </state>
