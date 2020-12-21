@@ -31,7 +31,7 @@
     <property name="project.structure.last.edited" value="SDK Location" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Dart" />
+    <property name="settings.editor.selected.configurable" value="flutter.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunManager">
@@ -73,9 +73,10 @@
       <screen x="0" y="25" width="1440" height="794" />
     </state>
     <state width="1398" height="201" key="GridCell.Tab.0.right/0.25.1440.794@0.25.1440.794" timestamp="1608479618371" />
-    <state x="221" y="58" key="SettingsEditor" timestamp="1608413959638">
-      <screen x="0" y="25" width="1440" height="794" />
+    <state x="221" y="58" key="SettingsEditor" timestamp="1608554898744">
+      <screen x="0" y="25" width="1440" height="797" />
     </state>
     <state x="221" y="58" key="SettingsEditor/0.25.1440.794@0.25.1440.794" timestamp="1608413959638" />
+    <state x="221" y="58" key="SettingsEditor/0.25.1440.797@0.25.1440.797" timestamp="1608554898744" />
   </component>
 </project>
