@@ -31,15 +31,31 @@ class _Splash extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF222222),
-      body: Center(
-        child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Image.asset("assets/images/demo_logo.PNG"),
-            ]),
+      body: Container(
+        decoration: BoxDecoration(
+          //color: Color(0xFF222222),
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            stops: [
+              0.1,
+              0.4,
+              0.6,
+              0.9,
+            ],
+            colors: [
+              Colors.amber,
+              Colors.red,
+
+              Colors.pinkAccent,
+              Colors.brown,
+            ],
+          ),
+
+        ),
+        child: Center(
+          child: Image.asset("assets/images/demo_logo.PNG"),
+        ),
       ),
     );
   }

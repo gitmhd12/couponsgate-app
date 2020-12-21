@@ -63,11 +63,11 @@ class _LoginState extends State<Login> {
     if (loginBtnChildIndex == 0) {
       return Text(
         getTranslated(context, 'login_sign_in_btn'),
-        style: TextStyle(fontSize: 20, color: Colors.green),
+        style: TextStyle(fontSize: 20, color:Color(0xff34495e),),
       );
     } else {
       return CircularProgressIndicator(
-        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+        valueColor: AlwaysStoppedAnimation<Color>(Color(0xff34495e),),
       );
     }
   }
@@ -76,11 +76,11 @@ class _LoginState extends State<Login> {
     if (loginBtnChildIndex == 0) {
       return Text(
         getTranslated(context, 'login_sign_up_btn'),
-        style: TextStyle(fontSize: 20, color: Colors.green),
+        style: TextStyle(fontSize: 20, color:Color(0xFF2f3640)),
       );
     } else {
       return CircularProgressIndicator(
-        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+        valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF2f3640)),
       );
     }
   }
@@ -95,7 +95,7 @@ class _LoginState extends State<Login> {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(30)),
-          color: Color(0xFF2f3640),
+          color: Color(0xFF7ed6df),
         ),
         child: loginButtonChild(),
       ),
@@ -112,7 +112,7 @@ class _LoginState extends State<Login> {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(30)),
-          color: Color(0xFF2f3640),
+          color: Color(0xFF55efc4),
         ),
         child: registerButtonChild(),
       ),
@@ -134,11 +134,11 @@ class _LoginState extends State<Login> {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(30)),
-          color: Color(0xFF2f3640),
+          color: Color(0xFF7ed6df),
         ),
         child: Text(
           getTranslated(context, 'login_sign_in_btn'),
-          style: TextStyle(fontSize: 20, color: Colors.green),
+          style: TextStyle(fontSize: 20, color: Color(0xFF2f3640)),
         ),
       ),
     );
@@ -159,11 +159,11 @@ class _LoginState extends State<Login> {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(30)),
-          color: Color(0xFF2f3640),
+          color: Color(0xFF55efc4),
         ),
         child: Text(
           getTranslated(context, 'login_new_account_btn'),
-          style: TextStyle(fontSize: 20, color: Colors.green),
+          style: TextStyle(fontSize: 20, color: Color(0xFF2f3640)),
         ),
       ),
     );
@@ -175,7 +175,8 @@ class _LoginState extends State<Login> {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(30)),
-            color: Color(0xdddc3400),
+            color: Colors.white,
+            border: Border.all(color: Color(0xdddc3400),),
           ),
           height: 50,
           margin: EdgeInsets.symmetric(vertical: 5),
@@ -187,7 +188,7 @@ class _LoginState extends State<Login> {
                   alignment: Alignment.center,
                   child: Icon(
                     FontAwesomeIcons.google,
-                    color: Colors.white,
+                    color: Color(0xdddc3400),
                   ),
                 ),
               ),
@@ -197,7 +198,7 @@ class _LoginState extends State<Login> {
                   alignment: Alignment.center,
                   child: Text(getTranslated(context, 'login_google_btn'),
                       style: TextStyle(
-                          color: Colors.white,
+                          color: Color(0xdddc3400),
                           fontFamily: "CustomIcons",
                           fontSize: 18,
                           fontWeight: FontWeight.w400)),
@@ -215,7 +216,9 @@ class _LoginState extends State<Login> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(30)),
           color: Colors.white,
+          border: Border.all(color: Color(0xff1959a9),),
         ),
+
         height: 50,
         margin: EdgeInsets.symmetric(vertical: 5),
         child: Row(
@@ -360,14 +363,45 @@ class _LoginState extends State<Login> {
     return Scaffold(
         body: SingleChildScrollView(
       child: Container(
+        // decoration: BoxDecoration(
+        //   gradient: LinearGradient(
+        //     begin: Alignment.topRight,
+        //     end: Alignment.bottomLeft,
+        //     stops: [
+        //       0.3,
+        //       0.45,
+        //     ],
+        //     colors: [
+        //       Colors.tealAccent,
+        //       Colors.white,
+        //     ],
+        //   ),
+        // ),
         height: MediaQuery.of(context).size.height,
-        color: Color(0xffdcdde1),
+        //color: Color(0xffdcdde1),
         child: Column(
           children: <Widget>[
             Container(
               height: MediaQuery.of(context).size.height * 0.35,
               decoration: BoxDecoration(
-                color: Color(0xFF222222),
+                //color: Color(0xFF222222),
+                gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                  stops: [
+                    0.1,
+                    0.4,
+                    0.6,
+                    0.9,
+                  ],
+                  colors: [
+                    Colors.amber,
+                    Colors.red,
+
+                    Colors.pinkAccent,
+                    Colors.brown,
+                  ],
+                ),
                 borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(70),
                   bottomLeft: Radius.circular(70),
@@ -427,7 +461,25 @@ class _LoginState extends State<Login> {
             Container(
               height: MediaQuery.of(context).size.height * 0.05,
               decoration: BoxDecoration(
-                color: Color(0xFF222222),
+                //color: Color(0xFF222222),
+                gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                  stops: [
+                    0.1,
+                    0.5,
+                    0.9,
+                  ],
+                  colors: [
+                    Color(0xffe17055),
+                    Colors.brown,
+
+                    Colors.pinkAccent,
+
+
+
+                  ],
+                ),
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(70),
                   topLeft: Radius.circular(70),
