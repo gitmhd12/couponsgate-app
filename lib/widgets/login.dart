@@ -1,8 +1,14 @@
+import 'dart:convert';
+
 import 'package:couponsgate/localization/localizationValues.dart';
+import 'package:couponsgate/modules/Api.dart';
+import 'package:couponsgate/modules/Country.dart';
 import 'package:couponsgate/modules/Language.dart';
 import 'package:couponsgate/routes/routes_names.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:giffy_dialog/giffy_dialog.dart';
+import 'package:http/http.dart' as http;
 
 import '../main.dart';
 
@@ -11,12 +17,142 @@ class Login extends StatefulWidget {
   _LoginState createState() => _LoginState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginState extends State<Login>{
+  
+  ApiAssistant api = new ApiAssistant();
   final TextEditingController _emailController = new TextEditingController();
   final TextEditingController _passwordController = new TextEditingController();
   final TextEditingController _nameController = new TextEditingController();
   int loginBtnChildIndex = 0;
+  int registerBtnChildIndex = 0;
   int form = 0;
+
+  bool _isLoading;
+  List<Country> _countries , _rCountries = [];
+  String _countryBtnHint , _countryID;
+
+
+  @override
+  void initState() {
+    super.initState();
+
+    setState(() {
+      _countryBtnHint = '+';
+      _isLoading = true;
+    });
+
+    _getCountries().then((value) {
+      setState(() {
+        _rCountries = List.from(value);
+        _isLoading = false;
+      });
+    });
+  }
+
+  Future _getCountries() async
+  {
+    var csResponse = await http
+        .get('https://couponsgate.net/app-dash/rest_api/countries/getAllCountries.php');
+    var csData = json.decode(csResponse.body);
+    Country tCountry;
+    _countries = [];
+
+    for (var ques in csData['countries']) {
+      tCountry = Country.fromJson(ques);
+      print(tCountry.id);
+
+      _countries.add(tCountry);
+      //print('depart length is : ' + departs.length.toString());
+    }
+
+    return _countries;
+  }
+
+  void changeCountry(context , Country country) {
+    setState(() {
+      _countryBtnHint = countryName(context , country);
+      _countryID = country.id;
+    });
+  }
+
+  String countryName(context , Country country)
+  {
+    Locale currentLocale = Localizations.localeOf(context);
+
+    if(currentLocale.languageCode == 'ar')
+      {
+        return country.arName;
+      }
+    else
+      {
+        return country.enName;
+      }
+
+  }
+
+  void _showCountriesDialog(context, List<Country> countries) {
+    showDialog(
+        context: context,
+        builder: (BuildContext bc) {
+          return Dialog(
+            shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+            elevation: 16,
+            child: StatefulBuilder(builder: (context, setState) {
+              return _isLoading ? Container(child: Center(child: CircularProgressIndicator(),),) : Container(
+                height: countries.length <= 4
+                    ? MediaQuery.of(context).size.height * 0.1 * countries.length
+                    : MediaQuery.of(context).size.height * 0.6,
+                child: Column(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Center(
+                        child: Text(
+                          getTranslated(context, 'login_country_btn'),
+                          style: TextStyle(
+                            fontFamily: 'CustomIcons',
+                            fontSize: 20.0,
+                            color: Color(0xff275879),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Divider(
+                        thickness: 1.0,
+                        color: Colors.black54,
+                      ),
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: countries.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ListTile(
+                              title: Text(
+                                countryName(context, countries[index]),
+                              ),
+                              onTap: () {
+                                changeCountry(context, countries[index]);
+                                Navigator.of(context, rootNavigator: true)
+                                    .pop();
+                              },
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            }),
+          );
+        });
+  }
+
 
   void _changeLanguage(Language lang) async {
     Locale _locale = await setLocale(lang.code);
@@ -73,7 +209,7 @@ class _LoginState extends State<Login> {
   }
 
   registerButtonChild() {
-    if (loginBtnChildIndex == 0) {
+    if (registerBtnChildIndex == 0) {
       return Text(
         getTranslated(context, 'login_sign_up_btn'),
         style: TextStyle(fontSize: 20, color:Color(0xFF2f3640)),
@@ -87,7 +223,9 @@ class _LoginState extends State<Login> {
 
   Widget _loginButton() {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        _processLogin();
+      },
       child: Container(
         height: 50,
         width: MediaQuery.of(context).size.width,
@@ -104,7 +242,9 @@ class _LoginState extends State<Login> {
 
   Widget _registerButton() {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        _processRegister();
+      },
       child: Container(
         height: 50,
         width: MediaQuery.of(context).size.width,
@@ -278,6 +418,38 @@ class _LoginState extends State<Login> {
     );
   }
 
+  alertDialog(String text, String title) {
+    showDialog(
+        context: context,
+        builder: (_) => AssetGiffyDialog(
+          onlyOkButton: true,
+          buttonCancelText: Text(getTranslated(context, 'login_alert_d_cancel'),
+              style: TextStyle(fontFamily: "CustomIcons", fontSize: 16)),
+          buttonOkText: Text(getTranslated(context, 'login_alert_d_ok'),
+              style: TextStyle(
+                  fontFamily: "CustomIcons",
+                  fontSize: 16,
+                  color: Colors.white)),
+          buttonOkColor: Colors.orange,
+          image: Image.asset('assets/images/alert.jpg', fit: BoxFit.cover),
+          title: Text(
+            title,
+            style: TextStyle(
+                fontSize: 18.0,
+                fontFamily: "CustomIcons",
+                color: Colors.orange),
+          ),
+          description: Text(
+            text,
+            textAlign: TextAlign.center,
+            style: TextStyle(fontFamily: "CustomIcons", fontSize: 16),
+          ),
+          onOkButtonPressed: () {
+            Navigator.pop(context);
+          },
+        ));
+  }
+
   Widget _mainForm() {
     return Container(
       margin: EdgeInsets.only(top: 30, left: 30, right: 30),
@@ -315,6 +487,39 @@ class _LoginState extends State<Login> {
     );
   }
 
+  _processLogin() {
+    if (loginBtnChildIndex == 0) {
+      setState(() {
+        loginBtnChildIndex = 1;
+      });
+      if (_emailController.text.trim().isEmpty) {
+        alertDialog(getTranslated(context, 'login_alert_md_email'), getTranslated(context, 'login_alert_md_title'),);
+        setState(() {
+          loginBtnChildIndex = 0;
+        });
+      } else if (_passwordController.text.isEmpty) {
+        alertDialog(getTranslated(context, 'login_alert_md_password'), getTranslated(context, 'login_alert_md_title'),);
+        setState(() {
+          loginBtnChildIndex = 0;
+        });
+      } else {
+        print('logging ...');
+        api
+            .loginData(_passwordController.text.toString(), _emailController.text.trim().toLowerCase().toString())
+            .whenComplete(() {
+          if (api.loginStatus == false) {
+            alertDialog(getTranslated(context, 'login_alert_Ind_content'), getTranslated(context, 'login_alert_Ind_title'),);
+            setState(() {
+              loginBtnChildIndex = 0;
+            });
+          } else {
+            Navigator.pushReplacementNamed(context, '/home');
+          }
+        });
+      }
+    }
+  }
+
   Widget _registerForm() {
     return Container(
       margin: EdgeInsets.only(top: 30, left: 30, right: 30),
@@ -333,6 +538,34 @@ class _LoginState extends State<Login> {
               controller: _passwordController,
               hint: getTranslated(context, 'login_password_hint'),
               icon: Icons.vpn_key),
+          Row(
+            children: <Widget>[
+            Expanded(child: Text(getTranslated(context, 'login_country_btn'),)),
+            Expanded(child: InkWell(
+              onTap: () {
+                _showCountriesDialog(context, _rCountries);
+
+                setState(() {
+                });
+              },
+              child: Container(
+                height: 30,
+                width: MediaQuery.of(context).size.width*0.3,
+                padding: EdgeInsets.symmetric(vertical: 3),
+                margin: EdgeInsets.symmetric(vertical: 5),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  color: Color(0xFF55efc4),
+                ),
+                child: Text(
+                  _countryBtnHint,
+                  style: TextStyle(fontSize: 14, color: Color(0xFF2f3640)),
+                ),
+              ),
+            ),),
+            ],
+          ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.02,
           ),
@@ -340,6 +573,44 @@ class _LoginState extends State<Login> {
         ],
       ),
     );
+  }
+
+  _processRegister() {
+    if (registerBtnChildIndex == 0) {
+      setState(() {
+        registerBtnChildIndex = 1;
+      });
+      if (_emailController.text.trim().isEmpty) {
+        alertDialog(getTranslated(context, 'login_alert_md_email'), getTranslated(context, 'login_alert_md_title'),);
+        setState(() {
+          registerBtnChildIndex = 0;
+        });
+      } else if (_passwordController.text.isEmpty) {
+        alertDialog(getTranslated(context, 'login_alert_md_password'), getTranslated(context, 'login_alert_md_title'),);
+        setState(() {
+          registerBtnChildIndex = 0;
+        });
+      } else if (_nameController.text.isEmpty) {
+        alertDialog(getTranslated(context, 'login_alert_md_name'), getTranslated(context, 'login_alert_md_title'),);
+        setState(() {
+          registerBtnChildIndex = 0;
+        });
+      } else {
+        print('ok');
+        api
+            .registerData(_passwordController.text.toString(), _nameController.text.trim(), _emailController.text.trim().toLowerCase().toString(), _countryID)
+            .whenComplete(() {
+          if (api.registerStatus == false) {
+            alertDialog(getTranslated(context, 'login_alert_Ind_content'), getTranslated(context, 'login_alert_Ind_title'),);
+            setState(() {
+              registerBtnChildIndex = 0;
+            });
+          } else {
+            Navigator.pushReplacementNamed(context, '/home');
+          }
+        });
+      }
+    }
   }
 
   Widget _formRouter() {

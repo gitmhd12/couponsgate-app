@@ -1,4 +1,4 @@
-#Mon Dec 21 08:22:05 EET 2020
+#Tue Dec 22 13:05:17 EET 2020
 base.0=E\:\\Android_Studio_Projects\\couponsgate-app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

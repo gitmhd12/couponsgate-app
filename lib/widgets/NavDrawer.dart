@@ -3,6 +3,7 @@ import 'package:couponsgate/widgets/adbout_us.dart';
 import 'package:couponsgate/widgets/contact_us.dart';
 import 'package:couponsgate/widgets/favorites.dart';
 import 'package:couponsgate/widgets/login.dart';
+import 'package:couponsgate/widgets/my_icons_icons.dart';
 import 'package:couponsgate/widgets/privacy.dart';
 import 'package:couponsgate/widgets/profile.dart';
 import 'package:couponsgate/widgets/settings.dart';
@@ -10,8 +11,6 @@ import 'package:couponsgate/widgets/terms.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'package:couponsgate/widgets/my_icons_icons.dart';
 
 class NavDrawer extends StatefulWidget {
   @override
@@ -21,6 +20,7 @@ class NavDrawer extends StatefulWidget {
 class NavDrawerState extends State<NavDrawer> {
   String username;
   var guest = false;
+
   checkIfGuest() async {
     final prefs = await SharedPreferences.getInstance();
     final key = 'is_login';
@@ -37,6 +37,16 @@ class NavDrawerState extends State<NavDrawer> {
         username = value;
       });
     }
+  }
+
+  _logout() async
+  {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
+
+    Navigator.of(context).popUntil((route) => route.isFirst);
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => Login()));
+
   }
 
   void initState() {
@@ -201,32 +211,10 @@ class NavDrawerState extends State<NavDrawer> {
                     getTranslated(context, 'drawer_logout'),
                     style: TextStyle(fontFamily: 'CustomIcons'),
                   ),
-            onTap: () async {
-              final prefs = await SharedPreferences.getInstance();
-              final key = 'is_login';
-              final value = "0";
-              prefs.setString(key, value);
-              Navigator.of(context).popUntil((route) => route.isFirst);
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => Login()));
-            },
+            onTap: _logout,
           ),
         ],
       ),
-    );
-  }
-
-  Widget login_text() {
-    return Text(
-      "تسجيل الدخول",
-      style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w500,
-          fontFamily: "CustomIcons",
-          fontSize: 20),
-      textAlign: TextAlign.center,
     );
   }
 }
