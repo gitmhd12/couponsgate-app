@@ -1,0 +1,39 @@
+{
+  "lang_menu_arabic" : "Arabic",
+  "lang_menu_english" : "English",
+
+  "home_title" : "Home",
+  "home_subtitle" : "Home Page",
+
+  "login_name_hint" : "Full name",
+  "login_email_hint" : "E-mail",
+  "login_sign_in_btn" : "Sign in",
+  "login_sign_later_btn" : "Sign in Later",
+  "login_sign_up_btn" : "Sign up",
+  "login_new_account_btn" : "Create new Account",
+  "login_back_btn" : "Back",
+  "login_password_hint" : "Password",
+  "login_facebook_btn" : "Continue using Facebook",
+  "login_google_btn" : "Continue using Google",
+
+  "drawer_visitor" : "Guest",
+  "drawer_settings" : "Settings",
+  "drawer_profile" : "Profile",
+  "drawer_favorites" : "Favorites",
+  "drawer_about_us" : "About Us",
+  "drawer_terms" : "Terms",
+  "drawer_privacy_policy" : "Privacy Policy",
+  "drawer_contact_us" : "Contact Us",
+  "drawer_login" : "Sign in",
+  "drawer_logout" : "Sign out",
+
+  "settings_title" : "Settings",
+  "settings_lang_label" : "language",
+  "settings_lang_picker_label" : "Choose language",
+  "profile_title" : "Profile",
+  "favorites_title" : "Favorites",
+  "about_us_title" : "About Us",
+  "terms_title" : "Terms",
+  "privacy_policy_title" : "Privacy Policy",
+  "contact_us_title" : "Contact Us"
+}

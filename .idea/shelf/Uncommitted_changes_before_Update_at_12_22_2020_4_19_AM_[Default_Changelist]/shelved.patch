@@ -1,0 +1,139 @@
+Index: .flutter-plugins-dependencies
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\"info\":\"This is a generated file; do not edit or check into version control.\",\"plugins\":{\"ios\":[{\"name\":\"shared_preferences\",\"path\":\"C:\\\\\\\\Flutter SDK\\\\\\\\flutter\\\\\\\\.pub-cache\\\\\\\\hosted\\\\\\\\pub.dartlang.org\\\\\\\\shared_preferences-0.5.12+4\\\\\\\\\",\"dependencies\":[]}],\"android\":[{\"name\":\"shared_preferences\",\"path\":\"C:\\\\\\\\Flutter SDK\\\\\\\\flutter\\\\\\\\.pub-cache\\\\\\\\hosted\\\\\\\\pub.dartlang.org\\\\\\\\shared_preferences-0.5.12+4\\\\\\\\\",\"dependencies\":[]}],\"macos\":[{\"name\":\"shared_preferences_macos\",\"path\":\"C:\\\\\\\\Flutter SDK\\\\\\\\flutter\\\\\\\\.pub-cache\\\\\\\\hosted\\\\\\\\pub.dartlang.org\\\\\\\\shared_preferences_macos-0.0.1+11\\\\\\\\\",\"dependencies\":[]}],\"linux\":[{\"name\":\"path_provider_linux\",\"path\":\"C:\\\\\\\\Flutter SDK\\\\\\\\flutter\\\\\\\\.pub-cache\\\\\\\\hosted\\\\\\\\pub.dartlang.org\\\\\\\\path_provider_linux-0.0.1+2\\\\\\\\\",\"dependencies\":[]},{\"name\":\"shared_preferences_linux\",\"path\":\"C:\\\\\\\\Flutter SDK\\\\\\\\flutter\\\\\\\\.pub-cache\\\\\\\\hosted\\\\\\\\pub.dartlang.org\\\\\\\\shared_preferences_linux-0.0.2+4\\\\\\\\\",\"dependencies\":[\"path_provider_linux\"]}],\"windows\":[{\"name\":\"path_provider_windows\",\"path\":\"C:\\\\\\\\Flutter SDK\\\\\\\\flutter\\\\\\\\.pub-cache\\\\\\\\hosted\\\\\\\\pub.dartlang.org\\\\\\\\path_provider_windows-0.0.4+3\\\\\\\\\",\"dependencies\":[]},{\"name\":\"shared_preferences_windows\",\"path\":\"C:\\\\\\\\Flutter SDK\\\\\\\\flutter\\\\\\\\.pub-cache\\\\\\\\hosted\\\\\\\\pub.dartlang.org\\\\\\\\shared_preferences_windows-0.0.1+3\\\\\\\\\",\"dependencies\":[\"path_provider_windows\"]}],\"web\":[{\"name\":\"shared_preferences_web\",\"path\":\"C:\\\\\\\\Flutter SDK\\\\\\\\flutter\\\\\\\\.pub-cache\\\\\\\\hosted\\\\\\\\pub.dartlang.org\\\\\\\\shared_preferences_web-0.1.2+7\\\\\\\\\",\"dependencies\":[]}]},\"dependencyGraph\":[{\"name\":\"path_provider_linux\",\"dependencies\":[]},{\"name\":\"path_provider_windows\",\"dependencies\":[]},{\"name\":\"shared_preferences\",\"dependencies\":[\"shared_preferences_linux\",\"shared_preferences_macos\",\"shared_preferences_web\",\"shared_preferences_windows\"]},{\"name\":\"shared_preferences_linux\",\"dependencies\":[\"path_provider_linux\"]},{\"name\":\"shared_preferences_macos\",\"dependencies\":[]},{\"name\":\"shared_preferences_web\",\"dependencies\":[]},{\"name\":\"shared_preferences_windows\",\"dependencies\":[\"path_provider_windows\"]}],\"date_created\":\"2020-12-21 08:12:44.837332\",\"version\":\"1.22.5\"}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .flutter-plugins-dependencies	(revision ffbb09b6e96f1047aa81e49cb90a4461198da085)
++++ .flutter-plugins-dependencies	(date 1608531666471)
+@@ -1,1 +1,1 @@
+-{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"shared_preferences","path":"C:\\\\Flutter SDK\\\\flutter\\\\.pub-cache\\\\hosted\\\\pub.dartlang.org\\\\shared_preferences-0.5.12+4\\\\","dependencies":[]}],"android":[{"name":"shared_preferences","path":"C:\\\\Flutter SDK\\\\flutter\\\\.pub-cache\\\\hosted\\\\pub.dartlang.org\\\\shared_preferences-0.5.12+4\\\\","dependencies":[]}],"macos":[{"name":"shared_preferences_macos","path":"C:\\\\Flutter SDK\\\\flutter\\\\.pub-cache\\\\hosted\\\\pub.dartlang.org\\\\shared_preferences_macos-0.0.1+11\\\\","dependencies":[]}],"linux":[{"name":"path_provider_linux","path":"C:\\\\Flutter SDK\\\\flutter\\\\.pub-cache\\\\hosted\\\\pub.dartlang.org\\\\path_provider_linux-0.0.1+2\\\\","dependencies":[]},{"name":"shared_preferences_linux","path":"C:\\\\Flutter SDK\\\\flutter\\\\.pub-cache\\\\hosted\\\\pub.dartlang.org\\\\shared_preferences_linux-0.0.2+4\\\\","dependencies":["path_provider_linux"]}],"windows":[{"name":"path_provider_windows","path":"C:\\\\Flutter SDK\\\\flutter\\\\.pub-cache\\\\hosted\\\\pub.dartlang.org\\\\path_provider_windows-0.0.4+3\\\\","dependencies":[]},{"name":"shared_preferences_windows","path":"C:\\\\Flutter SDK\\\\flutter\\\\.pub-cache\\\\hosted\\\\pub.dartlang.org\\\\shared_preferences_windows-0.0.1+3\\\\","dependencies":["path_provider_windows"]}],"web":[{"name":"shared_preferences_web","path":"C:\\\\Flutter SDK\\\\flutter\\\\.pub-cache\\\\hosted\\\\pub.dartlang.org\\\\shared_preferences_web-0.1.2+7\\\\","dependencies":[]}]},"dependencyGraph":[{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"shared_preferences","dependencies":["shared_preferences_linux","shared_preferences_macos","shared_preferences_web","shared_preferences_windows"]},{"name":"shared_preferences_linux","dependencies":["path_provider_linux"]},{"name":"shared_preferences_macos","dependencies":[]},{"name":"shared_preferences_web","dependencies":[]},{"name":"shared_preferences_windows","dependencies":["path_provider_windows"]}],"date_created":"2020-12-21 08:12:44.837332","version":"1.22.5"}
+\ No newline at end of file
++{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"shared_preferences","path":"C:\\\\Flutter SDK\\\\flutter\\\\.pub-cache\\\\hosted\\\\pub.dartlang.org\\\\shared_preferences-0.5.12+4\\\\","dependencies":[]}],"android":[{"name":"shared_preferences","path":"C:\\\\Flutter SDK\\\\flutter\\\\.pub-cache\\\\hosted\\\\pub.dartlang.org\\\\shared_preferences-0.5.12+4\\\\","dependencies":[]}],"macos":[{"name":"shared_preferences_macos","path":"C:\\\\Flutter SDK\\\\flutter\\\\.pub-cache\\\\hosted\\\\pub.dartlang.org\\\\shared_preferences_macos-0.0.1+11\\\\","dependencies":[]}],"linux":[{"name":"path_provider_linux","path":"C:\\\\Flutter SDK\\\\flutter\\\\.pub-cache\\\\hosted\\\\pub.dartlang.org\\\\path_provider_linux-0.0.1+2\\\\","dependencies":[]},{"name":"shared_preferences_linux","path":"C:\\\\Flutter SDK\\\\flutter\\\\.pub-cache\\\\hosted\\\\pub.dartlang.org\\\\shared_preferences_linux-0.0.2+4\\\\","dependencies":["path_provider_linux"]}],"windows":[{"name":"path_provider_windows","path":"C:\\\\Flutter SDK\\\\flutter\\\\.pub-cache\\\\hosted\\\\pub.dartlang.org\\\\path_provider_windows-0.0.4+3\\\\","dependencies":[]},{"name":"shared_preferences_windows","path":"C:\\\\Flutter SDK\\\\flutter\\\\.pub-cache\\\\hosted\\\\pub.dartlang.org\\\\shared_preferences_windows-0.0.1+3\\\\","dependencies":["path_provider_windows"]}],"web":[{"name":"shared_preferences_web","path":"C:\\\\Flutter SDK\\\\flutter\\\\.pub-cache\\\\hosted\\\\pub.dartlang.org\\\\shared_preferences_web-0.1.2+7\\\\","dependencies":[]}]},"dependencyGraph":[{"name":"path_provider_linux","dependencies":[]},{"name":"path_provider_windows","dependencies":[]},{"name":"shared_preferences","dependencies":["shared_preferences_linux","shared_preferences_macos","shared_preferences_web","shared_preferences_windows"]},{"name":"shared_preferences_linux","dependencies":["path_provider_linux"]},{"name":"shared_preferences_macos","dependencies":[]},{"name":"shared_preferences_web","dependencies":[]},{"name":"shared_preferences_windows","dependencies":["path_provider_windows"]}],"date_created":"2020-12-21 08:21:06.448300","version":"1.22.5"}
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"fa83d736-4f00-493d-aee2-dd8f1abe403c\" name=\"Default Changelist\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.dart_tool/package_config.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.dart_tool/package_config.json\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.flutter-plugins\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.flutter-plugins\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.flutter-plugins-dependencies\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.flutter-plugins-dependencies\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.packages\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.packages\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/lib/main.dart\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/lib/main.dart\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/lib/widgets/adbout_us.dart\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/lib/widgets/adbout_us.dart\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/lib/widgets/contact_us.dart\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/lib/widgets/contact_us.dart\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/lib/widgets/favorites.dart\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/lib/widgets/favorites.dart\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/lib/widgets/home.dart\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/lib/widgets/home.dart\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/lib/widgets/login.dart\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/lib/widgets/login.dart\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/lib/widgets/privacy.dart\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/lib/widgets/privacy.dart\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/lib/widgets/profile.dart\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/lib/widgets/profile.dart\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/lib/widgets/settings.dart\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/lib/widgets/settings.dart\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/lib/widgets/splash.dart\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/lib/widgets/splash.dart\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/lib/widgets/terms.dart\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/lib/widgets/terms.dart\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/pubspec.yaml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pubspec.yaml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ExecutionTargetManager\" SELECTED_TARGET=\"device_and_snapshot_combo_box_target[5LX9K19403907299]\" />\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1lrpZHiz6uxfAVpyJHSabFI6opz\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\r\n    <property name=\"ASKED_SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"android.sdk.path\" value=\"$USER_HOME$/Library/Android/sdk\" />\r\n    <property name=\"dart.analysis.tool.window.visible\" value=\"false\" />\r\n    <property name=\"io.flutter.reload.alreadyRun\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"C:/Flutter SDK/flutter/bin/cache/dart-sdk\" />\r\n    <property name=\"project.structure.last.edited\" value=\"SDK Location\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.17\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.0\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"flutter.settings\" />\r\n    <property name=\"show.migrate.to.gradle.popup\" value=\"false\" />\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"main.dart\" type=\"FlutterRunConfigurationType\" factoryName=\"Flutter\">\r\n      <option name=\"filePath\" value=\"$PROJECT_DIR$/lib/main.dart\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SvnConfiguration\">\r\n    <configuration />\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"fa83d736-4f00-493d-aee2-dd8f1abe403c\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1608365118055</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1608365118055</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n  </component>\r\n  <component name=\"WindowStateProjectService\">\r\n    <state x=\"144\" y=\"39\" key=\"#com.intellij.execution.impl.EditConfigurationsDialog\" timestamp=\"1608519238039\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"768\" />\r\n    </state>\r\n    <state x=\"144\" y=\"39\" key=\"#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768@0.0.1366.768\" timestamp=\"1608519238039\" />\r\n    <state x=\"451\" y=\"141\" key=\"FileChooserDialogImpl\" timestamp=\"1608519198970\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"768\" />\r\n    </state>\r\n    <state x=\"451\" y=\"141\" key=\"FileChooserDialogImpl/0.0.1366.768@0.0.1366.768\" timestamp=\"1608519198970\" />\r\n    <state width=\"1308\" height=\"190\" key=\"GridCell.Tab.0.bottom\" timestamp=\"1608531160779\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"768\" />\r\n    </state>\r\n    <state width=\"1308\" height=\"190\" key=\"GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768\" timestamp=\"1608531160779\" />\r\n    <state width=\"1398\" height=\"201\" key=\"GridCell.Tab.0.bottom/0.25.1440.794@0.25.1440.794\" timestamp=\"1608479618371\" />\r\n    <state width=\"1308\" height=\"190\" key=\"GridCell.Tab.0.center\" timestamp=\"1608531160778\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"768\" />\r\n    </state>\r\n    <state width=\"1308\" height=\"190\" key=\"GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768\" timestamp=\"1608531160778\" />\r\n    <state width=\"1398\" height=\"201\" key=\"GridCell.Tab.0.center/0.25.1440.794@0.25.1440.794\" timestamp=\"1608479618371\" />\r\n    <state width=\"1308\" height=\"190\" key=\"GridCell.Tab.0.left\" timestamp=\"1608531160778\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"768\" />\r\n    </state>\r\n    <state width=\"1308\" height=\"190\" key=\"GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768\" timestamp=\"1608531160778\" />\r\n    <state width=\"1398\" height=\"201\" key=\"GridCell.Tab.0.left/0.25.1440.794@0.25.1440.794\" timestamp=\"1608479618371\" />\r\n    <state width=\"1308\" height=\"190\" key=\"GridCell.Tab.0.right\" timestamp=\"1608531160779\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"768\" />\r\n    </state>\r\n    <state width=\"1308\" height=\"190\" key=\"GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768\" timestamp=\"1608531160779\" />\r\n    <state width=\"1398\" height=\"201\" key=\"GridCell.Tab.0.right/0.25.1440.794@0.25.1440.794\" timestamp=\"1608479618371\" />\r\n    <state x=\"210\" y=\"32\" key=\"SettingsEditor\" timestamp=\"1608519233844\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"768\" />\r\n    </state>\r\n    <state x=\"210\" y=\"32\" key=\"SettingsEditor/0.0.1366.768@0.0.1366.768\" timestamp=\"1608519233844\" />\r\n    <state x=\"221\" y=\"58\" key=\"SettingsEditor/0.25.1440.794@0.25.1440.794\" timestamp=\"1608413959638\" />\r\n    <state x=\"353\" y=\"89\" width=\"672\" height=\"678\" key=\"search.everywhere.popup\" timestamp=\"1608527349495\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"768\" />\r\n    </state>\r\n    <state x=\"353\" y=\"89\" width=\"672\" height=\"678\" key=\"search.everywhere.popup/0.0.1366.768@0.0.1366.768\" timestamp=\"1608527349495\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(revision ffbb09b6e96f1047aa81e49cb90a4461198da085)
++++ .idea/workspace.xml	(date 1608603298496)
+@@ -2,34 +2,16 @@
+ <project version="4">
+   <component name="ChangeListManager">
+     <list default="true" id="fa83d736-4f00-493d-aee2-dd8f1abe403c" name="Default Changelist" comment="">
+-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/lib/widgets/adbout_us.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/adbout_us.dart" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/lib/widgets/contact_us.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/contact_us.dart" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/lib/widgets/favorites.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/favorites.dart" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/lib/widgets/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/home.dart" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/lib/widgets/login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/login.dart" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/lib/widgets/privacy.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/privacy.dart" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/lib/widgets/profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/profile.dart" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/lib/widgets/settings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/settings.dart" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/lib/widgets/splash.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/splash.dart" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/lib/widgets/terms.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/terms.dart" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
+-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[5LX9K19403907299]" />
++  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+@@ -73,45 +55,71 @@
+       <option name="presentableId" value="Default" />
+       <updated>1608365118055</updated>
+     </task>
++    <task id="LOCAL-00001" summary="Colorizing login widget - remove black color from appBar">
++      <created>1608531599660</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1608531599660</updated>
++    </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
+   <component name="VcsManagerConfiguration">
+     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
++    <MESSAGE value="Colorizing login widget - remove black color from appBar" />
++    <option name="LAST_COMMIT_MESSAGE" value="Colorizing login widget - remove black color from appBar" />
+   </component>
+   <component name="WindowStateProjectService">
++    <state x="567" y="248" key="#Notifications" timestamp="1608531978292">
++      <screen x="0" y="0" width="1366" height="768" />
++    </state>
++    <state x="567" y="248" key="#Notifications/0.0.1366.768@0.0.1366.768" timestamp="1608531978292" />
+     <state x="144" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608519238039">
+       <screen x="0" y="0" width="1366" height="768" />
+     </state>
+     <state x="144" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768@0.0.1366.768" timestamp="1608519238039" />
++    <state x="286" y="0" key="CommitChangelistDialog2" timestamp="1608531591634">
++      <screen x="0" y="0" width="1366" height="768" />
++    </state>
++    <state x="286" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1608531591634" />
+     <state x="451" y="141" key="FileChooserDialogImpl" timestamp="1608519198970">
+       <screen x="0" y="0" width="1366" height="768" />
+     </state>
+     <state x="451" y="141" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1608519198970" />
+-    <state width="1308" height="190" key="GridCell.Tab.0.bottom" timestamp="1608531160779">
++    <state width="1308" height="190" key="GridCell.Tab.0.bottom" timestamp="1608532891077">
+       <screen x="0" y="0" width="1366" height="768" />
+     </state>
+-    <state width="1308" height="190" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1608531160779" />
++    <state width="1308" height="190" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1608532891077" />
+     <state width="1398" height="201" key="GridCell.Tab.0.bottom/0.25.1440.794@0.25.1440.794" timestamp="1608479618371" />
+-    <state width="1308" height="190" key="GridCell.Tab.0.center" timestamp="1608531160778">
++    <state width="1308" height="190" key="GridCell.Tab.0.center" timestamp="1608532891077">
+       <screen x="0" y="0" width="1366" height="768" />
+     </state>
+-    <state width="1308" height="190" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1608531160778" />
++    <state width="1308" height="190" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1608532891077" />
+     <state width="1398" height="201" key="GridCell.Tab.0.center/0.25.1440.794@0.25.1440.794" timestamp="1608479618371" />
+-    <state width="1308" height="190" key="GridCell.Tab.0.left" timestamp="1608531160778">
++    <state width="1308" height="190" key="GridCell.Tab.0.left" timestamp="1608532891077">
+       <screen x="0" y="0" width="1366" height="768" />
+     </state>
+-    <state width="1308" height="190" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1608531160778" />
++    <state width="1308" height="190" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1608532891077" />
+     <state width="1398" height="201" key="GridCell.Tab.0.left/0.25.1440.794@0.25.1440.794" timestamp="1608479618371" />
+-    <state width="1308" height="190" key="GridCell.Tab.0.right" timestamp="1608531160779">
++    <state width="1308" height="190" key="GridCell.Tab.0.right" timestamp="1608532891077">
+       <screen x="0" y="0" width="1366" height="768" />
+     </state>
+-    <state width="1308" height="190" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1608531160779" />
++    <state width="1308" height="190" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1608532891077" />
+     <state width="1398" height="201" key="GridCell.Tab.0.right/0.25.1440.794@0.25.1440.794" timestamp="1608479618371" />
+     <state x="210" y="32" key="SettingsEditor" timestamp="1608519233844">
+       <screen x="0" y="0" width="1366" height="768" />
+     </state>
+     <state x="210" y="32" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1608519233844" />
+     <state x="221" y="58" key="SettingsEditor/0.25.1440.794@0.25.1440.794" timestamp="1608413959638" />
++    <state x="282" y="117" key="Vcs.Push.Dialog.v2" timestamp="1608532212308">
++      <screen x="0" y="0" width="1366" height="768" />
++    </state>
++    <state x="282" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1608532212308" />
++    <state x="488" y="299" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608603140382">
++      <screen x="0" y="0" width="1366" height="768" />
++    </state>
++    <state x="488" y="299" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.768@0.0.1366.768" timestamp="1608603140382" />
+     <state x="353" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1608527349495">
+       <screen x="0" y="0" width="1366" height="768" />
+     </state>

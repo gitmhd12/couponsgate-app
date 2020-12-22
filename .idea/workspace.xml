@@ -1,35 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fa83d736-4f00-493d-aee2-dd8f1abe403c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/adbout_us.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/adbout_us.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/contact_us.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/contact_us.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/favorites.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/favorites.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/login.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/privacy.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/privacy.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/profile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/settings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/settings.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/splash.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/splash.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/terms.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/terms.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="fa83d736-4f00-493d-aee2-dd8f1abe403c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[5LX9K19403907299]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
