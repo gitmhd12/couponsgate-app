@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fa83d736-4f00-493d-aee2-dd8f1abe403c" name="Default Changelist" comment="" />
+    <list default="true" id="fa83d736-4f00-493d-aee2-dd8f1abe403c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f6a6dd4e2af42bdb280e54d983bf2701/.filecache" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f6a6dd4e2af42bdb280e54d983bf2701/.filecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f6a6dd4e2af42bdb280e54d983bf2701/debug_ios_bundle_flutter_assets.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f6a6dd4e2af42bdb280e54d983bf2701/debug_ios_bundle_flutter_assets.stamp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f6a6dd4e2af42bdb280e54d983bf2701/flutter_assets.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f6a6dd4e2af42bdb280e54d983bf2701/flutter_assets.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/couponsgate-app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/couponsgate-app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/Runner.app/Frameworks/clipboard_manager.framework/clipboard_manager" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/Runner.app/Frameworks/clipboard_manager.framework/clipboard_manager" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/Runner.app/Frameworks/shared_preferences.framework/shared_preferences" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/Runner.app/Frameworks/shared_preferences.framework/shared_preferences" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/Runner.app/Runner" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/Runner.app/Runner" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/Runner.app/_CodeSignature/CodeResources" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/Runner.app/_CodeSignature/CodeResources" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/clipboard_manager/clipboard_manager.framework/clipboard_manager" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/clipboard_manager/clipboard_manager.framework/clipboard_manager" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/shared_preferences/shared_preferences.framework/shared_preferences" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/shared_preferences/shared_preferences.framework/shared_preferences" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/iphonesimulator/Runner.app/Frameworks/clipboard_manager.framework/clipboard_manager" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/iphonesimulator/Runner.app/Frameworks/clipboard_manager.framework/clipboard_manager" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/iphonesimulator/Runner.app/Frameworks/shared_preferences.framework/shared_preferences" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/iphonesimulator/Runner.app/Frameworks/shared_preferences.framework/shared_preferences" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/iphonesimulator/Runner.app/Runner" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/iphonesimulator/Runner.app/Runner" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/iphonesimulator/Runner.app/_CodeSignature/CodeResources" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/iphonesimulator/Runner.app/_CodeSignature/CodeResources" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,30 +101,30 @@
       <screen x="0" y="25" width="1440" height="797" />
     </state>
     <state x="100" y="125" width="1240" height="594" key="AVDManager/0.25.1440.797@0.25.1440.797" timestamp="1608756911549" />
-    <state width="1398" height="171" key="GridCell.Tab.0.bottom" timestamp="1608762481033">
-      <screen x="0" y="25" width="1440" height="797" />
-    </state>
-    <state width="1398" height="171" key="GridCell.Tab.0.bottom/0.25.1440.794@0.25.1440.794" timestamp="1608754714078" />
-    <state width="1398" height="171" key="GridCell.Tab.0.bottom/0.25.1440.797@0.25.1440.797" timestamp="1608762481033" />
-    <state width="1398" height="171" key="GridCell.Tab.0.center" timestamp="1608762481032">
-      <screen x="0" y="25" width="1440" height="797" />
-    </state>
-    <state width="1398" height="171" key="GridCell.Tab.0.center/0.25.1440.794@0.25.1440.794" timestamp="1608754714077" />
-    <state width="1398" height="171" key="GridCell.Tab.0.center/0.25.1440.797@0.25.1440.797" timestamp="1608762481032" />
-    <state width="1398" height="171" key="GridCell.Tab.0.left" timestamp="1608762481032">
-      <screen x="0" y="25" width="1440" height="797" />
-    </state>
-    <state width="1398" height="171" key="GridCell.Tab.0.left/0.25.1440.794@0.25.1440.794" timestamp="1608754714076" />
-    <state width="1398" height="171" key="GridCell.Tab.0.left/0.25.1440.797@0.25.1440.797" timestamp="1608762481032" />
-    <state width="1398" height="171" key="GridCell.Tab.0.right" timestamp="1608762481033">
-      <screen x="0" y="25" width="1440" height="797" />
-    </state>
-    <state width="1398" height="171" key="GridCell.Tab.0.right/0.25.1440.794@0.25.1440.794" timestamp="1608754714077" />
-    <state width="1398" height="171" key="GridCell.Tab.0.right/0.25.1440.797@0.25.1440.797" timestamp="1608762481033" />
-    <state x="221" y="58" key="SettingsEditor" timestamp="1608688026284">
+    <state width="1398" height="171" key="GridCell.Tab.0.bottom" timestamp="1608765626168">
       <screen x="0" y="25" width="1440" height="794" />
     </state>
-    <state x="221" y="58" key="SettingsEditor/0.25.1440.794@0.25.1440.794" timestamp="1608688026284" />
+    <state width="1398" height="171" key="GridCell.Tab.0.bottom/0.25.1440.794@0.25.1440.794" timestamp="1608765626168" />
+    <state width="1398" height="171" key="GridCell.Tab.0.bottom/0.25.1440.797@0.25.1440.797" timestamp="1608763222450" />
+    <state width="1398" height="171" key="GridCell.Tab.0.center" timestamp="1608765626165">
+      <screen x="0" y="25" width="1440" height="794" />
+    </state>
+    <state width="1398" height="171" key="GridCell.Tab.0.center/0.25.1440.794@0.25.1440.794" timestamp="1608765626165" />
+    <state width="1398" height="171" key="GridCell.Tab.0.center/0.25.1440.797@0.25.1440.797" timestamp="1608763222450" />
+    <state width="1398" height="171" key="GridCell.Tab.0.left" timestamp="1608765626165">
+      <screen x="0" y="25" width="1440" height="794" />
+    </state>
+    <state width="1398" height="171" key="GridCell.Tab.0.left/0.25.1440.794@0.25.1440.794" timestamp="1608765626165" />
+    <state width="1398" height="171" key="GridCell.Tab.0.left/0.25.1440.797@0.25.1440.797" timestamp="1608763222449" />
+    <state width="1398" height="171" key="GridCell.Tab.0.right" timestamp="1608765626166">
+      <screen x="0" y="25" width="1440" height="794" />
+    </state>
+    <state width="1398" height="171" key="GridCell.Tab.0.right/0.25.1440.794@0.25.1440.794" timestamp="1608765626166" />
+    <state width="1398" height="171" key="GridCell.Tab.0.right/0.25.1440.797@0.25.1440.797" timestamp="1608763222450" />
+    <state x="221" y="58" key="SettingsEditor" timestamp="1608765616621">
+      <screen x="0" y="25" width="1440" height="794" />
+    </state>
+    <state x="221" y="58" key="SettingsEditor/0.25.1440.794@0.25.1440.794" timestamp="1608765616621" />
     <state x="221" y="58" key="SettingsEditor/0.25.1440.797@0.25.1440.797" timestamp="1608554898744" />
   </component>
 </project>
