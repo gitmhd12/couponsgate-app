@@ -1,6 +1,8 @@
 import 'package:couponsgate/localization/localizationValues.dart';
 import 'package:couponsgate/widgets/NavDrawer.dart';
 import 'package:couponsgate/widgets/settings.dart';
+import 'package:couponsgate/widgets/tabs/search_tab.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:clipboard_manager/clipboard_manager.dart';
@@ -74,7 +76,7 @@ class _HomeState extends State<Home> {
                               child:TextFormField(
                                   style: TextStyle(
                                     color: Colors.black,
-                                    fontSize: 20,
+                                    fontSize: 16,
                                     //fontWeight: FontWeight.w600,
                                     fontFamily: "CustomFont",
                                   ),
@@ -85,14 +87,25 @@ class _HomeState extends State<Home> {
                                   decoration: InputDecoration(
                                     filled: true,
                                     fillColor: Colors.white,
-                                    contentPadding: EdgeInsets.only(top: 20), // add padding to adjust text
+                                    contentPadding: EdgeInsets.only(top: 12), // add padding to adjust text
                                     isDense: true,
                                     hintText: getTranslated(context, 'home_search_hint'),
-                                    prefixIcon: Padding(
-                                      padding: EdgeInsets.only(top: 15), // add padding to adjust icon
-                                      child: Icon(Icons.search),
+                                    hintStyle:TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16,
+                                      //fontWeight: FontWeight.w600,
+                                      fontFamily: "CustomFont",
+                                    ) ,
+                                    prefixIcon: Icon(
+                                      Icons.search, size: 26,
+                                      color: Color(0xff34495e),
                                     ),
-                                  )
+
+                                  ),
+                                onFieldSubmitted: (String str){Navigator.of(context).push(new MaterialPageRoute(
+                                    builder: (BuildContext context) => new Search_tab()));},
+
+
                               )),
 
                           /*InkWell(onTap:(){ } , child: Container(
@@ -109,9 +122,7 @@ class _HomeState extends State<Home> {
 
                         ])),
 
-
-
-                //coupons text
+//stores text
                 Row(
 
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -122,392 +133,7 @@ class _HomeState extends State<Home> {
                     children: <Widget>[
                       Padding(
                           padding: const EdgeInsets.only(top:15,right: 10,left: 10,bottom: 0),
-                          child: Text("أحدث الكوبونات",style: TextStyle(fontSize: 25,fontFamily: "CustomFont",fontWeight: FontWeight.bold,color: Colors.black),)),
-
-                      Padding(
-                          padding: const EdgeInsets.only(top:15,right: 10,left: 10,bottom: 0),
-                          child: Text("عرض الكل",style: TextStyle(fontSize: 15,fontFamily: "CustomFont"),)),
-
-
-                    ]),
-                //coupon card
-                Card(
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(color: Colors.grey, width: 0.5),
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    clipBehavior: Clip.antiAlias,
-                    margin: const EdgeInsets.all(10),
-                    //color: Colors.grey,
-                    elevation: 0,
-
-                    child:Column(children: [
-
-                      Row(
-
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          //verticalDirection: VerticalDirection.up,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          mainAxisSize: MainAxisSize.max,
-                          //scrollDirection: Axis.vertical,
-                          children: <Widget>[
-                            Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: Image.asset("assets/images/souq.png",width: 100,height: 100,fit: BoxFit.cover,)),
-
-
-                            Container (
-                              padding: const EdgeInsets.all(10.0),
-                              width: MediaQuery.of(context).size.width-150,
-                              child: new Column (
-                                children: <Widget>[
-                                  Text('كوبون موقع اناس ounass تخفيض 10% لكل المنتجات ',style: TextStyle(fontSize: 20,fontFamily: "CustomFont",fontWeight: FontWeight.bold),textAlign: TextAlign.center,)
-
-                                ],
-                              ),
-                            )
-
-                          ]),
-                      SizedBox(height: 15,),
-                      Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Container(
-                          //color: Colors.white,
-                            margin: const EdgeInsets.only(top: 0, bottom: 0.0),
-                            padding: const EdgeInsets.all(0.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                FlatButton(
-                                  onPressed: () async {
-                                    ClipboardManager.copyToClipBoard("your text to copy").then((result) {
-                                      _displaySnackBar(context);
-                                    });
-                                  },
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),topRight: Radius.circular(5)),
-                                    side: BorderSide(
-                                        color: Color(0xFFf9844a),
-                                        width: 0,
-                                        style: BorderStyle.solid),
-
-                                  ),
-                                  color: Colors.deepOrange,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Icon(
-                                        Icons.copy,
-                                        color: Colors.white,
-                                      ),
-                                      Text(
-                                        getTranslated(context, 'home_copy_code'),
-                                        style: TextStyle(
-                                          fontSize: 25,
-                                          color: Colors.white,
-                                          fontFamily: "CustomFont",
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                        softWrap: true,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                FlatButton(
-                                  onPressed: () {
-                                    ClipboardManager.copyToClipBoard("your text to copy").then((result) {
-                                      final snackBar = SnackBar(
-                                        content: Text('Copied to Clipboard'),
-                                        action: SnackBarAction(
-                                          label: 'Undo',
-                                          onPressed: () {},
-                                        ),
-                                      );
-                                      Scaffold.of(context).showSnackBar(snackBar);
-                                    });
-                                  },
-                                  shape: RoundedRectangleBorder(
-                                    side: BorderSide(
-                                        color: Colors.red,
-                                        width: 1,
-                                        style: BorderStyle.solid),
-                                    borderRadius: BorderRadius.only(bottomLeft: Radius.circular(5),topLeft: Radius.circular(5)),
-                                  ),
-                                  color: Colors.white,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Text(
-                                        'XHYZM',
-                                        style: TextStyle(
-                                          fontSize: 25,
-                                          color: Colors.black,
-                                          fontFamily: "CustomFont",
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                        softWrap: true,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            )),
-                      ),
-                      SizedBox(height: 15,),
-                      Padding(
-                          padding: const EdgeInsets.all(10),
-                          child:Row(
-
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            //verticalDirection: VerticalDirection.up,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-
-                              //shop now
-                              InkWell(onTap:(){ } , child: Container(
-                                width: MediaQuery.of(context).size.width-100,
-                                padding: const EdgeInsets.all(3),
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Color(0xFF3a86ff)),
-                                    //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: Color(0xFF3a86ff)),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Icon(
-                                      Icons.shopping_bag,
-                                      color: Colors.white,
-                                    ),
-                                    Text(
-                                      getTranslated(context, 'shop_now'),
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                        fontFamily: "CustomFont",
-                                        fontWeight: FontWeight.w300,
-                                      ),
-                                      softWrap: true,
-                                    ),
-                                  ],
-                                ),
-                              ),),
-                              //favorite
-                              InkWell(onTap:(){ } , child: Container(
-                                width: 50,
-                                padding: const EdgeInsets.all(3),
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.red),
-                                    //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: Color(0xFFffffff)),
-                                child: Icon(Icons.favorite_border,color: Colors.red,),
-                              ),),
-
-
-
-                            ],))
-                    ],)
-
-                ),
-                Card(
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(color: Colors.grey, width: 0.5),
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    clipBehavior: Clip.antiAlias,
-                    margin: const EdgeInsets.all(10),
-                    //color: Colors.grey,
-                    elevation: 0,
-
-                    child:Column(children: [
-
-                      Row(
-
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          //verticalDirection: VerticalDirection.up,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          mainAxisSize: MainAxisSize.max,
-                          //scrollDirection: Axis.vertical,
-                          children: <Widget>[
-                            Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: Image.asset("assets/images/namshi.jpg",width: 100,height: 100,fit: BoxFit.cover,)),
-
-
-                            Container (
-                              padding: const EdgeInsets.all(10.0),
-                              width: MediaQuery.of(context).size.width-150,
-                              child: new Column (
-                                children: <Widget>[
-                                  Text('كوبون موقع نمشي تخفيض 30% لكل المنتجات ',style: TextStyle(fontSize: 20,fontFamily: "CustomFont",fontWeight: FontWeight.bold),textAlign: TextAlign.center,)
-
-                                ],
-                              ),
-                            )
-
-                          ]),
-                      SizedBox(height: 15,),
-                      Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Container(
-                          //color: Colors.white,
-                            margin: const EdgeInsets.only(top: 0, bottom: 0.0),
-                            padding: const EdgeInsets.all(0.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                FlatButton(
-                                  onPressed: () async {
-                                    ClipboardManager.copyToClipBoard("your text to copy").then((result) {
-                                      _displaySnackBar(context);
-                                    });
-                                  },
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),topRight: Radius.circular(5)),
-                                    side: BorderSide(
-                                        color: Color(0xFFf9844a),
-                                        width: 0,
-                                        style: BorderStyle.solid),
-
-                                  ),
-                                  color: Colors.deepOrange,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Icon(
-                                        Icons.copy,
-                                        color: Colors.white,
-                                      ),
-                                      Text(
-                                        getTranslated(context, 'home_copy_code'),
-                                        style: TextStyle(
-                                          fontSize: 25,
-                                          color: Colors.white,
-                                          fontFamily: "CustomFont",
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                        softWrap: true,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                FlatButton(
-                                  onPressed: () {
-                                    ClipboardManager.copyToClipBoard("your text to copy").then((result) {
-                                      final snackBar = SnackBar(
-                                        content: Text('Copied to Clipboard'),
-                                        action: SnackBarAction(
-                                          label: 'Undo',
-                                          onPressed: () {},
-                                        ),
-                                      );
-                                      Scaffold.of(context).showSnackBar(snackBar);
-                                    });
-                                  },
-                                  shape: RoundedRectangleBorder(
-                                    side: BorderSide(
-                                        color: Colors.red,
-                                        width: 1,
-                                        style: BorderStyle.solid),
-                                    borderRadius: BorderRadius.only(bottomLeft: Radius.circular(5),topLeft: Radius.circular(5)),
-                                  ),
-                                  color: Colors.white,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Text(
-                                        'XHYZM',
-                                        style: TextStyle(
-                                          fontSize: 25,
-                                          color: Colors.black,
-                                          fontFamily: "CustomFont",
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                        softWrap: true,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            )),
-                      ),
-                      SizedBox(height: 15,),
-                      Padding(
-                          padding: const EdgeInsets.all(10),
-                          child:Row(
-
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            //verticalDirection: VerticalDirection.up,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-
-                              //shop now
-                              InkWell(onTap:(){ } , child: Container(
-                                width: MediaQuery.of(context).size.width-100,
-                                padding: const EdgeInsets.all(3),
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Color(0xFF3a86ff)),
-                                    //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: Color(0xFF3a86ff)),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Icon(
-                                      Icons.shopping_bag,
-                                      color: Colors.white,
-                                    ),
-                                    Text(
-                                      getTranslated(context, 'shop_now'),
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                        fontFamily: "CustomFont",
-                                        fontWeight: FontWeight.w300,
-                                      ),
-                                      softWrap: true,
-                                    ),
-                                  ],
-                                ),
-                              ),),
-                              //favorite
-                              InkWell(onTap:(){ } , child: Container(
-                                width: 50,
-                                padding: const EdgeInsets.all(3),
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.red),
-                                    //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: Color(0xFFffffff)),
-                                child: Icon(Icons.favorite_border,color: Colors.red,),
-                              ),),
-
-
-
-                            ],))
-                    ],)
-
-                ),
-
-                //stores text
-                Row(
-
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    //verticalDirection: VerticalDirection.up,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    mainAxisSize: MainAxisSize.max,
-                    //scrollDirection: Axis.vertical,
-                    children: <Widget>[
-                      Padding(
-                          padding: const EdgeInsets.only(top:15,right: 10,left: 10,bottom: 0),
-                          child: Text("أفضل المتاجر",style: TextStyle(fontSize: 25,fontFamily: "CustomFont",fontWeight: FontWeight.bold,color: Colors.black),)),
+                          child: Text(" المتاجر",style: TextStyle(fontSize: 16,fontFamily: "CustomFont",fontWeight: FontWeight.bold,color: Colors.black),)),
 
                       Padding(
                           padding: const EdgeInsets.only(top:15,right: 10,left: 10,bottom: 0),
@@ -517,7 +143,7 @@ class _HomeState extends State<Home> {
                     ]),
                 //stores list
                 Container(
-                  margin: EdgeInsets.symmetric(vertical: 20.0),
+                  margin: EdgeInsets.symmetric(vertical: 5.0),
                   height: 150.0,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
@@ -627,6 +253,834 @@ class _HomeState extends State<Home> {
                   ),
                 ),
 
+                //coupons text
+                Row(
+
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    //verticalDirection: VerticalDirection.up,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.max,
+                    //scrollDirection: Axis.vertical,
+                    children: <Widget>[
+                      Padding(
+                          padding: const EdgeInsets.only(top:15,right: 10,left: 10,bottom: 0),
+                          child: Text(" الكوبونات",style: TextStyle(fontSize: 20,fontFamily: "CustomFont",color: Colors.black),)),
+
+                      Padding(
+                          padding: const EdgeInsets.only(top:15,right: 10,left: 10,bottom: 0),
+                          child: Text("عرض الكل",style: TextStyle(fontSize: 15,fontFamily: "CustomFont"),)),
+
+
+                    ]),
+                //coupon card
+                Card(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.grey, width: 0.5),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    clipBehavior: Clip.antiAlias,
+                    margin: const EdgeInsets.all(10),
+
+                    color: Color(0xFFe7e7e7),
+                    //elevation: 0,
+
+                    child:Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+
+                      Row(
+
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          //verticalDirection: VerticalDirection.up,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisSize: MainAxisSize.max,
+
+                          //scrollDirection: Axis.vertical,
+                          children: <Widget>[
+
+                            Container(
+                                width: 75,
+                                height: 75,
+                                padding: const EdgeInsets.all(0),
+                                margin: const EdgeInsets.all(0),
+                                decoration: new BoxDecoration(
+                                    //border: Border.all(color: Colors.grey,width: 1),
+                                    //shape: BoxShape.circle,
+                                    borderRadius: BorderRadius.circular(5),
+                                    image: new DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: new AssetImage("assets/images/ounas.jpg")
+                                    )
+                                )),
+
+                            Container (
+                              //padding: const EdgeInsets.all(10.0),
+                              width: MediaQuery.of(context).size.width-95,
+                              child: new Column (
+                                children: <Widget>[
+                                  Padding(padding: const EdgeInsets.all(5.0),
+                                  child:Text('كوبون موقع اناس ounass تخفيض 10% لكل المنتجات ',style: TextStyle(fontSize: 20,fontFamily: "CustomFont",fontWeight: FontWeight.bold),textAlign: TextAlign.center,),)
+
+                                ],
+                              ),
+                            )
+
+                          ]),
+                      SizedBox(height: 15,),
+                      Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          InkWell(onTap:(){ } , child: Container(
+                            width: 200,
+                            padding: const EdgeInsets.all(3),
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                                //border: Border.all(color: Colors.white),
+                                //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                                //borderRadius: BorderRadius.circular(5),
+                                //color: Colors.white
+                            ),
+                            child: DottedBorder(
+                              dashPattern: [8, 4],
+                              strokeWidth: 2,
+                              child: Container(
+                                //height: 50,
+                                //width: 300,
+                                //color: Colors.red,
+                                child: Text(
+                                  '  XHYZM  ',
+                                  style: TextStyle(
+                                    fontSize: 40,
+                                    color: Color(0xFF2196f3),
+                                    fontFamily: "CustomFont",
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  softWrap: true,
+                                ),
+                              ),
+                            )
+                          ),),
+                          SizedBox(height: 10,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(
+                                Icons.copy,
+                                color: Colors.blue,
+                                size: 13,
+                              ),
+                              Text(
+                                ' استخدم الكوبون 15677 مرة',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                  fontFamily: "CustomFont",
+
+                                ),
+                                softWrap: true,
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 10,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(
+                                MyIcons.clock,
+                                color: Colors.blue,
+                                size: 13,
+                              ),
+                              Text(
+                                ' تاريخ الاضافة: 23-12-2020',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                  fontFamily: "CustomFont",
+
+                                ),
+                                softWrap: true,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 15,),
+                      Padding(
+                          padding: const EdgeInsets.only(top:5,left: 10,right: 10,bottom: 5),
+                          child:Row(
+
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            //verticalDirection: VerticalDirection.up,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+
+                              //shop now
+                              InkWell(onTap:(){ } , child: Container(
+                                width: MediaQuery.of(context).size.width-150,
+                                padding: const EdgeInsets.all(3),
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.deepOrange),
+                                    //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: Colors.deepOrange),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Icon(
+                                      MyIcons.copy,
+                                      color: Colors.white,
+                                      size: 15,
+                                    ),
+                                    Text(
+                                      '  انسخ الكود',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.white,
+                                        fontFamily: "CustomFont",
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                      softWrap: true,
+                                    ),
+
+
+                                  ],
+                                ),
+                              ),),
+
+                              //favorite
+                              InkWell(onTap:(){ } , child: Container(
+                                width: 50,
+                                padding: const EdgeInsets.all(3),
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.white),
+                                    //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: Colors.white),
+                                child: Icon(MyIcons.up_circled,color: Colors.green,),
+                              ),),
+                              InkWell(onTap:(){ } , child: Container(
+                                width: 50,
+                                padding: const EdgeInsets.all(3),
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.white),
+                                    //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: Colors.white),
+                                child: Icon(MyIcons.down_circled,color: Colors.red,),
+                              ),),
+
+
+
+                            ],)),
+                      Padding(
+                            padding: const EdgeInsets.only(top:5,left: 10,right: 10,bottom: 5),
+                            child:Row(
+
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              //verticalDirection: VerticalDirection.up,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+
+                                //shop now
+                                InkWell(onTap:(){ } , child: Container(
+                                  width: MediaQuery.of(context).size.width-150,
+                                  padding: const EdgeInsets.all(3),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.white),
+                                      //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Color(0xFF2196f3)),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.shopping_bag,
+                                        color: Colors.white,
+                                      ),
+                                      Text(
+                                        getTranslated(context, 'shop_now'),
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                          fontFamily: "CustomFont",
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                        softWrap: true,
+                                      ),
+                                    ],
+                                  ),
+                                ),),
+                                //favorite
+                                InkWell(onTap:(){ } , child: Container(
+                                  width: 50,
+                                  padding: const EdgeInsets.all(3),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.white),
+                                      //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Color(0xFFffffff)),
+                                  child: Icon(Icons.favorite_border,color: Color(0xFF2196f3),),
+                                ),),
+                                InkWell(onTap:(){ } , child: Container(
+                                  width: 50,
+                                  padding: const EdgeInsets.all(3),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.white),
+                                      //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Color(0xFFffffff)),
+                                  child: Icon(Icons.share,color: Color(0xFF2196f3),),
+                                ),),
+
+
+                              ],))
+                    ],)
+
+                ),
+
+                Card(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.grey, width: 0.5),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    clipBehavior: Clip.antiAlias,
+                    margin: const EdgeInsets.all(10),
+
+                    color: Color(0xFFe7e7e7),
+                    //elevation: 0,
+
+                    child:Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+
+                        Row(
+
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            //verticalDirection: VerticalDirection.up,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisSize: MainAxisSize.max,
+
+                            //scrollDirection: Axis.vertical,
+                            children: <Widget>[
+
+                              Container(
+                                  width: 75,
+                                  height: 75,
+                                  padding: const EdgeInsets.all(0),
+                                  margin: const EdgeInsets.all(0),
+                                  decoration: new BoxDecoration(
+                                    //border: Border.all(color: Colors.grey,width: 1),
+                                    //shape: BoxShape.circle,
+                                      borderRadius: BorderRadius.circular(5),
+                                      image: new DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image: new AssetImage("assets/images/souq.png")
+                                      )
+                                  )),
+
+                              Container (
+                                //padding: const EdgeInsets.all(10.0),
+                                width: MediaQuery.of(context).size.width-95,
+                                child: new Column (
+                                  children: <Widget>[
+                                    Padding(padding: const EdgeInsets.all(5.0),
+                                      child:Text('كوبون موقع اناس ounass تخفيض 10% لكل المنتجات ',style: TextStyle(fontSize: 20,fontFamily: "CustomFont",fontWeight: FontWeight.bold),textAlign: TextAlign.center,),)
+
+                                  ],
+                                ),
+                              )
+
+                            ]),
+                        SizedBox(height: 15,),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            InkWell(onTap:(){ } , child: Container(
+                              width: 200,
+                              padding: const EdgeInsets.all(3),
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.white),
+                                  //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.white),
+                              child: Text(
+                                '  XHYZM  ',
+                                style: TextStyle(
+                                  fontSize: 40,
+                                  color: Color(0xFF2196f3),
+
+                                  fontFamily: "CustomFont",
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                softWrap: true,
+                              ),
+                            ),),
+                            SizedBox(height: 10,),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(
+                                  Icons.copy,
+                                  color: Colors.blue,
+                                  size: 13,
+                                ),
+                                Text(
+                                  ' استخدم الكوبون 15677 مرة',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.black,
+                                    fontFamily: "CustomFont",
+
+                                  ),
+                                  softWrap: true,
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 10,),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(
+                                  MyIcons.clock,
+                                  color: Colors.blue,
+                                  size: 13,
+                                ),
+                                Text(
+                                  ' تاريخ الاضافة: 23-12-2020',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.black,
+                                    fontFamily: "CustomFont",
+
+                                  ),
+                                  softWrap: true,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 15,),
+                        Padding(
+                            padding: const EdgeInsets.only(top:5,left: 10,right: 10,bottom: 5),
+                            child:Row(
+
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              //verticalDirection: VerticalDirection.up,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+
+                                //shop now
+                                InkWell(onTap:(){ } , child: Container(
+                                  width: MediaQuery.of(context).size.width-150,
+                                  padding: const EdgeInsets.all(3),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.deepOrange),
+                                      //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Colors.deepOrange),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Icon(
+                                        MyIcons.copy,
+                                        color: Colors.white,
+                                        size: 15,
+                                      ),
+                                      Text(
+                                        '  انسخ الكود',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                          fontFamily: "CustomFont",
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                        softWrap: true,
+                                      ),
+
+
+                                    ],
+                                  ),
+                                ),),
+
+                                //favorite
+                                InkWell(onTap:(){ } , child: Container(
+                                  width: 50,
+                                  padding: const EdgeInsets.all(3),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.white),
+                                      //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Colors.white),
+                                  child: Icon(MyIcons.up_circled,color: Colors.green,),
+                                ),),
+                                InkWell(onTap:(){ } , child: Container(
+                                  width: 50,
+                                  padding: const EdgeInsets.all(3),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.white),
+                                      //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Colors.white),
+                                  child: Icon(MyIcons.down_circled,color: Colors.red,),
+                                ),),
+
+
+
+                              ],)),
+                        Padding(
+                            padding: const EdgeInsets.only(top:5,left: 10,right: 10,bottom: 5),
+                            child:Row(
+
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              //verticalDirection: VerticalDirection.up,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+
+                                //shop now
+                                InkWell(onTap:(){ } , child: Container(
+                                  width: MediaQuery.of(context).size.width-150,
+                                  padding: const EdgeInsets.all(3),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.white),
+                                      //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Color(0xFF2196f3)),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.shopping_bag,
+                                        color: Colors.white,
+                                      ),
+                                      Text(
+                                        getTranslated(context, 'shop_now'),
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                          fontFamily: "CustomFont",
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                        softWrap: true,
+                                      ),
+                                    ],
+                                  ),
+                                ),),
+                                //favorite
+                                InkWell(onTap:(){ } , child: Container(
+                                  width: 50,
+                                  padding: const EdgeInsets.all(3),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.white),
+                                      //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Color(0xFFffffff)),
+                                  child: Icon(Icons.favorite_border,color: Color(0xFF2196f3),),
+                                ),),
+                                InkWell(onTap:(){ } , child: Container(
+                                  width: 50,
+                                  padding: const EdgeInsets.all(3),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.white),
+                                      //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Color(0xFFffffff)),
+                                  child: Icon(Icons.share,color: Color(0xFF2196f3),),
+                                ),),
+
+
+                              ],))
+                      ],)
+
+                ),
+
+                Card(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.grey, width: 0.5),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    clipBehavior: Clip.antiAlias,
+                    margin: const EdgeInsets.all(10),
+
+                    color: Color(0xFFe7e7e7),
+                    //elevation: 0,
+
+                    child:Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+
+                        Row(
+
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            //verticalDirection: VerticalDirection.up,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisSize: MainAxisSize.max,
+
+                            //scrollDirection: Axis.vertical,
+                            children: <Widget>[
+
+                              Container(
+                                  width: 75,
+                                  height: 75,
+                                  padding: const EdgeInsets.all(0),
+                                  margin: const EdgeInsets.all(0),
+                                  decoration: new BoxDecoration(
+                                    //border: Border.all(color: Colors.grey,width: 1),
+                                    //shape: BoxShape.circle,
+                                      borderRadius: BorderRadius.circular(5),
+                                      image: new DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image: new AssetImage("assets/images/namshi.jpg")
+                                      )
+                                  )),
+
+                              Container (
+                                //padding: const EdgeInsets.all(10.0),
+                                width: MediaQuery.of(context).size.width-95,
+                                child: new Column (
+                                  children: <Widget>[
+                                    Padding(padding: const EdgeInsets.all(5.0),
+                                      child:Text('كوبون موقع اناس ounass تخفيض 10% لكل المنتجات ',style: TextStyle(fontSize: 20,fontFamily: "CustomFont",fontWeight: FontWeight.bold),textAlign: TextAlign.center,),)
+
+                                  ],
+                                ),
+                              )
+
+                            ]),
+                        SizedBox(height: 15,),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            InkWell(onTap:(){ } , child: Container(
+                              width: 200,
+                              padding: const EdgeInsets.all(3),
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.white),
+                                  //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.white),
+                              child: Text(
+                                '  XHYZM  ',
+                                style: TextStyle(
+                                  fontSize: 40,
+                                  color: Color(0xFF2196f3),
+
+                                  fontFamily: "CustomFont",
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                softWrap: true,
+                              ),
+                            ),),
+                            SizedBox(height: 10,),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(
+                                  Icons.copy,
+                                  color: Colors.blue,
+                                  size: 13,
+                                ),
+                                Text(
+                                  ' استخدم الكوبون 15677 مرة',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.black,
+                                    fontFamily: "CustomFont",
+
+                                  ),
+                                  softWrap: true,
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 10,),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(
+                                  MyIcons.clock,
+                                  color: Colors.blue,
+                                  size: 13,
+                                ),
+                                Text(
+                                  ' تاريخ الاضافة: 23-12-2020',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.black,
+                                    fontFamily: "CustomFont",
+
+                                  ),
+                                  softWrap: true,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 15,),
+                        Padding(
+                            padding: const EdgeInsets.only(top:5,left: 10,right: 10,bottom: 5),
+                            child:Row(
+
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              //verticalDirection: VerticalDirection.up,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+
+                                //shop now
+                                InkWell(onTap:(){ } , child: Container(
+                                  width: MediaQuery.of(context).size.width-150,
+                                  padding: const EdgeInsets.all(3),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.deepOrange),
+                                      //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Colors.deepOrange),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Icon(
+                                        MyIcons.copy,
+                                        color: Colors.white,
+                                        size: 15,
+                                      ),
+                                      Text(
+                                        '  انسخ الكود',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                          fontFamily: "CustomFont",
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                        softWrap: true,
+                                      ),
+
+
+                                    ],
+                                  ),
+                                ),),
+
+                                //favorite
+                                InkWell(onTap:(){ } , child: Container(
+                                  width: 50,
+                                  padding: const EdgeInsets.all(3),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.white),
+                                      //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Colors.white),
+                                  child: Icon(MyIcons.up_circled,color: Colors.green,),
+                                ),),
+                                InkWell(onTap:(){ } , child: Container(
+                                  width: 50,
+                                  padding: const EdgeInsets.all(3),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.white),
+                                      //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Colors.white),
+                                  child: Icon(MyIcons.down_circled,color: Colors.red,),
+                                ),),
+
+
+
+                              ],)),
+                        Padding(
+                            padding: const EdgeInsets.only(top:5,left: 10,right: 10,bottom: 5),
+                            child:Row(
+
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              //verticalDirection: VerticalDirection.up,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+
+                                //shop now
+                                InkWell(onTap:(){ } , child: Container(
+                                  width: MediaQuery.of(context).size.width-150,
+                                  padding: const EdgeInsets.all(3),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.white),
+                                      //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Color(0xFF2196f3)),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.shopping_bag,
+                                        color: Colors.white,
+                                      ),
+                                      Text(
+                                        getTranslated(context, 'shop_now'),
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                          fontFamily: "CustomFont",
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                        softWrap: true,
+                                      ),
+                                    ],
+                                  ),
+                                ),),
+                                //favorite
+                                InkWell(onTap:(){ } , child: Container(
+                                  width: 50,
+                                  padding: const EdgeInsets.all(3),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.white),
+                                      //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Color(0xFFffffff)),
+                                  child: Icon(Icons.favorite_border,color: Color(0xFF2196f3),),
+                                ),),
+                                InkWell(onTap:(){ } , child: Container(
+                                  width: 50,
+                                  padding: const EdgeInsets.all(3),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.white),
+                                      //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Color(0xFFffffff)),
+                                  child: Icon(Icons.share,color: Color(0xFF2196f3),),
+                                ),),
+
+
+                              ],))
+                      ],)
+
+                ),
+
+
+
+
+
+
+
+
               ]))),
         bottomNavigationBar: StyleProvider(
     style: Style(),
@@ -634,10 +1088,10 @@ class _HomeState extends State<Home> {
           color: Colors.white,
           //backgroundColor: Colors.white,
           //activeColor: Colors.deepOrange,
-          //height: 50,
+          height: 50,
           //top: -30,
           //curveSize: 100,
-          style: TabStyle.titled,
+          style: TabStyle.react,
           items: [
             TabItem(icon: MyIcons.globe, title: 'الدول'),
             TabItem(icon: Icons.shopping_bag, title: 'المتاجر'),

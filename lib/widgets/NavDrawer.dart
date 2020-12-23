@@ -11,6 +11,8 @@ import 'package:couponsgate/widgets/terms.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:dotted_border/dotted_border.dart';
+
 
 class NavDrawer extends StatefulWidget {
   @override
