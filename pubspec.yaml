@@ -61,6 +61,8 @@ flutter:
     - assets/images/
     - assets/images/demo_logo.PNG
     - assets/images/demo_logo.png
+    - assets/images/alert.jpg
+    - assets/images/success.png
     - lib/languages/en.json
     - lib/languages/ar.json
   fonts:
