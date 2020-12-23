@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:couponsgate/localization/localizationValues.dart';
-import 'package:couponsgate/modules/Api.dart';
+import 'package:couponsgate/modules/ApiAssistant.dart';
 import 'package:couponsgate/modules/Country.dart';
 import 'package:couponsgate/modules/Language.dart';
 import 'package:couponsgate/routes/routes_names.dart';
@@ -23,8 +23,14 @@ class _LoginState extends State<Login>{
   final TextEditingController _emailController = new TextEditingController();
   final TextEditingController _passwordController = new TextEditingController();
   final TextEditingController _nameController = new TextEditingController();
+  final TextEditingController _pinController = new TextEditingController();
+  final TextEditingController _newPassController = new TextEditingController();
   int loginBtnChildIndex = 0;
   int registerBtnChildIndex = 0;
+  int emailValBtnChildIndex = 0;
+  int resetPassBtnChildIndex = 0;
+  int pinValBtnChildIndex = 0;
+  int resetBtnChildIndex = 0;
   int form = 0;
 
   bool _isLoading;
@@ -195,28 +201,15 @@ class _LoginState extends State<Login>{
     );
   }
 
-  loginButtonChild() {
-    if (loginBtnChildIndex == 0) {
+  buttonChild(int bcIndex  , String label) {
+    if (bcIndex == 0) {
       return Text(
-        getTranslated(context, 'login_sign_in_btn'),
+        label,
         style: TextStyle(fontSize: 20, color:Color(0xff34495e),),
       );
     } else {
       return CircularProgressIndicator(
         valueColor: AlwaysStoppedAnimation<Color>(Color(0xff34495e),),
-      );
-    }
-  }
-
-  registerButtonChild() {
-    if (registerBtnChildIndex == 0) {
-      return Text(
-        getTranslated(context, 'login_sign_up_btn'),
-        style: TextStyle(fontSize: 20, color:Color(0xFF2f3640)),
-      );
-    } else {
-      return CircularProgressIndicator(
-        valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF2f3640)),
       );
     }
   }
@@ -235,7 +228,7 @@ class _LoginState extends State<Login>{
           borderRadius: BorderRadius.all(Radius.circular(30)),
           color: Color(0xFF7ed6df),
         ),
-        child: loginButtonChild(),
+        child: buttonChild( loginBtnChildIndex , getTranslated(context, 'login_sign_in_btn'),),
       ),
     );
   }
@@ -254,7 +247,7 @@ class _LoginState extends State<Login>{
           borderRadius: BorderRadius.all(Radius.circular(30)),
           color: Color(0xFF55efc4),
         ),
-        child: registerButtonChild(),
+        child: buttonChild( registerBtnChildIndex , getTranslated(context, 'login_sign_up_btn'),),
       ),
     );
   }
@@ -391,11 +384,11 @@ class _LoginState extends State<Login>{
     );
   }
 
-  Widget _backButton() {
+  Widget _backButton({formValue}) {
     return InkWell(
       onTap: () {
         setState(() {
-          form = 0;
+          form = formValue;
         });
       },
       child: Container(
@@ -430,14 +423,46 @@ class _LoginState extends State<Login>{
                   fontFamily: "CustomIcons",
                   fontSize: 16,
                   color: Colors.white)),
-          buttonOkColor: Colors.orange,
-          image: Image.asset('assets/images/alert.jpg', fit: BoxFit.cover),
+          buttonOkColor: Colors.redAccent,
+          image: Image.asset('assets/images/alert.png', fit: BoxFit.cover),
           title: Text(
             title,
             style: TextStyle(
                 fontSize: 18.0,
                 fontFamily: "CustomIcons",
-                color: Colors.orange),
+                color: Colors.redAccent),
+          ),
+          description: Text(
+            text,
+            textAlign: TextAlign.center,
+            style: TextStyle(fontFamily: "CustomIcons", fontSize: 16),
+          ),
+          onOkButtonPressed: () {
+            Navigator.pop(context);
+          },
+        ));
+  }
+
+  successDialog(String text, String title) {
+    showDialog(
+        context: context,
+        builder: (_) => AssetGiffyDialog(
+          onlyOkButton: true,
+          buttonCancelText: Text(getTranslated(context, 'login_alert_d_cancel'),
+              style: TextStyle(fontFamily: "CustomIcons", fontSize: 16)),
+          buttonOkText: Text(getTranslated(context, 'login_alert_d_ok'),
+              style: TextStyle(
+                  fontFamily: "CustomIcons",
+                  fontSize: 16,
+                  color: Colors.white)),
+          buttonOkColor: Colors.green,
+          image: Image.asset('assets/images/success.png', fit: BoxFit.cover),
+          title: Text(
+            title,
+            style: TextStyle(
+                fontSize: 18.0,
+                fontFamily: "CustomIcons",
+                color: Colors.green),
           ),
           description: Text(
             text,
@@ -469,7 +494,7 @@ class _LoginState extends State<Login>{
       margin: EdgeInsets.only(top: 30, left: 30, right: 30),
       child: Column(
         children: <Widget>[
-          _backButton(),
+          _backButton(formValue: 0),
           _inputField(
               controller: _emailController,
               hint: getTranslated(context, 'login_email_hint'),
@@ -478,6 +503,15 @@ class _LoginState extends State<Login>{
               controller: _passwordController,
               hint: getTranslated(context, 'login_password_hint'),
               icon: Icons.vpn_key),
+          MaterialButton(
+            textColor: Colors.black54,
+            child: Text(getTranslated(context, 'login_reset_pass_main')),
+            onPressed: () {
+              setState(() {
+                form = 3;
+              });
+            },
+          ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.02,
           ),
@@ -525,7 +559,7 @@ class _LoginState extends State<Login>{
       margin: EdgeInsets.only(top: 30, left: 30, right: 30),
       child: Column(
         children: <Widget>[
-          _backButton(),
+          _backButton(formValue: 0),
           _inputField(
               controller: _nameController,
               hint: getTranslated(context, 'login_name_hint'),
@@ -575,6 +609,8 @@ class _LoginState extends State<Login>{
     );
   }
 
+
+
   _processRegister() {
     if (registerBtnChildIndex == 0) {
       setState(() {
@@ -600,8 +636,13 @@ class _LoginState extends State<Login>{
         api
             .registerData(_passwordController.text.toString(), _nameController.text.trim(), _emailController.text.trim().toLowerCase().toString(), _countryID)
             .whenComplete(() {
-          if (api.registerStatus == false) {
+          if (api.registerStatus == false && api.isEmailUsed == false) {
             alertDialog(getTranslated(context, 'login_alert_Ind_content'), getTranslated(context, 'login_alert_Ind_title'),);
+            setState(() {
+              registerBtnChildIndex = 0;
+            });
+          } else if(api.registerStatus == false && api.isEmailUsed == true){
+            alertDialog(getTranslated(context, 'login_alert_Ind_email_used'), getTranslated(context, 'login_alert_Ind_title'),);
             setState(() {
               registerBtnChildIndex = 0;
             });
@@ -609,6 +650,239 @@ class _LoginState extends State<Login>{
             Navigator.pushReplacementNamed(context, '/home');
           }
         });
+      }
+    }
+  }
+
+  Widget _emailValidationForm()
+  {
+    return Container(
+      margin: EdgeInsets.only(top: 30, left: 30, right: 30),
+      child: Column(
+        children: <Widget>[
+          _backButton(formValue: 2),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    getTranslated(context, 'login_reset_pass_email_label'),
+                    style: TextStyle(fontSize: 14, color: Color(0xFF2f3640)),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          _inputField(
+              controller: _emailController,
+              hint: getTranslated(context, 'login_email_hint'),
+              icon: Icons.email),
+
+          InkWell(
+            onTap: () {
+              _emailValidProcess();
+            },
+            child: Container(
+              height: 40,
+              width: MediaQuery.of(context).size.width*0.4,
+              padding: EdgeInsets.symmetric(vertical: 3),
+              margin: EdgeInsets.symmetric(vertical: 5),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(30)),
+                color: Color(0xFF7ed6df),
+              ),
+              child:
+                buttonChild( emailValBtnChildIndex , getTranslated(context, 'login_reset_pass_next_btn'),),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  _emailValidProcess() {
+    if (emailValBtnChildIndex == 0) {
+      setState(() {
+        emailValBtnChildIndex = 1;
+      });
+      if (_emailController.text.trim().isEmpty) {
+        alertDialog(getTranslated(context, 'login_alert_md_email'), getTranslated(context, 'login_alert_md_title'),);
+        setState(() {
+          emailValBtnChildIndex = 0;
+        });
+      } else {
+        api
+            .validateEmail( _emailController.text.trim().toLowerCase().toString())
+            .whenComplete(() {
+          if (api.emailValidStatus == false) {
+            alertDialog(getTranslated(context, 'login_alert_Ind_content'), getTranslated(context, 'login_alert_try_again'),);
+            setState(() {
+              emailValBtnChildIndex = 0;
+            });
+          } else {
+            setState(() {
+              emailValBtnChildIndex = 0;
+              form = 4;
+            });
+          }
+        });
+      }
+    }
+  }
+
+  Widget _pinValidationForm()
+  {
+    return Container(
+      margin: EdgeInsets.only(top: 30, left: 30, right: 30),
+      child: Column(
+        children: <Widget>[
+          _backButton(formValue: 3),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    getTranslated(context, 'login_reset_pass_pin_label'),
+                    style: TextStyle(fontSize: 14, color: Color(0xFF2f3640)),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          _inputField(
+              controller: _pinController,
+              hint: getTranslated(context, 'login_pin_hint'),
+              icon: Icons.vpn_key),
+
+          InkWell(
+            onTap: () {
+              _pinValidProcess();
+            },
+            child: Container(
+              height: 40,
+              width: MediaQuery.of(context).size.width*0.4,
+              padding: EdgeInsets.symmetric(vertical: 3),
+              margin: EdgeInsets.symmetric(vertical: 5),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(30)),
+                color: Color(0xFF7ed6df),
+              ),
+              child:
+                buttonChild( pinValBtnChildIndex , getTranslated(context, 'login_reset_pass_next_btn'),),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  _pinValidProcess() {
+    if (pinValBtnChildIndex == 0) {
+      setState(() {
+        pinValBtnChildIndex = 1;
+      });
+      if (_pinController.text.trim().isEmpty) {
+        alertDialog(getTranslated(context, 'login_alert_md_pin'), getTranslated(context, 'login_alert_md_title'),);
+        setState(() {
+          pinValBtnChildIndex = 0;
+        });
+      } else {
+        if(_pinController.text.trim() != api.pinCode)
+          {
+            alertDialog(getTranslated(context, 'login_alert_Ind_pin'), getTranslated(context, 'login_alert_Ind_title'),);
+            pinValBtnChildIndex = 0;
+          }
+        else
+          {
+            setState(() {
+              pinValBtnChildIndex = 0;
+              form = 5;
+            });
+          }
+      }
+    }
+  }
+
+  Widget _passwordResetForm()
+  {
+    return Container(
+      margin: EdgeInsets.only(top: 30, left: 30, right: 30),
+      child: Column(
+        children: <Widget>[
+          _backButton(formValue: 4),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    getTranslated(context, 'login_reset_pass_label'),
+                    style: TextStyle(fontSize: 14, color: Color(0xFF2f3640)),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          _inputField(
+              controller: _newPassController,
+              hint: getTranslated(context, 'login_password_hint'),
+              icon: Icons.vpn_key),
+
+          InkWell(
+            onTap: () {
+              _resetPassProcess();
+            },
+            child: Container(
+              height: 40,
+              width: MediaQuery.of(context).size.width*0.4,
+              padding: EdgeInsets.symmetric(vertical: 3),
+              margin: EdgeInsets.symmetric(vertical: 5),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(30)),
+                color: Color(0xFF7ed6df),
+              ),
+              child:
+                buttonChild( resetBtnChildIndex , getTranslated(context, 'login_reset_pass_btn'),),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  _resetPassProcess() {
+    if (resetBtnChildIndex == 0) {
+      setState(() {
+        resetBtnChildIndex = 1;
+      });
+      if (_newPassController.text.trim().isEmpty) {
+        alertDialog(getTranslated(context, 'login_alert_md_password'), getTranslated(context, 'login_alert_md_title'),);
+        setState(() {
+          resetBtnChildIndex = 0;
+        });
+      } else {
+
+        api.resetPassword(_emailController.text.trim().toLowerCase().toString(), _newPassController.text.trim())
+            .whenComplete(() {
+          if (api.resetPassStatus == false) {
+            alertDialog(getTranslated(context, 'login_alert_try_again'), getTranslated(context, 'login_alert_Ind_title'),);
+            setState(() {
+              resetBtnChildIndex = 0;
+            });
+          } else {
+            setState(() {
+              successDialog(getTranslated(context, 'login_alert_success_content'), getTranslated(context, 'login_alert_success_title'),);
+              resetBtnChildIndex = 0;
+              form = 0;
+            });
+          }
+        });
+
       }
     }
   }
@@ -623,6 +897,15 @@ class _LoginState extends State<Login>{
         break;
       case 2:
         return _loginForm();
+        break;
+      case 3:
+        return _emailValidationForm();
+        break;
+      case 4:
+        return _pinValidationForm();
+        break;
+      case 5:
+        return _passwordResetForm();
         break;
     }
 
@@ -668,7 +951,6 @@ class _LoginState extends State<Login>{
                   colors: [
                     Colors.amber,
                     Colors.red,
-
                     Colors.pinkAccent,
                     Colors.brown,
                   ],
@@ -744,11 +1026,7 @@ class _LoginState extends State<Login>{
                   colors: [
                     Color(0xffe17055),
                     Colors.brown,
-
                     Colors.pinkAccent,
-
-
-
                   ],
                 ),
                 borderRadius: BorderRadius.only(
