@@ -58,9 +58,9 @@ class NavDrawerState extends State<NavDrawer> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Image.asset(
-                  'assets/images/demo_logo.PNG',
-                  width: 125.0,
-                  height: 50.0,
+                  'assets/images/logo.png',
+                  width: 170.0,
+                  height: 123.0,
                 ),
                 SizedBox(
                   height: 10,
@@ -76,14 +76,14 @@ class NavDrawerState extends State<NavDrawer> {
               ],
             ),
             decoration: BoxDecoration(
-              color: Color(0xFF222222),
+              color: Color(0xFF701a36),
             ),
           ),
           //profile
           ListTile(
             leading: Icon(
               Icons.settings,
-              color: Color(0xFF2f3640),
+              color: Color(0xFF701a36),
             ),
             title: Text(
               getTranslated(context, 'drawer_profile'),
@@ -97,7 +97,7 @@ class NavDrawerState extends State<NavDrawer> {
           ListTile(
             leading: Icon(
               Icons.favorite,
-              color: Color(0xFF2f3640),
+              color: Color(0xFF701a36),
             ),
             title: Text(
               getTranslated(context, 'drawer_favorites'),
@@ -110,7 +110,7 @@ class NavDrawerState extends State<NavDrawer> {
           ListTile(
             leading: Icon(
               Icons.settings,
-              color: Color(0xFF2f3640),
+              color: Color(0xFF701a36),
             ),
             title: Text(
               getTranslated(context, 'drawer_settings'),
@@ -121,13 +121,13 @@ class NavDrawerState extends State<NavDrawer> {
             },
           ),
           Divider(
-            color: Color(0xFF2f3640),
+            color: Color(0xFF701a36),
           ),
           //about
           ListTile(
             leading: Icon(
               Icons.info,
-              color: Color(0xFF2f3640),
+              color: Color(0xFF701a36),
             ),
             title: Text(
               getTranslated(context, 'drawer_about_us'),
@@ -142,7 +142,7 @@ class NavDrawerState extends State<NavDrawer> {
           ListTile(
             leading: Icon(
               Icons.book,
-              color: Color(0xFF2f3640),
+              color: Color(0xFF701a36),
             ),
             title: Text(
               getTranslated(context, 'drawer_terms'),
@@ -157,7 +157,7 @@ class NavDrawerState extends State<NavDrawer> {
           ListTile(
             leading: Icon(
               Icons.book,
-              color: Color(0xFF2f3640),
+              color: Color(0xFF701a36),
             ),
             title: Text(
               getTranslated(context, 'drawer_privacy_policy'),
@@ -169,13 +169,13 @@ class NavDrawerState extends State<NavDrawer> {
             },
           ),
           Divider(
-            color: Color(0xFF2f3640),
+            color: Color(0xFF701a36),
           ),
           //contact us
           ListTile(
             leading: Icon(
               Icons.mail,
-              color: Color(0xFF2f3640),
+              color: Color(0xFF701a36),
             ),
             title: Text(
               getTranslated(context, 'drawer_contact_us'),
@@ -190,7 +190,7 @@ class NavDrawerState extends State<NavDrawer> {
           ListTile(
             leading: Icon(
               Icons.exit_to_app,
-              color: Color(0xFF2f3640),
+              color: Color(0xFF701a36),
             ),
             title: guest
                 ? Text(

@@ -2,7 +2,7 @@
   "lang_menu_arabic" : "Arabic",
   "lang_menu_english" : "English",
 
-  "home_title" : "Home",
+  "home_title" : "Coupons Gate",
   "home_subtitle" : "Home Page",
 
   "login_name_hint" : "Full name",
@@ -26,6 +26,7 @@
   "drawer_contact_us" : "Contact Us",
   "drawer_login" : "Sign in",
   "drawer_logout" : "Sign out",
+  "copy_code_ok": "The code has been copied",
 
   "settings_title" : "Settings",
   "settings_lang_label" : "language",
@@ -35,5 +36,10 @@
   "about_us_title" : "About Us",
   "terms_title" : "Terms",
   "privacy_policy_title" : "Privacy Policy",
-  "contact_us_title" : "Contact Us"
+  "contact_us_title" : "Contact Us",
+
+  "home_search_hint" : "Find a coupon or store",
+  "home_copy_code" : "Copy Code",
+  "shop_now": "Go to store"
+
 }
