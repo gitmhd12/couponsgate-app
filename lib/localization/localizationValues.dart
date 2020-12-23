@@ -32,7 +32,7 @@ Locale _locale(String langCode) {
       _locale = Locale(langCode, 'US');
       break;
     default:
-      _locale = Locale(ARABIC, 'US');
+      _locale = Locale(ARABIC, 'SA');
   }
 
   return _locale;
