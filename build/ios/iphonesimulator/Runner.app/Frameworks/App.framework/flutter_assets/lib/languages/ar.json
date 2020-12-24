@@ -2,7 +2,7 @@
   "lang_menu_arabic" : "العربية",
   "lang_menu_english" : "الانكليزية",
 
-  "home_title" : "الرئيسية",
+  "home_title" : "بوابة الكوبونات",
   "home_subtitle" : "الصفحة الرئيسية",
 
   "login_name_hint" : "الاسم الكامل",
@@ -15,6 +15,31 @@
   "login_password_hint" : "كلمة المرور",
   "login_facebook_btn" : "الإستمرار بإستخدام فيسبوك",
   "login_google_btn" : "الإستمرار بإستخدام جوجل",
+  "login_country_btn" : "اختر دولتك",
+  "login_country_d_title" : "اختر دولتك",
+  "login_alert_d_cancel" : "إلغاء",
+  "login_alert_d_ok" : "موافق",
+  "login_alert_md_title" : "بيانات ناقصة",
+  "login_alert_md_name" : "الرجاء إدخال الاسم",
+  "login_alert_md_email" : "الرجاء إدخال البريد الالكتروني",
+  "login_alert_md_password" : "الرجاء إدخال كلمةالمرور",
+  "login_alert_md_password_short" : "كلمة المرور قصيرة جداً",
+  "login_alert_md_country" : "الرجاء اختيار الدولة",
+  "login_alert_Ind_title" : "بيانات خاطئة",
+  "login_alert_Ind_content" : "حدثت مشكلة يرجى المحاولة لاحقا",
+  "login_alert_Ind_email_used" : "عذراً، إن البريد الذي قمت بإدخاله موجود مسبقاً في الموقع. الرجاء إدخال عنوان بريد آخر",
+  "login_alert_try_again" : "خطأ في التنفيذ ,الرجاء المحاولة لاحقاً",
+  "login_reset_pass_main" : "هل نسيت كلمة السر ؟",
+  "login_reset_pass_email_label" : "الرجاء إدخال البريد الالكتروني الخاص بحسابك",
+  "login_reset_pass_pin_label" : "تم إرسال رمز التحقق إلى بريدك الالكتروني. الرجاء إدخال الرمز للمتابعة",
+  "login_reset_pass_next_btn" : "التالي",
+  "login_pin_hint" : "رمز التحقق",
+  "login_alert_md_pin" : "الرجاء إدخال رمز التحقق",
+  "login_alert_Ind_pin" : "رمز التحقق غير صالح. الرجاء إدخال رمز التحقق الذي قمت باستلامه في بريدك الالكتروني",
+  "login_reset_pass_label" : "الرجاء إدخال كلمة السر الجديدة",
+  "login_reset_pass_btn" : "تغيير",
+  "login_alert_success_title" : "عملية ناجحة",
+  "login_alert_success_content" : "تم إعادة تعيين كلمة السر الخاصة بك بنجاح",
 
   "drawer_visitor" : "زائر",
   "drawer_settings" : "الإعدادات",
@@ -35,5 +60,10 @@
   "about_us_title" : "من نحن",
   "terms_title" : "شروط الاستخدام",
   "privacy_policy_title" : "سياسة الخصوصية",
-  "contact_us_title" : "اتصل بنا"
+  "contact_us_title" : "اتصل بنا",
+
+  "home_search_hint" : "ابحث عن كوبون أو متجر",
+  "home_copy_code" : "انسخ الكود",
+  "shop_now": "  تسوق الآن",
+  "copy_code_ok": "تم نسخ الكود"
 }

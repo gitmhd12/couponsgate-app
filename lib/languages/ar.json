@@ -2,7 +2,7 @@
   "lang_menu_arabic" : "العربية",
   "lang_menu_english" : "الانكليزية",
 
-  "home_title" : "الرئيسية",
+  "home_title" : "بوابة الكوبونات",
   "home_subtitle" : "الصفحة الرئيسية",
 
   "login_name_hint" : "الاسم الكامل",
@@ -60,5 +60,10 @@
   "about_us_title" : "من نحن",
   "terms_title" : "شروط الاستخدام",
   "privacy_policy_title" : "سياسة الخصوصية",
-  "contact_us_title" : "اتصل بنا"
+  "contact_us_title" : "اتصل بنا",
+
+  "home_search_hint" : "ابحث عن كوبون أو متجر",
+  "home_copy_code" : "انسخ الكود",
+  "shop_now": "  تسوق الآن",
+  "copy_code_ok": "تم نسخ الكود"
 }

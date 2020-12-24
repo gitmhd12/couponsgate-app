@@ -915,6 +915,7 @@ class _LoginState extends State<Login>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFa32430),
         body: SingleChildScrollView(
       child: Container(
         // decoration: BoxDecoration(
@@ -938,8 +939,8 @@ class _LoginState extends State<Login>{
             Container(
               height: MediaQuery.of(context).size.height * 0.35,
               decoration: BoxDecoration(
-                //color: Color(0xFF222222),
-                gradient: LinearGradient(
+                color: Color(0xFFa32430),
+                /*gradient: LinearGradient(
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                   stops: [
@@ -954,22 +955,20 @@ class _LoginState extends State<Login>{
                     Colors.pinkAccent,
                     Colors.brown,
                   ],
-                ),
+                ),*/
                 borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(70),
-                  bottomLeft: Radius.circular(70),
+                  bottomRight: Radius.circular(10),
+                  bottomLeft: Radius.circular(10),
                 ),
               ),
               child: Center(
                 child: Column(
                   children: [
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.12,
-                    ),
-                    Image.asset("assets/images/demo_logo.PNG"),
-                    SizedBox(
                       height: MediaQuery.of(context).size.height * 0.05,
                     ),
+                    Image.asset("assets/images/logo.png",width: MediaQuery.of(context).size.width/1.2,),
+
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -1014,8 +1013,8 @@ class _LoginState extends State<Login>{
             Container(
               height: MediaQuery.of(context).size.height * 0.05,
               decoration: BoxDecoration(
-                //color: Color(0xFF222222),
-                gradient: LinearGradient(
+                color: Color(0xFF240046),
+                /*gradient: LinearGradient(
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                   stops: [
@@ -1028,16 +1027,16 @@ class _LoginState extends State<Login>{
                     Colors.brown,
                     Colors.pinkAccent,
                   ],
-                ),
+                ),*/
                 borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(70),
-                  topLeft: Radius.circular(70),
+                  topRight: Radius.circular(10),
+                  topLeft: Radius.circular(10),
                 ),
               ),
               child: Center(
                 child: MaterialButton(
-                  textColor: Color(0xffdcdde1),
-                  child: Text(getTranslated(context, 'login_sign_later_btn')),
+                  textColor: Color(0xffffffff),
+                  child: Text(getTranslated(context, 'login_sign_later_btn'),style: TextStyle(fontFamily: 'CustomFont'),),
                   onPressed: () {
                     Navigator.pushNamed(context, homeRoute);
                   },
