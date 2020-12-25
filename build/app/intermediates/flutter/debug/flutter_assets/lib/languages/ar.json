@@ -2,7 +2,7 @@
   "lang_menu_arabic" : "العربية",
   "lang_menu_english" : "الانكليزية",
 
-  "home_title" : "الرئيسية",
+  "home_title" : "بوابة الكوبونات",
   "home_subtitle" : "الصفحة الرئيسية",
 
   "login_name_hint" : "الاسم الكامل",
@@ -27,6 +27,7 @@
   "login_alert_md_country" : "الرجاء اختيار الدولة",
   "login_alert_Ind_title" : "بيانات خاطئة",
   "login_alert_Ind_content" : "حدثت مشكلة يرجى المحاولة لاحقا",
+  "login_alert_Ind_email_used" : "عذراً، إن البريد الذي قمت بإدخاله موجود مسبقاً في الموقع. الرجاء إدخال عنوان بريد آخر",
   "login_alert_try_again" : "خطأ في التنفيذ ,الرجاء المحاولة لاحقاً",
   "login_reset_pass_main" : "هل نسيت كلمة السر ؟",
   "login_reset_pass_email_label" : "الرجاء إدخال البريد الالكتروني الخاص بحسابك",
@@ -59,5 +60,20 @@
   "about_us_title" : "من نحن",
   "terms_title" : "شروط الاستخدام",
   "privacy_policy_title" : "سياسة الخصوصية",
-  "contact_us_title" : "اتصل بنا"
+  "contact_us_title" : "اتصل بنا",
+
+  "home_search_hint" : "ابحث عن كوبون أو متجر",
+  "home_search_btn" : "ابحث",
+  "home_stores_title" : "المتاجر",
+  "home_stores_all_btn" : "عرض الكل",
+  "home_coupons_title" : "الكوبونات",
+  "home_coupons_all_btn" : "عرض الكل",
+  "home_coupons_load_more_btn" : "عرض المزيد",
+  "home_coupons_end_results" : "نهاية النتائج",
+  "home_copy_code" : "انسخ الكود",
+  "home_coupon_code_used_prefix" : "استخدم الكوبون ",
+  "home_coupon_code_used_suffix" : " مرة",
+  "home_coupon_code_add_date" : "تاريخ الإضافة: ",
+  "shop_now": "  تسوق الآن",
+  "copy_code_ok": "تم نسخ الكود"
 }

@@ -38,6 +38,7 @@ dependencies:
   convex_bottom_bar: ^2.6.0
   giffy_dialog: ^1.8.0
   dotted_border: ^1.0.7
+  getwidget: ^1.1.0
 
 
 dev_dependencies:
@@ -59,8 +60,6 @@ flutter:
   assets:
     - assets/
     - assets/images/
-    - assets/images/demo_logo.PNG
-    - assets/images/demo_logo.png
     - assets/images/alert.jpg
     - assets/images/success.png
     - lib/languages/en.json

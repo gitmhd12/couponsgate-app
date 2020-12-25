@@ -55,7 +55,7 @@ class _Splash extends State<Splash> {
 
         ),
         child: Center(
-          child: Image.asset("assets/images/demo_logo.PNG"),
+          child: Image.asset("assets/images/logo.png"),
         ),
       ),
     );

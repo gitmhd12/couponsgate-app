@@ -51,7 +51,6 @@
   "drawer_contact_us" : "Contact Us",
   "drawer_login" : "Sign in",
   "drawer_logout" : "Sign out",
-  "copy_code_ok": "The code has been copied",
 
   "settings_title" : "Settings",
   "settings_lang_label" : "language",
@@ -64,7 +63,17 @@
   "contact_us_title" : "Contact Us",
 
   "home_search_hint" : "Find a coupon or store",
+  "home_search_btn" : "Search",
+  "home_stores_title" : "Stores",
+  "home_stores_all_btn" : "View all",
+  "home_coupons_title" : "Coupons",
+  "home_coupons_all_btn" : "View all",
+  "home_coupons_load_more_btn" : "Show more",
+  "home_coupons_end_results" : "End of results",
   "home_copy_code" : "Copy Code",
-  "shop_now": "Go to store"
-
+  "home_coupon_code_used_prefix" : "Coupon has been used ",
+  "home_coupon_code_used_suffix" : " times",
+  "home_coupon_code_add_date" : "Date added: ",
+  "shop_now": "Go to store",
+  "copy_code_ok": "The code has been copied"
 }
