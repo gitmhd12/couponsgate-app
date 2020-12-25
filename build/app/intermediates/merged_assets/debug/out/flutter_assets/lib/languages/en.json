@@ -2,7 +2,7 @@
   "lang_menu_arabic" : "Arabic",
   "lang_menu_english" : "English",
 
-  "home_title" : "Home",
+  "home_title" : "Coupons Gate",
   "home_subtitle" : "Home Page",
 
   "login_name_hint" : "Full name",
@@ -27,6 +27,7 @@
   "login_alert_md_country" : "Please choose your country",
   "login_alert_Ind_title" : "Invalid data",
   "login_alert_Ind_content" : "Make sure you type your name , e-mail and password correctly",
+  "login_alert_Ind_email_used" : "Sorry, this e-mail is used. Please type another e-mail",
   "login_alert_try_again" : "Something went wrong ,please try again later",
   "login_reset_pass_main" : "Forgot you password?",
   "login_reset_pass_email_label" : "Please type your account e-mail",
@@ -50,6 +51,7 @@
   "drawer_contact_us" : "Contact Us",
   "drawer_login" : "Sign in",
   "drawer_logout" : "Sign out",
+  "copy_code_ok": "The code has been copied",
 
   "settings_title" : "Settings",
   "settings_lang_label" : "language",
@@ -59,5 +61,15 @@
   "about_us_title" : "About Us",
   "terms_title" : "Terms",
   "privacy_policy_title" : "Privacy Policy",
-  "contact_us_title" : "Contact Us"
+  "contact_us_title" : "Contact Us",
+
+  "home_search_hint" : "Find a coupon or store",
+  "home_copy_code" : "Copy Code",
+  "shop_now": "Go to store",
+  "login_text" : "Log In",
+  "new_account" : "Sign Up",
+  "login_facebook": "Continue with Facebook",
+  "login_google": "Continue with Google"
+
+
 }

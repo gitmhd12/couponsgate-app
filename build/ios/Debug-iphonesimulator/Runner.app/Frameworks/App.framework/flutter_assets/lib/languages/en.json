@@ -65,6 +65,11 @@
 
   "home_search_hint" : "Find a coupon or store",
   "home_copy_code" : "Copy Code",
-  "shop_now": "Go to store"
+  "shop_now": "Go to store",
+  "login_text" : "Log In",
+  "new_account" : "Sign Up",
+  "login_facebook": "Continue with Facebook",
+  "login_google": "Continue with Google"
+
 
 }

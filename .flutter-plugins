@@ -1,5 +1,12 @@
 # This is a generated file; do not edit or check into version control.
 clipboard_manager=/Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/clipboard_manager-0.0.4/
+firebase_auth=/Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.18.4+1/
+firebase_auth_web=/Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth_web-0.3.2+3/
+firebase_core=/Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.5.3/
+firebase_core_web=/Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-0.2.1+1/
+flutter_facebook_login=/Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_login-3.0.0/
+google_sign_in=/Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in-4.5.6/
+google_sign_in_web=/Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in_web-0.9.2/
 path_provider_linux=/Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-0.0.1+2/
 path_provider_windows=/Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-0.0.4+3/
 shared_preferences=/Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.12+4/

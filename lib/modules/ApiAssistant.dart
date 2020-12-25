@@ -11,6 +11,8 @@ class ApiAssistant {
   bool resetPassStatus = false;
   bool isEmailUsed = false;
   String pinCode;
+  int fb_login_status;
+  int g_login_status;
 
 
   postData(data, apiUrl) async {
@@ -154,6 +156,150 @@ class ApiAssistant {
           resetPassStatus = false;
         }
       }
+  }
+
+  registerData_fb( String name , String email , String fb_id) async {
+    fb_login_status = 0;
+    //print('ok2');
+    String myUrl = "$serverUrl/fb_register.php";
+    http.Response response = await http.post(myUrl, body: {
+      'email': email,
+      'name': name,
+      'fb_id': fb_id,
+    });
+
+    print("result: ${response.body}");
+    var data = json.decode(response.body);
+
+    if (data['Succes'] == 1) {
+
+      final prefs = await SharedPreferences.getInstance();
+      final key = 'is_login';
+      final value = "1";
+      prefs.setString(key, value);
+
+      final key2 = 'name';
+      final value2 = data['user']['name'];
+      prefs.setString(key2, value2);
+
+      final key4 = 'email';
+      final value4 = data['user']['email'];
+      prefs.setString(key4, value4);
+
+      final key5 = 'token';
+      final value5 = data['user']['token'];
+      prefs.setString(key5, value5);
+
+      fb_login_status = 1;
+
+    } else if (data['Succes'] == 2) {
+
+      final prefs = await SharedPreferences.getInstance();
+      final key = 'is_login';
+      final value = "1";
+      prefs.setString(key, value);
+
+      final key1 = 'user_id';
+      final value1 = data['user']['id'];
+      prefs.setString(key1, value1);
+
+      final key3 = 'pass';
+      final value3 = data['user']['password'];
+      prefs.setString(key3, value3);
+
+      final key6 = 'country_code';
+      final value6 = data['user']['country'];
+      prefs.setString(key6, value6);
+
+      final key2 = 'name';
+      final value2 = data['user']['name'];
+      prefs.setString(key2, value2);
+
+      final key4 = 'email';
+      final value4 = data['user']['email'];
+      prefs.setString(key4, value4);
+
+      final key5 = 'token';
+      final value5 = data['user']['token'];
+      prefs.setString(key5, value5);
+
+      fb_login_status = 2;
+    }else{
+      fb_login_status = 0;
+    }
+
+  }
+
+  registerData_g( String name , String email , String g_id) async {
+    g_login_status = 0;
+    //print('ok2');
+    String myUrl = "$serverUrl/g_register.php";
+    http.Response response = await http.post(myUrl, body: {
+      'email': email,
+      'name': name,
+      'g_id': g_id,
+    });
+
+    print("result: ${response.body}");
+    var data = json.decode(response.body);
+
+    if (data['Succes'] == 1) {
+
+      final prefs = await SharedPreferences.getInstance();
+      final key = 'is_login';
+      final value = "1";
+      prefs.setString(key, value);
+
+      final key2 = 'name';
+      final value2 = data['user']['name'];
+      prefs.setString(key2, value2);
+
+      final key4 = 'email';
+      final value4 = data['user']['email'];
+      prefs.setString(key4, value4);
+
+      final key5 = 'token';
+      final value5 = data['user']['token'];
+      prefs.setString(key5, value5);
+
+      g_login_status = 1;
+
+    } else if (data['Succes'] == 2) {
+
+      final prefs = await SharedPreferences.getInstance();
+      final key = 'is_login';
+      final value = "1";
+      prefs.setString(key, value);
+
+      final key1 = 'user_id';
+      final value1 = data['user']['id'];
+      prefs.setString(key1, value1);
+
+      final key3 = 'pass';
+      final value3 = data['user']['password'];
+      prefs.setString(key3, value3);
+
+      final key6 = 'country_code';
+      final value6 = data['user']['country'];
+      prefs.setString(key6, value6);
+
+      final key2 = 'name';
+      final value2 = data['user']['name'];
+      prefs.setString(key2, value2);
+
+      final key4 = 'email';
+      final value4 = data['user']['email'];
+      prefs.setString(key4, value4);
+
+      final key5 = 'token';
+      final value5 = data['user']['token'];
+      prefs.setString(key5, value5);
+
+      g_login_status = 2;
+    }else{
+      g_login_status = 0;
+    }
+
   }
 
 }
