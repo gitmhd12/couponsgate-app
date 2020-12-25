@@ -1,0 +1,86 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"fa83d736-4f00-493d-aee2-dd8f1abe403c\" name=\"Default Changelist\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ExecutionTargetManager\" SELECTED_TARGET=\"device_and_snapshot_combo_box_target[]\" />\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1lrpZHiz6uxfAVpyJHSabFI6opz\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\r\n    <property name=\"ASKED_SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"android.sdk.path\" value=\"$USER_HOME$/Library/Android/sdk\" />\r\n    <property name=\"dart.analysis.tool.window.visible\" value=\"false\" />\r\n    <property name=\"io.flutter.reload.alreadyRun\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"C:/Flutter SDK/flutter/bin/cache/dart-sdk\" />\r\n    <property name=\"project.structure.last.edited\" value=\"SDK Location\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.17\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.0\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"flutter.settings\" />\r\n    <property name=\"show.migrate.to.gradle.popup\" value=\"false\" />\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"main.dart\" type=\"FlutterRunConfigurationType\" factoryName=\"Flutter\">\r\n      <option name=\"filePath\" value=\"$PROJECT_DIR$/lib/main.dart\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SvnConfiguration\">\r\n    <configuration />\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"fa83d736-4f00-493d-aee2-dd8f1abe403c\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1608365118055</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1608365118055</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n  </component>\r\n  <component name=\"WindowStateProjectService\">\r\n    <state x=\"144\" y=\"39\" key=\"#com.intellij.execution.impl.EditConfigurationsDialog\" timestamp=\"1608519238039\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"768\" />\r\n    </state>\r\n    <state x=\"144\" y=\"39\" key=\"#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768@0.0.1366.768\" timestamp=\"1608519238039\" />\r\n    <state x=\"451\" y=\"141\" key=\"FileChooserDialogImpl\" timestamp=\"1608519198970\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"768\" />\r\n    </state>\r\n    <state x=\"451\" y=\"141\" key=\"FileChooserDialogImpl/0.0.1366.768@0.0.1366.768\" timestamp=\"1608519198970\" />\r\n    <state width=\"1308\" height=\"190\" key=\"GridCell.Tab.0.bottom\" timestamp=\"1608531160779\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"768\" />\r\n    </state>\r\n    <state width=\"1308\" height=\"190\" key=\"GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768\" timestamp=\"1608531160779\" />\r\n    <state width=\"1398\" height=\"201\" key=\"GridCell.Tab.0.bottom/0.25.1440.794@0.25.1440.794\" timestamp=\"1608479618371\" />\r\n    <state width=\"1308\" height=\"190\" key=\"GridCell.Tab.0.center\" timestamp=\"1608531160778\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"768\" />\r\n    </state>\r\n    <state width=\"1308\" height=\"190\" key=\"GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768\" timestamp=\"1608531160778\" />\r\n    <state width=\"1398\" height=\"201\" key=\"GridCell.Tab.0.center/0.25.1440.794@0.25.1440.794\" timestamp=\"1608479618371\" />\r\n    <state width=\"1308\" height=\"190\" key=\"GridCell.Tab.0.left\" timestamp=\"1608531160778\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"768\" />\r\n    </state>\r\n    <state width=\"1308\" height=\"190\" key=\"GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768\" timestamp=\"1608531160778\" />\r\n    <state width=\"1398\" height=\"201\" key=\"GridCell.Tab.0.left/0.25.1440.794@0.25.1440.794\" timestamp=\"1608479618371\" />\r\n    <state width=\"1308\" height=\"190\" key=\"GridCell.Tab.0.right\" timestamp=\"1608531160779\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"768\" />\r\n    </state>\r\n    <state width=\"1308\" height=\"190\" key=\"GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768\" timestamp=\"1608531160779\" />\r\n    <state width=\"1398\" height=\"201\" key=\"GridCell.Tab.0.right/0.25.1440.794@0.25.1440.794\" timestamp=\"1608479618371\" />\r\n    <state x=\"210\" y=\"32\" key=\"SettingsEditor\" timestamp=\"1608519233844\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"768\" />\r\n    </state>\r\n    <state x=\"210\" y=\"32\" key=\"SettingsEditor/0.0.1366.768@0.0.1366.768\" timestamp=\"1608519233844\" />\r\n    <state x=\"221\" y=\"58\" key=\"SettingsEditor/0.25.1440.794@0.25.1440.794\" timestamp=\"1608413959638\" />\r\n    <state x=\"353\" y=\"89\" width=\"672\" height=\"678\" key=\"search.everywhere.popup\" timestamp=\"1608527349495\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"768\" />\r\n    </state>\r\n    <state x=\"353\" y=\"89\" width=\"672\" height=\"678\" key=\"search.everywhere.popup/0.0.1366.768@0.0.1366.768\" timestamp=\"1608527349495\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(revision e6f2bfdda0335569019ab50ad083bc8a49fa39c2)
++++ .idea/workspace.xml	(date 1608605649203)
+@@ -1,7 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ChangeListManager">
+-    <list default="true" id="fa83d736-4f00-493d-aee2-dd8f1abe403c" name="Default Changelist" comment="" />
++    <list default="true" id="fa83d736-4f00-493d-aee2-dd8f1abe403c" name="Default Changelist" comment="">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -28,10 +30,10 @@
+     <property name="dart.analysis.tool.window.visible" value="false" />
+     <property name="io.flutter.reload.alreadyRun" value="true" />
+     <property name="last_opened_file_path" value="C:/Flutter SDK/flutter/bin/cache/dart-sdk" />
+-    <property name="project.structure.last.edited" value="SDK Location" />
++    <property name="project.structure.last.edited" value="Project" />
+     <property name="project.structure.proportion" value="0.17" />
+     <property name="project.structure.side.proportion" value="0.0" />
+-    <property name="settings.editor.selected.configurable" value="flutter.settings" />
++    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+     <property name="show.migrate.to.gradle.popup" value="false" />
+   </component>
+   <component name="RunManager">
+@@ -51,16 +53,30 @@
+       <option name="presentableId" value="Default" />
+       <updated>1608365118055</updated>
+     </task>
++    <task id="LOCAL-00001" summary="shit commit">
++      <created>1608604068466</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1608604068466</updated>
++    </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
+   <component name="VcsManagerConfiguration">
+     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
++    <MESSAGE value="shit commit" />
++    <option name="LAST_COMMIT_MESSAGE" value="shit commit" />
+   </component>
+   <component name="WindowStateProjectService">
+     <state x="144" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608519238039">
+       <screen x="0" y="0" width="1366" height="768" />
+     </state>
+     <state x="144" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768@0.0.1366.768" timestamp="1608519238039" />
++    <state x="307" y="0" key="CommitChangelistDialog2" timestamp="1608604031066">
++      <screen x="0" y="0" width="1366" height="768" />
++    </state>
++    <state x="307" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1608604031066" />
+     <state x="451" y="141" key="FileChooserDialogImpl" timestamp="1608519198970">
+       <screen x="0" y="0" width="1366" height="768" />
+     </state>
+@@ -85,11 +101,19 @@
+     </state>
+     <state width="1308" height="190" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1608531160779" />
+     <state width="1398" height="201" key="GridCell.Tab.0.right/0.25.1440.794@0.25.1440.794" timestamp="1608479618371" />
+-    <state x="210" y="32" key="SettingsEditor" timestamp="1608519233844">
++    <state x="210" y="0" key="SettingsEditor" timestamp="1608604364741">
+       <screen x="0" y="0" width="1366" height="768" />
+     </state>
+-    <state x="210" y="32" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1608519233844" />
++    <state x="210" y="0" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1608604364741" />
+     <state x="221" y="58" key="SettingsEditor/0.25.1440.794@0.25.1440.794" timestamp="1608413959638" />
++    <state x="451" y="104" key="VCS.ChangeListViewerDialog" timestamp="1608604143942">
++      <screen x="0" y="0" width="1366" height="768" />
++    </state>
++    <state x="451" y="104" key="VCS.ChangeListViewerDialog/0.0.1366.768@0.0.1366.768" timestamp="1608604143942" />
++    <state x="488" y="302" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608604124138">
++      <screen x="0" y="0" width="1366" height="768" />
++    </state>
++    <state x="488" y="302" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.768@0.0.1366.768" timestamp="1608604124138" />
+     <state x="353" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1608527349495">
+       <screen x="0" y="0" width="1366" height="768" />
+     </state>
