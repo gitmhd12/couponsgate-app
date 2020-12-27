@@ -63,6 +63,7 @@
   "favorites_alert_del_btn" : "حذف",
   "favorites_alert_del_title" : "تنبيه",
   "favorites_alert_del_content" : "هل تريد حقاً حذف هذا الكوبون من قائمة المفضلة؟",
+  "favorites_no_result_note" : "لا يوجد كوبونات في قائمة المفضلة لديك",
 
   "about_us_title" : "من نحن",
   "terms_title" : "شروط الاستخدام",

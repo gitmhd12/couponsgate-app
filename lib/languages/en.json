@@ -63,6 +63,7 @@
   "favorites_alert_del_btn" : "Delete",
   "favorites_alert_del_title" : "Alert",
   "favorites_alert_del_content" : "Are you sure you want to remove this ad from your favorites?",
+  "favorites_no_result_note" : "There are no coupons in your favorites list",
 
   "about_us_title" : "About Us",
   "terms_title" : "Terms",

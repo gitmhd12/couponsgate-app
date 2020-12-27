@@ -56,7 +56,7 @@ class _HomeState extends State<Home> {
     final prefs = await SharedPreferences.getInstance();
     final key = 'is_login';
     final value = prefs.get(key);
-    print('$value');
+    //print('$value');
     if (value == '1') {
       final key2 = 'token';
       final value2 = prefs.get(key2);
@@ -75,9 +75,9 @@ class _HomeState extends State<Home> {
 
     var res = await http.post('https://couponsgate.net/app-dash/rest_api/favorites/get_favs_by_user.php',
       body: data);
-    print(res.body.toString());
+    //print(res.body.toString());
     var body = json.decode(res.body);
-    print(body);
+    //print(body);
 
     if (body['favorites'] != null) {
       for (var fav in body['favorites']) {
@@ -101,7 +101,7 @@ class _HomeState extends State<Home> {
     final prefs = await SharedPreferences.getInstance();
     final key = 'is_login';
     final value = prefs.get(key);
-    print('$value');
+    //print('$value');
     if (value == '1') {
       final key2 = 'token';
       final value2 = prefs.get(key2);
@@ -123,9 +123,9 @@ class _HomeState extends State<Home> {
       var res = await http.post('https://couponsgate.net/app-dash/rest_api/favorites/add_fav.php',
           body: data);
       //print(res.body);
-      print('sending...');
+      //print('sending...');
       var body = json.decode(res.body);
-      print(body);
+      //print(body);
 
       _getUserFavorites().then((value) {
         setState(() {
@@ -185,7 +185,7 @@ class _HomeState extends State<Home> {
     var res = await http.post('https://couponsgate.net/app-dash/rest_api/favorites/remove_fav.php',
       body: data);
     var body = json.decode(res.body);
-    print(body);
+    //print(body);
 
       _getUserFavorites().then((value) {
         setState(() {
@@ -259,7 +259,7 @@ class _HomeState extends State<Home> {
 
     for (var ques in ssData['stores']) {
       tStore = Store.fromJson(ques);
-      print(tStore.id);
+      //print(tStore.id);
 
       _stores.add(tStore);
       //print('depart length is : ' + departs.length.toString());
@@ -280,7 +280,7 @@ class _HomeState extends State<Home> {
 
     for (var ques in ssData['stores']) {
       tStore = Store.fromJson(ques);
-      print(tStore.id);
+     // print(tStore.id);
 
       _stores.add(tStore);
       //print('depart length is : ' + departs.length.toString());
@@ -362,7 +362,7 @@ class _HomeState extends State<Home> {
     catch(e)
     {
       setState(() {
-        print('end of results');
+        //('end of results');
         _isLoadMore = false;
         _isCouponsEnd = true;
       });
@@ -386,7 +386,7 @@ class _HomeState extends State<Home> {
     {
       for (var ques in ssData['coupons']) {
         tCoupon = Coupon.fromJson(ques);
-        print(tCoupon.id);
+        //(tCoupon.id);
 
         setState(() {
           _coupons.add(tCoupon);
@@ -420,7 +420,7 @@ class _HomeState extends State<Home> {
                 _rCoupons.add(coupon);
               }
                 _currentCoupon = _rCoupons.last.id;
-                print('last coupon>>$_currentCoupon');
+                //print('last coupon>>$_currentCoupon');
             }
 
           _isCouponsLoading = false;
@@ -492,7 +492,7 @@ class _HomeState extends State<Home> {
               _rCoupons.add(coupon);
             }
             _currentCoupon = _rCoupons.last.id;
-            print('>>$_currentCoupon');
+            //print('>>$_currentCoupon');
           }
 
           loadModeChildIndicator = 0;
@@ -874,7 +874,7 @@ class _HomeState extends State<Home> {
     _initializeStoresSection();
     _initializeCouponsSection();
 
-    print('initialize !');
+    //print('initialize !');
   }
 
   @override

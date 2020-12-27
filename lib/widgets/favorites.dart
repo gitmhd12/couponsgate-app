@@ -21,9 +21,10 @@ class Favorites extends StatefulWidget {
 
 class _FavoritesState extends State<Favorites> {
 
-  List<Favorite> _favorites, _rFavorites;
+  List<Favorite> _favorites, _rFavorites = [];
   String _token;
   bool _isGuest = false;
+  bool _noResults = true;
   bool _isFavLoading;
 
   void _checkIfGuest() async
@@ -50,7 +51,7 @@ class _FavoritesState extends State<Favorites> {
     final prefs = await SharedPreferences.getInstance();
     final key = 'is_login';
     final value = prefs.get(key);
-    print('$value');
+    //print('$value');
     if (value == '1') {
       final key2 = 'token';
       final value2 = prefs.get(key2);
@@ -70,13 +71,17 @@ class _FavoritesState extends State<Favorites> {
     var res = await http.post('https://couponsgate.net/app-dash/rest_api/favorites/get_favs_by_user.php',
       body: data);
     var body = json.decode(res.body);
-    print(body);
+    //print(body);
 
     if (body['favorites'] != null) {
       for (var fav in body['favorites']) {
         tFav = Favorite.fromJson(fav);
         _favorites.add(tFav);
       }
+
+      setState(() {
+        _noResults = false;
+      });
 
       return _favorites;
     }
@@ -91,7 +96,7 @@ class _FavoritesState extends State<Favorites> {
     var res = await http.post('https://couponsgate.net/app-dash/rest_api/favorites/remove_fav.php',
       body: data);
     var body = json.decode(res.body);
-    print(body);
+    //print(body);
 
     if (body['success'] == 1) {
       _getUserFavorites().then((value) {
@@ -126,8 +131,6 @@ class _FavoritesState extends State<Favorites> {
   void initState() {
 
     super.initState();
-
-    _rFavorites = new List<Favorite>();
 
     _checkIfGuest();
 
@@ -171,10 +174,7 @@ class _FavoritesState extends State<Favorites> {
         onTap: () {},
         child: Card(
 
-          shape: RoundedRectangleBorder(
-            side: BorderSide(color: Colors.blueGrey, width: 0.5),
-            borderRadius: BorderRadius.circular(0),
-          ),
+
           clipBehavior: Clip.antiAlias,
           margin: const EdgeInsets.only(top:10.0),
           //color: Colors.grey,
@@ -183,22 +183,6 @@ class _FavoritesState extends State<Favorites> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              // Padding(
-              //   padding: const EdgeInsets.all(0),
-              //   child: Container(
-              //     padding: const EdgeInsets.all(3.0),
-              //     color: Color(0xff275879),
-              //     child: Text(
-              //       'الإعلانات',
-              //       style: TextStyle(
-              //         fontSize: 18,
-              //         color: Colors.white,
-              //         fontFamily: "CustomIcons",
-              //       ),
-              //       textAlign: TextAlign.center,
-              //     ),
-              //   ),
-              // ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Row(
@@ -248,83 +232,129 @@ class _FavoritesState extends State<Favorites> {
             ],
           ),
         ),
-      ):Container(child: Row(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: _rFavorites.length,
-              itemBuilder: (context, index) {
-                return Card(
-                  child: ListTile(
-                    title: Text(
-                      cPropertyByLocale(context, _rFavorites[index]),
-                      style: TextStyle(
-                          fontSize: 18, fontFamily: 'CustomFont'
-                        //fontWeight: FontWeight.bold,
-                      ),
-                    ),
+      )
+          :
+          Container(
+            // child: _noResults ?
+            // InkWell(
+            //
+            //   borderRadius: BorderRadius.circular(5),
+            //   onTap: () {},
+            //   child: Card(
+            //
+            //     clipBehavior: Clip.antiAlias,
+            //     margin: const EdgeInsets.only(top:10.0),
+            //     elevation: 0,
+            //
+            //     child: Column(
+            //       crossAxisAlignment: CrossAxisAlignment.stretch,
+            //       children: <Widget>[
+            //
+            //         Padding(
+            //           padding: const EdgeInsets.all(10.0),
+            //           child: Row(
+            //             children: <Widget>[
+            //               Expanded(
+            //                 child: Container(
+            //                   child: Center(
+            //                     child: Padding(
+            //                       padding: const EdgeInsets.all(10.0),
+            //                       child: Text(
+            //                         getTranslated(context, 'favorites_no_result_note'),
+            //                         style: TextStyle(
+            //                           fontFamily: 'CustomFont',
+            //                         ),
+            //                       ),
+            //                     ),
+            //                   ),
+            //                 ),
+            //               ),
+            //             ],
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // )
+            //     :
+            child: Container(child: Row(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: _rFavorites.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        child: ListTile(
+                          title: Text(
+                            cPropertyByLocale(context, _rFavorites[index]),
+                            style: TextStyle(
+                                fontSize: 18, fontFamily: 'CustomFont'
+                              //fontWeight: FontWeight.bold,
+                            ),
+                          ),
 
-                    trailing: IconButton(icon: Icon(Icons.delete),
-                      color: Colors.red,
-                      onPressed: (){
-                        showDialog(
-                            context: context,
-                            builder: (_) => AssetGiffyDialog(
-                              onlyOkButton: false,
-                              buttonCancelText: Text(getTranslated(context, 'login_alert_d_cancel'),
-                                  style: TextStyle(fontFamily: "CustomFont", fontSize: 16)),
-                              buttonOkText: Text(getTranslated(context, 'favorites_alert_del_btn'),
-                                  style: TextStyle(
-                                      fontFamily: "CustomFont",
-                                      fontSize: 16,
-                                      color: Colors.white)),
-                              buttonOkColor: Colors.redAccent,
-                              image: Image.asset('assets/images/alert.png', fit: BoxFit.cover),
-                              title: Text(
-                                getTranslated(context, 'favorites_alert_del_title'),
-                                style: TextStyle(
-                                    fontSize: 18.0,
-                                    fontFamily: "CustomFont",
-                                    color: Colors.redAccent),
-                              ),
-                              description: Text(
-                                getTranslated(context, 'favorites_alert_del_content'),
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontFamily: "CustomFont", fontSize: 16),
-                              ),
-                              onOkButtonPressed: () {
-                                setState(() {
-                                  _deleteFavorite(_rFavorites[index].id);
+                          trailing: IconButton(icon: Icon(Icons.delete),
+                            color: Colors.red,
+                            onPressed: (){
+                              showDialog(
+                                  context: context,
+                                  builder: (_) => AssetGiffyDialog(
+                                    onlyOkButton: false,
+                                    buttonCancelText: Text(getTranslated(context, 'login_alert_d_cancel'),
+                                        style: TextStyle(fontFamily: "CustomFont", fontSize: 16)),
+                                    buttonOkText: Text(getTranslated(context, 'favorites_alert_del_btn'),
+                                        style: TextStyle(
+                                            fontFamily: "CustomFont",
+                                            fontSize: 16,
+                                            color: Colors.white)),
+                                    buttonOkColor: Colors.redAccent,
+                                    image: Image.asset('assets/images/alert.png', fit: BoxFit.cover),
+                                    title: Text(
+                                      getTranslated(context, 'favorites_alert_del_title'),
+                                      style: TextStyle(
+                                          fontSize: 18.0,
+                                          fontFamily: "CustomFont",
+                                          color: Colors.redAccent),
+                                    ),
+                                    description: Text(
+                                      getTranslated(context, 'favorites_alert_del_content'),
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(fontFamily: "CustomFont", fontSize: 16),
+                                    ),
+                                    onOkButtonPressed: () {
+                                      setState(() {
+                                        _deleteFavorite(_rFavorites[index].id);
 
-                                  _getUserFavorites().then((value) {
-                                    setState(() {
-                                      try{
-                                        _rFavorites = List.from(value);
-                                      }catch(e){
-                                        _rFavorites = [];
-                                      }
-                                      _isFavLoading = false;
-                                    });
-                                  });
+                                        _getUserFavorites().then((value) {
+                                          setState(() {
+                                            try{
+                                              _rFavorites = List.from(value);
+                                            }catch(e){
+                                              _rFavorites = [];
+                                            }
+                                            _isFavLoading = false;
+                                          });
+                                        });
 
-                                });
+                                      });
 
-                                Navigator.pop(context);
-                              },
-                              onCancelButtonPressed: (){
-                                Navigator.pop(context);
-                              },
-                            ));
-                      },
-                    ),
+                                      Navigator.pop(context);
+                                    },
+                                    onCancelButtonPressed: (){
+                                      Navigator.pop(context);
+                                    },
+                                  ));
+                            },
+                          ),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
+                ),
+              ],
+            )),
           ),
-        ],
-      )),
       bottomNavigationBar: StyleProvider(
           style: Style(),
           child: ConvexAppBar(
