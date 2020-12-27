@@ -149,15 +149,10 @@ class _LoginState extends State<Login>{
 
     setState(() {
       _countryBtnHint = '+';
-      _isLoading = true;
+      _isLoading = false;
     });
 
-    _getCountries().then((value) {
-      setState(() {
-        _rCountries = List.from(value);
-        _isLoading = false;
-      });
-    });
+
   }
 
   Future _getCountries() async
@@ -202,6 +197,9 @@ class _LoginState extends State<Login>{
   }
 
   void _showCountriesDialog(context, List<Country> countries) {
+
+
+
     showDialog(
         context: context,
         builder: (BuildContext bc) {
@@ -828,7 +826,17 @@ class _LoginState extends State<Login>{
             Expanded(child: Text(getTranslated(context, 'login_country_btn'),style: TextStyle(fontFamily: "CustomFont",),)),
             Expanded(child: InkWell(
               onTap: () {
-                _showCountriesDialog(context, _rCountries);
+                setState(() {
+                  _isLoading = true;
+                });
+
+                _getCountries().then((value) {
+                  setState(() {
+                    _rCountries = List.from(value);
+                    _isLoading = false;
+                    _showCountriesDialog(context, _rCountries);
+                  });
+                });
 
                 setState(() {
                 });

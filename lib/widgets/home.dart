@@ -1,9 +1,14 @@
 import 'dart:convert';
 
 import 'package:couponsgate/localization/localizationValues.dart';
+import 'package:couponsgate/modules/ApiAssistant.dart';
 import 'package:couponsgate/modules/Coupon.dart';
+import 'package:couponsgate/modules/Favorite.dart';
 import 'package:couponsgate/modules/Store.dart';
 import 'package:couponsgate/widgets/NavDrawer.dart';
+import 'package:couponsgate/widgets/favorites.dart';
+import 'package:couponsgate/widgets/login.dart';
+import 'package:couponsgate/widgets/profile.dart';
 import 'package:couponsgate/widgets/settings.dart';
 import 'package:couponsgate/widgets/tabs/search_tab.dart';
 import 'package:dotted_border/dotted_border.dart';
@@ -11,6 +16,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:clipboard_manager/clipboard_manager.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'package:giffy_dialog/giffy_dialog.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:getwidget/getwidget.dart';
@@ -31,16 +37,167 @@ class _HomeState extends State<Home> {
 
   List<Store> _stores , _rStores = [];
   List<Coupon> _coupons , _extraCoupons = [] , _rCoupons = [];
+  List<Favorite> _favorites, _rFavorites;
 
   bool _isStoresLoading;
   bool _isCouponsLoading;
-  bool _isLoadMore = false;
-  bool _isCouponsEnd = false;
+  var _isLoadMore = false;
+  var _isCouponsEnd = false;
   bool _isGuest = true;
-  String _currentCoupon = '0';
+  String _currentCoupon;
   String _userCountryCode;
   int lsubmit_btn_child_index = 0;
   int loadModeChildIndicator = 0;
+  String _token , _userID;
+
+
+
+  Future _getUserFavorites() async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'is_login';
+    final value = prefs.get(key);
+    //print('$value');
+    if (value == '1') {
+      final key2 = 'token';
+      final value2 = prefs.get(key2);
+
+      setState(() {
+        _token = value2;
+      });
+    }
+
+    var data = {
+      'user_token': _token,
+    };
+
+    Favorite tFav;
+    _favorites = [];
+
+    var res = await http.post('https://couponsgate.net/app-dash/rest_api/favorites/get_favs_by_user.php',
+      body: data);
+    //print(res.body.toString());
+    var body = json.decode(res.body);
+    //print(body);
+
+    if (body['favorites'] != null) {
+      for (var fav in body['favorites']) {
+        tFav = Favorite.fromJson(fav);
+        _favorites.add(tFav);
+      }
+
+      return _favorites;
+    }
+  }
+
+  String _checkIfInFavs(String cid, List<Favorite> favsCoupons) {
+    try {
+      for (Favorite fav in favsCoupons) if (cid == fav.couponId) return fav.id;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  _addFavorite(String cid) async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'is_login';
+    final value = prefs.get(key);
+    //print('$value');
+    if (value == '1') {
+      final key2 = 'token';
+      final value2 = prefs.get(key2);
+
+      final key3 = 'user_id';
+      final value3 = prefs.get(key3);
+
+      setState(() {
+        _token = value2;
+        _userID = value3;
+      });
+
+      var data = {
+        'user_token': _token,
+        'user_id': _userID,
+        'coupon_id': cid,
+      };
+
+      var res = await http.post('https://couponsgate.net/app-dash/rest_api/favorites/add_fav.php',
+          body: data);
+      //print(res.body);
+      //print('sending...');
+      var body = json.decode(res.body);
+      //print(body);
+
+      _getUserFavorites().then((value) {
+        setState(() {
+          _rFavorites = List.from(value);
+        });
+      });
+    } else {
+
+      showDialog(
+          context: context,
+          builder: (_) => AssetGiffyDialog(
+            onlyOkButton: false,
+            buttonCancelText: Text(getTranslated(context, 'login_alert_d_cancel'),
+                style: TextStyle(fontFamily: "CustomFont", fontSize: 16)),
+            buttonOkText: Text(getTranslated(context, 'home_alert_login_ok_btn'),
+                style: TextStyle(
+                    fontFamily: "CustomFont",
+                    fontSize: 16,
+                    color: Colors.white)),
+            buttonOkColor: Colors.redAccent,
+            image: Image.asset('assets/images/alert.png', fit: BoxFit.cover),
+            title: Text(
+              getTranslated(context, 'home_alert_login_title'),
+              style: TextStyle(
+                  fontSize: 18.0,
+                  fontFamily: "CustomFont",
+                  color: Colors.redAccent),
+            ),
+            description: Text(
+              getTranslated(context, 'home_alert_login_content'),
+              textAlign: TextAlign.center,
+              style: TextStyle(fontFamily: "CustomFont", fontSize: 16),
+            ),
+            onOkButtonPressed: () {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Login()),
+                    (Route<dynamic> route) => false,
+              );
+            },
+            onCancelButtonPressed: (){
+              Navigator.pop(context);
+            },
+          ));
+
+    }
+  }
+
+  _deleteFavorite(String fid) async {
+
+    var data = {
+      'id': fid,
+      'user_token': _token,
+    };
+
+    var res = await http.post('https://couponsgate.net/app-dash/rest_api/favorites/remove_fav.php',
+      body: data);
+    var body = json.decode(res.body);
+    //print(body);
+
+      _getUserFavorites().then((value) {
+        setState(() {
+          try{
+            _rFavorites = List.from(value);
+          }catch(e){
+            _rFavorites = [];
+          }
+
+        });
+      });
+  }
 
 
 
@@ -102,7 +259,7 @@ class _HomeState extends State<Home> {
 
     for (var ques in ssData['stores']) {
       tStore = Store.fromJson(ques);
-      print(tStore.id);
+      //print(tStore.id);
 
       _stores.add(tStore);
       //print('depart length is : ' + departs.length.toString());
@@ -123,7 +280,7 @@ class _HomeState extends State<Home> {
 
     for (var ques in ssData['stores']) {
       tStore = Store.fromJson(ques);
-      print(tStore.id);
+     // print(tStore.id);
 
       _stores.add(tStore);
       //print('depart length is : ' + departs.length.toString());
@@ -181,9 +338,12 @@ class _HomeState extends State<Home> {
   {
     var ssResponse = await http
         .post('https://couponsgate.net/app-dash/rest_api/coupons/coupons_lazy_load_all.php' ,
-        body: {'current_id' : _currentCoupon});
+        body: {'current_id' : '1'});
 
     var ssData = json.decode(ssResponse.body);
+
+    //print(ssData.toString());
+
     Coupon tCoupon;
     _coupons = [];
 
@@ -191,7 +351,7 @@ class _HomeState extends State<Home> {
     {
       for (var ques in ssData['coupons']) {
         tCoupon = Coupon.fromJson(ques);
-        print('coupons: $tCoupon.id');
+        //print('coupons: $tCoupon.id');
 
         setState(() {
           _coupons.add(tCoupon);
@@ -202,6 +362,7 @@ class _HomeState extends State<Home> {
     catch(e)
     {
       setState(() {
+        //('end of results');
         _isLoadMore = false;
         _isCouponsEnd = true;
       });
@@ -225,7 +386,7 @@ class _HomeState extends State<Home> {
     {
       for (var ques in ssData['coupons']) {
         tCoupon = Coupon.fromJson(ques);
-        print(tCoupon.id);
+        //(tCoupon.id);
 
         setState(() {
           _coupons.add(tCoupon);
@@ -246,7 +407,7 @@ class _HomeState extends State<Home> {
 
   _initializeCouponsSection() async
   {
-    print('guest: $_isGuest');
+    //print('guest: $_isGuest');
     if(_isGuest)
     {
      await _getCoupons().then((value){
@@ -259,10 +420,11 @@ class _HomeState extends State<Home> {
                 _rCoupons.add(coupon);
               }
                 _currentCoupon = _rCoupons.last.id;
-                print('>>$_currentCoupon');
+                //print('last coupon>>$_currentCoupon');
             }
 
           _isCouponsLoading = false;
+          _isLoadMore = true;
         });
       });
     }
@@ -282,6 +444,7 @@ class _HomeState extends State<Home> {
           }
 
           _isCouponsLoading = false;
+          _isLoadMore = true;
         });
       });
     }
@@ -329,7 +492,7 @@ class _HomeState extends State<Home> {
               _rCoupons.add(coupon);
             }
             _currentCoupon = _rCoupons.last.id;
-            print('>>$_currentCoupon');
+            //print('>>$_currentCoupon');
           }
 
           loadModeChildIndicator = 0;
@@ -372,12 +535,323 @@ class _HomeState extends State<Home> {
       });
   }
 
+  couponWidget(int i)
+  {
+    return Card(
+        shape: RoundedRectangleBorder(
+          side: BorderSide(color: Colors.grey, width: 0.5),
+          borderRadius: BorderRadius.circular(5),
+        ),
+        clipBehavior: Clip.antiAlias,
+        margin: const EdgeInsets.all(10),
+
+        color: Color(0xFFe7e7e7),
+        //elevation: 0,
+
+        child:Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+
+            Row(
+
+                crossAxisAlignment: CrossAxisAlignment.center,
+                //verticalDirection: VerticalDirection.up,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.max,
+
+                //scrollDirection: Axis.vertical,
+                children: <Widget>[
+
+                  Container(
+                      width: 75,
+                      height: 75,
+                      padding: const EdgeInsets.all(0),
+                      margin: const EdgeInsets.all(0),
+                      decoration: new BoxDecoration(
+                        //border: Border.all(color: Colors.grey,width: 1),
+                        //shape: BoxShape.circle,
+                          borderRadius: BorderRadius.circular(5),
+                          image: new DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage("https://couponsgate.net/app-dash/"+_rCoupons[i].logo),
+                          )
+                      )),
+
+                  Container (
+                    //padding: const EdgeInsets.all(10.0),
+                    width: MediaQuery.of(context).size.width-95,
+                    child: new Column (
+                      children: <Widget>[
+                        Padding(padding: const EdgeInsets.all(5.0),
+                          child:Text(cPropertyByLocale(context, _rCoupons[i], 'name'),style: TextStyle(fontSize: 20,fontFamily: "CustomFont",fontWeight: FontWeight.bold),textAlign: TextAlign.center,),)
+
+                      ],
+                    ),
+                  )
+
+                ]),
+            SizedBox(height: 15,),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(onTap:(){ } , child: Container(
+                    width: 200,
+                    padding: const EdgeInsets.all(3),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      //border: Border.all(color: Colors.white),
+                      //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                      //borderRadius: BorderRadius.circular(5),
+                      //color: Colors.white
+                    ),
+                    child: DottedBorder(
+                      dashPattern: [8, 4],
+                      strokeWidth: 2,
+                      child: Container(
+                        //height: 50,
+                        //width: 300,
+                        //color: Colors.red,
+                        child: FittedBox(
+                          child: Text(
+                            ' '+_rCoupons[i].code+' ',
+                            style: TextStyle(
+                              fontSize: 40,
+                              color: Color(0xFF2196f3),
+                              fontFamily: "CustomFont",
+                              fontWeight: FontWeight.bold,
+                            ),
+                            softWrap: true,
+                          ),
+                        ),
+                      ),
+                    )
+                ),),
+                SizedBox(height: 10,),
+                Row(
+                  children: [
+                    Expanded(flex: 30, child: Container(),),
+                    Expanded(
+                      flex: 40,
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              Icon(
+                                Icons.copy,
+                                color: Colors.blue,
+                                size: 13,
+                              ),
+                              Text(
+                                getTranslated(context, 'home_coupon_code_used_prefix') +
+                                    _rCoupons[i].copyCount + getTranslated(context, 'home_coupon_code_used_suffix'),
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                  fontFamily: "CustomFont",
+
+                                ),
+                                softWrap: true,
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 10,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              Icon(
+                                MyIcons.clock,
+                                color: Colors.blue,
+                                size: 13,
+                              ),
+                              Text(
+                                getTranslated(context, 'home_coupon_code_add_date') + _rCoupons[i].createdAt.toString(),
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                  fontFamily: "CustomFont",
+
+                                ),
+                                softWrap: true,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(flex: 30, child: Container(),)
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(height: 15,),
+            Padding(
+                padding: const EdgeInsets.only(top:5,left: 10,right: 10,bottom: 5),
+                child:Row(
+
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  //verticalDirection: VerticalDirection.up,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+
+                    //shop now
+                    InkWell(onTap:(){ } , child: Container(
+                      width: MediaQuery.of(context).size.width-150,
+                      padding: const EdgeInsets.all(3),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.deepOrange),
+                          //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.deepOrange),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(
+                            MyIcons.copy,
+                            color: Colors.white,
+                            size: 15,
+                          ),
+                          Text(
+                            getTranslated(context, 'home_copy_code'),
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontFamily: "CustomFont",
+                              fontWeight: FontWeight.w300,
+                            ),
+                            softWrap: true,
+                          ),
+
+
+                        ],
+                      ),
+                    ),),
+
+                    //favorite
+                    InkWell(onTap:(){ } , child: Container(
+                      width: 50,
+                      padding: const EdgeInsets.all(3),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white),
+                          //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.white),
+                      child: Icon(MyIcons.up_circled,color: Colors.green,),
+                    ),),
+                    InkWell(onTap:(){ } , child: Container(
+                      width: 50,
+                      padding: const EdgeInsets.all(3),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white),
+                          //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.white),
+                      child: Icon(MyIcons.down_circled,color: Colors.red,),
+                    ),),
+
+
+
+                  ],)),
+            Padding(
+                padding: const EdgeInsets.only(top:5,left: 10,right: 10,bottom: 5),
+                child:Row(
+
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  //verticalDirection: VerticalDirection.up,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+
+                    //shop now
+                    InkWell(onTap:(){ } , child: Container(
+                      width: MediaQuery.of(context).size.width-150,
+                      padding: const EdgeInsets.all(3),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white),
+                          //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                          borderRadius: BorderRadius.circular(5),
+                          color: Color(0xFF2196f3)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(
+                            Icons.shopping_bag,
+                            color: Colors.white,
+                          ),
+                          Text(
+                            getTranslated(context, 'shop_now'),
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontFamily: "CustomFont",
+                              fontWeight: FontWeight.w300,
+                            ),
+                            softWrap: true,
+                          ),
+                        ],
+                      ),
+                    ),),
+                    //favorite
+                    _checkIfInFavs(_rCoupons[i].id, _rFavorites) == null ?
+                    InkWell(
+                      onTap:(){
+                          _addFavorite(_rCoupons[i].id);
+                      } , child: Container(
+                      width: 50,
+                      padding: const EdgeInsets.all(3),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white),
+                          //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                          borderRadius: BorderRadius.circular(5),
+                          color: Color(0xFFffffff)),
+                      child: Icon(Icons.favorite_border,color: Color(0xFF2196f3),),
+                    ),)
+                        :
+                    InkWell(
+                      onTap:(){ 
+                        _deleteFavorite(_checkIfInFavs(_rCoupons[i].id, _rFavorites));
+                      } , child: Container(
+                      width: 50,
+                      padding: const EdgeInsets.all(3),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white),
+                          //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                          borderRadius: BorderRadius.circular(5),
+                          color: Color(0xFFffffff)),
+                      child: Icon(Icons.favorite,color: Colors.red,),
+                    ),),
+                    InkWell(onTap:(){ } , child: Container(
+                      width: 50,
+                      padding: const EdgeInsets.all(3),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white),
+                          //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                          borderRadius: BorderRadius.circular(5),
+                          color: Color(0xFFffffff)),
+                      child: Icon(Icons.share,color: Color(0xFF2196f3),),
+                    ),),
+
+
+                  ],))
+          ],)
+
+    );
+  }
+
 
   @override
   void initState() {
     super.initState();
 
-    _controller.addListener(_listener);
+    _checkIfGuest();
 
     setState(() {
       _isStoresLoading = true;
@@ -385,10 +859,22 @@ class _HomeState extends State<Home> {
       _currentCoupon = '0';
     });
 
-    _checkIfGuest();
+    _controller.addListener(_listener);
+
+    _getUserFavorites().then((value) {
+      setState(() {
+        try{
+          _rFavorites = List.from(value);
+        }catch(e){
+          _rFavorites = [];
+        }
+      });
+    });
 
     _initializeStoresSection();
     _initializeCouponsSection();
+
+    //print('initialize !');
   }
 
   @override
@@ -405,6 +891,7 @@ class _HomeState extends State<Home> {
       ),
       body:Builder(
           builder: (context) => SingleChildScrollView(
+              controller: _controller,
               child: Column(children: [
                 //search card
                 Card(
@@ -644,287 +1131,8 @@ class _HomeState extends State<Home> {
                     loaderColorThree: Color(0xFF2196f3),
                   ),),
                 ) : Container(
-                  height: _rCoupons.length * 300.0,
-                  child: ListView.builder(
-                    controller: _controller,
-                    itemCount: _rCoupons.length,
-                    itemExtent: 300,
-                    itemBuilder: (context , index){
-                      return Card(
-                          shape: RoundedRectangleBorder(
-                            side: BorderSide(color: Colors.grey, width: 0.5),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          clipBehavior: Clip.antiAlias,
-                          margin: const EdgeInsets.all(10),
-
-                          color: Color(0xFFe7e7e7),
-                          //elevation: 0,
-
-                          child:Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-
-                              Row(
-
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  //verticalDirection: VerticalDirection.up,
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  mainAxisSize: MainAxisSize.max,
-
-                                  //scrollDirection: Axis.vertical,
-                                  children: <Widget>[
-
-                                    Container(
-                                        width: 75,
-                                        height: 75,
-                                        padding: const EdgeInsets.all(0),
-                                        margin: const EdgeInsets.all(0),
-                                        decoration: new BoxDecoration(
-                                          //border: Border.all(color: Colors.grey,width: 1),
-                                          //shape: BoxShape.circle,
-                                            borderRadius: BorderRadius.circular(5),
-                                            image: new DecorationImage(
-                                                fit: BoxFit.cover,
-                                                image: new AssetImage("https://couponsgate.net/app-dash/"+_rCoupons[index].logo),
-                                            )
-                                        )),
-
-                                    Container (
-                                      //padding: const EdgeInsets.all(10.0),
-                                      width: MediaQuery.of(context).size.width-95,
-                                      child: new Column (
-                                        children: <Widget>[
-                                          Padding(padding: const EdgeInsets.all(5.0),
-                                            child:Text(cPropertyByLocale(context, _rCoupons[index], 'name'),style: TextStyle(fontSize: 20,fontFamily: "CustomFont",fontWeight: FontWeight.bold),textAlign: TextAlign.center,),)
-
-                                        ],
-                                      ),
-                                    )
-
-                                  ]),
-                              SizedBox(height: 15,),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  InkWell(onTap:(){ } , child: Container(
-                                      width: 200,
-                                      padding: const EdgeInsets.all(3),
-                                      alignment: Alignment.center,
-                                      decoration: BoxDecoration(
-                                        //border: Border.all(color: Colors.white),
-                                        //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
-                                        //borderRadius: BorderRadius.circular(5),
-                                        //color: Colors.white
-                                      ),
-                                      child: DottedBorder(
-                                        dashPattern: [8, 4],
-                                        strokeWidth: 2,
-                                        child: Container(
-                                          //height: 50,
-                                          //width: 300,
-                                          //color: Colors.red,
-                                          child: Text(
-                                            _rCoupons[index].code,
-                                            style: TextStyle(
-                                              fontSize: 40,
-                                              color: Color(0xFF2196f3),
-                                              fontFamily: "CustomFont",
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                            softWrap: true,
-                                          ),
-                                        ),
-                                      )
-                                  ),),
-                                  SizedBox(height: 10,),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Icon(
-                                        Icons.copy,
-                                        color: Colors.blue,
-                                        size: 13,
-                                      ),
-                                      Text(
-                                        getTranslated(context, 'home_coupon_code_used_prefix') +
-                                            _rCoupons[index].copyCount + getTranslated(context, 'home_coupon_code_used_suffix'),
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          color: Colors.black,
-                                          fontFamily: "CustomFont",
-
-                                        ),
-                                        softWrap: true,
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(height: 10,),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Icon(
-                                        MyIcons.clock,
-                                        color: Colors.blue,
-                                        size: 13,
-                                      ),
-                                      Text(
-                                        getTranslated(context, 'home_coupon_code_add_date') + _rCoupons[index].createdAt,
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          color: Colors.black,
-                                          fontFamily: "CustomFont",
-
-                                        ),
-                                        softWrap: true,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 15,),
-                              Padding(
-                                  padding: const EdgeInsets.only(top:5,left: 10,right: 10,bottom: 5),
-                                  child:Row(
-
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    //verticalDirection: VerticalDirection.up,
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-
-                                      //shop now
-                                      InkWell(onTap:(){ } , child: Container(
-                                        width: MediaQuery.of(context).size.width-150,
-                                        padding: const EdgeInsets.all(3),
-                                        alignment: Alignment.center,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.deepOrange),
-                                            //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
-                                            borderRadius: BorderRadius.circular(5),
-                                            color: Colors.deepOrange),
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Icon(
-                                              MyIcons.copy,
-                                              color: Colors.white,
-                                              size: 15,
-                                            ),
-                                            Text(
-                                              getTranslated(context, 'home_copy_code'),
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                color: Colors.white,
-                                                fontFamily: "CustomFont",
-                                                fontWeight: FontWeight.w300,
-                                              ),
-                                              softWrap: true,
-                                            ),
-
-
-                                          ],
-                                        ),
-                                      ),),
-
-                                      //favorite
-                                      InkWell(onTap:(){ } , child: Container(
-                                        width: 50,
-                                        padding: const EdgeInsets.all(3),
-                                        alignment: Alignment.center,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.white),
-                                            //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
-                                            borderRadius: BorderRadius.circular(5),
-                                            color: Colors.white),
-                                        child: Icon(MyIcons.up_circled,color: Colors.green,),
-                                      ),),
-                                      InkWell(onTap:(){ } , child: Container(
-                                        width: 50,
-                                        padding: const EdgeInsets.all(3),
-                                        alignment: Alignment.center,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.white),
-                                            //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
-                                            borderRadius: BorderRadius.circular(5),
-                                            color: Colors.white),
-                                        child: Icon(MyIcons.down_circled,color: Colors.red,),
-                                      ),),
-
-
-
-                                    ],)),
-                              Padding(
-                                  padding: const EdgeInsets.only(top:5,left: 10,right: 10,bottom: 5),
-                                  child:Row(
-
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    //verticalDirection: VerticalDirection.up,
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-
-                                      //shop now
-                                      InkWell(onTap:(){ } , child: Container(
-                                        width: MediaQuery.of(context).size.width-150,
-                                        padding: const EdgeInsets.all(3),
-                                        alignment: Alignment.center,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.white),
-                                            //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
-                                            borderRadius: BorderRadius.circular(5),
-                                            color: Color(0xFF2196f3)),
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Icon(
-                                              Icons.shopping_bag,
-                                              color: Colors.white,
-                                            ),
-                                            Text(
-                                              getTranslated(context, 'shop_now'),
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                color: Colors.white,
-                                                fontFamily: "CustomFont",
-                                                fontWeight: FontWeight.w300,
-                                              ),
-                                              softWrap: true,
-                                            ),
-                                          ],
-                                        ),
-                                      ),),
-                                      //favorite
-                                      InkWell(onTap:(){ } , child: Container(
-                                        width: 50,
-                                        padding: const EdgeInsets.all(3),
-                                        alignment: Alignment.center,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.white),
-                                            //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
-                                            borderRadius: BorderRadius.circular(5),
-                                            color: Color(0xFFffffff)),
-                                        child: Icon(Icons.favorite_border,color: Color(0xFF2196f3),),
-                                      ),),
-                                      InkWell(onTap:(){ } , child: Container(
-                                        width: 50,
-                                        padding: const EdgeInsets.all(3),
-                                        alignment: Alignment.center,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.white),
-                                            //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
-                                            borderRadius: BorderRadius.circular(5),
-                                            color: Color(0xFFffffff)),
-                                        child: Icon(Icons.share,color: Color(0xFF2196f3),),
-                                      ),),
-
-
-                                    ],))
-                            ],)
-
-                      );
-                    },
-
+                  child: Column(
+                      children: <Widget>[for(int i = 0 ; i< _rCoupons.length ; i++) couponWidget(i)],
                   ),
                 ),
                 Visibility(
@@ -947,10 +1155,13 @@ class _HomeState extends State<Home> {
                 ),
                 Visibility(
                   visible: _isCouponsEnd,
-                  child: Container(
-                    height: 50,
-                    child: Center(
-                      child: Text(getTranslated(context, 'home_coupons_end_results'),style: TextStyle(fontFamily: 'CustomFont',color: Colors.black54,),),
+                  child: Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: Container(
+                      height: 50,
+                      child: Center(
+                        child: Text(getTranslated(context, 'home_coupons_end_results'),style: TextStyle(fontFamily: 'CustomFont',color: Colors.black54,),),
+                      ),
                     ),
                   ),
                 ),
@@ -967,16 +1178,39 @@ class _HomeState extends State<Home> {
           //curveSize: 100,
           style: TabStyle.react,
           items: [
-            TabItem(icon: MyIcons.globe, title: 'الدول'),
-            TabItem(icon: Icons.shopping_bag, title: 'المتاجر'),
-            TabItem(icon: Icons.home, title: 'الرئيسية'),
-            TabItem(icon: Icons.favorite, title: 'المفضلة'),
-            TabItem(icon: Icons.people, title: 'حسابي'),
+            TabItem(icon: MyIcons.globe, title: getTranslated(context, 'home_b_bar_countries')),
+            TabItem(icon: Icons.shopping_bag, title: getTranslated(context, 'home_b_bar_stores')),
+            TabItem(icon: Icons.home, title: getTranslated(context, 'home_b_bar_home')),
+            TabItem(icon: Icons.favorite, title: getTranslated(context, 'home_b_bar_fav')),
+            TabItem(icon: Icons.people, title: getTranslated(context, 'home_b_bar_profile')),
           ],
           initialActiveIndex: 2,//optional, default as 0
-          onTap: (int i) => print('click index=$i'),
+          onTap: onTabTapped,
         ))
     );
+  }
+
+  void onTabTapped(int index) {
+    if (index == 0) {
+      Navigator.of(context).push(
+        new MaterialPageRoute(
+            builder: (BuildContext context) => null),
+      );
+    } else if (index == 1) {
+      Navigator.of(context).push(
+        new MaterialPageRoute(
+            builder: (BuildContext context) => null),
+      );
+    } else if (index == 2) {
+      Navigator.of(context).push(new MaterialPageRoute(
+          builder: (BuildContext context) => new Home()));
+    } else if (index == 3) {
+      Navigator.of(context).push(new MaterialPageRoute(
+          builder: (BuildContext context) => new Favorites()));
+    } else if (index == 4) {
+      Navigator.of(context).push(new MaterialPageRoute(
+          builder: (BuildContext context) => new Profile()));
+    }
   }
 
 
