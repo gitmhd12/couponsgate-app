@@ -4,10 +4,6 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Headers/GULLoggerCodes.h</key>
-		<data>
-		2AAfpX1LMuw9z2ayA1koNDLj6Jk=
-		</data>
 		<key>Headers/GULLoggerLevel.h</key>
 		<data>
 		kI/Q5XKyjxY19Tph/lUMaOC09ZE=
@@ -18,7 +14,7 @@
 		</data>
 		<key>Headers/GoogleUtilities-umbrella.h</key>
 		<data>
-		iU5cnkrORKRHZCq+bKlronkG1xY=
+		obHQTP3gmIRpPeDCBd3X0FlS4gA=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -84,10 +80,6 @@
 		<data>
 		Ba4+MyOX4FmJxs9ZZ5iDUKSbjSU=
 		</data>
-		<key>PrivateHeaders/GULOriginalIMPConvenienceMacros.h</key>
-		<data>
-		ioFNLvVtBav6ChtkDGBfImNqRJg=
-		</data>
 		<key>PrivateHeaders/GULReachabilityChecker.h</key>
 		<data>
 		UHZxn2/zMhUivGD/BRSg0Tiuez4=
@@ -104,28 +96,9 @@
 		<data>
 		t/fXV0x5vnY3wbVku4mOWIkSf9o=
 		</data>
-		<key>PrivateHeaders/GULSwizzler.h</key>
-		<data>
-		kqRN0S855mcEoeddcbC6llfp/j0=
-		</data>
-		<key>PrivateHeaders/GULUserDefaults.h</key>
-		<data>
-		EBGg0ZapNUzyIzb6nCliBREczUA=
-		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Headers/GULLoggerCodes.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			2AAfpX1LMuw9z2ayA1koNDLj6Jk=
-			</data>
-			<key>hash2</key>
-			<data>
-			fNh3b/lYtRjSwfSmt/UJjHsdVPWuCkOYIuGG037oGsQ=
-			</data>
-		</dict>
 		<key>Headers/GULLoggerLevel.h</key>
 		<dict>
 			<key>hash</key>
@@ -152,11 +125,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			iU5cnkrORKRHZCq+bKlronkG1xY=
+			obHQTP3gmIRpPeDCBd3X0FlS4gA=
 			</data>
 			<key>hash2</key>
 			<data>
-			pYoPiMz9Q5hZG0iovii/8kynCqpJ6MI6t+U5/oezbz0=
+			jkVk73LQO0eMt54TIHW/9LeYNqaJ4yN3oC+Yya75xow=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -324,17 +297,6 @@
 			xWVWv1i+0eQojlus1ncbO/IltiVnGOxexwv5OpgAAZk=
 			</data>
 		</dict>
-		<key>PrivateHeaders/GULOriginalIMPConvenienceMacros.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			ioFNLvVtBav6ChtkDGBfImNqRJg=
-			</data>
-			<key>hash2</key>
-			<data>
-			fNvM52Y4+ks99B81gcFB9L3SghXwZrd5S2dBJEKW5mw=
-			</data>
-		</dict>
 		<key>PrivateHeaders/GULReachabilityChecker.h</key>
 		<dict>
 			<key>hash</key>
@@ -377,28 +339,6 @@
 			<key>hash2</key>
 			<data>
 			kWT1ykqi+tOoUFBDwqhOPx7axNyeUYgduCruJb7EaTQ=
-			</data>
-		</dict>
-		<key>PrivateHeaders/GULSwizzler.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			kqRN0S855mcEoeddcbC6llfp/j0=
-			</data>
-			<key>hash2</key>
-			<data>
-			nHEVLRZiAlaBzWwIgNfNZ9l61OpmGZSCbpSaKf3yIqs=
-			</data>
-		</dict>
-		<key>PrivateHeaders/GULUserDefaults.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			EBGg0ZapNUzyIzb6nCliBREczUA=
-			</data>
-			<key>hash2</key>
-			<data>
-			ys09g5WqzZ5D/IaWg2v2AyTadtZDy7y+bS/G95iNTnE=
 			</data>
 		</dict>
 	</dict>

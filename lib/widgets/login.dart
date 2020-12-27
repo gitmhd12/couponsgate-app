@@ -1218,7 +1218,7 @@ class _LoginState extends State<Login>{
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.05,
                     ),
-                    Image.asset("assets/images/new_logo.jpg",width: MediaQuery.of(context).size.width/1.7,height: MediaQuery.of(context).size.width/1.7),
+                    Image.asset("assets/images/text_logo.png",width: MediaQuery.of(context).size.width/1.7,height: MediaQuery.of(context).size.width/1.7),
 
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
