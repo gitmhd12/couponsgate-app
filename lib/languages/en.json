@@ -56,7 +56,14 @@
   "settings_lang_label" : "language",
   "settings_lang_picker_label" : "Choose language",
   "profile_title" : "Profile",
+
   "favorites_title" : "Favorites",
+  "favorites_sign_in_note" : "Please login to view all the coupons that you have added to your favourites",
+  "favorites_sign_in_btn" : "Log in",
+  "favorites_alert_del_btn" : "Delete",
+  "favorites_alert_del_title" : "Alert",
+  "favorites_alert_del_content" : "Are you sure you want to remove this ad from your favorites?",
+
   "about_us_title" : "About Us",
   "terms_title" : "Terms",
   "privacy_policy_title" : "Privacy Policy",
@@ -74,6 +81,14 @@
   "home_coupon_code_used_prefix" : "Coupon has been used ",
   "home_coupon_code_used_suffix" : " times",
   "home_coupon_code_add_date" : "Date added: ",
+  "home_alert_login_title" : "Alert",
+  "home_alert_login_content" : "You must first log in to be able to add Coupon to your favorites",
+  "home_alert_login_ok_btn" : "Log in",
+  "home_b_bar_countries" : "Countries",
+  "home_b_bar_stores" : "Stores",
+  "home_b_bar_home" : "Home",
+  "home_b_bar_fav" : "My Favorite",
+  "home_b_bar_profile" : "Profile",
   "shop_now": "Go to store",
   "copy_code_ok": "The code has been copied"
 }

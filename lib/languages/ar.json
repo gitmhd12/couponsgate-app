@@ -56,7 +56,14 @@
   "settings_lang_label" : "اللغة",
   "settings_lang_picker_label" : "اختر اللغة",
   "profile_title" : "الملف الشخصي",
+
   "favorites_title" : "المفضلة",
+  "favorites_sign_in_note" : "الرجاء تسجيل الدخول لعرض الكوبونات التي قمت بإضافتها إلى المفضلة",
+  "favorites_sign_in_btn" : "تسجيل الدخول",
+  "favorites_alert_del_btn" : "حذف",
+  "favorites_alert_del_title" : "تنبيه",
+  "favorites_alert_del_content" : "هل تريد حقاً حذف هذا الكوبون من قائمة المفضلة؟",
+
   "about_us_title" : "من نحن",
   "terms_title" : "شروط الاستخدام",
   "privacy_policy_title" : "سياسة الخصوصية",
@@ -74,6 +81,14 @@
   "home_coupon_code_used_prefix" : "استخدم الكوبون ",
   "home_coupon_code_used_suffix" : " مرة",
   "home_coupon_code_add_date" : "تاريخ الإضافة: ",
+  "home_alert_login_title" : "تنبيه",
+  "home_alert_login_content" : "يجب عليك أن تسجل الدخول أولاً حتى تتمكن من إضافة الكوبون لمفضلتك",
+  "home_alert_login_ok_btn" : "تسجيل الدخول",
+  "home_b_bar_countries" : "الدول",
+  "home_b_bar_stores" : "المتاجر",
+  "home_b_bar_home" : "الرئيسية",
+  "home_b_bar_fav" : "المفضلة",
+  "home_b_bar_profile" : "حسابي",
   "shop_now": "  تسوق الآن",
   "copy_code_ok": "تم نسخ الكود"
 }
