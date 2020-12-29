@@ -4,6 +4,7 @@ class Favorite {
   String couponId;
   String couponArName;
   String couponEnName;
+  String createdAt;
 
   Favorite({
     this.id,
@@ -11,6 +12,7 @@ class Favorite {
     this.couponId,
     this.couponArName,
     this.couponEnName,
+    this.createdAt,
   });
 
   factory Favorite.fromJson(Map<String, dynamic> json) {
@@ -20,6 +22,7 @@ class Favorite {
       couponId: json['coupon_id'] as String,
       couponArName: json['ar-name'] as String,
       couponEnName: json['en-name'] as String,
+      createdAt: json['created_at'] as String,
     );
   }
 }

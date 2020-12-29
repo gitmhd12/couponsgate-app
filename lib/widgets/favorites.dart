@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:couponsgate/widgets/settings.dart';
 import 'package:http/http.dart' as http;
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:couponsgate/localization/localizationValues.dart';
@@ -68,7 +69,7 @@ class _FavoritesState extends State<Favorites> {
     Favorite tFav;
     _favorites = [];
 
-    var res = await http.post('https://couponsgate.net/app-dash/rest_api/favorites/get_favs_by_user.php',
+    var res = await http.post('https://yalaphone.com/appdash/rest_api/favorites/get_favs_by_user.php',
       body: data);
     var body = json.decode(res.body);
     //print(body);
@@ -93,7 +94,7 @@ class _FavoritesState extends State<Favorites> {
       'user_token': _token,
     };
 
-    var res = await http.post('https://couponsgate.net/app-dash/rest_api/favorites/remove_fav.php',
+    var res = await http.post('https://yalaphone.com/appdash/rest_api/favorites/remove_fav.php',
       body: data);
     var body = json.decode(res.body);
     //print(body);
@@ -397,7 +398,23 @@ class _FavoritesState extends State<Favorites> {
           builder: (BuildContext context) => new Favorites()));
     } else if (index == 4) {
       Navigator.of(context).push(new MaterialPageRoute(
-          builder: (BuildContext context) => new Profile()));
+          builder: (BuildContext context) => new Settings()));
     }
+  }
+}
+
+class Style extends StyleHook {
+  @override
+  double get activeIconSize => 40;
+
+  @override
+  double get activeIconMargin => 7;
+
+  @override
+  double get iconSize => 16;
+
+  @override
+  TextStyle textStyle(Color color) {
+    return TextStyle(fontSize: 14,fontFamily: "CustomFont", color: color);
   }
 }

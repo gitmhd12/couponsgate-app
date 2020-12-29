@@ -84,7 +84,7 @@ class ApiAssistant {
     if (response.body.toString().contains("logged_in")) {
 
       var data = json.decode(response.body);
-      //print(data['user']['name']);
+      print(data.toString());
       _saveUserParams(data['user']['id'], data['user']['password'], data['user']['name'], data['user']['email'], data['user']['token'], data['user']['country']);
       loginStatus = true;
     } else {

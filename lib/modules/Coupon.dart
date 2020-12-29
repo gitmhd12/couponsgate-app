@@ -33,7 +33,7 @@ class Coupon {
       enDescription: json['en-des'] as String,
       code: json['code'] as String,
       copyCount: json['copy-count'] as String,
-      createdAt: json['created-at'] as String,
+      createdAt: json['createAt'] as String,
       store: json['store'] as String,
       status: json['status'] as String,
       logo: json['logo'] as String,
