@@ -74,7 +74,7 @@ class _HomeState extends State<Home> {
     Favorite tFav;
     _favorites = [];
 
-    var res = await http.post('https://couponsgate.net/appdash/rest_api/favorites/get_favs_by_user.php',
+    var res = await http.post('https://yalaphone.com/appdash/rest_api/favorites/get_favs_by_user.php',
       body: data);
     //print(res.body.toString());
     var body = json.decode(res.body);
@@ -121,7 +121,7 @@ class _HomeState extends State<Home> {
         'coupon_id': cid,
       };
 
-      var res = await http.post('https://couponsgate.net/appdash/rest_api/favorites/add_fav.php',
+      var res = await http.post('https://yalaphone.com/appdash/rest_api/favorites/add_fav.php',
           body: data);
       //print(res.body);
       //print('sending...');
@@ -183,7 +183,7 @@ class _HomeState extends State<Home> {
       'user_token': _token,
     };
 
-    var res = await http.post('https://couponsgate.net/appdash/rest_api/favorites/remove_fav.php',
+    var res = await http.post('https://yalaphone.com/appdash/rest_api/favorites/remove_fav.php',
       body: data);
     var body = json.decode(res.body);
     //print(body);
@@ -338,7 +338,7 @@ class _HomeState extends State<Home> {
   Future _getCoupons() async
   {
     var ssResponse = await http
-        .post('https://www.yalaphone.com/appdash/rest_api/coupons/coupons_lazy_load_all.php' ,
+        .post('https://www.yalaphone.com/appdash/rest_api/coupons/get_all_coupons.php' ,
         body: {'current_id' : '1'});
 
     var ssData = json.decode(ssResponse.body);
@@ -1088,7 +1088,7 @@ class _HomeState extends State<Home> {
                                         shape: BoxShape.circle,
                                         image: new DecorationImage(
                                             fit: BoxFit.fill,
-                                            image: new NetworkImage("https://couponsgate.net/app-dash/"+_rStores[index].logo),
+                                            image: new NetworkImage("https://yalaphone.com/appdash/"+_rStores[index].logo),
                                         )
                                     )),
                                 new Text(sPropertyByLocale(context, _rStores[index], 'name'),style: TextStyle(fontFamily: "CustomFont",fontSize: 16),)

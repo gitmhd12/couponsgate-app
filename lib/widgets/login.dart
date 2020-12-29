@@ -1206,28 +1206,14 @@ class _LoginState extends State<Login>{
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFffffff),
-        body: SingleChildScrollView(
-      child: Container(
-        // decoration: BoxDecoration(
-        //   gradient: LinearGradient(
-        //     begin: Alignment.topRight,
-        //     end: Alignment.bottomLeft,
-        //     stops: [
-        //       0.3,
-        //       0.45,
-        //     ],
-        //     colors: [
-        //       Colors.tealAccent,
-        //       Colors.white,
-        //     ],
-        //   ),
-        // ),
-        height: MediaQuery.of(context).size.height,
+        body: Container (
+      child: SingleChildScrollView(
+        //height: MediaQuery.of(context).size.height,
         //color: Color(0xffdcdde1),
         child: Column(
           children: <Widget>[
             Container(
-              height: MediaQuery.of(context).size.height * 0.4,
+              //height: MediaQuery.of(context).size.height * 0.4,
               decoration: BoxDecoration(
                 color: Color(0xFFffffff),
                 /*gradient: LinearGradient(
@@ -1255,9 +1241,9 @@ class _LoginState extends State<Login>{
                 child: Column(
                   children: [
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.05,
+                      height: 50,
                     ),
-                    Image.asset("assets/images/text_logo.png",width: MediaQuery.of(context).size.width/1.7,height: MediaQuery.of(context).size.width/1.7),
+                    Image.asset("assets/images/text_logo.png",width: MediaQuery.of(context).size.width/1.7),
 
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1295,11 +1281,7 @@ class _LoginState extends State<Login>{
                 ),
               ),
             ),
-            Expanded(
-              child: Center(
-                child: _formRouter(),
-              ),
-            ),
+            _formRouter(),
             Container(
               height: MediaQuery.of(context).size.height * 0.1,
               decoration: BoxDecoration(
