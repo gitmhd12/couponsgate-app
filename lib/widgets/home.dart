@@ -832,6 +832,60 @@ class _HomeState extends State<Home> {
       }
   }
 
+  _addRating(String cid , String type) async {
+
+    homeApi.addRating(cid , type).then((value){
+
+      if (value) {
+        homeApi.getUserFavorites().then((value) {
+          setState(() {
+            _getCouponsRatings(_rCoupons);
+          });
+        });
+      } else {
+
+        showDialog(
+            context: context,
+            builder: (_) => AssetGiffyDialog(
+              onlyOkButton: false,
+              buttonCancelText: Text(getTranslated(context, 'login_alert_d_cancel'),
+                  style: TextStyle(fontFamily: "CustomFont", fontSize: 16)),
+              buttonOkText: Text(getTranslated(context, 'home_alert_login_ok_btn'),
+                  style: TextStyle(
+                      fontFamily: "CustomFont",
+                      fontSize: 16,
+                      color: Colors.white)),
+              buttonOkColor: Colors.redAccent,
+              image: Image.asset('assets/images/alert.png', fit: BoxFit.cover),
+              title: Text(
+                getTranslated(context, 'home_alert_login_title'),
+                style: TextStyle(
+                    fontSize: 18.0,
+                    fontFamily: "CustomFont",
+                    color: Colors.redAccent),
+              ),
+              description: Text(
+                getTranslated(context, 'home_alert_login_content'),
+                textAlign: TextAlign.center,
+                style: TextStyle(fontFamily: "CustomFont", fontSize: 16),
+              ),
+              onOkButtonPressed: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Login()),
+                      (Route<dynamic> route) => false,
+                );
+              },
+              onCancelButtonPressed: (){
+                Navigator.pop(context);
+              },
+            ));
+
+      }
+    });
+
+  }
 
   @override
   void initState() {
