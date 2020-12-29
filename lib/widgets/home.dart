@@ -338,9 +338,9 @@ class _HomeState extends State<Home> {
   Future _getCoupons() async
   {
     var ssResponse = await http
-        .post('https://www.yalaphone.com/appdash/rest_api/coupons/get_all_coupons.php' ,
+        .post('https://www.yalaphone.com/appdash/rest_api/coupons/coupons_lazy_load_all.php' ,
         body: {'current_id' : '1'});
-
+    print(ssResponse.body);
     var ssData = json.decode(ssResponse.body);
 
     //print(ssData.toString());
@@ -379,6 +379,7 @@ class _HomeState extends State<Home> {
       'country' : countryCode,
       'current_id' : _currentCoupon,
     });
+    print(ssResponse.body);
     var ssData = json.decode(ssResponse.body);
     Coupon tCoupon;
     _coupons = [];
