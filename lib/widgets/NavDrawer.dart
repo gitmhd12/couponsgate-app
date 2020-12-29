@@ -69,10 +69,12 @@ class NavDrawerState extends State<NavDrawer> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Image.asset(
-                  'assets/images/logo.png',
-                  width: 170.0,
-                  height: 123.0,
+                FittedBox(
+                  child: Image.asset(
+                    'assets/images/logo.png',
+                    width: 170.0,
+                    height: 123.0,
+                  ),
                 ),
                 SizedBox(
                   height: 10,
@@ -98,11 +100,11 @@ class NavDrawerState extends State<NavDrawer> {
               color: Color(0xFF701a36),
             ),
             title: Text(
-              getTranslated(context, 'drawer_profile'),
+              getTranslated(context, 'drawer_settings'),
             ),
             onTap: () => {
               Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (BuildContext context) => new Profile()))
+                  builder: (BuildContext context) => new Settings()))
             },
           ),
 
@@ -119,19 +121,7 @@ class NavDrawerState extends State<NavDrawer> {
                   builder: (BuildContext context) => new Favorites()))
             },
           ),
-          ListTile(
-            leading: Icon(
-              Icons.settings,
-              color: Color(0xFF701a36),
-            ),
-            title: Text(
-              getTranslated(context, 'drawer_settings'),
-            ),
-            onTap: () => {
-              Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (BuildContext context) => new Settings()))
-            },
-          ),
+
           Divider(
             color: Color(0xFF701a36),
           ),

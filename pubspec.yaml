@@ -65,7 +65,8 @@ flutter:
   assets:
     - assets/
     - assets/images/
-    - assets/images/alert.jpg
+    - assets/images/alert.png
+    - assets/images/logo.png
     - assets/images/success.png
     - lib/languages/en.json
     - lib/languages/ar.json
