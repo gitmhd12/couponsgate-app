@@ -97,7 +97,7 @@
   "home_coupon_code_used_suffix" : " مرة",
   "home_coupon_code_add_date" : "تاريخ الإضافة: ",
   "home_alert_login_title" : "تنبيه",
-  "home_alert_login_content" : "يجب عليك أن تسجل الدخول أولاً حتى تتمكن من إضافة الكوبون لمفضلتك",
+  "home_alert_f_login_content" : "يجب عليك أن تسجل الدخول أولاً حتى تتمكن من إضافة الكوبون لمفضلتك",
   "home_alert_login_ok_btn" : "تسجيل الدخول",
   "home_b_bar_countries" : "الدول",
   "home_b_bar_stores" : "المتاجر",
@@ -105,5 +105,7 @@
   "home_b_bar_fav" : "المفضلة",
   "home_b_bar_profile" : "حسابي",
   "shop_now": "  تسوق الآن",
-  "copy_code_ok": "تم نسخ الكود"
+  "copy_code_ok": "تم نسخ الكود",
+  "home_alert_r_login_content" : "يجب عليك أن تسجل الدخول أولاً حتى تتمكن من تقييم هذا الكوبون",
+  "home_alert_c_login_content" : "يجب عليك أن تسجل الدخول أولاً حتى تتمكن من نسخ هذا الكود"
 }

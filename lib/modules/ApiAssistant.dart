@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiAssistant {
-  final String serverUrl = 'https://couponsgate.net/app-dash/rest_api';
+  final String serverUrl = 'https://yalaphone.com/appdash/rest_api';
   bool registerStatus = false;
   bool loginStatus = false;
   bool emailValidStatus = false;
@@ -12,7 +12,7 @@ class ApiAssistant {
   bool isEmailUsed = false;
   String pinCode;
 
-  _saveUserParams(
+  saveUserParams(
       String userId, String pass, String name, String email, String token , String countryCode ) async {
     final prefs = await SharedPreferences.getInstance();
     final key = 'is_login';
@@ -60,7 +60,7 @@ class ApiAssistant {
 
       var data = json.decode(response.body);
       //print(data['user']['name']);
-      _saveUserParams(data['user']['id'], data['user']['password'], data['user']['name'], data['user']['email'], data['user']['token'], data['user']['country']);
+      saveUserParams(data['user']['id'], data['user']['password'], data['user']['name'], data['user']['email'], data['user']['token'], data['user']['country']);
       registerStatus = true;
     } else if(response.body.toString().contains("email used"))
     {
@@ -79,13 +79,13 @@ class ApiAssistant {
       'password': pass,
     });
 
-    //print("result: ${response.body}");
+    print("result: ${response.body}");
 
     if (response.body.toString().contains("logged_in")) {
 
       var data = json.decode(response.body);
       print(data.toString());
-      _saveUserParams(data['user']['id'], data['user']['password'], data['user']['name'], data['user']['email'], data['user']['token'], data['user']['country']);
+      saveUserParams(data['user']['id'], data['user']['password'], data['user']['name'], data['user']['email'], data['user']['token'], data['user']['country']);
       loginStatus = true;
     } else {
       loginStatus = false;
