@@ -74,7 +74,7 @@ class _HomeState extends State<Home> {
     Favorite tFav;
     _favorites = [];
 
-    var res = await http.post('https://couponsgate.net/app-dash/rest_api/favorites/get_favs_by_user.php',
+    var res = await http.post('https://couponsgate.net/appdash/rest_api/favorites/get_favs_by_user.php',
       body: data);
     //print(res.body.toString());
     var body = json.decode(res.body);
@@ -121,7 +121,7 @@ class _HomeState extends State<Home> {
         'coupon_id': cid,
       };
 
-      var res = await http.post('https://couponsgate.net/app-dash/rest_api/favorites/add_fav.php',
+      var res = await http.post('https://couponsgate.net/appdash/rest_api/favorites/add_fav.php',
           body: data);
       //print(res.body);
       //print('sending...');
@@ -183,7 +183,7 @@ class _HomeState extends State<Home> {
       'user_token': _token,
     };
 
-    var res = await http.post('https://couponsgate.net/app-dash/rest_api/favorites/remove_fav.php',
+    var res = await http.post('https://couponsgate.net/appdash/rest_api/favorites/remove_fav.php',
       body: data);
     var body = json.decode(res.body);
     //print(body);
@@ -253,7 +253,7 @@ class _HomeState extends State<Home> {
   Future _getStores() async
   {
     var ssResponse = await http
-        .get('https://couponsgate.net/app-dash/rest_api/stores/get_stores_sample.php');
+        .get('https://www.yalaphone.com/appdash/rest_api/stores/get_stores_sample.php');
     var ssData = json.decode(ssResponse.body);
     Store tStore;
     _stores = [];
@@ -272,7 +272,7 @@ class _HomeState extends State<Home> {
   Future _getStoresByCountry(String countryCode) async
   {
     var ssResponse = await http
-        .post('https://couponsgate.net/app-dash/rest_api/stores/get_stores_sample_by_country.php' , body: {
+        .post('https://www.yalaphone.com/appdash/rest_api/stores/get_stores_sample_by_country.php' , body: {
           'country' : countryCode
     });
     var ssData = json.decode(ssResponse.body);
@@ -338,7 +338,7 @@ class _HomeState extends State<Home> {
   Future _getCoupons() async
   {
     var ssResponse = await http
-        .post('https://couponsgate.net/app-dash/rest_api/coupons/coupons_lazy_load_all.php' ,
+        .post('https://www.yalaphone.com/appdash/rest_api/coupons/coupons_lazy_load_all.php' ,
         body: {'current_id' : '1'});
 
     var ssData = json.decode(ssResponse.body);
@@ -375,7 +375,7 @@ class _HomeState extends State<Home> {
   Future _getCouponsByCountry(String countryCode) async
   {
     var ssResponse = await http
-        .post('https://couponsgate.net/app-dash/rest_api/coupons/coupons_lazy_load_by_country.php' , body: {
+        .post('https://www.yalaphone.com/appdash/rest_api/coupons_lazy_load_by_country.php' , body: {
       'country' : countryCode,
       'current_id' : _currentCoupon,
     });
@@ -574,7 +574,7 @@ class _HomeState extends State<Home> {
                           borderRadius: BorderRadius.circular(5),
                           image: new DecorationImage(
                             fit: BoxFit.cover,
-                            image: NetworkImage("https://couponsgate.net/app-dash/"+_rCoupons[i].logo),
+                            image: NetworkImage("https://www.yalaphone.com/appdash/"+_rCoupons[i].logo),
                           )
                       )),
 
