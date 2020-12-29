@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiAssistant {
-  final String serverUrl = 'https://couponsgate.net/app-dash/rest_api';
+  final String serverUrl = 'https://www.yalaphone.com//app-dash/rest_api';
   bool registerStatus = false;
   bool loginStatus = false;
   bool emailValidStatus = false;

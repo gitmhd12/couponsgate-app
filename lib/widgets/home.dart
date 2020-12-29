@@ -10,6 +10,7 @@ import 'package:couponsgate/widgets/favorites.dart';
 import 'package:couponsgate/widgets/login.dart';
 import 'package:couponsgate/widgets/profile.dart';
 import 'package:couponsgate/widgets/settings.dart';
+import 'package:couponsgate/widgets/stores/all_stores.dart';
 import 'package:couponsgate/widgets/tabs/search_tab.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
@@ -627,15 +628,12 @@ class _HomeState extends State<Home> {
                     )
                 ),),
                 SizedBox(height: 10,),
-                Row(
+                Column(
                   children: [
-                    Expanded(flex: 30, child: Container(),),
-                    Expanded(
-                      flex: 40,
-                      child: Column(
-                        children: [
+
+
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Icon(
                                 Icons.copy,
@@ -657,7 +655,7 @@ class _HomeState extends State<Home> {
                           ),
                           SizedBox(height: 10,),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Icon(
                                 MyIcons.clock,
@@ -676,10 +674,8 @@ class _HomeState extends State<Home> {
                               ),
                             ],
                           ),
-                        ],
-                      ),
-                    ),
-                    Expanded(flex: 30, child: Container(),)
+
+
                   ],
                 ),
               ],
@@ -701,10 +697,10 @@ class _HomeState extends State<Home> {
                       padding: const EdgeInsets.all(3),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          border: Border.all(color: Colors.deepOrange),
+                          border: Border.all(color: Colors.green),
                           //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
                           borderRadius: BorderRadius.circular(5),
-                          color: Colors.deepOrange),
+                          color: Colors.green),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
@@ -921,7 +917,7 @@ class _HomeState extends State<Home> {
                                   controller: search_nameController,
                                   keyboardType: TextInputType.text,
                                   maxLines: null,
-                                  textAlign: TextAlign.right,
+                                  //textAlign: TextAlign.right,
                                   decoration: InputDecoration(
                                     filled: true,
                                     fillColor: Colors.white,
@@ -1197,10 +1193,9 @@ class _HomeState extends State<Home> {
             builder: (BuildContext context) => null),
       );
     } else if (index == 1) {
-      Navigator.of(context).push(
-        new MaterialPageRoute(
-            builder: (BuildContext context) => null),
-      );
+      Navigator.of(context).push(new MaterialPageRoute(
+          builder: (BuildContext context) => new AllStores()));
+
     } else if (index == 2) {
       Navigator.of(context).push(new MaterialPageRoute(
           builder: (BuildContext context) => new Home()));

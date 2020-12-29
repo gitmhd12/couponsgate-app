@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -22,11 +23,24 @@ class _Splash extends State<Splash> {
     print("is_login value: $is_login_value");
   }
 
+  void startTimer() {
+    // Start the periodic timer which prints something after 5 seconds and then stop it .
+
+    Timer timer=  new Timer.periodic(new Duration(seconds: 10), (time) {
+      check_login();
+      time.cancel();
+    });
+// Start the periodic timer which prints something after 5 minutes and then stop it .
+
+
+}
+
   @override
   initState() {
     super.initState();
     // read();
-    check_login();
+    //check_login();
+    startTimer();
   }
 
   @override
@@ -34,28 +48,13 @@ class _Splash extends State<Splash> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          //color: Color(0xFF222222),
-          gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-            stops: [
-              0.1,
-              0.4,
-              0.6,
-              0.9,
-            ],
-            colors: [
-              Colors.amber,
-              Colors.red,
-
-              Colors.pinkAccent,
-              Colors.brown,
-            ],
-          ),
+          color: Colors.white,
 
         ),
         child: Center(
-          child: Image.asset("assets/images/logo.png"),
+          child: Image(image: new AssetImage("assets/images/logo.gif")
+          ,width: MediaQuery.of(context).size.width
+          ,height: MediaQuery.of(context).size.width),
         ),
       ),
     );

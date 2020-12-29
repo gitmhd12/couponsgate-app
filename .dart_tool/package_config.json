@@ -296,6 +296,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "responsive_grid",
+      "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/responsive_grid-1.2.1+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "shared_preferences",
       "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.12+4",
       "packageUri": "lib/",
@@ -404,7 +410,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-12-25T23:20:49.613218Z",
+  "generated": "2020-12-27T20:09:45.823152Z",
   "generator": "pub",
   "generatorVersion": "2.10.4"
 }

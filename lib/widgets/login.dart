@@ -305,6 +305,43 @@ class _LoginState extends State<Login>{
       ),
     );
   }
+  Widget _passField({controller, hint, icon}) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(
+                Radius.circular(40),
+              ),
+            ),
+            child: TextField(
+                obscureText: true,
+                keyboardType: TextInputType.text,
+                controller: controller,
+                style: TextStyle(color: Color(0xff34495e), fontSize: 16,fontFamily: "CustomFont"),
+
+                decoration: InputDecoration(
+                    hintText: hint,
+                    hintStyle: TextStyle(
+                      fontSize: 14.0,
+                      fontFamily: "CustomFont",
+                      color: Color(0xff34495e),
+                    ),
+                    prefixIcon: Icon(
+                      icon,
+                      color: Color(0xff34495e),
+                    ),
+                    fillColor: Colors.white,
+                    filled: true)),
+          )
+        ],
+      ),
+    );
+  }
 
   buttonChild(int bcIndex  , String label) {
     if (bcIndex == 0) {
@@ -393,8 +430,8 @@ class _LoginState extends State<Login>{
         height: 50,
         margin: EdgeInsets.symmetric(vertical: 5),
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.white),
-          borderRadius: BorderRadius.all(Radius.circular(10)),
+          border: Border.all(color: Colors.grey),
+          borderRadius: BorderRadius.all(Radius.circular(5)),
         ),
         child: Row(
           children: <Widget>[
@@ -405,9 +442,8 @@ class _LoginState extends State<Login>{
                   color: Colors.grey,
                   border: Border.all(color: Colors.grey,width: 1),
                   //color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(5),
-                      topRight: Radius.circular(5)),
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+
                 ),
                 alignment: Alignment.center,
                 child: Icon(
@@ -421,12 +457,11 @@ class _LoginState extends State<Login>{
               flex: 5,
               child: Container(
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey,width: 1),
+                  //border: Border.all(color: Colors.grey,width: 1),
                   color: Colors.white,
                   // color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(5),
-                      topLeft: Radius.circular(5)),
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+
                 ),
                 alignment: Alignment.center,
                 child: Text('حساب جديد',
@@ -452,7 +487,8 @@ class _LoginState extends State<Login>{
         height: 50,
         margin: EdgeInsets.symmetric(vertical: 5),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
+            border: Border.all(color: Color(0xFF2196f3),width: 1),
+          borderRadius: BorderRadius.all(Radius.circular(5)),
         ),
         child: Row(
           children: <Widget>[
@@ -463,9 +499,11 @@ class _LoginState extends State<Login>{
                   color: Color(0xFF2196f3),
                     border: Border.all(color: Color(0xFF2196f3),width: 1),
                   //color: Colors.white,
-                  borderRadius: BorderRadius.only(
+                  /*borderRadius: BorderRadius.only(
                       bottomRight: Radius.circular(5),
-                      topRight: Radius.circular(5)),
+                      topRight: Radius.circular(5)),*/
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+
                 ),
                 alignment: Alignment.center,
                 child: Icon(
@@ -479,12 +517,11 @@ class _LoginState extends State<Login>{
               flex: 5,
               child: Container(
                 decoration: BoxDecoration(
-                  border: Border.all(color: Color(0xFF2196f3),width: 1),
-                  color: Colors.white,
+                  //border: Border.all(color: Color(0xFF2196f3),width: 1),
+                  //color: Colors.white,
                   // color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(5),
-                      topLeft: Radius.circular(5)),
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+
                 ),
                 alignment: Alignment.center,
                 child: Text('تسجيل الدخول',
@@ -509,7 +546,8 @@ class _LoginState extends State<Login>{
           height: 50,
           margin: EdgeInsets.symmetric(vertical: 5),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
+              color: Color(0xdddc3400),
+            borderRadius: BorderRadius.all(Radius.circular(5)),
           ),
           child: Row(
             children: <Widget>[
@@ -518,9 +556,7 @@ class _LoginState extends State<Login>{
                 child: Container(
                   decoration: BoxDecoration(
                     color: Color(0xffdc3400),
-                    borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(5),
-                        topRight: Radius.circular(5)),
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
                   ),
                   alignment: Alignment.center,
                   child: Icon(
@@ -534,9 +570,7 @@ class _LoginState extends State<Login>{
                 child: Container(
                   decoration: BoxDecoration(
                     color: Color(0xdddc3400),
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(5),
-                        topLeft: Radius.circular(5)),
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
                   ),
                   alignment: Alignment.center,
                   child: g_btn_shild? Text(getTranslated(context, 'login_google'),
@@ -560,7 +594,8 @@ class _LoginState extends State<Login>{
         height: 50,
         margin: EdgeInsets.symmetric(vertical: 5),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
+            color: Color(0xdd1959a9),
+          borderRadius: BorderRadius.all(Radius.circular(5)),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -571,9 +606,7 @@ class _LoginState extends State<Login>{
                 decoration: BoxDecoration(
                   color: Color(0xff1959a9),
                   //color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(5),
-                      topRight: Radius.circular(5)),
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
                 ),
                 alignment: Alignment.center,
                 child: Icon(
@@ -589,9 +622,7 @@ class _LoginState extends State<Login>{
                 decoration: BoxDecoration(
                   color: Color(0xdd1959a9),
                  // color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(5),
-                      topLeft: Radius.circular(5)),
+    borderRadius: BorderRadius.all(Radius.circular(5)),
                 ),
                 alignment: Alignment.center,
                 child: fb_btn_shild? Text(getTranslated(context, 'login_facebook'),
@@ -748,7 +779,7 @@ class _LoginState extends State<Login>{
               controller: _emailController,
               hint: getTranslated(context, 'login_email_hint'),
               icon: Icons.email),
-          _inputField(
+          _passField(
               controller: _passwordController,
               hint: getTranslated(context, 'login_password_hint'),
               icon: Icons.vpn_key),
