@@ -1,16 +1,14 @@
 import 'dart:convert';
-
 import 'package:couponsgate/localization/localizationValues.dart';
 import 'package:couponsgate/modules/ApiAssistant.dart';
 import 'package:couponsgate/modules/Coupon.dart';
 import 'package:couponsgate/modules/Favorite.dart';
+import 'package:couponsgate/modules/HomeApiAssistant.dart';
 import 'package:couponsgate/modules/Store.dart';
 import 'package:couponsgate/widgets/NavDrawer.dart';
 import 'package:couponsgate/widgets/favorites.dart';
 import 'package:couponsgate/widgets/login.dart';
-import 'package:couponsgate/widgets/profile.dart';
 import 'package:couponsgate/widgets/settings.dart';
-import 'package:couponsgate/widgets/stores/all_stores.dart';
 import 'package:couponsgate/widgets/tabs/search_tab.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
@@ -21,8 +19,6 @@ import 'package:giffy_dialog/giffy_dialog.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:getwidget/getwidget.dart';
-
-
 import '../my_icons_icons.dart';
 
 
@@ -33,62 +29,28 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
+  HomeApiAssistant homeApi = new HomeApiAssistant();
+
   final search_nameController = TextEditingController();
   var _controller = ScrollController();
 
   List<Store> _stores , _rStores = [];
   List<Coupon> _coupons , _extraCoupons = [] , _rCoupons = [];
   List<Favorite> _favorites, _rFavorites;
+  List<String> _posRatings = [], _negRatings = [];
 
   bool _isStoresLoading;
   bool _isCouponsLoading;
   var _isLoadMore = false;
   var _isCouponsEnd = false;
-  bool _isGuest = true;
-  String _currentCoupon;
-  String _userCountryCode;
+  String _currentCoupon = '0';
   int lsubmit_btn_child_index = 0;
   int loadModeChildIndicator = 0;
   String _token , _userID;
 
 
 
-  Future _getUserFavorites() async {
-    final prefs = await SharedPreferences.getInstance();
-    final key = 'is_login';
-    final value = prefs.get(key);
-    //print('$value');
-    if (value == '1') {
-      final key2 = 'token';
-      final value2 = prefs.get(key2);
 
-      setState(() {
-        _token = value2;
-      });
-    }
-
-    var data = {
-      'user_token': _token,
-    };
-
-    Favorite tFav;
-    _favorites = [];
-
-    var res = await http.post('https://yalaphone.com/appdash/rest_api/favorites/get_favs_by_user.php',
-      body: data);
-    //print(res.body.toString());
-    var body = json.decode(res.body);
-    //print(body);
-
-    if (body['favorites'] != null) {
-      for (var fav in body['favorites']) {
-        tFav = Favorite.fromJson(fav);
-        _favorites.add(tFav);
-      }
-
-      return _favorites;
-    }
-  }
 
   String _checkIfInFavs(String cid, List<Favorite> favsCoupons) {
     try {
@@ -99,109 +61,80 @@ class _HomeState extends State<Home> {
   }
 
   _addFavorite(String cid) async {
-    final prefs = await SharedPreferences.getInstance();
-    final key = 'is_login';
-    final value = prefs.get(key);
-    //print('$value');
-    if (value == '1') {
-      final key2 = 'token';
-      final value2 = prefs.get(key2);
 
-      final key3 = 'user_id';
-      final value3 = prefs.get(key3);
+    homeApi.addFavorite(cid).then((value){
 
-      setState(() {
-        _token = value2;
-        _userID = value3;
-      });
-
-      var data = {
-        'user_token': _token,
-        'user_id': _userID,
-        'coupon_id': cid,
-      };
-
-      var res = await http.post('https://yalaphone.com/appdash/rest_api/favorites/add_fav.php',
-          body: data);
-      //print(res.body);
-      //print('sending...');
-      var body = json.decode(res.body);
-      //print(body);
-
-      _getUserFavorites().then((value) {
-        setState(() {
-          _rFavorites = List.from(value);
+      if (value) {
+        homeApi.getUserFavorites().then((value) {
+          setState(() {
+            _rFavorites = List.from(value);
+          });
         });
-      });
-    } else {
+      } else {
 
-      showDialog(
-          context: context,
-          builder: (_) => AssetGiffyDialog(
-            onlyOkButton: false,
-            buttonCancelText: Text(getTranslated(context, 'login_alert_d_cancel'),
-                style: TextStyle(fontFamily: "CustomFont", fontSize: 16)),
-            buttonOkText: Text(getTranslated(context, 'home_alert_login_ok_btn'),
+        showDialog(
+            context: context,
+            builder: (_) => AssetGiffyDialog(
+              onlyOkButton: false,
+              buttonCancelText: Text(getTranslated(context, 'login_alert_d_cancel'),
+                  style: TextStyle(fontFamily: "CustomFont", fontSize: 16)),
+              buttonOkText: Text(getTranslated(context, 'home_alert_login_ok_btn'),
+                  style: TextStyle(
+                      fontFamily: "CustomFont",
+                      fontSize: 16,
+                      color: Colors.white)),
+              buttonOkColor: Colors.redAccent,
+              image: Image.asset('assets/images/alert.png', fit: BoxFit.cover),
+              title: Text(
+                getTranslated(context, 'home_alert_login_title'),
                 style: TextStyle(
+                    fontSize: 18.0,
                     fontFamily: "CustomFont",
-                    fontSize: 16,
-                    color: Colors.white)),
-            buttonOkColor: Colors.redAccent,
-            image: Image.asset('assets/images/alert.png', fit: BoxFit.cover),
-            title: Text(
-              getTranslated(context, 'home_alert_login_title'),
-              style: TextStyle(
-                  fontSize: 18.0,
-                  fontFamily: "CustomFont",
-                  color: Colors.redAccent),
-            ),
-            description: Text(
-              getTranslated(context, 'home_alert_login_content'),
-              textAlign: TextAlign.center,
-              style: TextStyle(fontFamily: "CustomFont", fontSize: 16),
-            ),
-            onOkButtonPressed: () {
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => Login()),
-                    (Route<dynamic> route) => false,
-              );
-            },
-            onCancelButtonPressed: (){
-              Navigator.pop(context);
-            },
-          ));
+                    color: Colors.redAccent),
+              ),
+              description: Text(
+                getTranslated(context, 'home_alert_login_content'),
+                textAlign: TextAlign.center,
+                style: TextStyle(fontFamily: "CustomFont", fontSize: 16),
+              ),
+              onOkButtonPressed: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Login()),
+                      (Route<dynamic> route) => false,
+                );
+              },
+              onCancelButtonPressed: (){
+                Navigator.pop(context);
+              },
+            ));
 
-    }
+      }
+    });
+
   }
 
   _deleteFavorite(String fid) async {
 
-    var data = {
-      'id': fid,
-      'user_token': _token,
-    };
+    homeApi.deleteFavorite(fid).then((value){
+      if(value)
+        {
+          homeApi.getUserFavorites().then((value) {
+            setState(() {
+              try{
+                _rFavorites = List.from(value);
+              }catch(e){
+                _rFavorites = [];
+              }
 
-    var res = await http.post('https://yalaphone.com/appdash/rest_api/favorites/remove_fav.php',
-      body: data);
-    var body = json.decode(res.body);
-    //print(body);
+            });
+          });
+        }
+    });
 
-      _getUserFavorites().then((value) {
-        setState(() {
-          try{
-            _rFavorites = List.from(value);
-          }catch(e){
-            _rFavorites = [];
-          }
 
-        });
-      });
   }
-
-
-
 
   submite_button_child() {
     if (lsubmit_btn_child_index == 0) {
@@ -235,66 +168,15 @@ class _HomeState extends State<Home> {
     }
   }
 
-  void _checkIfGuest() async
+  _initializeStoresSection() async
   {
     final prefs = await SharedPreferences.getInstance();
     final key = 'country_code';
     final value = prefs.get(key);
 
-    if(value != null)
+    if(value == null)
       {
-        setState(() {
-          _isGuest = false;
-          _userCountryCode = value;
-        });
-      }
-  }
-
-  Future _getStores() async
-  {
-    var ssResponse = await http
-        .get('https://www.yalaphone.com/appdash/rest_api/stores/get_stores_sample.php');
-    var ssData = json.decode(ssResponse.body);
-    Store tStore;
-    _stores = [];
-
-    for (var ques in ssData['stores']) {
-      tStore = Store.fromJson(ques);
-      //print(tStore.id);
-
-      _stores.add(tStore);
-      //print('depart length is : ' + departs.length.toString());
-    }
-
-    return _stores;
-  }
-
-  Future _getStoresByCountry(String countryCode) async
-  {
-    var ssResponse = await http
-        .post('https://www.yalaphone.com/appdash/rest_api/stores/get_stores_sample_by_country.php' , body: {
-          'country' : countryCode
-    });
-    var ssData = json.decode(ssResponse.body);
-    Store tStore;
-    _stores = [];
-
-    for (var ques in ssData['stores']) {
-      tStore = Store.fromJson(ques);
-     // print(tStore.id);
-
-      _stores.add(tStore);
-      //print('depart length is : ' + departs.length.toString());
-    }
-
-    return _stores;
-  }
-
-  _initializeStoresSection() async
-  {
-    if(_isGuest)
-      {
-        _getStores().then((value){
+        homeApi.getStores().then((value){
           setState(() {
             _rStores = List.from(value);
             _isStoresLoading = false;
@@ -303,7 +185,7 @@ class _HomeState extends State<Home> {
       }
     else
       {
-        _getStoresByCountry(_userCountryCode).then((value){
+        homeApi.getStoresByCountry(value).then((value){
           setState(() {
             _rStores = List.from(value);
             _isStoresLoading = false;
@@ -338,12 +220,12 @@ class _HomeState extends State<Home> {
   Future _getCoupons() async
   {
     var ssResponse = await http
-        .post('https://www.yalaphone.com/appdash/rest_api/coupons/coupons_lazy_load_all.php' ,
-        body: {'current_id' : '1'});
-    print(ssResponse.body);
+        .post('https://yalaphone.com/appdash/rest_api/coupons/coupons_lazy_load_all.php' ,
+        body: {'current_id' : _currentCoupon});
+
     var ssData = json.decode(ssResponse.body);
 
-    //print(ssData.toString());
+    print(ssData.toString());
 
     Coupon tCoupon;
     _coupons = [];
@@ -374,13 +256,15 @@ class _HomeState extends State<Home> {
 
   Future _getCouponsByCountry(String countryCode) async
   {
+    print(countryCode);
+
     var ssResponse = await http
-        .post('https://www.yalaphone.com/appdash/rest_api/coupons_lazy_load_by_country.php' , body: {
+        .post('https://yalaphone.com/appdash/rest_api/coupons/coupons_lazy_load_by_country.php' , body: {
       'country' : countryCode,
       'current_id' : _currentCoupon,
     });
-    print(ssResponse.body);
     var ssData = json.decode(ssResponse.body);
+    print(ssData.toString());
     Coupon tCoupon;
     _coupons = [];
 
@@ -395,6 +279,7 @@ class _HomeState extends State<Home> {
         });
         //print('depart length is : ' + departs.length.toString());
       }
+      return _coupons;
     }
     catch(e)
     {
@@ -409,44 +294,64 @@ class _HomeState extends State<Home> {
 
   _initializeCouponsSection() async
   {
-    //print('guest: $_isGuest');
-    if(_isGuest)
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'country_code';
+    final value = prefs.get(key);
+
+    print('guest: $value');
+    if(value == null)
     {
      await _getCoupons().then((value){
         setState(() {
-          _extraCoupons = List.from(value);
-          if(_extraCoupons.length > 0)
-            {
-              for(var coupon in _extraCoupons)
-              {
-                _rCoupons.add(coupon);
-              }
-                _currentCoupon = _rCoupons.last.id;
-                //print('last coupon>>$_currentCoupon');
-            }
+          _rCoupons = List.from(value);
 
-          _isCouponsLoading = false;
-          _isLoadMore = true;
+          try{
+            setState(() {
+              _currentCoupon = _rCoupons.first.id;
+            });
+
+          }catch(e){
+            setState(() {
+              _currentCoupon = '0';
+            });
+          }
+          //print('last coupon>>$_currentCoupon');
+
+          _getCouponsRatings(_rCoupons).then((value){
+            setState(() {
+              _isCouponsLoading = false;
+              _isLoadMore = true;
+            });
+          });
+
         });
       });
     }
     else
     {
-      await _getCouponsByCountry(_userCountryCode).then((value){
+      await _getCouponsByCountry(value).then((value){
         setState(() {
-          _extraCoupons = List.from(value);
-          for(var coupon in _extraCoupons)
-          {
-            _rCoupons.add(coupon);
-          }
+          _rCoupons = List.from(value);
 
-          if(_rCoupons.length > 0)
-          {
-            _currentCoupon = _rCoupons.last.id;
-          }
+          try{
+            setState(() {
+              _currentCoupon = _rCoupons.first.id;
+            });
 
-          _isCouponsLoading = false;
-          _isLoadMore = true;
+          }catch(e){
+            setState(() {
+              _currentCoupon = '0';
+            });
+          }
+          print('last coupon>>$_currentCoupon');
+
+          _getCouponsRatings(_rCoupons).then((value){
+            setState(() {
+              _isCouponsLoading = false;
+              _isLoadMore = true;
+            });
+          });
+
         });
       });
     }
@@ -477,11 +382,15 @@ class _HomeState extends State<Home> {
 
   _loadMoreCoupons() async
   {
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'country_code';
+    final value = prefs.get(key);
+
     setState(() {
       loadModeChildIndicator = 1;
     });
 
-    if(_isGuest)
+    if(value == null)
     {
       _getCoupons().then((value){
         setState(() {
@@ -493,8 +402,16 @@ class _HomeState extends State<Home> {
             {
               _rCoupons.add(coupon);
             }
-            _currentCoupon = _rCoupons.last.id;
+            _currentCoupon = _rCoupons.first.id;
             //print('>>$_currentCoupon');
+
+            _getCouponsRatings(_rCoupons).then((value){
+              setState(() {
+                _isCouponsLoading = false;
+                _isLoadMore = true;
+              });
+            });
+
           }
 
           loadModeChildIndicator = 0;
@@ -503,14 +420,28 @@ class _HomeState extends State<Home> {
     }
     else
     {
-      _getCouponsByCountry(_userCountryCode).then((value){
+      _getCouponsByCountry(value).then((value){
         setState(() {
           _extraCoupons = List.from(value);
-          for(var coupon in _extraCoupons)
+
+          if(_extraCoupons.length > 0)
           {
-            _rCoupons.add(coupon);
+            for(var coupon in _extraCoupons)
+            {
+              _rCoupons.add(coupon);
+            }
+            _currentCoupon = _rCoupons.first.id;
+            //print('>>$_currentCoupon');
+
+            _getCouponsRatings(_rCoupons).then((value){
+              setState(() {
+                _isCouponsLoading = false;
+                _isLoadMore = true;
+              });
+            });
+
           }
-          _currentCoupon = _rCoupons.last.id;
+
           loadModeChildIndicator = 0;
         });
       });
@@ -575,7 +506,7 @@ class _HomeState extends State<Home> {
                           borderRadius: BorderRadius.circular(5),
                           image: new DecorationImage(
                             fit: BoxFit.cover,
-                            image: NetworkImage("https://www.yalaphone.com/appdash/"+_rCoupons[i].logo),
+                            image: NetworkImage("https://yalaphone.com/appdash/"+_rCoupons[i].logo),
                           )
                       )),
 
@@ -629,12 +560,15 @@ class _HomeState extends State<Home> {
                     )
                 ),),
                 SizedBox(height: 10,),
-                Column(
+                Row(
                   children: [
-
-
+                    Expanded(flex: 30, child: Container(),),
+                    Expanded(
+                      flex: 70,
+                      child: Column(
+                        children: [
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: <Widget>[
                               Icon(
                                 Icons.copy,
@@ -656,7 +590,7 @@ class _HomeState extends State<Home> {
                           ),
                           SizedBox(height: 10,),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: <Widget>[
                               Icon(
                                 MyIcons.clock,
@@ -675,8 +609,10 @@ class _HomeState extends State<Home> {
                               ),
                             ],
                           ),
-
-
+                        ],
+                      ),
+                    ),
+                    //Expanded(flex: 30, child: Container(),)
                   ],
                 ),
               ],
@@ -693,62 +629,94 @@ class _HomeState extends State<Home> {
                   children: [
 
                     //shop now
-                    InkWell(onTap:(){ } , child: Container(
-                      width: MediaQuery.of(context).size.width-150,
-                      padding: const EdgeInsets.all(3),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.green),
-                          //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.green),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(
-                            MyIcons.copy,
-                            color: Colors.white,
-                            size: 15,
-                          ),
-                          Text(
-                            getTranslated(context, 'home_copy_code'),
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.white,
-                              fontFamily: "CustomFont",
-                              fontWeight: FontWeight.w300,
-                            ),
-                            softWrap: true,
-                          ),
+                    Column(
+                      children: [
+                        InkWell(onTap:(){ } , child: Container(
+                          width: MediaQuery.of(context).size.width-150,
+                          padding: const EdgeInsets.all(3),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.deepOrange),
+                              //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.deepOrange),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(
+                                MyIcons.copy,
+                                color: Colors.white,
+                                size: 15,
+                              ),
+                              Text(
+                                getTranslated(context, 'home_copy_code'),
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  fontFamily: "CustomFont",
+                                  fontWeight: FontWeight.w300,
+                                ),
+                                softWrap: true,
+                              ),
 
 
-                        ],
-                      ),
-                    ),),
+                            ],
+                          ),
+                        ),),
+                        Text(' ',style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.black,
+                          fontFamily: "CustomFont",
+
+                        ),),
+                      ],
+                    ),
 
                     //favorite
-                    InkWell(onTap:(){ } , child: Container(
-                      width: 50,
-                      padding: const EdgeInsets.all(3),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white),
-                          //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.white),
-                      child: Icon(MyIcons.up_circled,color: Colors.green,),
-                    ),),
-                    InkWell(onTap:(){ } , child: Container(
-                      width: 50,
-                      padding: const EdgeInsets.all(3),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white),
-                          //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.white),
-                      child: Icon(MyIcons.down_circled,color: Colors.red,),
-                    ),),
+                    Column(
+                      children: [
+                        InkWell(
+                          onTap:(){ } , child: Container(
+                          width: 50,
+                          padding: const EdgeInsets.all(3),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.white),
+                          child: Icon(MyIcons.up_circled,color: Colors.green,),
+                        ),),
+                        Text(_posRatings[i] ?? '0',style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.black,
+                          fontFamily: "CustomFont",
+
+                        ),),
+                      ],
+                    ),
+
+                    Column(
+                      children: [
+                        InkWell(onTap:(){ } , child: Container(
+                          width: 50,
+                          padding: const EdgeInsets.all(3),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.white),
+                          child: Icon(MyIcons.down_circled,color: Colors.red,),
+                        ),),
+                        Text(_negRatings[i] ?? '0',style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.black,
+                          fontFamily: "CustomFont",
+
+                        ),),
+                      ],
+                    ),
 
 
 
@@ -843,12 +811,85 @@ class _HomeState extends State<Home> {
     );
   }
 
+  Future _getCouponsRatings(List<Coupon> coupons) async
+  {
+    _posRatings.length = coupons.length;
+    _negRatings.length = coupons.length;
+
+    for(int i =0 ; i < coupons.length ; i++)
+      {
+        homeApi.getCouponPosRatings(coupons[i].id).then((value){
+          setState(() {
+            _posRatings[i] = value;
+          });
+        });
+
+        homeApi.getCouponNegRatings(coupons[i].id).then((value){
+          setState(() {
+            _negRatings[i] = value;
+          });
+        });
+      }
+  }
+
+  _addRating(String cid , String type) async {
+
+    homeApi.addRating(cid , type).then((value){
+
+      if (value) {
+        homeApi.getUserFavorites().then((value) {
+          setState(() {
+            _getCouponsRatings(_rCoupons);
+          });
+        });
+      } else {
+
+        showDialog(
+            context: context,
+            builder: (_) => AssetGiffyDialog(
+              onlyOkButton: false,
+              buttonCancelText: Text(getTranslated(context, 'login_alert_d_cancel'),
+                  style: TextStyle(fontFamily: "CustomFont", fontSize: 16)),
+              buttonOkText: Text(getTranslated(context, 'home_alert_login_ok_btn'),
+                  style: TextStyle(
+                      fontFamily: "CustomFont",
+                      fontSize: 16,
+                      color: Colors.white)),
+              buttonOkColor: Colors.redAccent,
+              image: Image.asset('assets/images/alert.png', fit: BoxFit.cover),
+              title: Text(
+                getTranslated(context, 'home_alert_login_title'),
+                style: TextStyle(
+                    fontSize: 18.0,
+                    fontFamily: "CustomFont",
+                    color: Colors.redAccent),
+              ),
+              description: Text(
+                getTranslated(context, 'home_alert_login_content'),
+                textAlign: TextAlign.center,
+                style: TextStyle(fontFamily: "CustomFont", fontSize: 16),
+              ),
+              onOkButtonPressed: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Login()),
+                      (Route<dynamic> route) => false,
+                );
+              },
+              onCancelButtonPressed: (){
+                Navigator.pop(context);
+              },
+            ));
+
+      }
+    });
+
+  }
 
   @override
   void initState() {
     super.initState();
-
-    _checkIfGuest();
 
     setState(() {
       _isStoresLoading = true;
@@ -858,7 +899,7 @@ class _HomeState extends State<Home> {
 
     _controller.addListener(_listener);
 
-    _getUserFavorites().then((value) {
+    homeApi.getUserFavorites().then((value) {
       setState(() {
         try{
           _rFavorites = List.from(value);
@@ -918,7 +959,7 @@ class _HomeState extends State<Home> {
                                   controller: search_nameController,
                                   keyboardType: TextInputType.text,
                                   maxLines: null,
-                                  //textAlign: TextAlign.right,
+                                  textAlign: TextAlign.right,
                                   decoration: InputDecoration(
                                     filled: true,
                                     fillColor: Colors.white,
@@ -1194,9 +1235,10 @@ class _HomeState extends State<Home> {
             builder: (BuildContext context) => null),
       );
     } else if (index == 1) {
-      Navigator.of(context).push(new MaterialPageRoute(
-          builder: (BuildContext context) => new AllStores()));
-
+      Navigator.of(context).push(
+        new MaterialPageRoute(
+            builder: (BuildContext context) => null),
+      );
     } else if (index == 2) {
       Navigator.of(context).push(new MaterialPageRoute(
           builder: (BuildContext context) => new Home()));
@@ -1205,7 +1247,7 @@ class _HomeState extends State<Home> {
           builder: (BuildContext context) => new Favorites()));
     } else if (index == 4) {
       Navigator.of(context).push(new MaterialPageRoute(
-          builder: (BuildContext context) => new Profile()));
+          builder: (BuildContext context) => new Settings()));
     }
   }
 

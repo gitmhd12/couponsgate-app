@@ -57,7 +57,7 @@ class HomeApiAssistant {
     }
   }
 
-  Future _addRating(String cid, String type) async {
+  Future addRating(String cid, String type) async {
     final prefs = await SharedPreferences.getInstance();
     final key = 'is_login';
     final value = prefs.get(key);
