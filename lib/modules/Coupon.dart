@@ -10,6 +10,7 @@ class Coupon {
   String copyCount;
   String status;
   String logo;
+  String storeUrl;
 
   Coupon({this.id,
     this.arName ,
@@ -22,6 +23,7 @@ class Coupon {
     this.store ,
     this.status,
     this.logo,
+    this.storeUrl,
   });
 
   factory Coupon.fromJson(Map<String, dynamic> json) {
@@ -37,6 +39,7 @@ class Coupon {
       store: json['store'] as String,
       status: json['status'] as String,
       logo: json['logo'] as String,
+      storeUrl: json['url'] as String,
     );
   }
 }

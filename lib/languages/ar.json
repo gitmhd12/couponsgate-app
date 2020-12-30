@@ -107,5 +107,8 @@
   "shop_now": "  تسوق الآن",
   "copy_code_ok": "تم نسخ الكود",
   "home_alert_r_login_content" : "يجب عليك أن تسجل الدخول أولاً حتى تتمكن من تقييم هذا الكوبون",
-  "home_alert_c_login_content" : "يجب عليك أن تسجل الدخول أولاً حتى تتمكن من نسخ هذا الكود"
+  "home_alert_c_login_content" : "يجب عليك أن تسجل الدخول أولاً حتى تتمكن من نسخ هذا الكود",
+
+  "countries_title" : "الدول",
+  "countries_coupons_title" : "الكوبونات المتوفرة في "
 }

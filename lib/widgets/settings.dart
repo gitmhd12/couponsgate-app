@@ -5,6 +5,7 @@ import 'package:couponsgate/localization/localizationValues.dart';
 import 'package:couponsgate/modules/ApiAssistant.dart';
 import 'package:couponsgate/modules/Country.dart';
 import 'package:couponsgate/modules/Language.dart';
+import 'package:couponsgate/widgets/countries.dart';
 import 'package:couponsgate/widgets/favorites.dart';
 import 'package:couponsgate/widgets/home.dart';
 import 'package:flutter/material.dart';
@@ -794,7 +795,7 @@ class _SettingsState extends State<Settings> {
     if (index == 0) {
       Navigator.of(context).push(
         new MaterialPageRoute(
-            builder: (BuildContext context) => null),
+            builder: (BuildContext context) => new Countries()),
       );
     } else if (index == 1) {
       Navigator.of(context).push(

@@ -107,5 +107,8 @@
   "shop_now": "Go to store",
   "copy_code_ok": "The code has been copied",
   "home_alert_r_login_content" : "You must first log in to be able to rate this Coupon",
-  "home_alert_c_login_content" : "You must first log in to be able to copy this Code"
+  "home_alert_c_login_content" : "You must first log in to be able to copy this Code",
+
+  "countries_title" : "Countries",
+  "countries_coupons_title" : "Coupons available in "
 }

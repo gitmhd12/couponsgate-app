@@ -39,6 +39,8 @@ dependencies:
   giffy_dialog: ^1.8.0
   dotted_border: ^1.0.7
   getwidget: ^1.1.0
+  responsive_grid: ^1.2.1+1
+  url_launcher: ^5.7.10
 
 
 dev_dependencies:
