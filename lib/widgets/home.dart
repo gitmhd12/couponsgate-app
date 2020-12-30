@@ -8,6 +8,7 @@ import 'package:couponsgate/modules/HomeApiAssistant.dart';
 import 'package:couponsgate/modules/Rating.dart';
 import 'package:couponsgate/modules/Store.dart';
 import 'package:couponsgate/widgets/NavDrawer.dart';
+import 'package:couponsgate/widgets/countries.dart';
 import 'package:couponsgate/widgets/favorites.dart';
 import 'package:couponsgate/widgets/login.dart';
 import 'package:couponsgate/widgets/settings.dart';
@@ -21,6 +22,7 @@ import 'package:giffy_dialog/giffy_dialog.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../my_icons_icons.dart';
 
 
@@ -51,9 +53,6 @@ class _HomeState extends State<Home> {
   String _currentCoupon = '0';
   int lsubmit_btn_child_index = 0;
   int loadModeChildIndicator = 0;
-
-
-
 
 
   String _checkIfInFavs(String cid, List<Favorite> favsCoupons) {
@@ -245,6 +244,16 @@ class _HomeState extends State<Home> {
         });
         //print('depart length is : ' + departs.length.toString());
       }
+
+      if(_coupons.length > 0)
+        setState(() {
+          _isLoadMore = true;
+        });
+      else
+        setState(() {
+          _isLoadMore = false;
+        });
+
     }
     catch(e)
     {
@@ -283,6 +292,16 @@ class _HomeState extends State<Home> {
         });
         //print('depart length is : ' + departs.length.toString());
       }
+
+      if(_coupons.length > 0)
+        setState(() {
+          _isLoadMore = true;
+        });
+      else
+        setState(() {
+          _isLoadMore = false;
+        });
+
       return _coupons;
     }
     catch(e)
@@ -326,7 +345,6 @@ class _HomeState extends State<Home> {
             _getCouponsCodes(_rCoupons).then((value){
               setState(() {
                 _isCouponsLoading = false;
-                _isLoadMore = true;
               });
             });
 
@@ -358,7 +376,6 @@ class _HomeState extends State<Home> {
             _getCouponsCodes(_rCoupons).then((value){
               setState(() {
                 _isCouponsLoading = false;
-                _isLoadMore = true;
               });
             });
 
@@ -475,8 +492,8 @@ class _HomeState extends State<Home> {
       }
     } else
       setState(() {
-        _isLoadMore = false;
-        _isCouponsEnd = false;
+        //_isLoadMore = false;
+        //_isCouponsEnd = false;
       });
   }
 
@@ -645,7 +662,7 @@ class _HomeState extends State<Home> {
                       children: [
                         InkWell(onTap:(){
                           if(homeApi.checkIfInCodes(_rCoupons[i].id, _rCodes) == null)
-                            _copyCode(_rCoupons[i].id);
+                            _copyCode(_rCoupons[i].id , _rCoupons[i].code);
                         } , child: Container(
                           width: MediaQuery.of(context).size.width-150,
                           padding: const EdgeInsets.all(3),
@@ -751,7 +768,9 @@ class _HomeState extends State<Home> {
                   children: [
 
                     //shop now
-                    InkWell(onTap:(){ } , child: Container(
+                    InkWell(onTap:(){
+                      _launchStoreURL(_rCoupons[i].storeUrl);
+                    } , child: Container(
                       width: MediaQuery.of(context).size.width-150,
                       padding: const EdgeInsets.all(3),
                       alignment: Alignment.center,
@@ -985,11 +1004,24 @@ class _HomeState extends State<Home> {
     }
   }
 
-  _copyCode(String cid) async {
+  _copyCode(String cid , String code) async {
 
     homeApi.copyCode(cid).then((value){
 
       if (value) {
+
+        ClipboardManager.copyToClipBoard(
+            code)
+            .then((result) {
+          final snackBar = SnackBar(
+            content: Text('Copied ' + code),
+          );
+          setState(() {
+            Scaffold.of(context).showSnackBar(snackBar);
+          });
+
+        });
+
         setState(() {
           _getCouponsCodes(_rCoupons);
         });
@@ -1047,6 +1079,14 @@ class _HomeState extends State<Home> {
       }
     });
 
+  }
+
+  _launchStoreURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
   @override
@@ -1414,7 +1454,7 @@ class _HomeState extends State<Home> {
     if (index == 0) {
       Navigator.of(context).push(
         new MaterialPageRoute(
-            builder: (BuildContext context) => null),
+            builder: (BuildContext context) => new Countries()),
       );
     } else if (index == 1) {
       Navigator.of(context).push(
