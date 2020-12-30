@@ -1,3 +1,4 @@
+import 'package:couponsgate/modules/Code.dart';
 import 'package:couponsgate/modules/Favorite.dart';
 import 'package:couponsgate/modules/Rating.dart';
 import 'package:couponsgate/modules/Store.dart';
@@ -11,6 +12,7 @@ class HomeApiAssistant {
   List<Rating> _ratings;
   List<Favorite> _favorites;
   List<Store> _stores;
+  List<Code> _codes;
 
   Future getUserRatings() async {
     final prefs = await SharedPreferences.getInstance();
@@ -48,10 +50,10 @@ class HomeApiAssistant {
     return _ratings;
   }
 
-  String checkIfInRatings(String cid, List<Rating> ratedCoupons) {
+  String checkIfInRatings(String cid, List<Rating> ratedCoupons , String type) {
     try {
       for (Rating rat in ratedCoupons)
-        if (cid == rat.couponId) return rat.id;
+        if (cid == rat.couponId && rat.type == type) return rat.id;
     } catch (e) {
       return null;
     }
@@ -250,6 +252,10 @@ class HomeApiAssistant {
 
       return true;
     }
+    else
+      {
+        return false;
+      }
   }
 
   Future getStores() async
@@ -290,6 +296,104 @@ class HomeApiAssistant {
     }
 
     return _stores;
+  }
+
+  Future getUserCodes() async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'is_login';
+    final value = prefs.get(key);
+    //print('$value');
+
+    if (value == '1') {
+      final key2 = 'token';
+      final value2 = prefs.get(key2);
+
+      var data = {
+        'user_token': value2,
+      };
+
+      Code tCode;
+      _codes = [];
+
+      var res = await http.post(
+          'https://yalaphone.com/appdash/rest_api/codes/get_codes_by_user.php',
+          body: data);
+      //print(res.body.toString());
+      var body = json.decode(res.body);
+      //print(body);
+
+      if (body['codes'] != null) {
+        for (var fav in body['codes']) {
+          tCode = Code.fromJson(fav);
+          _codes.add(tCode);
+        }
+
+        return _codes;
+      }
+    }
+    return _codes;
+  }
+
+  String checkIfInCodes(String cid, List<Code> copiedCoupons) {
+    try {
+      for (Code code in copiedCoupons)
+        if (cid == code.couponId) return code.id;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Future copyCode(String cid) async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'is_login';
+    final value = prefs.get(key);
+    //print('$value');
+    if (value == '1') {
+      final key2 = 'token';
+      final value2 = prefs.get(key2);
+
+      final key3 = 'user_id';
+      final value3 = prefs.get(key3);
+
+      var data = {
+        'user_token': value2,
+        'user_id': value3,
+        'coupon_id': cid,
+      };
+
+      var res = await http.post(
+          'https://yalaphone.com/appdash/rest_api/codes/copy_code.php',
+          body: data);
+      //print(res.body);
+      //print('sending...');
+      var body = json.decode(res.body);
+      //print(body);
+
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future getCouponCopyTimes(String cid) async
+  {
+    var data = {
+      'coupon_id': cid,
+    };
+
+    var res = await http.post(
+        'https://yalaphone.com/appdash/rest_api/codes/get_coupon_copy_times.php',
+        body: data);
+    //print(res.body);
+    //print('sending...');
+    var body = json.decode(res.body);
+    print(body);
+
+    if (body.toString().contains('copy_times')) {
+      return body['copy_times'];
+    }
+    else
+      return ' ';
   }
 
 }

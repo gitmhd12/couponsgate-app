@@ -89,7 +89,7 @@ class _LoginState extends State<Login>{
         print(api.g_login_status.toString());
         if (api.g_login_status == 1 ) {
           print('new register');
-          //Navigator.pushReplacementNamed(context, '/select_country');
+          Navigator.pushReplacementNamed(context, '/SelectCountry');
         } else if(api.g_login_status == 2){
           Navigator.pushReplacementNamed(context, '/home');
         }
@@ -127,6 +127,7 @@ class _LoginState extends State<Login>{
           print(api.fb_login_status.toString());
       if (api.fb_login_status == 1 ) {
         print('new register');
+        Navigator.pushReplacementNamed(context, '/SelectCountry');
         //Navigator.pushReplacementNamed(context, '/select_country');
       } else if(api.fb_login_status == 2){
         Navigator.pushReplacementNamed(context, '/home');

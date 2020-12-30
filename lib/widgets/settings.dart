@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:couponsgate/localization/localizationValues.dart';
+import 'package:couponsgate/modules/ApiAssistant.dart';
 import 'package:couponsgate/modules/Country.dart';
 import 'package:couponsgate/modules/Language.dart';
 import 'package:couponsgate/widgets/favorites.dart';
@@ -21,6 +22,8 @@ class Settings extends StatefulWidget {
 
 class _SettingsState extends State<Settings> {
 
+  ApiAssistant api = new ApiAssistant();
+
   bool _isGuest = false;
   bool _isLoading = true;
   TextEditingController _usernameController;
@@ -28,6 +31,7 @@ class _SettingsState extends State<Settings> {
   TextEditingController _passwordController;
   TextEditingController _confPasswordController;
 
+  String _userId = ' ';
   String _username = ' ';
   String _password = ' ';
   String _email = ' ';
@@ -51,12 +55,15 @@ class _SettingsState extends State<Settings> {
         _isGuest = false;
       });
 
+      final key0 = 'user_id';
       final key1 = 'name';
       final key2 = 'email';
       final key3 = 'pass';
       final key4 = 'token';
       final key5 = 'country_code';
 
+      final value0 = prefs.get(key0);
+      print(value0);
       final value1 = prefs.get(key1);
       print(value1);
       final value2 = prefs.get(key2);
@@ -69,8 +76,10 @@ class _SettingsState extends State<Settings> {
       print(value5);
 
       setState(() {
+        _userId = value0;
         _username = value1;
         _email = value2;
+        _password = value3;
         _token = value4;
         _countryCode = value5;
 
@@ -420,6 +429,7 @@ class _SettingsState extends State<Settings> {
               });
             } else {
               setState(() {
+                api.saveUserParams(_userId, _passwordController.text.trim(), _usernameController.text, _emailController.text.trim().toLowerCase(), _token, _countryCode);
                 successDialog(getTranslated(context, 'settings_alert_success_content'), getTranslated(context, 'settings_alert_success_title'),);
                 _saveBtnChildIndex = 0;
               });
@@ -445,6 +455,7 @@ class _SettingsState extends State<Settings> {
             });
           } else {
             setState(() {
+              api.saveUserParams(_userId, _password, _usernameController.text, _emailController.text.trim().toLowerCase(), _token, _countryCode);
               successDialog(getTranslated(context, 'settings_alert_success_content'), getTranslated(context, 'settings_alert_success_title'),);
               _saveBtnChildIndex = 0;
             });
