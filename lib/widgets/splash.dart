@@ -18,6 +18,12 @@ class _Splash extends State<Splash> {
     if (is_login_value == "1") {
       Navigator.pushReplacementNamed(context, '/home');
     } else {
+
+      //check if first time go to home
+      final key = 'is_first_time';
+      final is_first_time = prefs.get(key) ?? 0;
+
+      //or go to login
       Navigator.pushReplacementNamed(context, '/login');
     }
     print("is_login value: $is_login_value");
@@ -26,7 +32,7 @@ class _Splash extends State<Splash> {
   void startTimer() {
     // Start the periodic timer which prints something after 5 seconds and then stop it .
 
-    Timer timer=  new Timer.periodic(new Duration(seconds: 10), (time) {
+    Timer timer=  new Timer.periodic(new Duration(seconds: 7), (time) {
       check_login();
       time.cancel();
     });

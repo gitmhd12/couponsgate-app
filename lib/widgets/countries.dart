@@ -3,6 +3,7 @@ import 'package:couponsgate/modules/Country.dart';
 import 'package:couponsgate/widgets/country_coupons.dart';
 import 'package:couponsgate/widgets/favorites.dart';
 import 'package:couponsgate/widgets/settings.dart';
+import 'package:couponsgate/widgets/stores/all_stores.dart';
 import 'package:getwidget/components/loader/gf_loader.dart';
 import 'package:getwidget/types/gf_loader_type.dart';
 import 'package:http/http.dart' as http;
@@ -200,14 +201,14 @@ class _CountriesState extends State<Countries> {
 
   void onTabTapped(int index) {
     if (index == 0) {
-      Navigator.of(context).push(
+      /*Navigator.of(context).push(
         new MaterialPageRoute(
-            builder: (BuildContext context) => new Countries()),
-      );
+            builder: (BuildContext context) => new Countries()),*/
+      //);
     } else if (index == 1) {
       Navigator.of(context).push(
         new MaterialPageRoute(
-            builder: (BuildContext context) => null),
+            builder: (BuildContext context) => new AllStores()),
       );
     } else if (index == 2) {
       Navigator.of(context).push(new MaterialPageRoute(

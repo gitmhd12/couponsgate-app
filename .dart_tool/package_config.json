@@ -26,6 +26,18 @@
       "languageVersion": "2.10"
     },
     {
+      "name": "chewie",
+      "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/chewie-0.12.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
+      "name": "chewie_audio",
+      "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/chewie_audio-1.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.8"
+    },
+    {
       "name": "clipboard_manager",
       "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/clipboard_manager-0.0.4",
       "packageUri": "lib/",
@@ -44,10 +56,28 @@
       "languageVersion": "2.10"
     },
     {
+      "name": "convert",
+      "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/convert-2.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "1.17"
+    },
+    {
       "name": "convex_bottom_bar",
       "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-2.6.0",
       "packageUri": "lib/",
       "languageVersion": "2.1"
+    },
+    {
+      "name": "css_colors",
+      "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/css_colors-1.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "1.19"
+    },
+    {
+      "name": "csslib",
+      "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/csslib-0.16.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
     },
     {
       "name": "cupertino_icons",
@@ -116,6 +146,12 @@
       "languageVersion": "2.1"
     },
     {
+      "name": "firebase_messaging",
+      "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging-7.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "flare_dart",
       "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/flare_dart-2.3.4",
       "packageUri": "lib/",
@@ -140,8 +176,20 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "flutter_html",
+      "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-1.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
+    },
+    {
       "name": "flutter_localizations",
       "rootUri": "file:///Users/sh/Downloads/flutter/packages/flutter_localizations",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
+    },
+    {
+      "name": "flutter_svg",
+      "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.19.1",
       "packageUri": "lib/",
       "languageVersion": "2.2"
     },
@@ -194,6 +242,12 @@
       "languageVersion": "2.6"
     },
     {
+      "name": "html",
+      "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/html-0.14.0+4",
+      "packageUri": "lib/",
+      "languageVersion": "2.3"
+    },
+    {
       "name": "http",
       "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.2",
       "packageUri": "lib/",
@@ -204,6 +258,12 @@
       "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-3.1.4",
       "packageUri": "lib/",
       "languageVersion": "2.3"
+    },
+    {
+      "name": "import_js_library",
+      "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/import_js_library-1.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
     },
     {
       "name": "intl",
@@ -270,6 +330,12 @@
       "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/pedantic-1.9.2",
       "packageUri": "lib/",
       "languageVersion": "2.1"
+    },
+    {
+      "name": "petitparser",
+      "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/petitparser-3.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
     },
     {
       "name": "platform",
@@ -428,6 +494,48 @@
       "languageVersion": "2.10"
     },
     {
+      "name": "video_player",
+      "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/video_player-1.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.8"
+    },
+    {
+      "name": "video_player_platform_interface",
+      "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/video_player_platform_interface-2.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.8"
+    },
+    {
+      "name": "video_player_web",
+      "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/video_player_web-0.1.4+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.8"
+    },
+    {
+      "name": "wakelock",
+      "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/wakelock-0.2.1+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.8"
+    },
+    {
+      "name": "wakelock_platform_interface",
+      "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/wakelock_platform_interface-0.1.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.8"
+    },
+    {
+      "name": "wakelock_web",
+      "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/wakelock_web-0.1.0+3",
+      "packageUri": "lib/",
+      "languageVersion": "2.8"
+    },
+    {
+      "name": "webview_flutter",
+      "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter-1.0.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
       "name": "win32",
       "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/win32-1.7.4",
       "packageUri": "lib/",
@@ -440,13 +548,19 @@
       "languageVersion": "2.3"
     },
     {
+      "name": "xml",
+      "rootUri": "file:///Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/xml-4.5.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
       "name": "couponsgate",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-12-30T19:30:26.097130Z",
+  "generated": "2021-01-05T21:40:02.644966Z",
   "generator": "pub",
   "generatorVersion": "2.10.4"
 }

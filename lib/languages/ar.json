@@ -46,6 +46,7 @@
   "drawer_favorites" : "المفضلة",
   "drawer_about_us" : "من نحن",
   "drawer_terms" : "شروط الاستخدام",
+  "drawer_faq" : "الأسئلة الشائعة",
   "drawer_privacy_policy" : "سياسة الخصوصية",
   "drawer_contact_us" : "اتصل بنا",
   "drawer_login" : "تسجيل الدخول",
@@ -110,5 +111,13 @@
   "home_alert_c_login_content" : "يجب عليك أن تسجل الدخول أولاً حتى تتمكن من نسخ هذا الكود",
 
   "countries_title" : "الدول",
-  "countries_coupons_title" : "الكوبونات المتوفرة في "
+  "countries_coupons_title" : "الكوبونات المتوفرة في ",
+
+  "login_text": "تسجيل الدخول",
+  "new_account" : "حساب جديد",
+  "login_facebook": "الإستمرار بإستخدام فيسبوك",
+  "login_google": "الإستمرار بإستخدام غوغل",
+  "Copied": "تم نسخ الكود ",
+  "search_results": "نتائج البحث عن "
+
 }

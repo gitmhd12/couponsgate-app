@@ -4,6 +4,7 @@ import 'package:couponsgate/localization/localizationValues.dart';
 import 'package:couponsgate/modules/Country.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Select_Country extends StatefulWidget {
   @override
@@ -12,9 +13,11 @@ class Select_Country extends StatefulWidget {
 
 class _Select_Country_State extends State<Select_Country> {
   bool _isLoading = false;
+  bool _sendLoading = false;
   List<Country> _countries , _rCountries = [];
   String _countryBtnHint = '+';
   String _countryID;
+
 
   Future _getCountries() async
   {
@@ -33,6 +36,28 @@ class _Select_Country_State extends State<Select_Country> {
     }
 
     return _countries;
+  }
+
+  Future _updateCountries(String user_id, String country_id) async
+  {
+    int success = 0;
+
+    String myUrl = "https://yalaphone.com/appdash/rest_api/countries/update_user_country.php";
+    http.Response response = await http.post(myUrl, body: {
+      'user_id': user_id,
+      'country_id': country_id,
+    });
+
+    print(response.body.toString());
+
+    if(response.body.toString().trim() == 'success')
+      {
+        success = 1;
+      }
+
+
+
+    return success;
   }
 
   String countryName(context , Country country)
@@ -55,6 +80,12 @@ class _Select_Country_State extends State<Select_Country> {
       _countryBtnHint = countryName(context , country);
       _countryID = country.id;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
   }
 
   void _showCountriesDialog(context, List<Country> countries) {
@@ -126,10 +157,17 @@ class _Select_Country_State extends State<Select_Country> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:
-          Center(
-            child:Column(children: [
-              InkWell(
+      body:Center(
+            child:Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset("assets/images/text_logo.png",width: MediaQuery.of(context).size.width/1.7),
+                SizedBox(height: 50,),
+                Text(getTranslated(context, 'login_country_btn'),style: TextStyle(fontSize: 20,fontFamily: "CustomFont"),),
+                SizedBox(height: 10,),
+
+                InkWell(
                 onTap: () {
                   setState(() {
                     _isLoading = true;
@@ -144,6 +182,7 @@ class _Select_Country_State extends State<Select_Country> {
                   });
 
                   setState(() {
+                    _isLoading = false;
                   });
                 },
                 child: Container(
@@ -156,15 +195,77 @@ class _Select_Country_State extends State<Select_Country> {
                     borderRadius: BorderRadius.all(Radius.circular(5)),
                     color: Colors.grey,
                   ),
-                  child: Text(
-                    _countryBtnHint = getTranslated(context, 'login_country_btn'),
-                    style: TextStyle(fontSize: 18, color: Colors.white,fontFamily: "CustomFont"),
+                  child: _isLoading?CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Color(0xffffffff),),
+                  ): Text(
+                    _countryBtnHint,
+                    style: TextStyle(fontSize: 20, color: Colors.white,fontFamily: "CustomFont"),
                   ),
                 ),
               ),
+                SizedBox(height: 10,),
+                InkWell(
+                  onTap: () async {
+                          if(_countryID == null)
+                            {
+                              print('country id is null');
+                              var snackBar = SnackBar(content: Text(getTranslated(context, 'login_country_btn')));
+                              Scaffold.of(context).showSnackBar(snackBar);
+                            }else{
+                            //get user id
+                            print('get user id ');
+                            final prefs = await SharedPreferences.getInstance();
+                            final key = 'user_id';
+                            final user_id = prefs.get(key);
+
+                            //check if user id is not null
+                            if(user_id == null)
+                            {print('user id is null');}else{
+                              //show loading
+                              setState(() {
+                                _sendLoading = true;
+                              });
+
+                              //send data to update user country
+                              _updateCountries(user_id,_countryID).then((value) {
+                                print('send data');
+                                print('value is $value');
+                                if(value == 1){
+                                  Navigator.pushReplacementNamed(context, '/home');
+                                }
+                              });
+
+                              //hide loading
+                              setState(() {
+                                _sendLoading = false;
+                              });
+
+                            }
+                          }
+                  },
+                  child: Container(
+                    height: 50,
+                    width: MediaQuery.of(context).size.width/2,
+                    padding: const EdgeInsets.all(5.0),
+                    margin: EdgeInsets.symmetric(vertical: 5),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                      //color: Colors.grey,
+                    ),
+                    child: _sendLoading?CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.blue,),
+                    ):  Icon(
+                    Icons.arrow_forward_rounded,
+                    color: Colors.blue,
+                    size: 35,
+                    ),
+                  ),
+                ),
             ],)
 
-          )
+          ),
+
 
 
 

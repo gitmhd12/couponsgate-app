@@ -12,8 +12,12 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/clipboard_manager-0.0.4/android" />
+            <option value="$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.18.4+1/android" />
+            <option value="$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.5.3/android" />
             <option value="$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_login-3.0.0/android" />
+            <option value="$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in-4.5.6/android" />
             <option value="$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.12+4/android" />
+            <option value="$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher-5.7.10/android" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

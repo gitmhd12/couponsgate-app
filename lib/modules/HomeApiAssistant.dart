@@ -224,9 +224,9 @@ class HomeApiAssistant {
       return true;
     }
     else
-      {
-        return false;
-      }
+    {
+      return false;
+    }
   }
 
   Future deleteFavorite(String fid) async {
@@ -253,9 +253,9 @@ class HomeApiAssistant {
       return true;
     }
     else
-      {
-        return false;
-      }
+    {
+      return false;
+    }
   }
 
   Future getStores() async

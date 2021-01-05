@@ -170,6 +170,21 @@ class NavDrawerState extends State<NavDrawer> {
                   builder: (BuildContext context) => new Privacy()))
             },
           ),
+
+          ListTile(
+            leading: Icon(
+              Icons.book,
+              color: Color(0xFF2196f3),
+            ),
+            title: Text(
+              getTranslated(context, 'drawer_faq'),
+              style: TextStyle(fontFamily: 'CustomIcons'),
+            ),
+            onTap: () => {
+              Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) => new Terms()))
+            },
+          ),
           Divider(
             color: Color(0xFF2196f3),
           ),

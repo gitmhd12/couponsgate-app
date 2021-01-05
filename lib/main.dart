@@ -1,11 +1,13 @@
 import 'package:couponsgate/localization/center_localization.dart';
 import 'package:couponsgate/routes/custom_router.dart';
 import 'package:couponsgate/routes/routes_names.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'localization/localizationValues.dart';
+import 'modules/push_notification_service_v1.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +28,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+
   Locale _locale;
 
   void setLocale(Locale locale) {
@@ -46,6 +50,9 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    final pushNotificationService = PushNotificationService(_firebaseMessaging);
+    pushNotificationService.initialise();
+
     if (_locale == null) {
       return Container(
         child: Center(

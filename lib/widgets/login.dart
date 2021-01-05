@@ -465,7 +465,7 @@ class _LoginState extends State<Login>{
 
                 ),
                 alignment: Alignment.center,
-                child: Text('حساب جديد',
+                child: Text(getTranslated(context, 'new_account'),
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 18,
@@ -525,7 +525,7 @@ class _LoginState extends State<Login>{
 
                 ),
                 alignment: Alignment.center,
-                child: Text('تسجيل الدخول',
+                child: Text(getTranslated(context, 'login_text'),
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 18,
@@ -1217,22 +1217,6 @@ class _LoginState extends State<Login>{
               //height: MediaQuery.of(context).size.height * 0.4,
               decoration: BoxDecoration(
                 color: Color(0xFFffffff),
-                /*gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  stops: [
-                    0.1,
-                    0.4,
-                    0.6,
-                    0.9,
-                  ],
-                  colors: [
-                    Colors.amber,
-                    Colors.red,
-                    Colors.pinkAccent,
-                    Colors.brown,
-                  ],
-                ),*/
                 borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(10),
                   bottomLeft: Radius.circular(10),
@@ -1255,7 +1239,7 @@ class _LoginState extends State<Login>{
                             dropdownColor: Colors.blue,
                             icon: Icon(
                               Icons.language,
-                              color: Colors.blue,
+                              color: Colors.grey,
                             ),
                             underline: SizedBox(),
                             items: Language.languageList()
@@ -1309,7 +1293,7 @@ class _LoginState extends State<Login>{
               child: Center(
                 child: MaterialButton(
                   textColor: Color(0xff000000),
-                  child: Text(getTranslated(context, 'login_sign_later_btn'),style: TextStyle(fontFamily: 'CustomFont'),),
+                  child: Text(getTranslated(context, 'login_sign_later_btn'),style: TextStyle(fontFamily: 'CustomFont',fontSize: 20,fontWeight: FontWeight.bold),),
                   onPressed: () {
                     Navigator.pushNamed(context, homeRoute);
                   },
