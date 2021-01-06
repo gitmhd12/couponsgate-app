@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "141582114934",
+    "project_id": "couponsgate",
+    "storage_bucket": "couponsgate.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:141582114934:android:9060c98a5f1b99d7ea3f57",
+        "android_client_info": {
+          "package_name": "net.couponsgate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "141582114934-2dg15d4m04fpiv7jafps42q97p6103cj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "net.couponsgate",
+            "certificate_hash": "a75702f6c095a59dd733dcf85fd59f477616cbaa"
+          }
+        },
+        {
+          "client_id": "141582114934-ojh565jh0hjabjui9qgfnqmn156o7qaf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1CayIJ_8vjRUiETXngiLRm-sVpKZCiJg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "141582114934-ojh565jh0hjabjui9qgfnqmn156o7qaf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

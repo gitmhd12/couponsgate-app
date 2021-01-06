@@ -1,16 +1,24 @@
 import 'dart:convert';
-
+import 'package:firebase_core/firebase_core.dart';
 import 'package:couponsgate/localization/localizationValues.dart';
 import 'package:couponsgate/modules/ApiAssistant.dart';
 import 'package:couponsgate/modules/Country.dart';
 import 'package:couponsgate/modules/Language.dart';
+import 'package:couponsgate/my_icons_icons.dart';
 import 'package:couponsgate/routes/routes_names.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 
 import '../main.dart';
+
+final fbLogin = FacebookLogin();
+final FirebaseAuth _auth = FirebaseAuth.instance;
+final GoogleSignIn googleSignIn = GoogleSignIn();
 
 class Login extends StatefulWidget {
   @override
@@ -18,7 +26,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login>{
-  
+
+
   ApiAssistant api = new ApiAssistant();
   final TextEditingController _emailController = new TextEditingController();
   final TextEditingController _passwordController = new TextEditingController();
@@ -36,6 +45,103 @@ class _LoginState extends State<Login>{
   bool _isLoading;
   List<Country> _countries , _rCountries = [];
   String _countryBtnHint , _countryID;
+
+  var fb_btn_shild = true;
+  var g_btn_shild = true;
+
+  Future<String> signInWithGoogle() async {
+    setState(() {
+      g_btn_shild = false;
+    });
+
+    await Firebase.initializeApp();
+
+    final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+    final GoogleSignInAuthentication googleSignInAuthentication =
+    await googleSignInAccount.authentication;
+
+    final AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleSignInAuthentication.accessToken,
+      idToken: googleSignInAuthentication.idToken,
+    );
+
+    final UserCredential authResult =
+    await _auth.signInWithCredential(credential);
+    final User user = authResult.user;
+
+    if (user != null) {
+      assert(!user.isAnonymous);
+      assert(await user.getIdToken() != null);
+
+      final User currentUser = _auth.currentUser;
+      assert(user.uid == currentUser.uid);
+
+      print('signInWithGoogle succeeded: $user');
+
+      var data = {
+        'name': user.displayName,
+        'email': user.email,
+        'id': user.uid,
+      };
+
+      api.registerData_g( user.displayName, user.email, user.uid)
+          .whenComplete(() {
+        print(api.g_login_status.toString());
+        if (api.g_login_status == 1 ) {
+          print('new register');
+          Navigator.pushReplacementNamed(context, '/SelectCountry');
+        } else if(api.g_login_status == 2){
+          Navigator.pushReplacementNamed(context, '/home');
+        }
+
+        setState(() {
+          g_btn_shild = true;
+        });
+
+      });
+    }
+
+    return null;
+  }
+
+  Future signInFB() async {
+    setState(() {
+      fb_btn_shild = false;
+    });
+    final FacebookLoginResult result = await fbLogin.logIn(["email"]);
+    print(result.accessToken);
+    final String token = result.accessToken.token;
+    final response = await http.get(
+        'https://graph.facebook.com/v2.12/me?fields=name,first_name,last_name,email&access_token=${token}');
+    final profile = jsonDecode(response.body);
+    print(profile);
+
+    var data = {
+      'name': profile["name"],
+      'email': profile["email"],
+      'id': profile["id"],
+    };
+
+    api.registerData_fb( profile["name"], profile["email"].toLowerCase().toString(), profile["id"])
+        .whenComplete(() {
+          print(api.fb_login_status.toString());
+      if (api.fb_login_status == 1 ) {
+        print('new register');
+        Navigator.pushReplacementNamed(context, '/SelectCountry');
+        //Navigator.pushReplacementNamed(context, '/select_country');
+      } else if(api.fb_login_status == 2){
+        Navigator.pushReplacementNamed(context, '/home');
+      }
+
+      setState(() {
+        fb_btn_shild = true;
+      });
+
+    });
+
+
+
+    }
 
 
   @override
@@ -115,7 +221,7 @@ class _LoginState extends State<Login>{
                         child: Text(
                           getTranslated(context, 'login_country_btn'),
                           style: TextStyle(
-                            fontFamily: 'CustomIcons',
+                            fontFamily: 'CustomFont',
                             fontSize: 20.0,
                             color: Color(0xff275879),
                           ),
@@ -180,11 +286,50 @@ class _LoginState extends State<Login>{
             child: TextField(
                 keyboardType: TextInputType.emailAddress,
                 controller: controller,
-                style: TextStyle(color: Color(0xff34495e), fontSize: 16),
+                style: TextStyle(color: Color(0xff34495e), fontSize: 16,fontFamily: "CustomFont"),
+
                 decoration: InputDecoration(
                     hintText: hint,
                     hintStyle: TextStyle(
                       fontSize: 14.0,
+                        fontFamily: "CustomFont",
+                      color: Color(0xff34495e),
+                    ),
+                    prefixIcon: Icon(
+                      icon,
+                      color: Color(0xff34495e),
+                    ),
+                    fillColor: Colors.white,
+                    filled: true)),
+          )
+        ],
+      ),
+    );
+  }
+  Widget _passField({controller, hint, icon}) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(
+                Radius.circular(40),
+              ),
+            ),
+            child: TextField(
+                obscureText: true,
+                keyboardType: TextInputType.text,
+                controller: controller,
+                style: TextStyle(color: Color(0xff34495e), fontSize: 16,fontFamily: "CustomFont"),
+
+                decoration: InputDecoration(
+                    hintText: hint,
+                    hintStyle: TextStyle(
+                      fontSize: 14.0,
+                      fontFamily: "CustomFont",
                       color: Color(0xff34495e),
                     ),
                     prefixIcon: Icon(
@@ -213,126 +358,229 @@ class _LoginState extends State<Login>{
   }
 
   Widget _loginButton() {
-    return InkWell(
-      onTap: () {
-        _processLogin();
-      },
-      child: Container(
-        height: 50,
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.symmetric(vertical: 7),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(30)),
-          color: Color(0xFF7ed6df),
-        ),
-        child: buttonChild( loginBtnChildIndex , getTranslated(context, 'login_sign_in_btn'),),
+    return InkWell(onTap: () {
+      _processLogin();
+    } , child: Container(
+      width: MediaQuery.of(context).size.width,
+      padding: const EdgeInsets.all(7),
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+          border: Border.all(color: Colors.white),
+          //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+          borderRadius: BorderRadius.circular(5),
+          color: Color(0xFF2196f3)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+
+          Text(
+            getTranslated(context, 'login_text'),
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.white,
+              fontFamily: "CustomFont",
+              fontWeight: FontWeight.w300,
+            ),
+            softWrap: true,
+          ),
+        ],
       ),
-    );
+    ),);
   }
 
   Widget _registerButton() {
-    return InkWell(
-      onTap: () {
-        _processRegister();
-      },
-      child: Container(
-        height: 50,
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.symmetric(vertical: 7),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(30)),
-          color: Color(0xFF55efc4),
-        ),
-        child: buttonChild( registerBtnChildIndex , getTranslated(context, 'login_sign_up_btn'),),
-      ),
-    );
-  }
+    return InkWell(onTap: () {
+      _processRegister();
+    } , child: Container(
+      width: MediaQuery.of(context).size.width,
+      padding: const EdgeInsets.all(7),
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+          border: Border.all(color: Colors.white),
+          //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+          borderRadius: BorderRadius.circular(5),
+          color: Color(0xFF2196f3)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
 
-  Widget _signInButton() {
-    return InkWell(
-      onTap: () {
-        setState(() {
-          form = 2;
-        });
-      },
-      child: Container(
-        height: 50,
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.symmetric(vertical: 7),
-        margin: EdgeInsets.symmetric(vertical: 5),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(30)),
-          color: Color(0xFF7ed6df),
-        ),
-        child: Text(
-          getTranslated(context, 'login_sign_in_btn'),
-          style: TextStyle(fontSize: 20, color: Color(0xFF2f3640)),
-        ),
+          Text(
+            getTranslated(context, 'new_account'),
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.white,
+              fontFamily: "CustomFont",
+              fontWeight: FontWeight.w300,
+            ),
+            softWrap: true,
+          ),
+        ],
       ),
-    );
+    ),);
+
   }
 
   Widget _signUpButton() {
     return InkWell(
-      onTap: () {
+      onTap: () => {
         setState(() {
           form = 1;
-        });
+        })
       },
       child: Container(
         height: 50,
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.symmetric(vertical: 7),
         margin: EdgeInsets.symmetric(vertical: 5),
-        alignment: Alignment.center,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(30)),
-          color: Color(0xFF55efc4),
+          border: Border.all(color: Colors.grey),
+          borderRadius: BorderRadius.all(Radius.circular(5)),
         ),
-        child: Text(
-          getTranslated(context, 'login_new_account_btn'),
-          style: TextStyle(fontSize: 20, color: Color(0xFF2f3640)),
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              flex: 1,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  border: Border.all(color: Colors.grey,width: 1),
+                  //color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+
+                ),
+                alignment: Alignment.center,
+                child: Icon(
+                    MyIcons.user_alt,
+                    //color: Color(0xff1959a9),
+                    color: Colors.white
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 5,
+              child: Container(
+                decoration: BoxDecoration(
+                  //border: Border.all(color: Colors.grey,width: 1),
+                  color: Colors.white,
+                  // color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+
+                ),
+                alignment: Alignment.center,
+                child: Text(getTranslated(context, 'new_account'),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontFamily: "CustomFont",)),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+  Widget _signInButton() {
+    return InkWell(
+      onTap: () => {
+        setState(() {
+          form = 2;
+        })
+      },
+      child: Container(
+        height: 50,
+        margin: EdgeInsets.symmetric(vertical: 5),
+        decoration: BoxDecoration(
+            border: Border.all(color: Color(0xFF2196f3),width: 1),
+          borderRadius: BorderRadius.all(Radius.circular(5)),
+        ),
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              flex: 1,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Color(0xFF2196f3),
+                    border: Border.all(color: Color(0xFF2196f3),width: 1),
+                  //color: Colors.white,
+                  /*borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(5),
+                      topRight: Radius.circular(5)),*/
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+
+                ),
+                alignment: Alignment.center,
+                child: Icon(
+                    FontAwesomeIcons.signInAlt,
+                    //color: Color(0xff1959a9),
+                    color: Colors.white
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 5,
+              child: Container(
+                decoration: BoxDecoration(
+                  //border: Border.all(color: Color(0xFF2196f3),width: 1),
+                  //color: Colors.white,
+                  // color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+
+                ),
+                alignment: Alignment.center,
+                child: Text(getTranslated(context, 'login_text'),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontFamily: "CustomFont",)),
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 
+
+
   Widget _googleButton() {
     return InkWell(
-        onTap: () {},
+        onTap: signInWithGoogle,
         child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(30)),
-            color: Colors.white,
-            border: Border.all(color: Color(0xdddc3400),),
-          ),
           height: 50,
           margin: EdgeInsets.symmetric(vertical: 5),
+          decoration: BoxDecoration(
+              color: Color(0xdddc3400),
+            borderRadius: BorderRadius.all(Radius.circular(5)),
+          ),
           child: Row(
             children: <Widget>[
               Expanded(
                 flex: 1,
                 child: Container(
+                  decoration: BoxDecoration(
+                    color: Color(0xffdc3400),
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                  ),
                   alignment: Alignment.center,
                   child: Icon(
                     FontAwesomeIcons.google,
-                    color: Color(0xdddc3400),
+                    color: Colors.white,
                   ),
                 ),
               ),
               Expanded(
                 flex: 5,
                 child: Container(
+                  decoration: BoxDecoration(
+                    color: Color(0xdddc3400),
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                  ),
                   alignment: Alignment.center,
-                  child: Text(getTranslated(context, 'login_google_btn'),
+                  child: g_btn_shild? Text(getTranslated(context, 'login_google'),
                       style: TextStyle(
-                          color: Color(0xdddc3400),
-                          fontFamily: "CustomIcons",
+                          color: Colors.white,
+                          fontFamily: "CustomFont",
                           fontSize: 18,
-                          fontWeight: FontWeight.w400)),
+                          fontWeight: FontWeight.w400)):CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white)),
                 ),
               ),
             ],
@@ -342,38 +590,49 @@ class _LoginState extends State<Login>{
 
   Widget _facebookButton() {
     return InkWell(
-      onTap: () {},
+      onTap: signInFB,
       child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(30)),
-          color: Colors.white,
-          border: Border.all(color: Color(0xff1959a9),),
-        ),
-
         height: 50,
         margin: EdgeInsets.symmetric(vertical: 5),
+        decoration: BoxDecoration(
+            color: Color(0xdd1959a9),
+          borderRadius: BorderRadius.all(Radius.circular(5)),
+        ),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Expanded(
               flex: 1,
               child: Container(
+                decoration: BoxDecoration(
+                  color: Color(0xff1959a9),
+                  //color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                ),
                 alignment: Alignment.center,
                 child: Icon(
                   FontAwesomeIcons.facebook,
-                  color: Color(0xff1959a9),
+                  //color: Color(0xff1959a9),
+                  color: Colors.white
                 ),
               ),
             ),
             Expanded(
               flex: 5,
               child: Container(
+                decoration: BoxDecoration(
+                  color: Color(0xdd1959a9),
+                 // color: Colors.white,
+    borderRadius: BorderRadius.all(Radius.circular(5)),
+                ),
                 alignment: Alignment.center,
-                child: Text(getTranslated(context, 'login_facebook_btn'),
+                child: fb_btn_shild? Text(getTranslated(context, 'login_facebook'),
                     style: TextStyle(
-                        color: Color(0xff1959a9),
+                        color: Colors.white,
                         fontSize: 18,
-                        fontFamily: "CustomIcons",
-                        fontWeight: FontWeight.bold)),
+                        fontFamily: "CustomFont",)):CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                ),
               ),
             ),
           ],
@@ -402,7 +661,7 @@ class _LoginState extends State<Login>{
                     fontSize: 12,
                     fontWeight: FontWeight.w500,
                     color: Color(0xFF2f3640),
-                    fontFamily: "CustomIcons"))
+                    fontFamily: "CustomFont"))
           ],
         ),
       ),
@@ -415,10 +674,10 @@ class _LoginState extends State<Login>{
         builder: (_) => AssetGiffyDialog(
           onlyOkButton: true,
           buttonCancelText: Text(getTranslated(context, 'login_alert_d_cancel'),
-              style: TextStyle(fontFamily: "CustomIcons", fontSize: 16)),
+              style: TextStyle(fontFamily: "CustomFont", fontSize: 16)),
           buttonOkText: Text(getTranslated(context, 'login_alert_d_ok'),
               style: TextStyle(
-                  fontFamily: "CustomIcons",
+                  fontFamily: "CustomFont",
                   fontSize: 16,
                   color: Colors.white)),
           buttonOkColor: Colors.redAccent,
@@ -427,13 +686,13 @@ class _LoginState extends State<Login>{
             title,
             style: TextStyle(
                 fontSize: 18.0,
-                fontFamily: "CustomIcons",
+                fontFamily: "CustomFont",
                 color: Colors.redAccent),
           ),
           description: Text(
             text,
             textAlign: TextAlign.center,
-            style: TextStyle(fontFamily: "CustomIcons", fontSize: 16),
+            style: TextStyle(fontFamily: "CustomFont", fontSize: 16),
           ),
           onOkButtonPressed: () {
             Navigator.pop(context);
@@ -447,10 +706,10 @@ class _LoginState extends State<Login>{
         builder: (_) => AssetGiffyDialog(
           onlyOkButton: true,
           buttonCancelText: Text(getTranslated(context, 'login_alert_d_cancel'),
-              style: TextStyle(fontFamily: "CustomIcons", fontSize: 16)),
+              style: TextStyle(fontFamily: "CustomFont", fontSize: 16)),
           buttonOkText: Text(getTranslated(context, 'login_alert_d_ok'),
               style: TextStyle(
-                  fontFamily: "CustomIcons",
+                  fontFamily: "CustomFont",
                   fontSize: 16,
                   color: Colors.white)),
           buttonOkColor: Colors.green,
@@ -459,13 +718,13 @@ class _LoginState extends State<Login>{
             title,
             style: TextStyle(
                 fontSize: 18.0,
-                fontFamily: "CustomIcons",
+                fontFamily: "CustomFont",
                 color: Colors.green),
           ),
           description: Text(
             text,
             textAlign: TextAlign.center,
-            style: TextStyle(fontFamily: "CustomIcons", fontSize: 16),
+            style: TextStyle(fontFamily: "CustomFont", fontSize: 16),
           ),
           onOkButtonPressed: () {
             Navigator.pop(context);
@@ -478,10 +737,34 @@ class _LoginState extends State<Login>{
       margin: EdgeInsets.only(top: 30, left: 30, right: 30),
       child: Column(
         children: <Widget>[
-          _facebookButton(),
-          _googleButton(),
           _signInButton(),
           _signUpButton(),
+          Container(
+              margin: const EdgeInsets.symmetric(
+                  horizontal: 20.0, vertical: 30.0),
+              child: Row(children: <Widget>[
+                Expanded(
+                    child: Divider(
+                      color: Colors.black,
+                      thickness: 1,
+                    )),
+                Text(
+                  "  أو  ",
+                  style: TextStyle(
+                    fontSize: 22,
+                    color: Colors.black,
+                    fontFamily: "CustomFont",
+                  ),
+                ),
+                Expanded(
+                    child: Divider(
+                      color: Colors.black,
+                      thickness: 1,
+                    )),
+              ])),
+          _facebookButton(),
+          _googleButton(),
+
         ],
       ),
     );
@@ -497,13 +780,13 @@ class _LoginState extends State<Login>{
               controller: _emailController,
               hint: getTranslated(context, 'login_email_hint'),
               icon: Icons.email),
-          _inputField(
+          _passField(
               controller: _passwordController,
               hint: getTranslated(context, 'login_password_hint'),
               icon: Icons.vpn_key),
           MaterialButton(
             textColor: Colors.black54,
-            child: Text(getTranslated(context, 'login_reset_pass_main')),
+            child: Text(getTranslated(context, 'login_reset_pass_main'),style: TextStyle(fontFamily: "CustomFont"),),
             onPressed: () {
               setState(() {
                 form = 3;
@@ -572,7 +855,7 @@ class _LoginState extends State<Login>{
               icon: Icons.vpn_key),
           Row(
             children: <Widget>[
-            Expanded(child: Text(getTranslated(context, 'login_country_btn'),)),
+            Expanded(child: Text(getTranslated(context, 'login_country_btn'),style: TextStyle(fontFamily: "CustomFont",),)),
             Expanded(child: InkWell(
               onTap: () {
                 setState(() {
@@ -597,12 +880,12 @@ class _LoginState extends State<Login>{
                 margin: EdgeInsets.symmetric(vertical: 5),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(30)),
-                  color: Color(0xFF55efc4),
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                  color: Colors.grey,
                 ),
                 child: Text(
                   _countryBtnHint,
-                  style: TextStyle(fontSize: 14, color: Color(0xFF2f3640)),
+                  style: TextStyle(fontSize: 14, color: Colors.white,fontFamily: "CustomFont"),
                 ),
               ),
             ),),
@@ -923,47 +1206,17 @@ class _LoginState extends State<Login>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFa32430),
-        body: SingleChildScrollView(
-      child: Container(
-        // decoration: BoxDecoration(
-        //   gradient: LinearGradient(
-        //     begin: Alignment.topRight,
-        //     end: Alignment.bottomLeft,
-        //     stops: [
-        //       0.3,
-        //       0.45,
-        //     ],
-        //     colors: [
-        //       Colors.tealAccent,
-        //       Colors.white,
-        //     ],
-        //   ),
-        // ),
-        height: MediaQuery.of(context).size.height,
+      backgroundColor: Color(0xFFffffff),
+        body: Container (
+      child: SingleChildScrollView(
+        //height: MediaQuery.of(context).size.height,
         //color: Color(0xffdcdde1),
         child: Column(
           children: <Widget>[
             Container(
-              height: MediaQuery.of(context).size.height * 0.35,
+              //height: MediaQuery.of(context).size.height * 0.4,
               decoration: BoxDecoration(
-                color: Color(0xFFa32430),
-                /*gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  stops: [
-                    0.1,
-                    0.4,
-                    0.6,
-                    0.9,
-                  ],
-                  colors: [
-                    Colors.amber,
-                    Colors.red,
-                    Colors.pinkAccent,
-                    Colors.brown,
-                  ],
-                ),*/
+                color: Color(0xFFffffff),
                 borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(10),
                   bottomLeft: Radius.circular(10),
@@ -973,8 +1226,9 @@ class _LoginState extends State<Login>{
                 child: Column(
                   children: [
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.05,
+                      height: 50,
                     ),
+                    Image.asset("assets/images/text_logo.png",width: MediaQuery.of(context).size.width/1.7),
 
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -982,10 +1236,10 @@ class _LoginState extends State<Login>{
                         Padding(
                           padding: const EdgeInsets.all(3.0),
                           child: DropdownButton(
-                            dropdownColor: Colors.white,
+                            dropdownColor: Colors.blue,
                             icon: Icon(
                               Icons.language,
-                              color: Colors.white,
+                              color: Colors.grey,
                             ),
                             underline: SizedBox(),
                             items: Language.languageList()
@@ -1012,15 +1266,11 @@ class _LoginState extends State<Login>{
                 ),
               ),
             ),
-            Expanded(
-              child: Center(
-                child: _formRouter(),
-              ),
-            ),
+            _formRouter(),
             Container(
-              height: MediaQuery.of(context).size.height * 0.05,
+              height: MediaQuery.of(context).size.height * 0.1,
               decoration: BoxDecoration(
-                color: Color(0xFF240046),
+                color: Color(0xFFffffff),
                 /*gradient: LinearGradient(
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
@@ -1042,8 +1292,8 @@ class _LoginState extends State<Login>{
               ),
               child: Center(
                 child: MaterialButton(
-                  textColor: Color(0xffffffff),
-                  child: Text(getTranslated(context, 'login_sign_later_btn'),style: TextStyle(fontFamily: 'CustomFont'),),
+                  textColor: Color(0xff000000),
+                  child: Text(getTranslated(context, 'login_sign_later_btn'),style: TextStyle(fontFamily: 'CustomFont',fontSize: 20,fontWeight: FontWeight.bold),),
                   onPressed: () {
                     Navigator.pushNamed(context, homeRoute);
                   },

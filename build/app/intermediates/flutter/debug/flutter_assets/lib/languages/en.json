@@ -46,6 +46,7 @@
   "drawer_favorites" : "Favorites",
   "drawer_about_us" : "About Us",
   "drawer_terms" : "Terms",
+  "drawer_faq" : "FAQ",
   "drawer_privacy_policy" : "Privacy Policy",
   "drawer_contact_us" : "Contact Us",
   "drawer_login" : "Sign in",
@@ -109,5 +110,13 @@
   "home_alert_r_login_content" : "You must first log in to be able to rate this Coupon",
   "home_alert_c_login_content" : "You must first log in to be able to copy this Code",
 
-  "countries_title" : "Countries"
+  "countries_title" : "Countries",
+  "countries_coupons_title" : "Coupons available in ",
+
+  "login_text": "Log In",
+  "new_account": "Sign Up",
+  "login_facebook": "Continue with Facebook",
+  "login_google": "Continue with Google",
+  "Copied": " The code has been copied ",
+  "search_results": "Search results for "
 }

@@ -8,6 +8,7 @@ import 'package:couponsgate/modules/Language.dart';
 import 'package:couponsgate/widgets/countries.dart';
 import 'package:couponsgate/widgets/favorites.dart';
 import 'package:couponsgate/widgets/home.dart';
+import 'package:couponsgate/widgets/stores/all_stores.dart';
 import 'package:flutter/material.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -354,7 +355,7 @@ class _SettingsState extends State<Settings> {
     if (bcIndex == 0) {
       return Text(
         label,
-        style: TextStyle(fontSize: 20, color:Color(0xff34495e),fontFamily: "CustomFont",),
+        style: TextStyle(fontSize: 20, color:Colors.white,fontFamily: "CustomFont",),
       );
     } else {
       return CircularProgressIndicator(
@@ -371,11 +372,13 @@ class _SettingsState extends State<Settings> {
       child: Container(
         height: 50,
         width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.symmetric(vertical: 7),
+        padding: const EdgeInsets.all(7),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(30)),
-          color: Color(0xFF7ed6df),
+            border: Border.all(color: Colors.white),
+            //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+            borderRadius: BorderRadius.circular(5),
+            color: Color(0xFF2196f3)
         ),
         child: buttonChild( _saveBtnChildIndex , getTranslated(context, 'settings_save_btn'),),
       ),
@@ -630,18 +633,19 @@ class _SettingsState extends State<Settings> {
                   });
                 },
                 child: Container(
-                  height: 30,
-                  width: MediaQuery.of(context).size.width*0.3,
-                  padding: EdgeInsets.symmetric(vertical: 3),
-                  margin: EdgeInsets.symmetric(vertical: 5),
+                  height: 50,
+                  width: MediaQuery.of(context).size.width,
+                  padding: const EdgeInsets.all(10),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
-                    color: Color(0xFF55efc4),
+                      border: Border.all(color: Colors.white),
+                      //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                      borderRadius: BorderRadius.circular(5),
+                      color: Colors.grey
                   ),
                   child: Text(
                     _countryBtnHint,
-                    style: TextStyle(fontSize: 14, color: Color(0xFF2f3640)),
+                    style: TextStyle(fontSize: 14, color: Colors.white),
                   ),
                 ),
               ),),
@@ -800,7 +804,7 @@ class _SettingsState extends State<Settings> {
     } else if (index == 1) {
       Navigator.of(context).push(
         new MaterialPageRoute(
-            builder: (BuildContext context) => null),
+            builder: (BuildContext context) => new AllStores()),
       );
     } else if (index == 2) {
       Navigator.of(context).push(new MaterialPageRoute(
@@ -809,8 +813,8 @@ class _SettingsState extends State<Settings> {
       Navigator.of(context).push(new MaterialPageRoute(
           builder: (BuildContext context) => new Favorites()));
     } else if (index == 4) {
-      Navigator.of(context).push(new MaterialPageRoute(
-          builder: (BuildContext context) => new Settings()));
+      /*Navigator.of(context).push(new MaterialPageRoute(
+          builder: (BuildContext context) => new Settings()));*/
     }
   }
 }

@@ -2,9 +2,11 @@ import 'dart:convert';
 import 'package:couponsgate/localization/localizationValues.dart';
 import 'package:couponsgate/modules/ApiAssistant.dart';
 import 'package:couponsgate/modules/Code.dart';
+import 'package:couponsgate/modules/Country.dart';
 import 'package:couponsgate/modules/Coupon.dart';
 import 'package:couponsgate/modules/Favorite.dart';
 import 'package:couponsgate/modules/HomeApiAssistant.dart';
+import 'package:couponsgate/modules/Language.dart';
 import 'package:couponsgate/modules/Rating.dart';
 import 'package:couponsgate/modules/Store.dart';
 import 'package:couponsgate/widgets/NavDrawer.dart';
@@ -12,6 +14,7 @@ import 'package:couponsgate/widgets/countries.dart';
 import 'package:couponsgate/widgets/favorites.dart';
 import 'package:couponsgate/widgets/login.dart';
 import 'package:couponsgate/widgets/settings.dart';
+import 'package:couponsgate/widgets/stores/all_stores.dart';
 import 'package:couponsgate/widgets/tabs/search_tab.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,6 +26,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../main.dart';
 import '../my_icons_icons.dart';
 
 
@@ -32,6 +36,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  //socket
+
+
 
   HomeApiAssistant homeApi = new HomeApiAssistant();
 
@@ -50,10 +58,15 @@ class _HomeState extends State<Home> {
   bool _isCouponsLoading;
   var _isLoadMore = false;
   var _isCouponsEnd = false;
+  var _isCountryLoading = true;
+  var _isLoading = true;
   String _currentCoupon = '0';
   int lsubmit_btn_child_index = 0;
   int loadModeChildIndicator = 0;
 
+  List<Country> _countries , _rCountries = [];
+  String _countryBtnHint = '+';
+  String _countryID;
 
   String _checkIfInFavs(String cid, List<Favorite> favsCoupons) {
     try {
@@ -177,7 +190,8 @@ class _HomeState extends State<Home> {
     final key = 'country_code';
     final value = prefs.get(key);
 
-    if(value == null)
+    //print('value = $value');
+    if(value == null || value.toString() == '0')
       {
         homeApi.getStores().then((value){
           setState(() {
@@ -322,7 +336,7 @@ class _HomeState extends State<Home> {
     final value = prefs.get(key);
 
     print('guest: $value');
-    if(value == null)
+    if(value == null || value.toString() == '0')
     {
      await _getCoupons().then((value){
         setState(() {
@@ -497,7 +511,7 @@ class _HomeState extends State<Home> {
       });
   }
 
-  couponWidget(int i)
+  couponWidget(int i,BuildContext context)
   {
     return Card(
         shape: RoundedRectangleBorder(
@@ -534,7 +548,7 @@ class _HomeState extends State<Home> {
                         //shape: BoxShape.circle,
                           borderRadius: BorderRadius.circular(5),
                           image: new DecorationImage(
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fill,
                             image: NetworkImage("https://yalaphone.com/appdash/"+_rCoupons[i].logo),
                           )
                       )),
@@ -556,7 +570,22 @@ class _HomeState extends State<Home> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                InkWell(onTap:(){ } , child: Container(
+                InkWell(onTap:(){
+                  ClipboardManager.copyToClipBoard(
+                      _rCoupons[i].code)
+                      .then((result) {
+                    final snackBar = SnackBar(
+                      content: Text(getTranslated(context, 'Copied') + _rCoupons[i].code),
+                    );
+                    setState(() {
+                      Scaffold.of(context).showSnackBar(snackBar);
+                    });
+
+                  });
+
+                  if(homeApi.checkIfInCodes(_rCoupons[i].id, _rCodes) == null)
+                    _copyCode(_rCoupons[i].id , _rCoupons[i].code);
+                }, child: Container(
                     width: 200,
                     padding: const EdgeInsets.all(3),
                     alignment: Alignment.center,
@@ -648,7 +677,7 @@ class _HomeState extends State<Home> {
             ),
             SizedBox(height: 15,),
             Padding(
-                padding: const EdgeInsets.only(top:5,left: 10,right: 10,bottom: 5),
+                padding: const EdgeInsets.only(top:5,left: 10,right: 10,bottom: 0),
                 child:Row(
 
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -657,10 +686,22 @@ class _HomeState extends State<Home> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
 
-                    //shop now
+                    //copy code
                     Column(
                       children: [
                         InkWell(onTap:(){
+                          ClipboardManager.copyToClipBoard(
+                              _rCoupons[i].code)
+                              .then((result) {
+                            final snackBar = SnackBar(
+                              content: Text(getTranslated(context, 'Copied') + _rCoupons[i].code),
+                            );
+                            setState(() {
+                              Scaffold.of(context).showSnackBar(snackBar);
+                            });
+
+                          });
+
                           if(homeApi.checkIfInCodes(_rCoupons[i].id, _rCodes) == null)
                             _copyCode(_rCoupons[i].id , _rCoupons[i].code);
                         } , child: Container(
@@ -668,10 +709,10 @@ class _HomeState extends State<Home> {
                           padding: const EdgeInsets.all(3),
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
-                              border: Border.all(color: Colors.deepOrange),
+                              border: Border.all(color: Colors.green),
                               //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
                               borderRadius: BorderRadius.circular(5),
-                              color: Colors.deepOrange),
+                              color: Colors.green),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
@@ -704,7 +745,7 @@ class _HomeState extends State<Home> {
                       ],
                     ),
 
-                    //favorite
+                    //pos rating
                     Column(
                       children: [
                         InkWell(
@@ -730,6 +771,7 @@ class _HomeState extends State<Home> {
                       ],
                     ),
 
+                    //neg rating
                     Column(
                       children: [
                         InkWell(onTap:(){
@@ -775,7 +817,7 @@ class _HomeState extends State<Home> {
                       padding: const EdgeInsets.all(3),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white),
+                          border: Border.all(color: Color(0xFF2196f3)),
                           //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
                           borderRadius: BorderRadius.circular(5),
                           color: Color(0xFF2196f3)),
@@ -1014,7 +1056,7 @@ class _HomeState extends State<Home> {
             code)
             .then((result) {
           final snackBar = SnackBar(
-            content: Text('Copied ' + code),
+            content: Text(getTranslated(context, 'Copied') + code),
           );
           setState(() {
             Scaffold.of(context).showSnackBar(snackBar);
@@ -1038,43 +1080,17 @@ class _HomeState extends State<Home> {
 
       } else {
 
-        showDialog(
-            context: context,
-            builder: (_) => AssetGiffyDialog(
-              onlyOkButton: false,
-              buttonCancelText: Text(getTranslated(context, 'login_alert_d_cancel'),
-                  style: TextStyle(fontFamily: "CustomFont", fontSize: 16)),
-              buttonOkText: Text(getTranslated(context, 'home_alert_login_ok_btn'),
-                  style: TextStyle(
-                      fontFamily: "CustomFont",
-                      fontSize: 16,
-                      color: Colors.white)),
-              buttonOkColor: Colors.redAccent,
-              image: Image.asset('assets/images/alert.png', fit: BoxFit.cover),
-              title: Text(
-                getTranslated(context, 'home_alert_login_title'),
-                style: TextStyle(
-                    fontSize: 18.0,
-                    fontFamily: "CustomFont",
-                    color: Colors.redAccent),
-              ),
-              description: Text(
-                getTranslated(context, 'home_alert_c_login_content'),
-                textAlign: TextAlign.center,
-                style: TextStyle(fontFamily: "CustomFont", fontSize: 16),
-              ),
-              onOkButtonPressed: () {
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Login()),
-                      (Route<dynamic> route) => false,
-                );
-              },
-              onCancelButtonPressed: (){
-                Navigator.pop(context);
-              },
-            ));
+        ClipboardManager.copyToClipBoard(
+            code)
+            .then((result) {
+          final snackBar = SnackBar(
+            content: Text(getTranslated(context, 'Copied') + code),
+          );
+          setState(() {
+            Scaffold.of(context).showSnackBar(snackBar);
+          });
+
+        });
 
       }
     });
@@ -1087,6 +1103,12 @@ class _HomeState extends State<Home> {
     } else {
       throw 'Could not launch $url';
     }
+  }
+
+  void _changeLanguage(Language lang) async {
+    Locale _locale = await setLocale(lang.code);
+
+    MyApp.setLocale(context, _locale);
   }
 
   @override
@@ -1135,6 +1157,8 @@ class _HomeState extends State<Home> {
     _initializeCouponsSection();
 
     //print('initialize !');
+
+    _getCountries();
   }
 
   @override
@@ -1147,12 +1171,43 @@ class _HomeState extends State<Home> {
         shadowColor: Colors.white,
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: Text(getTranslated(context, 'home_title'),style: TextStyle(fontFamily: 'CustomFont',color: Colors.black),),
+        title: Text(getTranslated(context, 'home_title'),style: TextStyle(fontFamily: 'CustomFont',color: Colors.black,fontWeight: FontWeight.bold),),
+        actions: [
+          Padding(
+              padding: const EdgeInsets.only(top:10,right: 10,left: 10,bottom: 0),
+              child: DropdownButton(
+            dropdownColor: Colors.grey,
+            icon: Icon(
+              Icons.language,
+              color: Colors.blue,
+            ),
+            underline: SizedBox(),
+            items: Language.languageList()
+                .map<DropdownMenuItem<Language>>(
+                    (lang) => DropdownMenuItem(
+                  value: lang,
+                  child: Text(
+                    lang.name,
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      color: Colors.black,
+                    ),
+                  ),
+                ))
+                .toList(),
+            onChanged: (Language lang) {
+              _changeLanguage(lang);
+            },
+          )),
+        ],
       ),
       body:Builder(
           builder: (context) => SingleChildScrollView(
               controller: _controller,
               child: Column(children: [
+
+
+
                 //search card
                 Card(
                     shape: RoundedRectangleBorder(
@@ -1181,7 +1236,7 @@ class _HomeState extends State<Home> {
                                   controller: search_nameController,
                                   keyboardType: TextInputType.text,
                                   maxLines: null,
-                                  textAlign: TextAlign.right,
+                                  //textAlign: TextAlign.right,
                                   decoration: InputDecoration(
                                     filled: true,
                                     fillColor: Colors.white,
@@ -1201,7 +1256,7 @@ class _HomeState extends State<Home> {
 
                                   ),
                                 onFieldSubmitted: (String str){Navigator.of(context).push(new MaterialPageRoute(
-                                    builder: (BuildContext context) => new Search_tab()));},
+                                    builder: (BuildContext context) => new search_tab(text: search_nameController.text.toString())));},
 
 
                               )),
@@ -1220,6 +1275,49 @@ class _HomeState extends State<Home> {
 
                         ])),
 
+
+                /*Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+
+                    Text(getTranslated(context, 'login_country_btn'),style: TextStyle(fontSize: 20,fontFamily: "CustomFont"),),
+                    SizedBox(height: 10,),
+
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          _isLoading = true;
+                        });
+
+                        _showCountriesDialog(context, _rCountries);
+
+
+
+                        setState(() {
+                          _isLoading = false;
+                        });
+                      },
+                      child: Container(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width/2,
+                        padding: const EdgeInsets.all(5.0),
+                        margin: EdgeInsets.symmetric(vertical: 5),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                          color: Colors.grey,
+                        ),
+                        child: _isLoading?CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(Colors.blue,),
+                        ): Text(
+                          _countryBtnHint,
+                          style: TextStyle(fontSize: 20, color: Colors.white,fontFamily: "CustomFont"),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10,),
+                  ],),*/
 //stores text
                 Row(
 
@@ -1231,14 +1329,22 @@ class _HomeState extends State<Home> {
                     children: <Widget>[
                       Padding(
                           padding: const EdgeInsets.only(top:15,right: 10,left: 10,bottom: 0),
-                          child: Text(getTranslated(context, 'home_stores_title'),style: TextStyle(fontSize: 16,fontFamily: "CustomFont",fontWeight: FontWeight.bold,color: Colors.black),)),
+                          child: Text(getTranslated(context, 'home_stores_title'),style: TextStyle(fontSize: 16,fontFamily: "CustomFont",color: Colors.black),)),
 
                       Padding(
                           padding: const EdgeInsets.only(top:15,right: 10,left: 10,bottom: 0),
-                          child: Text(getTranslated(context, 'home_stores_all_btn'),style: TextStyle(fontSize: 15,fontFamily: "CustomFont"),)),
+                          child: InkWell(
+                              onTap: (){Navigator.of(context).push(
+                                new MaterialPageRoute(
+                                    builder: (BuildContext context) => new AllStores()),
+                              );},
+                              child:  Text(getTranslated(context, 'home_stores_all_btn'),style: TextStyle(fontSize: 15,fontFamily: "CustomFont"),)),),
 
 
                     ]),
+
+
+
                 //stores list
                 _isStoresLoading ?
                 Container(
@@ -1375,10 +1481,10 @@ class _HomeState extends State<Home> {
                           padding: const EdgeInsets.only(top:15,right: 10,left: 10,bottom: 0),
                           child: Text(getTranslated(context, 'home_coupons_title'),style: TextStyle(fontSize: 20,fontFamily: "CustomFont",color: Colors.black),)),
 
-                      Padding(
+                      /*Padding(
                           padding: const EdgeInsets.only(top:15,right: 10,left: 10,bottom: 0),
                           child: Text(getTranslated(context, 'home_coupons_all_btn'),style: TextStyle(fontSize: 15,fontFamily: "CustomFont"),)),
-
+*/
 
                     ]),
                 //coupon card
@@ -1392,7 +1498,7 @@ class _HomeState extends State<Home> {
                   ),),
                 ) : Container(
                   child: Column(
-                      children: <Widget>[for(int i = 0 ; i< _rCoupons.length ; i++) couponWidget(i)],
+                      children: <Widget>[for(int i = 0 ; i< _rCoupons.length ; i++) couponWidget(i,context)],
                   ),
                 ),
                 Visibility(
@@ -1436,7 +1542,7 @@ class _HomeState extends State<Home> {
           height: 50,
           //top: -30,
           //curveSize: 100,
-          style: TabStyle.react,
+          style: TabStyle.fixed,
           items: [
             TabItem(icon: MyIcons.globe, title: getTranslated(context, 'home_b_bar_countries')),
             TabItem(icon: Icons.shopping_bag, title: getTranslated(context, 'home_b_bar_stores')),
@@ -1446,7 +1552,8 @@ class _HomeState extends State<Home> {
           ],
           initialActiveIndex: 2,//optional, default as 0
           onTap: onTabTapped,
-        ))
+        )),
+
     );
   }
 
@@ -1459,11 +1566,11 @@ class _HomeState extends State<Home> {
     } else if (index == 1) {
       Navigator.of(context).push(
         new MaterialPageRoute(
-            builder: (BuildContext context) => null),
+            builder: (BuildContext context) => new AllStores()),
       );
     } else if (index == 2) {
-      Navigator.of(context).push(new MaterialPageRoute(
-          builder: (BuildContext context) => new Home()));
+      /*Navigator.of(context).push(new MaterialPageRoute(
+          builder: (BuildContext context) => new Home()));*/
     } else if (index == 3) {
       Navigator.of(context).push(new MaterialPageRoute(
           builder: (BuildContext context) => new Favorites()));
@@ -1479,6 +1586,204 @@ class _HomeState extends State<Home> {
     final snackBar = SnackBar(content: Text('Are you talkin\' to me?'));
     Scaffold.of(context).showSnackBar(snackBar);
   }
+
+  Future _getCountries() async
+  {
+    var csResponse = await http
+        .get('https://yalaphone.com/appdash/rest_api/countries/getAllCountries.php');
+    var csData = json.decode(csResponse.body);
+    Country tCountry;
+    _countries = [];
+
+    Map<String,dynamic> q = json.decode('{"id":"0","ar-name":"كل الدول","en-name":"All countries","flag":""}');
+    _countries.add(Country.fromJson(q));
+
+    for (var ques in csData['countries']) {
+      tCountry = Country.fromJson(ques);
+      print(tCountry.id);
+
+      _countries.add(tCountry);
+      //print('depart length is : ' + departs.length.toString());
+    }
+
+    setState(() {
+      _rCountries = List.from(_countries);
+      _isLoading = false;
+      _isCountryLoading = false;
+      //_showCountriesDialog(context, _rCountries);
+    });
+
+
+  }
+
+  Future _updateCountries(String user_id, String country_id) async
+  {
+    int success = 0;
+
+    String myUrl = "https://yalaphone.com/appdash/rest_api/countries/update_user_country.php";
+    http.Response response = await http.post(myUrl, body: {
+      'user_id': user_id,
+      'country_id': country_id,
+    });
+
+    print(response.body.toString());
+
+    if(response.body.toString().trim() == 'success')
+    {
+      success = 1;
+    }
+
+
+
+    return success;
+  }
+
+  String countryName(context , Country country)
+  {
+    Locale currentLocale = Localizations.localeOf(context);
+
+    if(currentLocale.languageCode == 'ar')
+    {
+      return country.arName;
+    }
+    else
+    {
+      return country.enName;
+    }
+
+  }
+
+  Future<void> changeCountry(context , Country country) async {
+    setState(() {
+      _countryBtnHint = countryName(context , country);
+      _countryID = country.id;
+    });
+
+    final prefs = await SharedPreferences.getInstance();
+    final key6 = 'country_code';
+    final value6 = _countryID;
+    prefs.setString(key6, value6);
+
+    setState(() {
+      _isStoresLoading = true;
+      _isCouponsLoading = true;
+      _currentCoupon = '0';
+      _rFavorites.clear();
+      _rRatings.clear();
+      _rCodes.clear();
+
+       _rStores.clear();
+       _coupons.clear();
+       _extraCoupons.clear();
+       _rCoupons.clear();
+       _posRatings.clear();
+       _negRatings.clear();
+       _copyTimes.clear();
+    });
+
+    _controller.addListener(_listener);
+
+    homeApi.getUserFavorites().then((value) {
+      setState(() {
+        try{
+          _rFavorites = List.from(value);
+        }catch(e){
+          _rFavorites = [];
+        }
+      });
+    });
+
+    homeApi.getUserRatings().then((value) {
+      setState(() {
+        try{
+          _rRatings = List.from(value);
+        }catch(e){
+          _rRatings = [];
+        }
+      });
+    });
+
+    homeApi.getUserCodes().then((value) {
+      setState(() {
+        try{
+          _rCodes = List.from(value);
+        }catch(e){
+          _rCodes = [];
+        }
+      });
+    });
+
+    _initializeStoresSection();
+    _initializeCouponsSection();
+
+  }
+
+  void _showCountriesDialog(context, List<Country> countries) {
+
+
+
+    showDialog(
+        context: context,
+        builder: (BuildContext bc) {
+          return Dialog(
+            shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+            elevation: 16,
+            child: StatefulBuilder(builder: (context, setState) {
+              return _isLoading ? Container(child: Center(child: CircularProgressIndicator(),),) : Container(
+                height: countries.length <= 4
+                    ? MediaQuery.of(context).size.height * 0.1 * countries.length
+                    : MediaQuery.of(context).size.height * 0.6,
+                child: Column(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Center(
+                        child: Text(
+                          getTranslated(context, 'login_country_btn'),
+                          style: TextStyle(
+                            fontFamily: 'CustomFont',
+                            fontSize: 20.0,
+                            color: Color(0xff275879),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Divider(
+                        thickness: 1.0,
+                        color: Colors.black54,
+                      ),
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: countries.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ListTile(
+                              title: Text(
+                                countryName(context, countries[index]),
+                              ),
+                              onTap: () {
+                                changeCountry(context, countries[index]);
+                                Navigator.of(context, rootNavigator: true)
+                                    .pop();
+                              },
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            }),
+          );
+        });
+  }
+
 }
 
 class Style extends StyleHook {

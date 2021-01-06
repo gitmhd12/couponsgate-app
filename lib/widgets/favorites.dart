@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:couponsgate/widgets/settings.dart';
+import 'package:couponsgate/widgets/stores/all_stores.dart';
 import 'package:http/http.dart' as http;
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:couponsgate/localization/localizationValues.dart';
@@ -13,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'countries.dart';
 import 'my_icons_icons.dart';
 
 class Favorites extends StatefulWidget {
@@ -383,19 +385,19 @@ class _FavoritesState extends State<Favorites> {
     if (index == 0) {
       Navigator.of(context).push(
         new MaterialPageRoute(
-            builder: (BuildContext context) => null),
+            builder: (BuildContext context) => new Countries()),
       );
     } else if (index == 1) {
       Navigator.of(context).push(
         new MaterialPageRoute(
-            builder: (BuildContext context) => null),
+            builder: (BuildContext context) => new AllStores()),
       );
     } else if (index == 2) {
       Navigator.of(context).push(new MaterialPageRoute(
           builder: (BuildContext context) => new Home()));
     } else if (index == 3) {
-      Navigator.of(context).push(new MaterialPageRoute(
-          builder: (BuildContext context) => new Favorites()));
+      /*Navigator.of(context).push(new MaterialPageRoute(
+          builder: (BuildContext context) => new Favorites()));*/
     } else if (index == 4) {
       Navigator.of(context).push(new MaterialPageRoute(
           builder: (BuildContext context) => new Settings()));
