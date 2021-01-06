@@ -1,0 +1,49 @@
+<changelist name="Uncommitted_changes_before_Update_at_1_6_2021_4_59_PM_[Default_Changelist]" date="1609945194418" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_6_2021_4_59_PM_[Default_Changelist]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 1/6/2021 4:59 PM [Default Changelist]" />
+  <binary>
+    <option name="BEFORE_PATH" value="build/app/intermediates/incremental/packageDebug/tmp/debug/zip-cache/AIr4ynMouObi3gFASSfzqZvRBNc=" />
+    <option name="AFTER_PATH" value="build/app/intermediates/incremental/packageDebug/tmp/debug/zip-cache/AIr4ynMouObi3gFASSfzqZvRBNc=" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_6_2021_4_59_PM_[Default_Changelist]/AIr4ynMouObi3gFASSfzqZvRBNc=" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="build/app/intermediates/transforms/dexBuilder/debug/0/io/flutter/plugins/GeneratedPluginRegistrant.dex" />
+    <option name="AFTER_PATH" value="build/app/intermediates/transforms/dexBuilder/debug/0/io/flutter/plugins/GeneratedPluginRegistrant.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_6_2021_4_59_PM_[Default_Changelist]/GeneratedPluginRegistrant.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="build/app/intermediates/javac/debug/classes/io/flutter/plugins/GeneratedPluginRegistrant.class" />
+    <option name="AFTER_PATH" value="build/app/intermediates/javac/debug/classes/io/flutter/plugins/GeneratedPluginRegistrant.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_6_2021_4_59_PM_[Default_Changelist]/GeneratedPluginRegistrant.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="build/app/intermediates/incremental/debug-mergeJavaRes/merge-state" />
+    <option name="AFTER_PATH" value="build/app/intermediates/incremental/debug-mergeJavaRes/merge-state" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_6_2021_4_59_PM_[Default_Changelist]/merge-state" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="build/app/intermediates/incremental/debug-mergeNativeLibs/merge-state" />
+    <option name="AFTER_PATH" value="build/app/intermediates/incremental/debug-mergeNativeLibs/merge-state" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_6_2021_4_59_PM_[Default_Changelist]/merge-state1" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="build/app/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" />
+    <option name="AFTER_PATH" value="build/app/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_6_2021_4_59_PM_[Default_Changelist]/resources-debug.ap_" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="build/app/kotlin/compileDebugKotlin/build-history.bin" />
+    <option name="AFTER_PATH" value="build/app/kotlin/compileDebugKotlin/build-history.bin" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_6_2021_4_59_PM_[Default_Changelist]/build-history.bin" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex" />
+    <option name="AFTER_PATH" value="build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_6_2021_4_59_PM_[Default_Changelist]/classes.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="build/app/kotlin/compileDebugKotlin/last-build.bin" />
+    <option name="AFTER_PATH" value="build/app/kotlin/compileDebugKotlin/last-build.bin" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_6_2021_4_59_PM_[Default_Changelist]/last-build.bin" />
+  </binary>
+</changelist>
