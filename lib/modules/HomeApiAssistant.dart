@@ -370,22 +370,33 @@ class HomeApiAssistant {
       //print(body);
 
       return true;
-    } else {
-      var data = {
-        'user_token': 'anonymous_user_token',
-        'user_id': '',
-        'coupon_id': cid,
-      };
+    } else
+      {
+        final keyList = 'coupons_list';
+        final cList = prefs.get(keyList);
 
-      var res = await http.post(
-          'https://yalaphone.com/appdash/rest_api/codes/copy_code.php',
-          body: data);
-      //print(res.body);
-      //print('sending...');
-      var body = json.decode(res.body);
-      print(body);
+        if(!cList.toString().contains(cid) || cList == null)
+          {
+            var data = {
+              'user_token': 'anonymous_user_token',
+              'user_id': '',
+              'coupon_id': cid,
+            };
 
-      return true;
+            var res = await http.post(
+                'https://yalaphone.com/appdash/rest_api/codes/copy_code.php',
+                body: data);
+            //print(res.body);
+            //print('sending...');
+            var body = json.decode(res.body);
+            print(body);
+
+            prefs.setString(keyList, cList.toString() + cid+',');
+
+            return true;
+          }
+        else
+          return false;
     }
   }
 
