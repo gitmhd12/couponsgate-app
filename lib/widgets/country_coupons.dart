@@ -391,9 +391,13 @@ class _CountryCouponsState extends State<CountryCoupons> {
       );
     }
   }
-  _loadMoreCoupons() async
+  _loadMoreCoupons(String currentCoupon) async
   {
-    _getCouponsByCountry().then((value){
+    setState(() {
+      loadModeChildIndicator = 1;
+    });
+
+    _getCouponsByCountry(currentCoupon).then((value){
       setState(() {
         _extraCoupons = List.from(value);
 
@@ -403,14 +407,17 @@ class _CountryCouponsState extends State<CountryCoupons> {
           {
             _rCoupons.add(coupon);
           }
-          _currentCoupon = _rCoupons.first.id;
+          _currentCoupon = _rCoupons.last.id;
           //print('>>$_currentCoupon');
 
           _getCouponsRatings(_rCoupons).then((value){
-            setState(() {
-              _isCouponsLoading = false;
-              _isLoadMore = true;
+
+            _getCouponsCodes(_rCoupons).then((value){
+              setState(() {
+                _isCouponsLoading = false;
+              });
             });
+
           });
 
         }
@@ -420,13 +427,13 @@ class _CountryCouponsState extends State<CountryCoupons> {
     });
   }
 
-  Future _getCouponsByCountry() async
+  Future _getCouponsByCountry(String currentCoupon) async
   {
 
     var ssResponse = await http
         .post('https://yalaphone.com/appdash/rest_api/coupons/coupons_lazy_load_by_country.php' , body: {
       'country' : widget.country.id,
-      'current_id' : _currentCoupon,
+      'current_id' : currentCoupon,
     });
     var ssData = json.decode(ssResponse.body);
     print(ssData.toString());
@@ -872,10 +879,15 @@ class _CountryCouponsState extends State<CountryCoupons> {
           _isCouponsEnd = false;
         });
       else {
-        setState(() {
-          _isLoadMore = true;
-        });
-
+        if(_rCoupons.length > 10 && _extraCoupons.length == 0)
+          setState(() {
+            _isLoadMore = false;
+            _isCouponsEnd = true;
+          });
+        else
+          setState(() {
+            _isLoadMore = true;
+          });
       }
     } else
       setState(() {
@@ -884,15 +896,15 @@ class _CountryCouponsState extends State<CountryCoupons> {
       });
   }
 
-  _initializeCouponsSection() async
+  _initializeCouponsSection(String currentCoupon) async
   {
-    await _getCouponsByCountry().then((value){
+    await _getCouponsByCountry(currentCoupon).then((value){
       setState(() {
         _rCoupons = List.from(value);
 
         try{
           setState(() {
-            _currentCoupon = _rCoupons.first.id;
+            _currentCoupon = _rCoupons.last.id;
           });
 
         }catch(e){
@@ -958,7 +970,11 @@ class _CountryCouponsState extends State<CountryCoupons> {
       });
     });
 
-    _initializeCouponsSection();
+    homeApi.getLastCouponId().then((lastOne) {
+      setState(() {
+        _initializeCouponsSection(lastOne);
+      });
+    });
 
   }
 
@@ -1002,7 +1018,7 @@ class _CountryCouponsState extends State<CountryCoupons> {
                           textColor: Colors.black54,
                           child: _loadMoreButtonChild(),
                           onPressed: () {
-                            _loadMoreCoupons();
+                            _loadMoreCoupons(_currentCoupon);
                           },
                         ),
                       ),

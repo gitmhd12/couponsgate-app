@@ -83,6 +83,7 @@ class _MyAppState extends State<MyApp> {
         },
         title: 'بوابة الكوبونات',
         theme: ThemeData(
+          fontFamily: 'CustomFont',
           primaryColor: Colors.white,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),

@@ -234,15 +234,15 @@ class _HomeState extends State<Home> {
 
   }
 
-  Future _getCoupons() async
+  Future _getCoupons(String current) async
   {
     var ssResponse = await http
         .post('https://yalaphone.com/appdash/rest_api/coupons/coupons_lazy_load_all.php' ,
-        body: {'current_id' : _currentCoupon});
+        body: {'current_id' : current});
 
     var ssData = json.decode(ssResponse.body);
 
-    print(ssData.toString());
+    //print(ssData.toString());
 
     Coupon tCoupon;
     _coupons = [];
@@ -281,17 +281,17 @@ class _HomeState extends State<Home> {
     return _coupons;
   }
 
-  Future _getCouponsByCountry(String countryCode) async
+  Future _getCouponsByCountry(String countryCode , String current) async
   {
     print(countryCode);
 
     var ssResponse = await http
         .post('https://yalaphone.com/appdash/rest_api/coupons/coupons_lazy_load_by_country.php' , body: {
       'country' : countryCode,
-      'current_id' : _currentCoupon,
+      'current_id' : current,
     });
     var ssData = json.decode(ssResponse.body);
-    print(ssData.toString());
+    //print(ssData.toString());
     Coupon tCoupon;
     _coupons = [];
 
@@ -329,7 +329,7 @@ class _HomeState extends State<Home> {
     return _coupons;
   }
 
-  _initializeCouponsSection() async
+  _initializeCouponsSection(String currentCoupon) async
   {
     final prefs = await SharedPreferences.getInstance();
     final key = 'country_code';
@@ -338,13 +338,13 @@ class _HomeState extends State<Home> {
     print('guest: $value');
     if(value == null || value.toString() == '0')
     {
-     await _getCoupons().then((value){
+     await _getCoupons(currentCoupon).then((value){
         setState(() {
           _rCoupons = List.from(value);
 
           try{
             setState(() {
-              _currentCoupon = _rCoupons.first.id;
+              _currentCoupon = _rCoupons.last.id;
             });
 
           }catch(e){
@@ -369,13 +369,13 @@ class _HomeState extends State<Home> {
     }
     else
     {
-      await _getCouponsByCountry(value).then((value){
+      await _getCouponsByCountry(value , currentCoupon).then((value){
         setState(() {
           _rCoupons = List.from(value);
 
           try{
             setState(() {
-              _currentCoupon = _rCoupons.first.id;
+              _currentCoupon = _rCoupons.last.id;
             });
 
           }catch(e){
@@ -423,7 +423,7 @@ class _HomeState extends State<Home> {
 
   }
 
-  _loadMoreCoupons() async
+  _loadMoreCoupons(String currentCoupon) async
   {
     final prefs = await SharedPreferences.getInstance();
     final key = 'country_code';
@@ -435,7 +435,7 @@ class _HomeState extends State<Home> {
 
     if(value == null)
     {
-      _getCoupons().then((value){
+      _getCoupons(currentCoupon).then((value){
         setState(() {
           _extraCoupons = List.from(value);
 
@@ -445,14 +445,18 @@ class _HomeState extends State<Home> {
             {
               _rCoupons.add(coupon);
             }
-            _currentCoupon = _rCoupons.first.id;
-            //print('>>$_currentCoupon');
+            _currentCoupon = _rCoupons.last.id;
+            print('ex length :' + _extraCoupons.length.toString());
+            print('>>$_currentCoupon');
 
             _getCouponsRatings(_rCoupons).then((value){
-              setState(() {
-                _isCouponsLoading = false;
-                _isLoadMore = true;
+
+              _getCouponsCodes(_rCoupons).then((value){
+                setState(() {
+                  _isCouponsLoading = false;
+                });
               });
+
             });
 
           }
@@ -463,9 +467,10 @@ class _HomeState extends State<Home> {
     }
     else
     {
-      _getCouponsByCountry(value).then((value){
+      _getCouponsByCountry(value , currentCoupon).then((value){
         setState(() {
           _extraCoupons = List.from(value);
+          print('ex length :' + _extraCoupons.length.toString());
 
           if(_extraCoupons.length > 0)
           {
@@ -473,14 +478,17 @@ class _HomeState extends State<Home> {
             {
               _rCoupons.add(coupon);
             }
-            _currentCoupon = _rCoupons.first.id;
-            //print('>>$_currentCoupon');
+            _currentCoupon = _rCoupons.last.id;
+            print('>>$_currentCoupon');
 
             _getCouponsRatings(_rCoupons).then((value){
-              setState(() {
-                _isCouponsLoading = false;
-                _isLoadMore = true;
+
+              _getCouponsCodes(_rCoupons).then((value){
+                setState(() {
+                  _isCouponsLoading = false;
+                });
               });
+
             });
 
           }
@@ -499,10 +507,15 @@ class _HomeState extends State<Home> {
           _isCouponsEnd = false;
         });
       else {
-        setState(() {
-          _isLoadMore = true;
+        if(_rCoupons.length > 10 && _extraCoupons.length == 0)
+          setState(() {
+          _isLoadMore = false;
+          _isCouponsEnd = true;
         });
-
+        else
+          setState(() {
+            _isLoadMore = true;
+          });
       }
     } else
       setState(() {
@@ -1115,6 +1128,8 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
 
+    _rCodes = new List<Code>();
+
     setState(() {
       _isStoresLoading = true;
       _isCouponsLoading = true;
@@ -1154,7 +1169,12 @@ class _HomeState extends State<Home> {
     });
 
     _initializeStoresSection();
-    _initializeCouponsSection();
+    homeApi.getLastCouponId().then((lastOne) {
+      setState(() {
+        _initializeCouponsSection(lastOne);
+      });
+    });
+
 
     //print('initialize !');
 
@@ -1512,7 +1532,7 @@ class _HomeState extends State<Home> {
                           textColor: Colors.black54,
                           child: _loadMoreButtonChild(),
                           onPressed: () {
-                            _loadMoreCoupons();
+                            _loadMoreCoupons(_currentCoupon);
                           },
                         ),
                       ),
@@ -1714,7 +1734,11 @@ class _HomeState extends State<Home> {
     });
 
     _initializeStoresSection();
-    _initializeCouponsSection();
+    homeApi.getLastCouponId().then((lastOne) {
+      setState(() {
+        _initializeCouponsSection(lastOne);
+      });
+    });
 
   }
 

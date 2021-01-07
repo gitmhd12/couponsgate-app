@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-h720dp-v13/values-h720dp-v13.xml",
+            "outputFile": "E:\\Android_Studio_Projects\\couponsgate-app\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h720dp-v13\\values-h720dp-v13.xml",
             "map": [
                 {
-                    "source": "/Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/values-h720dp-v13/values-h720dp-v13.xml",
+                    "source": "C:\\Users\\Nawar\\.gradle\\caches\\transforms-2\\files-2.1\\c0657f060bbaaf69778119b703f4b5fa\\appcompat-1.0.0\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

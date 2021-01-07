@@ -199,8 +199,6 @@ class _LoginState extends State<Login>{
 
   void _showCountriesDialog(context, List<Country> countries) {
 
-
-
     showDialog(
         context: context,
         builder: (BuildContext bc) {
@@ -244,6 +242,21 @@ class _LoginState extends State<Login>{
                             child: ListTile(
                               title: Text(
                                 countryName(context, countries[index]),
+                              ),
+                              trailing: FittedBox(
+                                child: Container(
+                                  height: MediaQuery.of(context).size.width*0.1 ,
+                                  width: MediaQuery.of(context).size.width*0.15,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    image: DecorationImage(
+                                        image: NetworkImage(
+                                            'https://yalaphone.com/appdash/' +
+                                                countries[index].flag),
+                                        fit: BoxFit.cover),
+                                    borderRadius: BorderRadius.circular(7.0),
+                                  ),
+                                ),
                               ),
                               onTap: () {
                                 changeCountry(context, countries[index]);
