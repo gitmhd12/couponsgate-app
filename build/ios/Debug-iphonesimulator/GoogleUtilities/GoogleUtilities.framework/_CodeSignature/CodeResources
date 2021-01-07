@@ -96,6 +96,10 @@
 		<data>
 		t/fXV0x5vnY3wbVku4mOWIkSf9o=
 		</data>
+		<key>PrivateHeaders/GULUserDefaults.h</key>
+		<data>
+		EBGg0ZapNUzyIzb6nCliBREczUA=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -339,6 +343,17 @@
 			<key>hash2</key>
 			<data>
 			kWT1ykqi+tOoUFBDwqhOPx7axNyeUYgduCruJb7EaTQ=
+			</data>
+		</dict>
+		<key>PrivateHeaders/GULUserDefaults.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			EBGg0ZapNUzyIzb6nCliBREczUA=
+			</data>
+			<key>hash2</key>
+			<data>
+			ys09g5WqzZ5D/IaWg2v2AyTadtZDy7y+bS/G95iNTnE=
 			</data>
 		</dict>
 	</dict>
