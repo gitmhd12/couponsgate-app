@@ -132,7 +132,7 @@ class HomeApiAssistant {
     //print(res.body);
     //print('sending...');
     var body = json.decode(res.body);
-    print(body);
+    //print(body);
 
     if (body.toString().contains('negative')) {
       return body['negative'];
@@ -153,7 +153,7 @@ class HomeApiAssistant {
     //print(res.body);
     //print('sending...');
     var body = json.decode(res.body);
-    print(body);
+    //print(body);
 
     if (body.toString().contains('positive')) {
       return body['positive'];
@@ -370,8 +370,33 @@ class HomeApiAssistant {
       //print(body);
 
       return true;
-    } else {
-      return false;
+    } else
+      {
+        final keyList = 'coupons_list';
+        final cList = prefs.get(keyList);
+
+        if(!cList.toString().contains(cid) || cList == null)
+          {
+            var data = {
+              'user_token': 'anonymous_user_token',
+              'user_id': '',
+              'coupon_id': cid,
+            };
+
+            var res = await http.post(
+                'https://yalaphone.com/appdash/rest_api/codes/copy_code.php',
+                body: data);
+            //print(res.body);
+            //print('sending...');
+            var body = json.decode(res.body);
+            print(body);
+
+            prefs.setString(keyList, cList.toString() + cid+',');
+
+            return true;
+          }
+        else
+          return false;
     }
   }
 
@@ -387,10 +412,27 @@ class HomeApiAssistant {
     //print(res.body);
     //print('sending...');
     var body = json.decode(res.body);
-    print(body);
+    //print(body);
 
     if (body.toString().contains('copy_times')) {
       return body['copy_times'];
+    }
+    else
+      return ' ';
+  }
+
+  Future getLastCouponId() async
+  {
+    var res = await http.get(
+        'https://yalaphone.com/appdash/rest_api/coupons/get_last_coupon.php'
+        );
+    //print(res.body);
+    //print('sending...');
+    var body = json.decode(res.body);
+    print(body);
+
+    if (body.toString().contains('last')) {
+      return body['last'];
     }
     else
       return ' ';

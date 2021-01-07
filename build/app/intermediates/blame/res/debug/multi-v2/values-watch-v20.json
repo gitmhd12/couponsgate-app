@@ -1,10 +1,27 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "E:\\Android_Studio_Projects\\couponsgate-app\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
             "map": [
                 {
-                    "source": "/Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/values-watch-v20/values-watch-v20.xml",
+                    "source": "C:\\Users\\Nawar\\.gradle\\caches\\transforms-2\\files-2.1\\dbabb0955c9a18fb8a3cef391fb10ab5\\jetified-play-services-auth-16.0.1\\res\\values-watch-v20\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11",
+                        "startColumns": "0,0,0,0,0,0,0,0",
+                        "startOffsets": "171,246,322,397,472,559,636,723",
+                        "endColumns": "74,75,74,74,86,76,86,75",
+                        "endOffsets": "245,321,396,471,558,635,722,798"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,134,214,293,372,463,544,635",
+                        "endColumns": "78,79,78,78,90,80,90,79",
+                        "endOffsets": "129,209,288,367,458,539,630,710"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Nawar\\.gradle\\caches\\transforms-2\\files-2.1\\c0657f060bbaaf69778119b703f4b5fa\\appcompat-1.0.0\\res\\values-watch-v20\\values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",
@@ -20,23 +37,6 @@
                         "endLines": "12,15,18",
                         "endColumns": "12,12,12",
                         "endOffsets": "869,1040,1213"
-                    }
-                },
-                {
-                    "source": "/Users/sh/.gradle/caches/transforms-2/files-2.1/908559863ef079775604a2227d02f518/jetified-play-services-auth-16.0.1/res/values-watch-v20/values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8,9,10,11",
-                        "startColumns": "0,0,0,0,0,0,0,0",
-                        "startOffsets": "171,246,322,397,472,559,636,723",
-                        "endColumns": "74,75,74,74,86,76,86,75",
-                        "endOffsets": "245,321,396,471,558,635,722,798"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,134,214,293,372,463,544,635",
-                        "endColumns": "78,79,78,78,90,80,90,79",
-                        "endOffsets": "129,209,288,367,458,539,630,710"
                     }
                 }
             ]

@@ -77,15 +77,17 @@ class NavDrawerState extends State<NavDrawer> {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
-                Text(
-                  username,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
-                  textAlign: TextAlign.center,
+                FittedBox(
+                  child: Text(
+                    username,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ],
             ),
@@ -133,7 +135,6 @@ class NavDrawerState extends State<NavDrawer> {
             ),
             title: Text(
               getTranslated(context, 'drawer_about_us'),
-              style: TextStyle(fontFamily: 'CustomIcons'),
             ),
             onTap: () => {
               Navigator.of(context).push(new MaterialPageRoute(
@@ -148,7 +149,6 @@ class NavDrawerState extends State<NavDrawer> {
             ),
             title: Text(
               getTranslated(context, 'drawer_terms'),
-              style: TextStyle(fontFamily: 'CustomIcons'),
             ),
             onTap: () => {
               Navigator.of(context).push(new MaterialPageRoute(
@@ -163,7 +163,6 @@ class NavDrawerState extends State<NavDrawer> {
             ),
             title: Text(
               getTranslated(context, 'drawer_privacy_policy'),
-              style: TextStyle(fontFamily: 'CustomIcons'),
             ),
             onTap: () => {
               Navigator.of(context).push(new MaterialPageRoute(
@@ -178,7 +177,6 @@ class NavDrawerState extends State<NavDrawer> {
             ),
             title: Text(
               getTranslated(context, 'drawer_faq'),
-              style: TextStyle(fontFamily: 'CustomIcons'),
             ),
             onTap: () => {
               Navigator.of(context).push(new MaterialPageRoute(
@@ -196,7 +194,6 @@ class NavDrawerState extends State<NavDrawer> {
             ),
             title: Text(
               getTranslated(context, 'drawer_contact_us'),
-              style: TextStyle(fontFamily: 'CustomIcons'),
             ),
             onTap: () => {
               Navigator.of(context).push(new MaterialPageRoute(
@@ -212,11 +209,9 @@ class NavDrawerState extends State<NavDrawer> {
             title: guest
                 ? Text(
                     getTranslated(context, 'drawer_login'),
-                    style: TextStyle(fontFamily: 'CustomIcons'),
                   )
                 : Text(
                     getTranslated(context, 'drawer_logout'),
-                    style: TextStyle(fontFamily: 'CustomIcons'),
                   ),
             onTap: _logout,
           ),

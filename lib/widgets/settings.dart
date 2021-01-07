@@ -212,6 +212,21 @@ class _SettingsState extends State<Settings> {
                               title: Text(
                                 countryName(context, countries[index]),
                               ),
+                              trailing: FittedBox(
+                                child: Container(
+                                  height: MediaQuery.of(context).size.width*0.1 ,
+                                  width: MediaQuery.of(context).size.width*0.15,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    image: DecorationImage(
+                                        image: NetworkImage(
+                                            'https://yalaphone.com/appdash/' +
+                                                countries[index].flag),
+                                        fit: BoxFit.cover),
+                                    borderRadius: BorderRadius.circular(7.0),
+                                  ),
+                                ),
+                              ),
                               onTap: () {
                                 changeCountry(context, countries[index]);
                                 Navigator.of(context, rootNavigator: true)

@@ -3,6 +3,6 @@
 3    package="creativemaybeno.wakelock" >
 4
 5    <uses-sdk android:minSdkVersion="16" />
-5-->/Users/sh/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/wakelock-0.2.1+1/android/src/main/AndroidManifest.xml
+5-->C:\Flutter SDK\flutter\.pub-cache\hosted\pub.dartlang.org\wakelock-0.2.1+1\android\src\main\AndroidManifest.xml
 6
 7</manifest>
