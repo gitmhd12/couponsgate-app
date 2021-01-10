@@ -92,6 +92,7 @@ androidx/core/app/NotificationCompat$BadgeIconType.class
 androidx/core/app/NotificationCompat$GroupAlertBehavior.class
 androidx/core/app/NotificationCompat$NotificationVisibility.class
 androidx/core/app/NotificationCompat$StreamType.class
+androidx/core/app/RemoteInput$EditChoicesBeforeSending.class
 androidx/core/app/RemoteInput$Source.class
 androidx/core/app/ServiceCompat$StopForegroundFlags.class
 androidx/core/content/PermissionChecker$PermissionResult.class
@@ -113,6 +114,7 @@ androidx/lifecycle/Lifecycle$Event.class
 androidx/lifecycle/OnLifecycleEvent.class
 androidx/media/AudioAttributesCompat$AttributeContentType.class
 androidx/media/AudioAttributesCompat$AttributeUsage.class
+androidx/media/AudioFocusRequestCompat$FocusGainType.class
 androidx/media/VolumeProviderCompat$ControlType.class
 androidx/multidex/MultiDex$V14$ElementConstructor.class
 androidx/multidex/MultiDex$V14$ICSElementConstructor.class
@@ -408,6 +410,11 @@ com/google/firebase/messaging/Constants$ScionAnalytics$MessageType.class
 com/google/firebase/messaging/RemoteMessage$MessagePriority.class
 com/google/firebase/platforminfo/AutoValue_LibraryVersion.class
 com/google/firebase/platforminfo/LibraryVersion.class
+com/google/gson/annotations/Expose.class
+com/google/gson/annotations/JsonAdapter.class
+com/google/gson/annotations/SerializedName.class
+com/google/gson/annotations/Since.class
+com/google/gson/annotations/Until.class
 com/google/j2objc/annotations/AutoreleasePool.class
 com/google/j2objc/annotations/J2ObjCIncompatible.class
 com/google/j2objc/annotations/LoopTranslation$LoopStyle.class

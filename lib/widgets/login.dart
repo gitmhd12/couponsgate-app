@@ -91,7 +91,14 @@ class _LoginState extends State<Login>{
           print('new register');
           Navigator.pushReplacementNamed(context, '/SelectCountry');
         } else if(api.g_login_status == 2){
-          Navigator.pushReplacementNamed(context, '/home');
+          Locale currentLocale = Localizations.localeOf(context);
+          api.updateFirebaseToken(currentLocale.languageCode).whenComplete((){
+            if(api.firebaseStatus)
+            {
+              Navigator.pushReplacementNamed(context, '/home');
+            }
+          }
+          );
         }
 
         setState(() {
@@ -130,7 +137,14 @@ class _LoginState extends State<Login>{
         Navigator.pushReplacementNamed(context, '/SelectCountry');
         //Navigator.pushReplacementNamed(context, '/select_country');
       } else if(api.fb_login_status == 2){
-        Navigator.pushReplacementNamed(context, '/home');
+        Locale currentLocale = Localizations.localeOf(context);
+        api.updateFirebaseToken(currentLocale.languageCode).whenComplete((){
+          if(api.firebaseStatus)
+          {
+            Navigator.pushReplacementNamed(context, '/home');
+          }
+        }
+        );
       }
 
       setState(() {
@@ -841,7 +855,14 @@ class _LoginState extends State<Login>{
               loginBtnChildIndex = 0;
             });
           } else {
-            Navigator.pushReplacementNamed(context, '/home');
+            Locale currentLocale = Localizations.localeOf(context);
+            api.updateFirebaseToken(currentLocale.languageCode).whenComplete((){
+              if(api.firebaseStatus)
+              {
+                Navigator.pushReplacementNamed(context, '/home');
+              }
+            }
+            );
           }
         });
       }
@@ -951,7 +972,14 @@ class _LoginState extends State<Login>{
               registerBtnChildIndex = 0;
             });
           } else {
-            Navigator.pushReplacementNamed(context, '/home');
+            Locale currentLocale = Localizations.localeOf(context);
+            api.updateFirebaseToken(currentLocale.languageCode).whenComplete((){
+              if(api.firebaseStatus)
+              {
+                Navigator.pushReplacementNamed(context, '/home');
+              }
+            }
+            );
           }
         });
       }
@@ -1308,7 +1336,11 @@ class _LoginState extends State<Login>{
                   textColor: Color(0xff000000),
                   child: Text(getTranslated(context, 'login_sign_later_btn'),style: TextStyle(fontFamily: 'CustomFont',fontSize: 20,fontWeight: FontWeight.bold),),
                   onPressed: () {
-                    Navigator.pushNamed(context, homeRoute);
+                    Locale currentLocale = Localizations.localeOf(context);
+                    api.subscribeAnonymousUser(currentLocale.languageCode).whenComplete(() {
+                      Navigator.pushNamed(context, homeRoute);
+                    });
+
                   },
                 ),
               ),

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:couponsgate/localization/localizationValues.dart';
+import 'package:couponsgate/modules/ApiAssistant.dart';
 import 'package:couponsgate/modules/Country.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -12,6 +13,9 @@ class Select_Country extends StatefulWidget {
 }
 
 class _Select_Country_State extends State<Select_Country> {
+
+  ApiAssistant api = new ApiAssistant();
+
   bool _isLoading = false;
   bool _sendLoading = false;
   List<Country> _countries , _rCountries = [];
@@ -231,7 +235,14 @@ class _Select_Country_State extends State<Select_Country> {
                                 print('send data');
                                 print('value is $value');
                                 if(value == 1){
-                                  Navigator.pushReplacementNamed(context, '/home');
+                                  Locale currentLocale = Localizations.localeOf(context);
+                                  api.updateFirebaseToken(currentLocale.languageCode).whenComplete((){
+                                    if(api.firebaseStatus)
+                                    {
+                                      Navigator.pushReplacementNamed(context, '/home');
+                                    }
+                                  }
+                                  );
                                 }
                               });
 

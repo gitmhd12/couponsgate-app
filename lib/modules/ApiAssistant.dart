@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -5,8 +6,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiAssistant {
   final String serverUrl = 'https://yalaphone.com/appdash/rest_api';
+  FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+
   bool registerStatus = false;
   bool loginStatus = false;
+  bool firebaseStatus = false;
   bool emailValidStatus = false;
   bool resetPassStatus = false;
   bool isEmailUsed = false;
@@ -92,6 +96,96 @@ class ApiAssistant {
       loginStatus = true;
     } else {
       loginStatus = false;
+    }
+  }
+
+  Future updateFirebaseToken(String langCode) async
+  {
+
+      String _deviceToken = await _firebaseMessaging.getToken();
+      final prefs = await SharedPreferences.getInstance();
+
+      final key5 = 'token';
+      final value5 = prefs.getString(key5);
+
+      final key6 = 'country_code';
+      final value6 = prefs.getString(key6);
+
+      //Subscribe user to main group and his country group
+      if(langCode == 'ar')
+      {
+        await _firebaseMessaging.subscribeToTopic('ar_all_countries');
+        await _firebaseMessaging.subscribeToTopic('ar_countryID_'+value6.toString());
+      }
+      else
+      {
+        await _firebaseMessaging.subscribeToTopic('en_all_countries');
+        await _firebaseMessaging.subscribeToTopic('en_countryID_'+value6.toString());
+      }
+
+
+      String myUrl = "$serverUrl/update_user_firebase_token.php";
+      http.Response response = await http.post(myUrl, body: {
+        'user_token': value5,
+        'user_fb_token': _deviceToken,
+      });
+
+      print("result: ${response.body}");
+
+      if (response.body.toString().contains("proccess completed successfuly")) {
+
+        var data = json.decode(response.body);
+        print(data.toString());
+        firebaseStatus = true;
+      } else {
+        firebaseStatus = false;
+      }
+
+  }
+
+  Future subscribeAnonymousUser(String langCode) async{
+    if(langCode == 'ar')
+    {
+      await _firebaseMessaging.subscribeToTopic('ar_all_countries');
+    }
+    else
+    {
+      await _firebaseMessaging.subscribeToTopic('en_all_countries');
+    }
+  }
+
+  Future getUserNotificationByLocal(String oldLang , String newLang) async{
+
+    final prefs = await SharedPreferences.getInstance();
+
+    final key6 = 'country_code';
+    final value6 = prefs.getString(key6);
+
+    final key = 'is_login';
+    final value = prefs.getString(key);
+
+    if(oldLang != newLang)
+    {
+      if(newLang == 'ar')
+      {
+        await _firebaseMessaging.unsubscribeFromTopic('en_all_countries');
+        await _firebaseMessaging.subscribeToTopic('ar_all_countries');
+        if(value == '1')
+          {
+            await _firebaseMessaging.unsubscribeFromTopic('en_countryID_'+value6.toString());
+            await _firebaseMessaging.subscribeToTopic('ar_countryID_'+value6.toString());
+          }
+      }
+      else
+      {
+        await _firebaseMessaging.unsubscribeFromTopic('ar_all_countries');
+        await _firebaseMessaging.subscribeToTopic('en_all_countries');
+        if(value == '1')
+        {
+          await _firebaseMessaging.unsubscribeFromTopic('ar_countryID_'+value6.toString());
+          await _firebaseMessaging.subscribeToTopic('en_countryID_'+value6.toString());
+        }
+      }
     }
   }
 

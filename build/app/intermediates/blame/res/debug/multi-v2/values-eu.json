@@ -21,6 +21,23 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\Nawar\\.gradle\\caches\\transforms-2\\files-2.1\\5fd279f3856e70e6b7f85db60eb3b1d8\\core-1.3.0\\res\\values-eu\\values-eu.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "49",
+                        "startColumns": "4",
+                        "startOffsets": "5835",
+                        "endColumns": "100",
+                        "endOffsets": "5931"
+                    }
+                },
+                {
                     "source": "C:\\Users\\Nawar\\.gradle\\caches\\transforms-2\\files-2.1\\a3840d8864a8d120ada1ee51b6614113\\jetified-firebase-messaging-21.0.1\\res\\values-eu\\values.xml",
                     "from": {
                         "startLines": "4",
@@ -52,23 +69,6 @@
                         "startOffsets": "4033",
                         "endColumns": "200",
                         "endOffsets": "4229"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Nawar\\.gradle\\caches\\transforms-2\\files-2.1\\44b1706abe044cd42dcac5be863451ed\\core-1.1.0\\res\\values-eu\\values-eu.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "49",
-                        "startColumns": "4",
-                        "startOffsets": "5835",
-                        "endColumns": "100",
-                        "endOffsets": "5931"
                     }
                 },
                 {

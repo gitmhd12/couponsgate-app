@@ -22,17 +22,17 @@ public final class R {
     public static final class color {
         private color() {}
 
-        public static final int common_google_signin_btn_text_dark = 0x7f04003b;
-        public static final int common_google_signin_btn_text_dark_default = 0x7f04003c;
-        public static final int common_google_signin_btn_text_dark_disabled = 0x7f04003d;
-        public static final int common_google_signin_btn_text_dark_focused = 0x7f04003e;
-        public static final int common_google_signin_btn_text_dark_pressed = 0x7f04003f;
-        public static final int common_google_signin_btn_text_light = 0x7f040040;
-        public static final int common_google_signin_btn_text_light_default = 0x7f040041;
-        public static final int common_google_signin_btn_text_light_disabled = 0x7f040042;
-        public static final int common_google_signin_btn_text_light_focused = 0x7f040043;
-        public static final int common_google_signin_btn_text_light_pressed = 0x7f040044;
-        public static final int common_google_signin_btn_tint = 0x7f040045;
+        public static final int common_google_signin_btn_text_dark = 0x7f04003d;
+        public static final int common_google_signin_btn_text_dark_default = 0x7f04003e;
+        public static final int common_google_signin_btn_text_dark_disabled = 0x7f04003f;
+        public static final int common_google_signin_btn_text_dark_focused = 0x7f040040;
+        public static final int common_google_signin_btn_text_dark_pressed = 0x7f040041;
+        public static final int common_google_signin_btn_text_light = 0x7f040042;
+        public static final int common_google_signin_btn_text_light_default = 0x7f040043;
+        public static final int common_google_signin_btn_text_light_disabled = 0x7f040044;
+        public static final int common_google_signin_btn_text_light_focused = 0x7f040045;
+        public static final int common_google_signin_btn_text_light_pressed = 0x7f040046;
+        public static final int common_google_signin_btn_tint = 0x7f040047;
     }
     public static final class drawable {
         private drawable() {}
