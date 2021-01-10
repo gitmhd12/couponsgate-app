@@ -262,9 +262,15 @@ class _SettingsState extends State<Settings> {
   }
 
   void _changeLanguage(Language lang) async {
-    Locale _locale = await setLocale(lang.code);
+    Locale currentLocale = Localizations.localeOf(context);
 
-    MyApp.setLocale(context, _locale);
+    print(lang.code);
+    print(currentLocale.languageCode);
+
+    api.getUserNotificationByLocal(currentLocale.languageCode, lang.code).whenComplete(() async {
+      Locale _locale = await setLocale(lang.code);
+      MyApp.setLocale(context, _locale);
+    });
   }
 
   Widget _inputField({controller, hint, icon , inputType}) {

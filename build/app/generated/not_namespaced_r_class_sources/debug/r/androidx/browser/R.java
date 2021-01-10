@@ -37,14 +37,14 @@ public final class R {
     public static final class color {
         private color() {}
 
-        public static final int browser_actions_bg_grey = 0x7f040024;
-        public static final int browser_actions_divider_color = 0x7f040025;
-        public static final int browser_actions_text_color = 0x7f040026;
-        public static final int browser_actions_title_color = 0x7f040027;
-        public static final int notification_action_color_filter = 0x7f04005c;
-        public static final int notification_icon_bg_color = 0x7f04005d;
-        public static final int ripple_material_light = 0x7f040068;
-        public static final int secondary_text_default_material_light = 0x7f04006a;
+        public static final int browser_actions_bg_grey = 0x7f040026;
+        public static final int browser_actions_divider_color = 0x7f040027;
+        public static final int browser_actions_text_color = 0x7f040028;
+        public static final int browser_actions_title_color = 0x7f040029;
+        public static final int notification_action_color_filter = 0x7f04005e;
+        public static final int notification_icon_bg_color = 0x7f04005f;
+        public static final int ripple_material_light = 0x7f04006a;
+        public static final int secondary_text_default_material_light = 0x7f04006c;
     }
     public static final class dimen {
         private dimen() {}

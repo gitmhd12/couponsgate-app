@@ -17,10 +17,12 @@ import 'package:couponsgate/widgets/settings.dart';
 import 'package:couponsgate/widgets/stores/all_stores.dart';
 import 'package:couponsgate/widgets/tabs/search_tab.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:clipboard_manager/clipboard_manager.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -37,11 +39,10 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  //socket
-
 
 
   HomeApiAssistant homeApi = new HomeApiAssistant();
+  ApiAssistant api = new ApiAssistant();
 
   final search_nameController = TextEditingController();
   var _controller = ScrollController();
@@ -67,6 +68,88 @@ class _HomeState extends State<Home> {
   List<Country> _countries , _rCountries = [];
   String _countryBtnHint = '+';
   String _countryID;
+
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+  new FlutterLocalNotificationsPlugin();
+
+
+  Future onSelectNotification(String payload) async {
+    showDialog(
+      context: context,
+      builder: (_) {
+        return new AlertDialog(
+          title: Text("PayLoad"),
+          content: Text("Payload : $payload"),
+        );
+      },
+    );
+  }
+  void showNotification(String title, String body) async {
+    await _demoNotification(title, body);
+  }
+
+  Future<void> _demoNotification(String title, String body) async {
+
+    var androidPlatformChannelSpecifics = AndroidNotificationDetails(
+        'channel_ID', 'channel name', 'channel description',
+        importance: Importance.max,
+        playSound: true,
+        showProgress: true,
+        priority: Priority.high,
+        ticker: 'test ticker');
+
+    var iOSChannelSpecifics = IOSNotificationDetails();
+    var platformChannelSpecifics = NotificationDetails(
+        android: androidPlatformChannelSpecifics, iOS: iOSChannelSpecifics);
+    await flutterLocalNotificationsPlugin
+        .show(0, title, body, platformChannelSpecifics, payload: 'test');
+  }
+
+  handleNotificationByLocal(context , Map<String, dynamic> message)
+  {
+    Locale currentLocale = Localizations.localeOf(context);
+
+    if(currentLocale.languageCode == 'ar')
+    {
+      showNotification(
+          message['data']['ar_title'], message['data']['ar_content']);
+    }
+    else
+    {
+      showNotification(
+          message['data']['en_title'], message['data']['en_content']);
+    }
+
+  }
+
+  void initializeNotificationsConfigs() {
+    var initializationSettingsAndroid =
+    new AndroidInitializationSettings('@mipmap/ic_launcher');
+    var initializationSettingsIOS = new IOSInitializationSettings();
+    var initializationSettings = new InitializationSettings(
+        android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
+
+    flutterLocalNotificationsPlugin.initialize(initializationSettings,
+        onSelectNotification: onSelectNotification);
+
+    _firebaseMessaging.configure(
+      onMessage: (Map<String, dynamic> message) async {
+        showNotification(
+            message['notification']['title'], message['notification']['body']);
+        print("onMessage: $message");
+      },
+      onLaunch: (Map<String, dynamic> message) async {
+        print("onLaunch: $message");
+        //Navigator.pushNamed(context, '/notify');
+      },
+      onResume: (Map<String, dynamic> message) async {
+        print("onResume: $message");
+      },
+    );
+
+  }
 
   String _checkIfInFavs(String cid, List<Favorite> favsCoupons) {
     try {
@@ -1119,14 +1202,23 @@ class _HomeState extends State<Home> {
   }
 
   void _changeLanguage(Language lang) async {
-    Locale _locale = await setLocale(lang.code);
+    Locale currentLocale = Localizations.localeOf(context);
 
-    MyApp.setLocale(context, _locale);
+    print(lang.code);
+    print(currentLocale.languageCode);
+
+    api.getUserNotificationByLocal(currentLocale.languageCode, lang.code).whenComplete(() async {
+      Locale _locale = await setLocale(lang.code);
+      MyApp.setLocale(context, _locale);
+    });
+
   }
 
   @override
   void initState() {
     super.initState();
+
+    initializeNotificationsConfigs();
 
     _rCodes = new List<Code>();
 

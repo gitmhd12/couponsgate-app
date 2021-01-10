@@ -1,6 +1,5 @@
 import 'dart:async';
-import 'dart:io';
-
+import 'package:couponsgate/modules/ApiAssistant.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -10,13 +9,25 @@ class Splash extends StatefulWidget {
 }
 
 class _Splash extends State<Splash> {
-  check_login() async {
+
+  ApiAssistant api = new ApiAssistant();
+
+  checkLogin() async {
     final prefs = await SharedPreferences.getInstance();
     final key = 'is_login';
     final is_login_value = prefs.get(key) ?? 0;
 
     if (is_login_value == "1") {
-      Navigator.pushReplacementNamed(context, '/home');
+
+      Locale currentLocale = Localizations.localeOf(context);
+      api.updateFirebaseToken(currentLocale.languageCode).whenComplete((){
+        if(api.firebaseStatus)
+        {
+          Navigator.pushReplacementNamed(context, '/home');
+        }
+      }
+      );
+
     } else {
 
       //check if first time go to home
@@ -33,7 +44,7 @@ class _Splash extends State<Splash> {
     // Start the periodic timer which prints something after 5 seconds and then stop it .
 
     Timer timer=  new Timer.periodic(new Duration(seconds: 7), (time) {
-      check_login();
+      checkLogin();
       time.cancel();
     });
 // Start the periodic timer which prints something after 5 minutes and then stop it .

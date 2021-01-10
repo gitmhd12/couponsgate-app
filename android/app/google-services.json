@@ -37,6 +37,13 @@
             {
               "client_id": "141582114934-ojh565jh0hjabjui9qgfnqmn156o7qaf.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "141582114934-nc4e626venqtq157gt071qk3rvkojmth.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "net.couponsgate"
+              }
             }
           ]
         }
