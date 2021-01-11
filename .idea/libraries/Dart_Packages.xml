@@ -212,6 +212,20 @@
             </list>
           </value>
         </entry>
+        <entry key="flutter_local_notifications">
+          <value>
+            <list>
+              <option value="$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_local_notifications-3.0.2/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="flutter_local_notifications_platform_interface">
+          <value>
+            <list>
+              <option value="$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_local_notifications_platform_interface-2.0.0+1/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="flutter_localizations">
           <value>
             <list>
@@ -520,6 +534,13 @@
             </list>
           </value>
         </entry>
+        <entry key="timezone">
+          <value>
+            <list>
+              <option value="$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/timezone-0.5.9/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="typed_data">
           <value>
             <list>
@@ -678,6 +699,8 @@
       <root url="file://$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/flare_flutter-2.0.6/lib" />
       <root url="file://$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_login-3.0.0/lib" />
       <root url="file://$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-1.1.1/lib" />
+      <root url="file://$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_local_notifications-3.0.2/lib" />
+      <root url="file://$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_local_notifications_platform_interface-2.0.0+1/lib" />
       <root url="file://$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.19.1/lib" />
       <root url="file://$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/font_awesome_flutter-8.10.1/lib" />
       <root url="file://$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/getwidget-1.2.4/lib" />
@@ -718,6 +741,7 @@
       <root url="file://$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/string_scanner-1.1.0-nullsafety.1/lib" />
       <root url="file://$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/term_glyph-1.2.0-nullsafety.1/lib" />
       <root url="file://$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/test_api-0.2.19-nullsafety.2/lib" />
+      <root url="file://$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/timezone-0.5.9/lib" />
       <root url="file://$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/typed_data-1.3.0-nullsafety.3/lib" />
       <root url="file://$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher-5.7.10/lib" />
       <root url="file://$USER_HOME$/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_linux-0.0.1+4/lib" />
