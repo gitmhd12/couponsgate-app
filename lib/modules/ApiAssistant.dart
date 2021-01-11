@@ -14,6 +14,7 @@ class ApiAssistant {
   bool emailValidStatus = false;
   bool resetPassStatus = false;
   bool isEmailUsed = false;
+  bool updateLangStatus = false;
   String pinCode;
 
   int fb_login_status;
@@ -51,7 +52,7 @@ class ApiAssistant {
     prefs.setString(key6, value6);
   }
 
-  registerData(String pass , String name , String email , String country) async {
+  registerData(String pass , String name , String email , String country , String lang) async {
     //print('ok2');
     String myUrl = "$serverUrl/register.php";
     http.Response response = await http.post(myUrl, body: {
@@ -59,6 +60,7 @@ class ApiAssistant {
       'password': pass,
       'name': name,
       'country': country,
+      'lang': lang,
     });
 
     print("result: ${response.body}");
@@ -144,19 +146,30 @@ class ApiAssistant {
   }
 
   Future subscribeAnonymousUser(String langCode) async{
+
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'country_code';
+    final value = prefs.getString(key);
+
     if(langCode == 'ar')
     {
       await _firebaseMessaging.subscribeToTopic('ar_all_countries');
+      await _firebaseMessaging.subscribeToTopic(
+          'ar_countryID_' + value.toString());
     }
     else
     {
       await _firebaseMessaging.subscribeToTopic('en_all_countries');
+      await _firebaseMessaging.subscribeToTopic(
+          'en_countryID_' + value.toString());
     }
   }
 
-  Future getUserNotificationByLocal(String oldLang , String newLang) async{
-
+  Future getUserNotificationByLocal(String oldLang , String newLang) async {
     final prefs = await SharedPreferences.getInstance();
+
+    final key5 = 'token';
+    final value5 = prefs.getString(key5);
 
     final key6 = 'country_code';
     final value6 = prefs.getString(key6);
@@ -164,30 +177,39 @@ class ApiAssistant {
     final key = 'is_login';
     final value = prefs.getString(key);
 
-    if(oldLang != newLang)
+    if (oldLang != newLang)
     {
-      if(newLang == 'ar')
-      {
-        await _firebaseMessaging.unsubscribeFromTopic('en_all_countries');
-        await _firebaseMessaging.subscribeToTopic('ar_all_countries');
+        if (newLang == 'ar')
+        {
+          await _firebaseMessaging.unsubscribeFromTopic('en_all_countries');
+          await _firebaseMessaging.subscribeToTopic('ar_all_countries');
+            await _firebaseMessaging.unsubscribeFromTopic(
+                'en_countryID_' + value6.toString());
+            await _firebaseMessaging.subscribeToTopic(
+                'ar_countryID_' + value6.toString());
+        }
+        else
+          {
+            await _firebaseMessaging.unsubscribeFromTopic('ar_all_countries');
+            await _firebaseMessaging.subscribeToTopic('en_all_countries');
+            await _firebaseMessaging.unsubscribeFromTopic(
+                'ar_countryID_' + value6.toString());
+            await _firebaseMessaging.subscribeToTopic(
+                'en_countryID_' + value6.toString());
+        }
+
         if(value == '1')
           {
-            await _firebaseMessaging.unsubscribeFromTopic('en_countryID_'+value6.toString());
-            await _firebaseMessaging.subscribeToTopic('ar_countryID_'+value6.toString());
+            String myUrl = "$serverUrl/update_user_language.php";
+            http.Response response = await http.post(myUrl, body: {
+              'user_token': value5,
+              'lang': newLang,
+            });
+
+            print("result: ${response.body}");
           }
       }
-      else
-      {
-        await _firebaseMessaging.unsubscribeFromTopic('ar_all_countries');
-        await _firebaseMessaging.subscribeToTopic('en_all_countries');
-        if(value == '1')
-        {
-          await _firebaseMessaging.unsubscribeFromTopic('ar_countryID_'+value6.toString());
-          await _firebaseMessaging.subscribeToTopic('en_countryID_'+value6.toString());
-        }
-      }
     }
-  }
 
   validateEmail(String email) async {
     String myUrl = "$serverUrl/pre_reset_password.php";
@@ -230,7 +252,7 @@ class ApiAssistant {
       }
   }
 
-  registerData_fb( String name , String email , String fb_id) async {
+  registerData_fb( String name , String email , String fb_id , String lang) async {
     fb_login_status = 0;
     //print('ok2');
     String myUrl = "$serverUrl/fb_register.php";
@@ -238,6 +260,7 @@ class ApiAssistant {
       'email': email,
       'name': name,
       'fb_id': fb_id,
+      'lang': lang,
     });
     print('fb id: $fb_id');
     print("result: ${response.body}");
@@ -306,7 +329,7 @@ class ApiAssistant {
 
   }
 
-  registerData_g( String name , String email , String g_id) async {
+  registerData_g( String name , String email , String g_id , String lang) async {
     g_login_status = 0;
     //print('ok2');
     String myUrl = "$serverUrl/g_register.php";
@@ -314,6 +337,7 @@ class ApiAssistant {
       'email': email,
       'name': name,
       'g_id': g_id,
+      'lang': lang,
     });
 
     print("result: ${response.body}");

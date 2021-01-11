@@ -39,8 +39,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-
-
   HomeApiAssistant homeApi = new HomeApiAssistant();
   ApiAssistant api = new ApiAssistant();
 
@@ -452,6 +450,8 @@ class _HomeState extends State<Home> {
     }
     else
     {
+      print('coupons by country anonymous');
+
       await _getCouponsByCountry(value , currentCoupon).then((value){
         setState(() {
           _rCoupons = List.from(value);
@@ -907,7 +907,11 @@ class _HomeState extends State<Home> {
 
                     //shop now
                     InkWell(onTap:(){
-                      _launchStoreURL(_rCoupons[i].storeUrl);
+
+                          _launchStoreURL(_rCoupons[i].storeUrl).whenComplete(() {
+                            homeApi.visitStore(_rCoupons[i].store);
+                          });
+
                     } , child: Container(
                       width: MediaQuery.of(context).size.width-150,
                       padding: const EdgeInsets.all(3),
@@ -1193,7 +1197,7 @@ class _HomeState extends State<Home> {
 
   }
 
-  _launchStoreURL(String url) async {
+  Future _launchStoreURL(String url) async {
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -1207,10 +1211,10 @@ class _HomeState extends State<Home> {
     print(lang.code);
     print(currentLocale.languageCode);
 
-    api.getUserNotificationByLocal(currentLocale.languageCode, lang.code).whenComplete(() async {
-      Locale _locale = await setLocale(lang.code);
-      MyApp.setLocale(context, _locale);
-    });
+    Locale _locale = await setLocale(lang.code);
+    MyApp.setLocale(context, _locale);
+
+    api.getUserNotificationByLocal(currentLocale.languageCode, lang.code);
 
   }
 

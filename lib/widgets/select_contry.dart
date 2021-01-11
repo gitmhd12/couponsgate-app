@@ -215,16 +215,41 @@ class _Select_Country_State extends State<Select_Country> {
                               print('country id is null');
                               var snackBar = SnackBar(content: Text(getTranslated(context, 'login_country_btn')));
                               Scaffold.of(context).showSnackBar(snackBar);
-                            }else{
+                            }
+                          else
+                            {
+                              Locale currentLocale = Localizations.localeOf(context);
                             //get user id
                             print('get user id ');
                             final prefs = await SharedPreferences.getInstance();
                             final key = 'user_id';
                             final user_id = prefs.get(key);
 
+                            final key2 = 'isFirstSkip';
+                            final firstSkip = prefs.get(key2);
+
                             //check if user id is not null
                             if(user_id == null)
-                            {print('user id is null');}else{
+                            {
+                              print('user id is null');
+                              if(firstSkip == null)
+                                {
+                                  prefs.setString('country_code' , _countryID);
+                                  prefs.setString(key2 , '1');
+
+                                  api.subscribeAnonymousUser(currentLocale.languageCode).whenComplete((){
+                                    Navigator.pushReplacementNamed(context, '/home');
+                                  });
+                                }
+                              else
+                                {
+                                  api.subscribeAnonymousUser(currentLocale.languageCode).whenComplete((){
+                                    Navigator.pushReplacementNamed(context, '/home');
+                                  });
+                                }
+                            }
+                            else
+                              {
                               //show loading
                               setState(() {
                                 _sendLoading = true;
@@ -235,7 +260,7 @@ class _Select_Country_State extends State<Select_Country> {
                                 print('send data');
                                 print('value is $value');
                                 if(value == 1){
-                                  Locale currentLocale = Localizations.localeOf(context);
+
                                   api.updateFirebaseToken(currentLocale.languageCode).whenComplete((){
                                     if(api.firebaseStatus)
                                     {

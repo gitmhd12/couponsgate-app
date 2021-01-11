@@ -438,4 +438,24 @@ class HomeApiAssistant {
       return ' ';
   }
 
+  Future visitStore(String storeId) async {
+
+      var data = {
+        'store_id': storeId,
+      };
+
+      var res = await http.post(
+          'https://yalaphone.com/appdash/rest_api/stores/visit_store.php',
+          body: data);
+      print(res.body);
+      //print('sending...');
+      var body = json.decode(res.body);
+
+      if (body.toString().contains('proccess completed successfuly'))
+        return true;
+      else
+        return false;
+
+  }
+
 }
