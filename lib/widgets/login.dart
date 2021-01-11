@@ -13,6 +13,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../main.dart';
 
@@ -26,7 +27,6 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login>{
-
 
   ApiAssistant api = new ApiAssistant();
   final TextEditingController _emailController = new TextEditingController();
@@ -48,6 +48,24 @@ class _LoginState extends State<Login>{
 
   var fb_btn_shild = true;
   var g_btn_shild = true;
+
+  Future checkIfFirstSkip() async
+  {
+    final prefs = await SharedPreferences.getInstance();
+
+    final key = 'isFirstSkip';
+    final value = prefs.getString(key);
+
+    if(value == null)
+      {
+        Navigator.pushReplacementNamed(context, '/SelectCountry');
+      }
+    else
+      {
+        Navigator.pushReplacementNamed(context, '/home');
+      }
+
+  }
 
   Future<String> signInWithGoogle() async {
     setState(() {
@@ -83,15 +101,16 @@ class _LoginState extends State<Login>{
         'email': user.email,
         'id': user.uid,
       };
+      Locale currentLocale = Localizations.localeOf(context);
 
-      api.registerData_g( user.displayName, user.email, user.uid)
+      api.registerData_g( user.displayName, user.email, user.uid , currentLocale.languageCode)
           .whenComplete(() {
         print(api.g_login_status.toString());
         if (api.g_login_status == 1 ) {
           print('new register');
           Navigator.pushReplacementNamed(context, '/SelectCountry');
         } else if(api.g_login_status == 2){
-          Locale currentLocale = Localizations.localeOf(context);
+
           api.updateFirebaseToken(currentLocale.languageCode).whenComplete((){
             if(api.firebaseStatus)
             {
@@ -129,7 +148,9 @@ class _LoginState extends State<Login>{
       'id': profile["id"],
     };
 
-    api.registerData_fb( profile["name"], profile["email"].toLowerCase().toString(), profile["id"])
+    Locale currentLocale = Localizations.localeOf(context);
+
+    api.registerData_fb( profile["name"], profile["email"].toLowerCase().toString(), profile["id"] , currentLocale.languageCode)
         .whenComplete(() {
           print(api.fb_login_status.toString());
       if (api.fb_login_status == 1 ) {
@@ -137,7 +158,6 @@ class _LoginState extends State<Login>{
         Navigator.pushReplacementNamed(context, '/SelectCountry');
         //Navigator.pushReplacementNamed(context, '/select_country');
       } else if(api.fb_login_status == 2){
-        Locale currentLocale = Localizations.localeOf(context);
         api.updateFirebaseToken(currentLocale.languageCode).whenComplete((){
           if(api.firebaseStatus)
           {
@@ -937,6 +957,8 @@ class _LoginState extends State<Login>{
 
 
   _processRegister() {
+    Locale currentLocale = Localizations.localeOf(context);
+
     if (registerBtnChildIndex == 0) {
       setState(() {
         registerBtnChildIndex = 1;
@@ -959,7 +981,7 @@ class _LoginState extends State<Login>{
       } else {
         print('ok');
         api
-            .registerData(_passwordController.text.toString(), _nameController.text.trim(), _emailController.text.trim().toLowerCase().toString(), _countryID)
+            .registerData(_passwordController.text.toString(), _nameController.text.trim(), _emailController.text.trim().toLowerCase().toString(), _countryID , currentLocale.languageCode)
             .whenComplete(() {
           if (api.registerStatus == false && api.isEmailUsed == false) {
             alertDialog(getTranslated(context, 'login_alert_Ind_content'), getTranslated(context, 'login_alert_Ind_title'),);
@@ -972,7 +994,6 @@ class _LoginState extends State<Login>{
               registerBtnChildIndex = 0;
             });
           } else {
-            Locale currentLocale = Localizations.localeOf(context);
             api.updateFirebaseToken(currentLocale.languageCode).whenComplete((){
               if(api.firebaseStatus)
               {
@@ -1336,11 +1357,7 @@ class _LoginState extends State<Login>{
                   textColor: Color(0xff000000),
                   child: Text(getTranslated(context, 'login_sign_later_btn'),style: TextStyle(fontFamily: 'CustomFont',fontSize: 20,fontWeight: FontWeight.bold),),
                   onPressed: () {
-                    Locale currentLocale = Localizations.localeOf(context);
-                    api.subscribeAnonymousUser(currentLocale.languageCode).whenComplete(() {
-                      Navigator.pushNamed(context, homeRoute);
-                    });
-
+                    checkIfFirstSkip();
                   },
                 ),
               ),
