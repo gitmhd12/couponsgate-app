@@ -679,10 +679,22 @@ class _CountryCouponsState extends State<CountryCoupons> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
 
-                    //shop now
+                    //copy code
                     Column(
                       children: [
                         InkWell(onTap:(){
+                          ClipboardManager.copyToClipBoard(
+                              _rCoupons[i].code)
+                              .then((result) {
+                            final snackBar = SnackBar(
+                              content: Text(getTranslated(context, 'Copied') + _rCoupons[i].code),
+                            );
+                            setState(() {
+                              Scaffold.of(context).showSnackBar(snackBar);
+                            });
+
+                          });
+
                           if(homeApi.checkIfInCodes(_rCoupons[i].id, _rCodes) == null)
                             _copyCode(_rCoupons[i].id , _rCoupons[i].code);
                         } , child: Container(
@@ -690,10 +702,10 @@ class _CountryCouponsState extends State<CountryCoupons> {
                           padding: const EdgeInsets.all(3),
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
-                              border: Border.all(color: Colors.deepOrange),
+                              border: Border.all(color: Colors.green),
                               //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
                               borderRadius: BorderRadius.circular(5),
-                              color: Colors.deepOrange),
+                              color: Colors.green),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
@@ -791,7 +803,9 @@ class _CountryCouponsState extends State<CountryCoupons> {
 
                     //shop now
                     InkWell(onTap:(){
-                      _launchStoreURL(_rCoupons[i].storeUrl);
+                      _launchStoreURL(_rCoupons[i].storeUrl).whenComplete(() {
+                        homeApi.visitStore(_rCoupons[i].store);
+                      });
                     } , child: Container(
                       width: MediaQuery.of(context).size.width-150,
                       padding: const EdgeInsets.all(3),

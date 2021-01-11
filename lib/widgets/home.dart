@@ -11,6 +11,7 @@ import 'package:couponsgate/modules/Rating.dart';
 import 'package:couponsgate/modules/Store.dart';
 import 'package:couponsgate/widgets/NavDrawer.dart';
 import 'package:couponsgate/widgets/countries.dart';
+import 'package:couponsgate/widgets/coupon_main.dart';
 import 'package:couponsgate/widgets/favorites.dart';
 import 'package:couponsgate/widgets/login.dart';
 import 'package:couponsgate/widgets/settings.dart';
@@ -62,6 +63,7 @@ class _HomeState extends State<Home> {
   String _currentCoupon = '0';
   int lsubmit_btn_child_index = 0;
   int loadModeChildIndicator = 0;
+  String couponNotificationId = '0';
 
   List<Country> _countries , _rCountries = [];
   String _countryBtnHint = '+';
@@ -74,15 +76,21 @@ class _HomeState extends State<Home> {
 
 
   Future onSelectNotification(String payload) async {
-    showDialog(
-      context: context,
-      builder: (_) {
-        return new AlertDialog(
-          title: Text("PayLoad"),
-          content: Text("Payload : $payload"),
-        );
-      },
-    );
+    // showDialog(
+    //   context: context,
+    //   builder: (_) {
+    //     return new AlertDialog(
+    //       title: Text("PayLoad"),
+    //       content: Text("Payload : $payload"),
+    //     );
+    //   },
+    // );
+
+    if(couponNotificationId != '0')
+      Navigator.of(context).push(
+        new MaterialPageRoute(
+            builder: (BuildContext context) => new CouponMain(id: couponNotificationId,)),
+      );
   }
   void showNotification(String title, String body) async {
     await _demoNotification(title, body);
@@ -137,6 +145,13 @@ class _HomeState extends State<Home> {
         showNotification(
             message['notification']['title'], message['notification']['body']);
         print("onMessage: $message");
+        if(message['data']['extraInfo'] != null)
+          {
+            setState(() {
+              couponNotificationId = message['data']['extraInfo'];
+            });
+          }
+
       },
       onLaunch: (Map<String, dynamic> message) async {
         print("onLaunch: $message");

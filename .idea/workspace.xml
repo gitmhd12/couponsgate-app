@@ -20,6 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa83d736-4f00-493d-aee2-dd8f1abe403c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/widgets/coupon_main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" afterDir="false" />
@@ -31,12 +32,8 @@
       <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk.sha1" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk.sha1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/modules/ApiAssistant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/ApiAssistant.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/modules/HomeApiAssistant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/HomeApiAssistant.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/country_coupons.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/country_coupons.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/widgets/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/login.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/select_contry.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/select_contry.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/settings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/settings.dart" afterDir="false" />
     </list>
     <list id="5a67cad3-059a-45f4-a387-4ed51b7867ff" name="setup register and login widget" comment="" />
     <list id="92637d7a-2783-47d6-b3f2-7b5ee3563f35" name="setup register and login widget_update" comment="" />
@@ -204,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610290451650</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="setup anonymous user country">
+      <created>1610384722221</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1610384722221</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -243,7 +247,8 @@
     <MESSAGE value="fix load more bug" />
     <MESSAGE value="fix load more bug_updated" />
     <MESSAGE value="setup notification system" />
-    <option name="LAST_COMMIT_MESSAGE" value="setup notification system" />
+    <MESSAGE value="setup anonymous user country" />
+    <option name="LAST_COMMIT_MESSAGE" value="setup anonymous user country" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -267,33 +272,33 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="92" y="92" width="1182" height="584" key="AVDManager/0.0.1366.768@0.0.1366.768" timestamp="1609995759611" />
-    <state x="49" y="0" key="CommitChangelistDialog2" timestamp="1610290279544">
+    <state x="49" y="0" key="CommitChangelistDialog2" timestamp="1610384672229">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="49" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1610290279544" />
+    <state x="49" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1610384672229" />
     <state x="462" y="141" key="FileChooserDialogImpl" timestamp="1609956469056">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="462" y="141" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1609956469056" />
-    <state width="1323" height="203" key="GridCell.Tab.0.bottom" timestamp="1610383199630">
+    <state width="1323" height="203" key="GridCell.Tab.0.bottom" timestamp="1610395921361">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="203" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1610383199630" />
+    <state width="1323" height="203" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1610395921361" />
     <state width="1398" height="200" key="GridCell.Tab.0.bottom/0.25.1440.794@0.25.1440.794" timestamp="1608556527969" />
-    <state width="1323" height="203" key="GridCell.Tab.0.center" timestamp="1610383199629">
+    <state width="1323" height="203" key="GridCell.Tab.0.center" timestamp="1610395921360">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="203" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1610383199629" />
+    <state width="1323" height="203" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1610395921360" />
     <state width="1398" height="200" key="GridCell.Tab.0.center/0.25.1440.794@0.25.1440.794" timestamp="1608556527969" />
-    <state width="1323" height="203" key="GridCell.Tab.0.left" timestamp="1610383199628">
+    <state width="1323" height="203" key="GridCell.Tab.0.left" timestamp="1610395921360">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="203" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1610383199628" />
+    <state width="1323" height="203" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1610395921360" />
     <state width="1398" height="200" key="GridCell.Tab.0.left/0.25.1440.794@0.25.1440.794" timestamp="1608556527968" />
-    <state width="1323" height="203" key="GridCell.Tab.0.right" timestamp="1610383199630">
+    <state width="1323" height="203" key="GridCell.Tab.0.right" timestamp="1610395921360">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="203" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1610383199630" />
+    <state width="1323" height="203" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1610395921360" />
     <state width="1398" height="200" key="GridCell.Tab.0.right/0.25.1440.794@0.25.1440.794" timestamp="1608556527969" />
     <state x="129" y="59" key="MergeDialog" timestamp="1608770008914">
       <screen x="0" y="0" width="1366" height="768" />
@@ -321,10 +326,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="535" y="300" key="VCS.ChangelistChooser/0.0.1366.768@0.0.1366.768" timestamp="1608769599375" />
-    <state x="282" y="117" key="Vcs.Push.Dialog.v2" timestamp="1610291399295">
+    <state x="282" y="117" key="Vcs.Push.Dialog.v2" timestamp="1610384901388">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="282" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1610291399295" />
+    <state x="282" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1610384901388" />
     <state x="481" y="299" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609952446707">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
