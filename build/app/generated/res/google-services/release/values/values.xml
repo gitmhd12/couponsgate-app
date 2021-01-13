@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">141582114934-ojh565jh0hjabjui9qgfnqmn156o7qaf.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">141582114934</string>
+    <string name="google_api_key" translatable="false">AIzaSyD1CayIJ_8vjRUiETXngiLRm-sVpKZCiJg</string>
+    <string name="google_app_id" translatable="false">1:141582114934:android:9060c98a5f1b99d7ea3f57</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyD1CayIJ_8vjRUiETXngiLRm-sVpKZCiJg</string>
+    <string name="google_storage_bucket" translatable="false">couponsgate.appspot.com</string>
+    <string name="project_id" translatable="false">couponsgate</string>
+</resources>

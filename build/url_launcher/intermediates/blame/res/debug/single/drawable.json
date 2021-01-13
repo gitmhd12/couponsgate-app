@@ -1,18 +1,18 @@
 [
     {
-        "merged": "E:\\Android_Studio_Projects\\couponsgate-app\\build\\url_launcher\\intermediates\\res\\merged\\debug\\drawable\\notification_bg.xml",
-        "source": "C:\\Users\\Nawar\\.gradle\\caches\\transforms-2\\files-2.1\\44b1706abe044cd42dcac5be863451ed\\core-1.1.0\\res\\drawable\\notification_bg.xml"
+        "merged": "/Users/sh/Documents/work/couponsgate/couponsgate-app/build/url_launcher/intermediates/res/merged/debug/drawable/notification_icon_background.xml",
+        "source": "/Users/sh/.gradle/caches/transforms-2/files-2.1/44b1706abe044cd42dcac5be863451ed/core-1.1.0/res/drawable/notification_icon_background.xml"
     },
     {
-        "merged": "E:\\Android_Studio_Projects\\couponsgate-app\\build\\url_launcher\\intermediates\\res\\merged\\debug\\drawable\\notification_icon_background.xml",
-        "source": "C:\\Users\\Nawar\\.gradle\\caches\\transforms-2\\files-2.1\\44b1706abe044cd42dcac5be863451ed\\core-1.1.0\\res\\drawable\\notification_icon_background.xml"
+        "merged": "/Users/sh/Documents/work/couponsgate/couponsgate-app/build/url_launcher/intermediates/res/merged/debug/drawable/notification_bg_low.xml",
+        "source": "/Users/sh/.gradle/caches/transforms-2/files-2.1/44b1706abe044cd42dcac5be863451ed/core-1.1.0/res/drawable/notification_bg_low.xml"
     },
     {
-        "merged": "E:\\Android_Studio_Projects\\couponsgate-app\\build\\url_launcher\\intermediates\\res\\merged\\debug\\drawable\\notification_tile_bg.xml",
-        "source": "C:\\Users\\Nawar\\.gradle\\caches\\transforms-2\\files-2.1\\44b1706abe044cd42dcac5be863451ed\\core-1.1.0\\res\\drawable\\notification_tile_bg.xml"
+        "merged": "/Users/sh/Documents/work/couponsgate/couponsgate-app/build/url_launcher/intermediates/res/merged/debug/drawable/notification_bg.xml",
+        "source": "/Users/sh/.gradle/caches/transforms-2/files-2.1/44b1706abe044cd42dcac5be863451ed/core-1.1.0/res/drawable/notification_bg.xml"
     },
     {
-        "merged": "E:\\Android_Studio_Projects\\couponsgate-app\\build\\url_launcher\\intermediates\\res\\merged\\debug\\drawable\\notification_bg_low.xml",
-        "source": "C:\\Users\\Nawar\\.gradle\\caches\\transforms-2\\files-2.1\\44b1706abe044cd42dcac5be863451ed\\core-1.1.0\\res\\drawable\\notification_bg_low.xml"
+        "merged": "/Users/sh/Documents/work/couponsgate/couponsgate-app/build/url_launcher/intermediates/res/merged/debug/drawable/notification_tile_bg.xml",
+        "source": "/Users/sh/.gradle/caches/transforms-2/files-2.1/44b1706abe044cd42dcac5be863451ed/core-1.1.0/res/drawable/notification_tile_bg.xml"
     }
 ]

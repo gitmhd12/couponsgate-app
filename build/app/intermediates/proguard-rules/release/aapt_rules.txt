@@ -1,0 +1,136 @@
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:28
+-keep class androidx.core.app.CoreComponentFactory { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:102
+-keep class com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:113
+-keep class com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:301
+-keep class com.facebook.CampaignTrackingReceiver { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:294
+-keep class com.facebook.CurrentAccessTokenExpirationBroadcastReceiver { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:89
+-keep class com.facebook.CustomTabActivity { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:279
+-keep class com.facebook.CustomTabMainActivity { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:84
+-keep class com.facebook.FacebookActivity { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:289
+-keep class com.facebook.internal.FacebookInitProvider { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:177
+-keep class com.google.android.datatransport.runtime.backends.TransportBackendDiscovery { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:325
+-keep class com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:319
+-keep class com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:258
+-keep class com.google.android.gms.auth.api.signin.RevocationBoundService { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:249
+-keep class com.google.android.gms.auth.api.signin.internal.SignInHubActivity { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:310
+-keep class com.google.android.gms.common.api.GoogleApiActivity { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:273
+-keep class com.google.android.gms.measurement.AppMeasurementJobService { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:263
+-keep class com.google.android.gms.measurement.AppMeasurementReceiver { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:269
+-keep class com.google.android.gms.measurement.AppMeasurementService { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:222
+-keep class com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:185
+-keep class com.google.firebase.auth.internal.GenericIdpActivity { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:203
+-keep class com.google.firebase.auth.internal.RecaptchaActivity { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:120
+-keep class com.google.firebase.components.ComponentDiscoveryService { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:233
+-keep class com.google.firebase.iid.FirebaseInstanceIdReceiver { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:163
+-keep class com.google.firebase.messaging.FirebaseMessagingService { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:242
+-keep class com.google.firebase.provider.FirebaseInitProvider { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:28
+-keep class io.flutter.app.FlutterApplication { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:115
+-keep class io.flutter.plugins.firebasemessaging.FlutterFirebaseMessagingService { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:172
+-keep class io.flutter.plugins.urllauncher.WebViewActivity { <init>(); }
+# Referenced at /Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:34
+-keep class net.couponsgate.MainActivity { <init>(); }
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_alert_dialog_title_material.xml:56
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_alert_dialog_material.xml:52
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_alert_dialog_button_bar_material.xml:43
+-keep class android.widget.Space { <init>(...); }
+
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_select_dialog_material.xml:23
+-keep class androidx.appcompat.app.AlertController$RecycleListView { <init>(...); }
+
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_action_menu_item_layout.xml:17
+-keep class androidx.appcompat.view.menu.ActionMenuItemView { <init>(...); }
+
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_expanded_menu_layout.xml:17
+-keep class androidx.appcompat.view.menu.ExpandedMenuView { <init>(...); }
+
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_popup_menu_item_layout.xml:17
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_list_menu_item_layout.xml:17
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_cascading_menu_item_layout.xml:20
+-keep class androidx.appcompat.view.menu.ListMenuItemView { <init>(...); }
+
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_screen_toolbar.xml:27
+-keep class androidx.appcompat.widget.ActionBarContainer { <init>(...); }
+
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_screen_toolbar.xml:43
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_action_mode_bar.xml:19
+-keep class androidx.appcompat.widget.ActionBarContextView { <init>(...); }
+
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_screen_toolbar.xml:17
+-keep class androidx.appcompat.widget.ActionBarOverlayLayout { <init>(...); }
+
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_action_menu_layout.xml:17
+-keep class androidx.appcompat.widget.ActionMenuView { <init>(...); }
+
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_activity_chooser_view.xml:19
+-keep class androidx.appcompat.widget.ActivityChooserView$InnerLayout { <init>(...); }
+
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_alert_dialog_material.xml:18
+-keep class androidx.appcompat.widget.AlertDialogLayout { <init>(...); }
+
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/38e162f7510b97df52007af7588d3b92/jetified-facebook-common-5.5.1/res/layout/com_facebook_smart_device_dialog_fragment.xml:47
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/38e162f7510b97df52007af7588d3b92/jetified-facebook-common-5.5.1/res/layout/com_facebook_device_auth_dialog_fragment.xml:45
+-keep class androidx.appcompat.widget.AppCompatImageView { <init>(...); }
+
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_alert_dialog_button_bar_material.xml:26
+-keep class androidx.appcompat.widget.ButtonBarLayout { <init>(...); }
+
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_screen_content_include.xml:19
+-keep class androidx.appcompat.widget.ContentFrameLayout { <init>(...); }
+
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_alert_dialog_title_material.xml:45
+-keep class androidx.appcompat.widget.DialogTitle { <init>(...); }
+
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_screen_simple_overlay_action_mode.xml:23
+-keep class androidx.appcompat.widget.FitWindowsFrameLayout { <init>(...); }
+
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_screen_simple.xml:17
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_dialog_title_material.xml:22
+-keep class androidx.appcompat.widget.FitWindowsLinearLayout { <init>(...); }
+
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_search_view.xml:75
+-keep class androidx.appcompat.widget.SearchView$SearchAutoComplete { <init>(...); }
+
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_screen_toolbar.xml:36
+-keep class androidx.appcompat.widget.Toolbar { <init>(...); }
+
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_screen_simple_overlay_action_mode.xml:32
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_screen_simple.xml:25
+-keep class androidx.appcompat.widget.ViewStubCompat { <init>(...); }
+
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/ab04ecabe04197c1cf91225ad33685f4/browser-1.0.0/res/layout/browser_actions_context_menu_page.xml:5
+-keep class androidx.browser.browseractions.BrowserActionsFallbackMenuView { <init>(...); }
+
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/38e162f7510b97df52007af7588d3b92/jetified-facebook-common-5.5.1/res/layout/com_facebook_smart_device_dialog_fragment.xml:22
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/38e162f7510b97df52007af7588d3b92/jetified-facebook-common-5.5.1/res/layout/com_facebook_device_auth_dialog_fragment.xml:22
+-keep class androidx.cardview.widget.CardView { <init>(...); }
+
+# Referenced at /Users/sh/.gradle/caches/transforms-2/files-2.1/c0657f060bbaaf69778119b703f4b5fa/appcompat-1.0.0/res/layout/abc_alert_dialog_material.xml:41
+-keep class androidx.core.widget.NestedScrollView { <init>(...); }
+

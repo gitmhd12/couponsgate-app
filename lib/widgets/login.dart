@@ -179,13 +179,14 @@ class _LoginState extends State<Login>{
 
 
   @override
-  void initState() {
+  Future<void> initState()  {
     super.initState();
 
     setState(() {
       _countryBtnHint = '+';
       _isLoading = false;
     });
+
 
 
   }
@@ -856,11 +857,14 @@ class _LoginState extends State<Login>{
       });
       if (_emailController.text.trim().isEmpty) {
         alertDialog(getTranslated(context, 'login_alert_md_email'), getTranslated(context, 'login_alert_md_title'),);
+        //alertDialog('test', getTranslated(context, 'login_alert_md_title'),);
         setState(() {
           loginBtnChildIndex = 0;
         });
       } else if (_passwordController.text.isEmpty) {
         alertDialog(getTranslated(context, 'login_alert_md_password'), getTranslated(context, 'login_alert_md_title'),);
+        //alertDialog('test', getTranslated(context, 'login_alert_md_title'),);
+
         setState(() {
           loginBtnChildIndex = 0;
         });

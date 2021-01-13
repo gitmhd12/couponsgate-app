@@ -118,5 +118,6 @@
   "login_facebook": "Continue with Facebook",
   "login_google": "Continue with Google",
   "Copied": " The code has been copied ",
-  "search_results": "Search results for "
+  "search_results": "Search results for ",
+  "skip": "skip"
 }
