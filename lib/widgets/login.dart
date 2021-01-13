@@ -52,6 +52,7 @@ class _LoginState extends State<Login>{
   Future checkIfFirstSkip() async
   {
     final prefs = await SharedPreferences.getInstance();
+    Locale currentLocale = Localizations.localeOf(context);
 
     final key = 'isFirstSkip';
     final value = prefs.getString(key);
@@ -62,7 +63,9 @@ class _LoginState extends State<Login>{
       }
     else
       {
-        Navigator.pushReplacementNamed(context, '/home');
+        api.subscribeToCountryGroup(currentLocale.languageCode).whenComplete((){
+          Navigator.pushReplacementNamed(context, '/home');
+        });
       }
 
   }

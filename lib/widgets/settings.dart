@@ -407,7 +407,8 @@ class _SettingsState extends State<Settings> {
   }
 
   _processSaveChanges()
-  {
+  async {
+    Locale currentLocale = Localizations.localeOf(context);
     if (_saveBtnChildIndex == 0) {
       setState(() {
         _saveBtnChildIndex = 1;
@@ -437,6 +438,10 @@ class _SettingsState extends State<Settings> {
       } else if (_passwordController.text.trim().isNotEmpty && _confPasswordController.text.trim().isNotEmpty
           && _passwordController.text.trim() == _confPasswordController.text.trim())
         {
+          final prefs = await SharedPreferences.getInstance();
+          final key = 'country_code';
+          final cid = prefs.getString(key);
+
           _submitUserData(_token,
               _usernameController.text,
               _emailController.text.trim().toLowerCase(),
@@ -453,16 +458,29 @@ class _SettingsState extends State<Settings> {
                 _saveBtnChildIndex = 0;
               });
             } else {
-              setState(() {
-                api.saveUserParams(_userId, _passwordController.text.trim(), _usernameController.text, _emailController.text.trim().toLowerCase(), _token, _countryCode);
-                successDialog(getTranslated(context, 'settings_alert_success_content'), getTranslated(context, 'settings_alert_success_title'),);
-                _saveBtnChildIndex = 0;
+              setState(() async {
+
+                await api.saveUserParams(_userId, _passwordController.text.trim(), _usernameController.text, _emailController.text.trim().toLowerCase(), _token, _countryCode);
+
+                api.changeCountryGroupSubscribtion(currentLocale.languageCode , cid).whenComplete(() {
+                  successDialog(getTranslated(context, 'settings_alert_success_content'), getTranslated(context, 'settings_alert_success_title'),);
+
+                  setState(() {
+                    _saveBtnChildIndex = 0;
+                  });
+
+                });
+
               });
             }
           });
 
         } else {
         print('ok');
+        final prefs = await SharedPreferences.getInstance();
+        final key = 'country_code';
+        final cid = prefs.getString(key);
+
         _submitUserData(_token,
             _usernameController.text,
             _emailController.text.trim().toLowerCase(),
@@ -479,10 +497,17 @@ class _SettingsState extends State<Settings> {
               _saveBtnChildIndex = 0;
             });
           } else {
-            setState(() {
-              api.saveUserParams(_userId, _password, _usernameController.text, _emailController.text.trim().toLowerCase(), _token, _countryCode);
-              successDialog(getTranslated(context, 'settings_alert_success_content'), getTranslated(context, 'settings_alert_success_title'),);
-              _saveBtnChildIndex = 0;
+            setState(() async {
+              await api.saveUserParams(_userId, _password, _usernameController.text, _emailController.text.trim().toLowerCase(), _token, _countryCode);
+
+              api.changeCountryGroupSubscribtion(currentLocale.languageCode , cid).whenComplete(() {
+                successDialog(getTranslated(context, 'settings_alert_success_content'), getTranslated(context, 'settings_alert_success_title'),);
+
+                setState(() {
+                  _saveBtnChildIndex = 0;
+                });
+
+              });
             });
           }
         });
