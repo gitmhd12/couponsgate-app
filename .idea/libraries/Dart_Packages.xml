@@ -373,10 +373,24 @@
             </list>
           </value>
         </entry>
+        <entry key="path_provider">
+          <value>
+            <list>
+              <option value="C:/Flutter SDK/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.27/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="path_provider_linux">
           <value>
             <list>
               <option value="C:/Flutter SDK/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-0.0.1+2/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="path_provider_macos">
+          <value>
+            <list>
+              <option value="C:/Flutter SDK/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-0.0.4+8/lib" />
             </list>
           </value>
         </entry>
@@ -719,7 +733,9 @@
       <root url="file://C:/Flutter SDK/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.0-nullsafety.1/lib" />
       <root url="file://C:/Flutter SDK/flutter/.pub-cache/hosted/pub.dartlang.org/path_drawing-0.4.1+1/lib" />
       <root url="file://C:/Flutter SDK/flutter/.pub-cache/hosted/pub.dartlang.org/path_parsing-0.1.4/lib" />
+      <root url="file://C:/Flutter SDK/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.27/lib" />
       <root url="file://C:/Flutter SDK/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-0.0.1+2/lib" />
+      <root url="file://C:/Flutter SDK/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-0.0.4+8/lib" />
       <root url="file://C:/Flutter SDK/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_platform_interface-1.0.4/lib" />
       <root url="file://C:/Flutter SDK/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-0.0.4+3/lib" />
       <root url="file://C:/Flutter SDK/flutter/.pub-cache/hosted/pub.dartlang.org/pedantic-1.9.2/lib" />
