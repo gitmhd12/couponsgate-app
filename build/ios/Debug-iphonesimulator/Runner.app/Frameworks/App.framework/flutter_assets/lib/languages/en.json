@@ -26,7 +26,7 @@
   "login_alert_md_password_short" : "Password is too short",
   "login_alert_md_country" : "Please choose your country",
   "login_alert_Ind_title" : "Invalid data",
-  "login_alert_Ind_content" : "Make sure you type your name , e-mail and password correctly",
+  "login_alert_Ind_content" : "Make sure you type your e-mail and password correctly",
   "login_alert_Ind_email_used" : "Sorry, this e-mail is used. Please type another e-mail",
   "login_alert_try_again" : "Something went wrong ,please try again later",
   "login_reset_pass_main" : "Forgot you password?",

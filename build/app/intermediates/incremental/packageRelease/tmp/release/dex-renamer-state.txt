@@ -1,4 +1,4 @@
-#Mon Jan 11 22:06:12 EET 2021
+#Thu Jan 14 12:25:51 EET 2021
 base.0=/Users/sh/Documents/work/couponsgate/couponsgate-app/build/app/intermediates/transforms/r8/release/0/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

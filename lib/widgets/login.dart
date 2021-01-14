@@ -819,6 +819,7 @@ class _LoginState extends State<Login>{
   }
 
   Widget _loginForm() {
+    print ('login');
     return Container(
       margin: EdgeInsets.only(top: 30, left: 30, right: 30),
       child: Column(
@@ -851,6 +852,7 @@ class _LoginState extends State<Login>{
   }
 
   _processLogin() {
+    print ('log in start');
     if (loginBtnChildIndex == 0) {
       setState(() {
         loginBtnChildIndex = 1;
@@ -874,11 +876,13 @@ class _LoginState extends State<Login>{
             .loginData(_passwordController.text.toString(), _emailController.text.trim().toLowerCase().toString())
             .whenComplete(() {
           if (api.loginStatus == false) {
+            print('false');
             alertDialog(getTranslated(context, 'login_alert_Ind_content'), getTranslated(context, 'login_alert_Ind_title'),);
             setState(() {
               loginBtnChildIndex = 0;
             });
           } else {
+            Navigator.pushReplacementNamed(context, '/home');
             Locale currentLocale = Localizations.localeOf(context);
             api.updateFirebaseToken(currentLocale.languageCode).whenComplete((){
               if(api.firebaseStatus)
