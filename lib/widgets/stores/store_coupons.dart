@@ -9,6 +9,7 @@ import 'package:couponsgate/widgets/countries.dart';
 import 'package:couponsgate/widgets/favorites.dart';
 import 'package:couponsgate/widgets/login.dart';
 import 'package:couponsgate/widgets/settings.dart';
+import 'package:couponsgate/widgets/stores/all_stores.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:getwidget/components/loader/gf_loader.dart';
 import 'package:getwidget/types/gf_loader_type.dart';
@@ -678,6 +679,18 @@ class _StoryCouponsState extends State<StoryCoupon> {
                     Column(
                       children: [
                         InkWell(onTap:(){
+                          ClipboardManager.copyToClipBoard(
+                              _rCoupons[i].code)
+                              .then((result) {
+                            final snackBar = SnackBar(
+                              content: Text(getTranslated(context, 'Copied') + _rCoupons[i].code),
+                            );
+                            setState(() {
+                              Scaffold.of(context).showSnackBar(snackBar);
+                            });
+
+                          });
+
                           if(homeApi.checkIfInCodes(_rCoupons[i].id, _rCodes) == null)
                             _copyCode(_rCoupons[i].id , _rCoupons[i].code);
                         } , child: Container(
@@ -685,10 +698,10 @@ class _StoryCouponsState extends State<StoryCoupon> {
                           padding: const EdgeInsets.all(3),
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
-                              border: Border.all(color: Colors.deepOrange),
+                              border: Border.all(color: Colors.green),
                               //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
                               borderRadius: BorderRadius.circular(5),
-                              color: Colors.deepOrange),
+                              color: Colors.green),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
@@ -786,7 +799,9 @@ class _StoryCouponsState extends State<StoryCoupon> {
 
                     //shop now
                     InkWell(onTap:(){
-                      _launchStoreURL(_rCoupons[i].storeUrl);
+                      _launchStoreURL(_rCoupons[i].storeUrl).whenComplete(() {
+                        homeApi.visitStore(_rCoupons[i].store);
+                      });
                     } , child: Container(
                       width: MediaQuery.of(context).size.width-150,
                       padding: const EdgeInsets.all(3),
@@ -1058,7 +1073,7 @@ class _StoryCouponsState extends State<StoryCoupon> {
     } else if (index == 1) {
       Navigator.of(context).push(
         new MaterialPageRoute(
-            builder: (BuildContext context) => null),
+            builder: (BuildContext context) => new AllStores()),
       );
     } else if (index == 2) {
       Navigator.of(context).push(new MaterialPageRoute(
