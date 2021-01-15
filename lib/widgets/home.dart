@@ -1,4 +1,7 @@
+import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
+import 'dart:ui';
 import 'package:couponsgate/localization/localizationValues.dart';
 import 'package:couponsgate/modules/ApiAssistant.dart';
 import 'package:couponsgate/modules/Code.dart';
@@ -11,6 +14,7 @@ import 'package:couponsgate/modules/Rating.dart';
 import 'package:couponsgate/modules/Store.dart';
 import 'package:couponsgate/widgets/NavDrawer.dart';
 import 'package:couponsgate/widgets/countries.dart';
+import 'package:couponsgate/widgets/coupon_main.dart';
 import 'package:couponsgate/widgets/favorites.dart';
 import 'package:couponsgate/widgets/login.dart';
 import 'package:couponsgate/widgets/settings.dart';
@@ -30,7 +34,7 @@ import 'package:getwidget/getwidget.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../main.dart';
 import '../my_icons_icons.dart';
-
+import 'package:path_provider/path_provider.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -62,6 +66,7 @@ class _HomeState extends State<Home> {
   String _currentCoupon = '0';
   int lsubmit_btn_child_index = 0;
   int loadModeChildIndicator = 0;
+  String couponNotificationId = '0';
 
   List<Country> _countries , _rCountries = [];
   String _countryBtnHint = '+';
@@ -74,15 +79,27 @@ class _HomeState extends State<Home> {
 
 
   Future onSelectNotification(String payload) async {
-    showDialog(
-      context: context,
-      builder: (_) {
-        return new AlertDialog(
-          title: Text("PayLoad"),
-          content: Text("Payload : $payload"),
-        );
-      },
-    );
+    // showDialog(
+    //   context: context,
+    //   builder: (_) {
+    //     return new AlertDialog(
+    //       title: Text("PayLoad"),
+    //       content: Text("Payload : $payload"),
+    //     );
+    //   },
+    // );
+
+    if(couponNotificationId != '0')
+      Navigator.of(context).push(
+        new MaterialPageRoute(
+            builder: (BuildContext context) => new CouponMain(id: couponNotificationId,)),
+      ).whenComplete(() {
+        setState(() {
+          couponNotificationId = '0';
+        });
+      });
+
+
   }
   void showNotification(String title, String body) async {
     await _demoNotification(title, body);
@@ -103,6 +120,78 @@ class _HomeState extends State<Home> {
         android: androidPlatformChannelSpecifics, iOS: iOSChannelSpecifics);
     await flutterLocalNotificationsPlugin
         .show(0, title, body, platformChannelSpecifics, payload: 'test');
+  }
+
+  Future<void> showBigPictureNotification(String imgUrl , String title , String body) async {
+
+    final String largeIconPath = await _downloadAndSaveFile(
+        imgUrl, 'largeIcon');
+
+    var bigPictureStyleInformation = BigPictureStyleInformation(
+      FilePathAndroidBitmap(largeIconPath),
+      largeIcon:  FilePathAndroidBitmap(largeIconPath),
+      contentTitle: title,
+      summaryText: body,
+    );
+
+    var androidPlatformChannelSpecifics = AndroidNotificationDetails(
+        'big text channel id',
+        'big text channel name',
+        'big text channel description',
+        importance: Importance.max,
+        playSound: true,
+        showProgress: true,
+        priority: Priority.high,
+        styleInformation: bigPictureStyleInformation);
+
+    var iOSChannelSpecifics = IOSNotificationDetails();
+    var platformChannelSpecifics = NotificationDetails(
+        android: androidPlatformChannelSpecifics, iOS: iOSChannelSpecifics);
+
+    await flutterLocalNotificationsPlugin.show(
+        0, title, body, platformChannelSpecifics,
+        payload: "big image notifications");
+  }
+
+
+  Future<String> _downloadAndSaveFile(String url, String fileName) async {
+    final Directory directory = await getApplicationDocumentsDirectory();
+    final String filePath = '${directory.path}/$fileName';
+    final http.Response response = await http.get(url);
+    final File file = File(filePath);
+    await file.writeAsBytes(response.bodyBytes);
+    return filePath;
+  }
+
+  Future<NotificationDetails> _getImage(BuildContext context , String imgUrl) async{
+
+    final String largeIconPath = await _downloadAndSaveFile(
+        imgUrl, 'largeIcon');
+
+    final androidPlatformChannelSpecifics = AndroidNotificationDetails(
+              'big text channel id',
+              'big text channel name',
+              'big text channel description',
+              importance: Importance.max,
+              playSound: true,
+              showProgress: true,
+              priority: Priority.high,
+              largeIcon: FilePathAndroidBitmap(largeIconPath),
+    );
+
+    return NotificationDetails(android: androidPlatformChannelSpecifics, iOS: null);
+
+  }
+
+  Future showImgNotification(
+      BuildContext context,
+      FlutterLocalNotificationsPlugin notifications,
+      String title,
+      String body,
+      String imgUrl,
+      ) async
+  {
+    notifications.show(0, title, body, await _getImage(context , imgUrl));
   }
 
   handleNotificationByLocal(context , Map<String, dynamic> message)
@@ -133,17 +222,80 @@ class _HomeState extends State<Home> {
         onSelectNotification: onSelectNotification);
 
     _firebaseMessaging.configure(
-      onMessage: (Map<String, dynamic> message) async {
-        showNotification(
-            message['notification']['title'], message['notification']['body']);
+      onMessage: (Map<String , dynamic> message) async {
+
+        if(message['data']['image'] == null)
+          {
+            print('non-image notification test >>>>>');
+            showNotification(
+                message['notification']['title'], message['notification']['body']);
+          }
+        else if(message['data']['image'] != null)
+          {
+            print('image notification test >>>>>');
+            print(message['data']['image']);
+            // showImgNotification(context ,
+            //     flutterLocalNotificationsPlugin ,
+            //     message['notification']['title'],
+            //     message['notification']['body'],
+            //     message['data']['image'],
+            // );
+            showBigPictureNotification(message['data']['image'],
+                message['notification']['title'],
+                message['notification']['body']);
+          }
+
         print("onMessage: $message");
+        if(message['data']['coupon_id'] != null)
+          {
+            setState(() {
+              couponNotificationId = message['data']['coupon_id'];
+            });
+          }
+
       },
       onLaunch: (Map<String, dynamic> message) async {
         print("onLaunch: $message");
         //Navigator.pushNamed(context, '/notify');
+
+        if(message['data']['coupon_id'] != null)
+        {
+          setState(() {
+            couponNotificationId = message['data']['coupon_id'];
+
+            Navigator.of(context).push(
+              new MaterialPageRoute(
+                  builder: (BuildContext context) => new CouponMain(id: couponNotificationId,)),
+            ).whenComplete(() {
+              setState(() {
+                couponNotificationId = '0';
+              });
+            });
+
+          });
+        }
+
       },
       onResume: (Map<String, dynamic> message) async {
         print("onResume: $message");
+
+        if(message['data']['coupon_id'] != null)
+        {
+          setState(() {
+            couponNotificationId = message['data']['coupon_id'];
+
+            Navigator.of(context).push(
+              new MaterialPageRoute(
+                  builder: (BuildContext context) => new CouponMain(id: couponNotificationId,)),
+            ).whenComplete(() {
+              setState(() {
+                couponNotificationId = '0';
+              });
+            });
+
+          });
+        }
+
       },
     );
 
