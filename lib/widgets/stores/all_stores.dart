@@ -186,10 +186,10 @@ class _AllStores extends State<AllStores> {
             builder: (BuildContext context) => new Countries()),
       );
     } else if (index == 1) {
-      /*Navigator.of(context).push(
+      Navigator.of(context).push(
         new MaterialPageRoute(
             builder: (BuildContext context) => new AllStores()),
-      );*/
+      );
     } else if (index == 2) {
       Navigator.of(context).push(new MaterialPageRoute(
           builder: (BuildContext context) => new Home()));

@@ -378,7 +378,6 @@ com/google/errorprone/annotations/CheckReturnValue.class
 com/google/errorprone/annotations/CompatibleWith.class
 com/google/errorprone/annotations/CompileTimeConstant.class
 com/google/errorprone/annotations/DoNotCall.class
-com/google/errorprone/annotations/DoNotMock.class
 com/google/errorprone/annotations/ForOverride.class
 com/google/errorprone/annotations/FormatMethod.class
 com/google/errorprone/annotations/FormatString.class

@@ -19,6 +19,7 @@ import 'package:couponsgate/widgets/favorites.dart';
 import 'package:couponsgate/widgets/login.dart';
 import 'package:couponsgate/widgets/settings.dart';
 import 'package:couponsgate/widgets/stores/all_stores.dart';
+import 'package:couponsgate/widgets/stores/store_coupons.dart';
 import 'package:couponsgate/widgets/tabs/search_tab.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -66,7 +67,10 @@ class _HomeState extends State<Home> {
   String _currentCoupon = '0';
   int lsubmit_btn_child_index = 0;
   int loadModeChildIndicator = 0;
+  String notificationRouteType = '0';
   String couponNotificationId = '0';
+  String storeNotificationId = '0';
+  String notificationUrl = '0';
 
   List<Country> _countries , _rCountries = [];
   String _countryBtnHint = '+';
@@ -88,17 +92,7 @@ class _HomeState extends State<Home> {
     //     );
     //   },
     // );
-
-    if(couponNotificationId != '0')
-      Navigator.of(context).push(
-        new MaterialPageRoute(
-            builder: (BuildContext context) => new CouponMain(id: couponNotificationId,)),
-      ).whenComplete(() {
-        setState(() {
-          couponNotificationId = '0';
-        });
-      });
-
+    _foregroundNotificationRouter();
 
   }
   void showNotification(String title, String body) async {
@@ -211,6 +205,110 @@ class _HomeState extends State<Home> {
 
   }
 
+  _foregroundNotificationRouter()
+  {
+
+    switch(notificationRouteType)
+    {
+      case 'local_coupon': if(couponNotificationId != '0')
+      {
+
+          Navigator.of(context).push(
+            new MaterialPageRoute(
+                builder: (BuildContext context) => new CouponMain(id: couponNotificationId,)),
+          ).whenComplete(() {
+            setState(() {
+              couponNotificationId = '0';
+            });
+          });
+
+      }
+      break;
+
+      case 'local_store': if(storeNotificationId != null)
+      {
+
+          homeApi.getStoreById(storeNotificationId).then((store) {
+
+            Navigator.of(context).push(
+              new MaterialPageRoute(
+                  builder: (BuildContext context) => new StoryCoupon(country: store,)),
+            ).whenComplete(() {
+              setState(() {
+                storeNotificationId = '0';
+              });
+            });
+
+          });
+      }
+      break;
+
+      case 'url': if(notificationUrl != null)
+      {
+        _launchStoreURL(notificationUrl).whenComplete(() {
+          setState(() {
+            notificationUrl = '0';
+          });
+        });;
+      }
+      break;
+    }
+
+  }
+
+  _backgroundNotificationRouter(Map<String , dynamic> message)
+  {
+
+    switch(message['data']['route_type'])
+    {
+      case 'local_coupon': if(message['data']['payload'] != null)
+      {
+        setState(() {
+          couponNotificationId = message['data']['payload'];
+
+          Navigator.of(context).push(
+            new MaterialPageRoute(
+                builder: (BuildContext context) => new CouponMain(id: couponNotificationId,)),
+          ).whenComplete(() {
+            setState(() {
+              couponNotificationId = '0';
+            });
+          });
+
+        });
+      }
+      break;
+
+      case 'local_store': if(message['data']['payload'] != null)
+      {
+        setState(() {
+          storeNotificationId = message['data']['payload'];
+
+          homeApi.getStoreById(storeNotificationId).then((store) {
+
+            Navigator.of(context).push(
+              new MaterialPageRoute(
+                  builder: (BuildContext context) => new StoryCoupon(country: store,)),
+            ).whenComplete(() {
+              setState(() {
+                storeNotificationId = '0';
+              });
+            });
+
+          });
+        });
+      }
+      break;
+
+      case 'url': if(message['data']['payload'] != null)
+      {
+        _launchStoreURL(message['data']['payload']);
+      }
+      break;
+    }
+
+  }
+
   void initializeNotificationsConfigs() {
     var initializationSettingsAndroid =
     new AndroidInitializationSettings('@mipmap/ic_launcher');
@@ -246,56 +344,48 @@ class _HomeState extends State<Home> {
           }
 
         print("onMessage: $message");
-        if(message['data']['coupon_id'] != null)
+
+        setState(() {
+          notificationRouteType = message['data']['route_type'];
+
+          switch(message['data']['route_type'])
           {
-            setState(() {
-              couponNotificationId = message['data']['coupon_id'];
-            });
+            case 'local_coupon': if(message['data']['payload'] != null)
+            {
+              setState(() {
+                couponNotificationId = message['data']['payload'];
+              });
+            }
+            break;
+
+            case 'local_store': if(message['data']['payload'] != null)
+            {
+              setState(() {
+                storeNotificationId = message['data']['payload'];
+              });
+            }
+            break;
+
+            case 'url': if(message['data']['payload'] != null)
+            {
+              setState(() {
+                notificationUrl = message['data']['payload'];
+              });
+            }
+            break;
           }
+        });
 
       },
       onLaunch: (Map<String, dynamic> message) async {
         print("onLaunch: $message");
-        //Navigator.pushNamed(context, '/notify');
 
-        if(message['data']['coupon_id'] != null)
-        {
-          setState(() {
-            couponNotificationId = message['data']['coupon_id'];
-
-            Navigator.of(context).push(
-              new MaterialPageRoute(
-                  builder: (BuildContext context) => new CouponMain(id: couponNotificationId,)),
-            ).whenComplete(() {
-              setState(() {
-                couponNotificationId = '0';
-              });
-            });
-
-          });
-        }
-
+        _backgroundNotificationRouter(message);
       },
       onResume: (Map<String, dynamic> message) async {
         print("onResume: $message");
 
-        if(message['data']['coupon_id'] != null)
-        {
-          setState(() {
-            couponNotificationId = message['data']['coupon_id'];
-
-            Navigator.of(context).push(
-              new MaterialPageRoute(
-                  builder: (BuildContext context) => new CouponMain(id: couponNotificationId,)),
-            ).whenComplete(() {
-              setState(() {
-                couponNotificationId = '0';
-              });
-            });
-
-          });
-        }
-
+        _backgroundNotificationRouter(message);
       },
     );
 

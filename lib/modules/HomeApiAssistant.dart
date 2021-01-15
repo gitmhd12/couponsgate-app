@@ -14,6 +14,8 @@ class HomeApiAssistant {
   List<Store> _stores;
   List<Code> _codes;
 
+  Store _rStore;
+
   Future getUserRatings() async {
     final prefs = await SharedPreferences.getInstance();
     final key = 'is_login';
@@ -297,6 +299,21 @@ class HomeApiAssistant {
     }
 
     return _stores;
+  }
+
+  Future getStoreById(String id) async
+  {
+
+    var ssResponse = await http
+        .post('https://yalaphone.com/appdash/rest_api/stores/get_store_by_id.php' , body: {
+      'store_id' : id,
+    });
+
+    var ssData = json.decode(ssResponse.body);
+    print(ssData.toString());
+    _rStore = Store.fromJson(ssData['store']);
+
+    return _rStore;
   }
 
   Future getUserCodes() async {
