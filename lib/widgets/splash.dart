@@ -38,7 +38,7 @@ class _Splash extends State<Splash> {
 
       if(value == null)
       {
-        Navigator.pushReplacementNamed(context, '/SelectCountry');
+        Navigator.pushReplacementNamed(context, '/login');
       }
       else
       {
@@ -87,9 +87,13 @@ class _Splash extends State<Splash> {
                   ,width: MediaQuery.of(context).size.width
                   ,height: MediaQuery.of(context).size.width),
 
+              SizedBox(
+                height: 30,
+              ),
+
               MaterialButton(
                 textColor: Color(0xff000000),
-                child: Text(getTranslated(context, 'skip'),style: TextStyle(fontFamily: 'CustomFont',fontSize: 20,fontWeight: FontWeight.bold),),
+                child: Text(getTranslated(context, 'skip'),style: TextStyle(fontFamily: 'CustomFont',fontSize: 25,fontWeight: FontWeight.bold),),
                 onPressed: () {
                   checkLogin();
                 },

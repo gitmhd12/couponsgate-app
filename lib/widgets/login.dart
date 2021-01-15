@@ -421,6 +421,10 @@ class _LoginState extends State<Login>{
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
 
+          loginBtnChildIndex == 1? CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+          ):
+
           Text(
             getTranslated(context, 'login_text'),
             style: TextStyle(
@@ -451,6 +455,10 @@ class _LoginState extends State<Login>{
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+
+          registerBtnChildIndex == 1? CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+          ):
 
           Text(
             getTranslated(context, 'new_account'),
