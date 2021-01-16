@@ -24,33 +24,33 @@
 17-->[:flutter_local_notifications] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-81
 17-->[:flutter_local_notifications] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:9:22-78
 18    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-18-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:24:5-79
-18-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:24:22-76
-19    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
-19-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:24:5-68
-19-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:24:22-65
-20    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-20-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:26:5-82
-20-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:26:22-79
-21    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
-21-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:26:5-110
-21-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:26:22-107
+18-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:24:5-79
+18-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:24:22-76
+19    <uses-permission android:name="android.permission.WAKE_LOCK" />
+19-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:25:5-68
+19-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:25:22-65
+20    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+20-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:26:5-110
+20-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:26:22-107
+21    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+21-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:26:5-82
+21-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:26:22-79
 22
 23    <application
-23-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:14:5-82:19
+23-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:14:5-87:19
 24        android:name="io.flutter.app.FlutterApplication"
 24-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:15:9-57
 25        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 25-->[androidx.core:core:1.3.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/5fd279f3856e70e6b7f85db60eb3b1d8/core-1.3.0/AndroidManifest.xml:24:18-86
 26        android:debuggable="true"
-27        android:icon="@mipmap/launcher_icon"
-27-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:17:9-45
+27        android:icon="@mipmap/ic_launcher"
+27-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:17:9-43
 28        android:label="couponsgate"
 28-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:16:9-36
 29        android:supportsRtl="true" >
 29-->[com.facebook.android:facebook-login:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/0b733f393162b3339c4403e8139518e7/jetified-facebook-login-5.5.1/AndroidManifest.xml:28:18-44
 30        <activity
-30-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:18:9-50:20
+30-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:18:9-51:20
 31            android:name="net.couponsgate.MainActivity"
 31-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:19:13-41
 32            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
@@ -71,11 +71,11 @@
 42                 to determine the Window background behind the Flutter UI.
 43            -->
 44            <meta-data
-44-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:29:13-32:17
+44-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:29:13-32:19
 45                android:name="io.flutter.embedding.android.NormalTheme"
-45-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:30:15-70
+45-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:30:17-72
 46                android:resource="@style/NormalTheme" />
-46-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:31:15-52
+46-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:31:17-54
 47            <!--
 48                 Displays an Android View that continues showing the launch screen
 49                 Drawable until Flutter paints its first frame, then this splash
@@ -84,31 +84,31 @@
 52                 Flutter's first frame.
 53            -->
 54            <meta-data
-54-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:38:13-41:17
+54-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:38:13-41:19
 55                android:name="io.flutter.embedding.android.SplashScreenDrawable"
-55-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:39:15-79
+55-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:39:17-81
 56                android:resource="@drawable/launch_background" />
-56-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:40:15-61
+56-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:40:17-63
 57
 58            <intent-filter>
-58-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:42:13-45:29
+58-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:43:13-46:29
 59                <action android:name="android.intent.action.MAIN" />
-59-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:43:17-68
-59-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:43:25-66
+59-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:44:17-68
+59-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:44:25-66
 60
 61                <category android:name="android.intent.category.LAUNCHER" />
-61-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:44:17-76
-61-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:44:27-74
+61-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:45:17-76
+61-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:45:27-74
 62            </intent-filter>
 63            <intent-filter>
-63-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:46:13-49:29
+63-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:47:13-50:29
 64                <action android:name="FLUTTER_NOTIFICATION_CLICK" />
-64-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:47:17-69
-64-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:47:25-66
+64-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:48:17-69
+64-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:48:25-66
 65
 66                <category android:name="android.intent.category.DEFAULT" />
-66-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:48:17-76
-66-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:48:27-73
+66-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:49:17-76
+66-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:49:27-73
 67            </intent-filter>
 68        </activity>
 69        <!--
@@ -116,142 +116,142 @@
 71             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
 72        -->
 73        <meta-data
-73-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:53:9-55:33
+73-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:54:9-56:33
 74            android:name="flutterEmbedding"
-74-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:54:13-44
+74-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:55:13-44
 75            android:value="2" />
-75-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:55:13-30
+75-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:56:13-30
 76        <meta-data
-76-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:57:9-58:54
-77            android:name="com.facebook.sdk.ApplicationId"
-77-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:57:20-65
-78            android:value="@string/facebook_app_id" />
-78-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:58:13-52
-79
-80        <activity
-80-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:60:9-63:48
-81            android:name="com.facebook.FacebookActivity"
-81-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:60:19-63
-82            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-82-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:61:13-113
-83            android:label="@string/app_name"
-83-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:63:13-45
-84            android:theme="@style/com_facebook_activity_theme" />
-84-->[com.facebook.android:facebook-common:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/38e162f7510b97df52007af7588d3b92/jetified-facebook-common-5.5.1/AndroidManifest.xml:32:13-63
-85        <activity
-85-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:64:9-73:20
-86            android:name="com.facebook.CustomTabActivity"
-86-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:65:13-58
-87            android:exported="true" >
-87-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:66:13-36
-88            <intent-filter>
-88-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:67:13-72:29
-89                <action android:name="android.intent.action.VIEW" />
-89-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:68:17-69
-89-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:68:25-66
-90
-91                <category android:name="android.intent.category.DEFAULT" />
-91-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:48:17-76
-91-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:48:27-73
-92                <category android:name="android.intent.category.BROWSABLE" />
-92-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:70:17-78
-92-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:70:27-75
+76-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:58:9-60:71
+77            android:name="com.google.firebase.messaging.default_notification_channel_id"
+77-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:59:13-89
+78            android:value="@string/default_notification_channel_id" />
+78-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:60:13-68
+79        <meta-data
+79-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:62:9-63:54
+80            android:name="com.facebook.sdk.ApplicationId"
+80-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:62:20-65
+81            android:value="@string/facebook_app_id" />
+81-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:63:13-52
+82
+83        <activity
+83-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:65:9-68:48
+84            android:name="com.facebook.FacebookActivity"
+84-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:65:19-63
+85            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+85-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:66:13-113
+86            android:label="@string/app_name"
+86-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:68:13-45
+87            android:theme="@style/com_facebook_activity_theme" />
+87-->[com.facebook.android:facebook-common:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/38e162f7510b97df52007af7588d3b92/jetified-facebook-common-5.5.1/AndroidManifest.xml:32:13-63
+88        <activity
+88-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:69:9-78:20
+89            android:name="com.facebook.CustomTabActivity"
+89-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:70:13-58
+90            android:exported="true" >
+90-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:71:13-36
+91            <intent-filter>
+91-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:72:13-77:29
+92                <action android:name="android.intent.action.VIEW" />
+92-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:73:17-69
+92-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:73:25-66
 93
-94                <data android:scheme="@string/fb_login_protocol_scheme" />
-94-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:71:17-75
-94-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:71:23-72
-95            </intent-filter>
-96        </activity>
-97
-98        <receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver" >
-98-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:75:9-79:20
-98-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:75:19-107
-99            <intent-filter>
-99-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:76:13-78:29
-100                <action android:name="android.intent.action.BOOT_COMPLETED" />
-100-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:77:17-86
-100-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:77:25-76
-101            </intent-filter>
+94                <category android:name="android.intent.category.DEFAULT" />
+94-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:49:17-76
+94-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:49:27-73
+95                <category android:name="android.intent.category.BROWSABLE" />
+95-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:75:17-78
+95-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:75:27-75
+96
+97                <data android:scheme="@string/fb_login_protocol_scheme" />
+97-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:76:17-75
+97-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:76:23-72
+98            </intent-filter>
+99        </activity>
+100
+101        <receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver" >
+101-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:80:9-84:20
+101-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:80:19-107
 102            <intent-filter>
-102-->[:flutter_local_notifications] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-19:29
+102-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:81:13-83:29
 103                <action android:name="android.intent.action.BOOT_COMPLETED" />
-103-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:77:17-86
-103-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:77:25-76
-104                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
-104-->[:flutter_local_notifications] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:16:17-84
-104-->[:flutter_local_notifications] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:16:25-81
-105                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
-105-->[:flutter_local_notifications] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:17:17-82
-105-->[:flutter_local_notifications] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:17:25-79
-106                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
-106-->[:flutter_local_notifications] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-82
-106-->[:flutter_local_notifications] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:18:25-79
-107            </intent-filter>
-108        </receiver>
-109        <receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" />
-109-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:80:9-106
-109-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:80:19-103
-110
-111        <service android:name="io.flutter.plugins.firebasemessaging.FlutterFirebaseMessagingService" >
-111-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
-111-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:8:18-101
-112            <intent-filter>
-112-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:29
-113                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-113-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-78
-113-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:10:25-75
-114            </intent-filter>
-115        </service>
-116        <service
-116-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:13:9-17:19
-117            android:name="com.google.firebase.components.ComponentDiscoveryService"
-117-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:13:18-89
-118            android:directBootAware="true"
-118-->[com.google.firebase:firebase-common:19.5.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/7c1bd8e9ce5ec96b7c00e6b7ba6d8237/jetified-firebase-common-19.5.0/AndroidManifest.xml:35:13-43
-119            android:exported="false" >
-119-->[com.google.firebase:firebase-messaging:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/6f9987c6e5ffd71a75712d9bee17a0df/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:38:13-37
-120            <meta-data
-120-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-16:85
-121                android:name="com.google.firebase.components:io.flutter.plugins.firebasemessaging.FlutterFirebaseAppRegistrar"
-121-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:15:17-127
-122                android:value="com.google.firebase.components.ComponentRegistrar" />
-122-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:16:17-82
+103-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:82:17-86
+103-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:82:25-76
+104            </intent-filter>
+105            <intent-filter>
+105-->[:flutter_local_notifications] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-19:29
+106                <action android:name="android.intent.action.BOOT_COMPLETED" />
+106-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:82:17-86
+106-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:82:25-76
+107                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+107-->[:flutter_local_notifications] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:16:17-84
+107-->[:flutter_local_notifications] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:16:25-81
+108                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+108-->[:flutter_local_notifications] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:17:17-82
+108-->[:flutter_local_notifications] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:17:25-79
+109                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+109-->[:flutter_local_notifications] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-82
+109-->[:flutter_local_notifications] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:18:25-79
+110            </intent-filter>
+111        </receiver>
+112        <receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" />
+112-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:85:9-106
+112-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:85:19-103
+113
+114        <service android:name="io.flutter.plugins.firebasemessaging.FlutterFirebaseMessagingService" >
+114-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
+114-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:8:18-101
+115            <intent-filter>
+115-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:29
+116                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+116-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-78
+116-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:10:25-75
+117            </intent-filter>
+118        </service>
+119        <service
+119-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:13:9-17:19
+120            android:name="com.google.firebase.components.ComponentDiscoveryService"
+120-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:13:18-89
+121            android:directBootAware="true"
+121-->[com.google.firebase:firebase-common:19.5.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/7c1bd8e9ce5ec96b7c00e6b7ba6d8237/jetified-firebase-common-19.5.0/AndroidManifest.xml:35:13-43
+122            android:exported="false" >
+122-->[com.google.firebase:firebase-messaging:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/6f9987c6e5ffd71a75712d9bee17a0df/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:38:13-37
 123            <meta-data
-123-->[:firebase_auth] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
-124                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
-124-->[:firebase_auth] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-124
+123-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-16:85
+124                android:name="com.google.firebase.components:io.flutter.plugins.firebasemessaging.FlutterFirebaseAppRegistrar"
+124-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:15:17-127
 125                android:value="com.google.firebase.components.ComponentRegistrar" />
-125-->[:firebase_auth] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
+125-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:16:17-82
 126            <meta-data
-126-->[:firebase_core] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
-127                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
-127-->[:firebase_core] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-124
+126-->[:firebase_auth] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
+127                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
+127-->[:firebase_auth] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-124
 128                android:value="com.google.firebase.components.ComponentRegistrar" />
-128-->[:firebase_core] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
+128-->[:firebase_auth] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
 129            <meta-data
-129-->[com.google.firebase:firebase-messaging:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/6f9987c6e5ffd71a75712d9bee17a0df/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:39:13-41:85
-130                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
-130-->[com.google.firebase:firebase-messaging:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/6f9987c6e5ffd71a75712d9bee17a0df/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:40:17-119
+129-->[:firebase_core] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
+130                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+130-->[:firebase_core] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-124
 131                android:value="com.google.firebase.components.ComponentRegistrar" />
-131-->[com.google.firebase:firebase-messaging:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/6f9987c6e5ffd71a75712d9bee17a0df/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:41:17-82
+131-->[:firebase_core] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
 132            <meta-data
-132-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:77:13-79:85
-133                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-133-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:78:17-109
+132-->[com.google.firebase:firebase-messaging:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/6f9987c6e5ffd71a75712d9bee17a0df/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:39:13-41:85
+133                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+133-->[com.google.firebase:firebase-messaging:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/6f9987c6e5ffd71a75712d9bee17a0df/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:40:17-119
 134                android:value="com.google.firebase.components.ComponentRegistrar" />
-134-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:79:17-82
+134-->[com.google.firebase:firebase-messaging:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/6f9987c6e5ffd71a75712d9bee17a0df/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:41:17-82
 135            <meta-data
-135-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:32:13-34:85
-136                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
-136-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:33:17-96
+135-->[com.google.android.gms:play-services-measurement-api:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/a1427d643374604029ba240672e36c13/play-services-measurement-api-18.0.0/AndroidManifest.xml:30:13-32:85
+136                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+136-->[com.google.android.gms:play-services-measurement-api:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/a1427d643374604029ba240672e36c13/play-services-measurement-api-18.0.0/AndroidManifest.xml:31:17-139
 137                android:value="com.google.firebase.components.ComponentRegistrar" />
-137-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:34:17-82
+137-->[com.google.android.gms:play-services-measurement-api:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/a1427d643374604029ba240672e36c13/play-services-measurement-api-18.0.0/AndroidManifest.xml:32:17-82
 138            <meta-data
-138-->[com.google.android.gms:play-services-measurement-api:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/a1427d643374604029ba240672e36c13/play-services-measurement-api-18.0.0/AndroidManifest.xml:30:13-32:85
-139                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-139-->[com.google.android.gms:play-services-measurement-api:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/a1427d643374604029ba240672e36c13/play-services-measurement-api-18.0.0/AndroidManifest.xml:31:17-139
+138-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:32:13-34:85
+139                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+139-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:33:17-96
 140                android:value="com.google.firebase.components.ComponentRegistrar" />
-140-->[com.google.android.gms:play-services-measurement-api:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/a1427d643374604029ba240672e36c13/play-services-measurement-api-18.0.0/AndroidManifest.xml:32:17-82
+140-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:34:17-82
 141            <meta-data
 141-->[com.google.firebase:firebase-installations:16.3.5] /Users/sh/.gradle/caches/transforms-2/files-2.1/2c1b778f09d17c9a8a92258ee62b2bd6/firebase-installations-16.3.5/AndroidManifest.xml:18:13-20:85
 142                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
@@ -259,313 +259,320 @@
 143                android:value="com.google.firebase.components.ComponentRegistrar" />
 143-->[com.google.firebase:firebase-installations:16.3.5] /Users/sh/.gradle/caches/transforms-2/files-2.1/2c1b778f09d17c9a8a92258ee62b2bd6/firebase-installations-16.3.5/AndroidManifest.xml:20:17-82
 144            <meta-data
-144-->[com.google.firebase:firebase-datatransport:17.0.10] /Users/sh/.gradle/caches/transforms-2/files-2.1/e6e644f2293a360e35a562851f1e86fe/firebase-datatransport-17.0.10/AndroidManifest.xml:28:13-30:85
-145                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
-145-->[com.google.firebase:firebase-datatransport:17.0.10] /Users/sh/.gradle/caches/transforms-2/files-2.1/e6e644f2293a360e35a562851f1e86fe/firebase-datatransport-17.0.10/AndroidManifest.xml:29:17-115
+144-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:77:13-79:85
+145                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+145-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:78:17-109
 146                android:value="com.google.firebase.components.ComponentRegistrar" />
-146-->[com.google.firebase:firebase-datatransport:17.0.10] /Users/sh/.gradle/caches/transforms-2/files-2.1/e6e644f2293a360e35a562851f1e86fe/firebase-datatransport-17.0.10/AndroidManifest.xml:30:17-82
-147            <!--
-148                This registrar is not defined in the dynamic-module-support sdk itself to allow non-firebase
-149                clients to use it as well, by defining this registrar in their own core/common library.
-150            -->
-151            <meta-data
-151-->[com.google.firebase:firebase-common:19.5.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/7c1bd8e9ce5ec96b7c00e6b7ba6d8237/jetified-firebase-common-19.5.0/AndroidManifest.xml:43:13-45:85
-152                android:name="com.google.firebase.components:com.google.firebase.dynamicloading.DynamicLoadingRegistrar"
-152-->[com.google.firebase:firebase-common:19.5.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/7c1bd8e9ce5ec96b7c00e6b7ba6d8237/jetified-firebase-common-19.5.0/AndroidManifest.xml:44:17-121
-153                android:value="com.google.firebase.components.ComponentRegistrar" />
-153-->[com.google.firebase:firebase-common:19.5.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/7c1bd8e9ce5ec96b7c00e6b7ba6d8237/jetified-firebase-common-19.5.0/AndroidManifest.xml:45:17-82
-154        </service>
-155
-156        <activity
-156-->[:url_launcher] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-11:74
-157            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-157-->[:url_launcher] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-74
-158            android:exported="false"
-158-->[:url_launcher] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-37
-159            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-159-->[:url_launcher] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-71
-160        <!--
-161             FirebaseMessagingService performs security checks at runtime,
-162             but set to not exported to explicitly avoid allowing another app to call it.
-163        -->
-164        <service
-164-->[com.google.firebase:firebase-messaging:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/6f9987c6e5ffd71a75712d9bee17a0df/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:28:9-35:19
-165            android:name="com.google.firebase.messaging.FirebaseMessagingService"
-165-->[com.google.firebase:firebase-messaging:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/6f9987c6e5ffd71a75712d9bee17a0df/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:29:13-82
-166            android:directBootAware="true"
-166-->[com.google.firebase:firebase-messaging:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/6f9987c6e5ffd71a75712d9bee17a0df/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:30:13-43
-167            android:exported="false" >
-167-->[com.google.firebase:firebase-messaging:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/6f9987c6e5ffd71a75712d9bee17a0df/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:31:13-37
-168            <intent-filter android:priority="-500" >
-168-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:29
-169                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-169-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-78
-169-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:10:25-75
-170            </intent-filter>
-171        </service>
-172
-173        <activity android:name="com.facebook.CustomTabMainActivity" />
-173-->[com.facebook.android:facebook-common:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/38e162f7510b97df52007af7588d3b92/jetified-facebook-common-5.5.1/AndroidManifest.xml:33:9-71
-173-->[com.facebook.android:facebook-common:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/38e162f7510b97df52007af7588d3b92/jetified-facebook-common-5.5.1/AndroidManifest.xml:33:19-68
-174        <activity
-174-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:27:9-44:20
-175            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
-175-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:28:13-80
-176            android:excludeFromRecents="true"
-176-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:29:13-46
-177            android:exported="true"
-177-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:30:13-36
-178            android:launchMode="singleTask"
-178-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:31:13-44
-179            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-179-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:32:13-72
-180            <intent-filter>
-180-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:33:13-43:29
-181                <action android:name="android.intent.action.VIEW" />
-181-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:68:17-69
-181-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:68:25-66
-182
-183                <category android:name="android.intent.category.DEFAULT" />
-183-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:48:17-76
-183-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:48:27-73
-184                <category android:name="android.intent.category.BROWSABLE" />
-184-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:70:17-78
-184-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:70:27-75
-185
-186                <data
-186-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:71:17-75
-187                    android:host="firebase.auth"
-188                    android:path="/"
-189                    android:scheme="genericidp" />
-189-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:71:23-72
-190            </intent-filter>
-191        </activity>
-192        <activity
-192-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:45:9-62:20
-193            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-193-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:46:13-79
-194            android:excludeFromRecents="true"
-194-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:47:13-46
-195            android:exported="true"
-195-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:48:13-36
-196            android:launchMode="singleTask"
-196-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:49:13-44
-197            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-197-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:50:13-72
-198            <intent-filter>
-198-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:51:13-61:29
-199                <action android:name="android.intent.action.VIEW" />
-199-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:68:17-69
-199-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:68:25-66
-200
-201                <category android:name="android.intent.category.DEFAULT" />
-201-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:48:17-76
-201-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:48:27-73
-202                <category android:name="android.intent.category.BROWSABLE" />
-202-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:70:17-78
-202-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:70:27-75
-203
-204                <data
-204-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:71:17-75
-205                    android:host="firebase.auth"
-206                    android:path="/"
-207                    android:scheme="recaptcha" />
-207-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:71:23-72
-208            </intent-filter>
-209        </activity>
-210
-211        <service
-211-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:64:9-73:19
-212            android:name="com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService"
-212-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:65:13-101
-213            android:enabled="true"
-213-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:66:13-35
-214            android:exported="false" >
-214-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:67:13-37
-215            <intent-filter>
-215-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:68:13-72:29
-216                <action android:name="com.google.firebase.auth.api.gms.service.START" />
-216-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:69:17-89
-216-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:69:25-86
-217
-218                <category android:name="android.intent.category.DEFAULT" />
-218-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:48:17-76
-218-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:48:27-73
-219            </intent-filter>
-220        </service>
-221
-222        <activity
-222-->[com.google.android.gms:play-services-auth:16.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/908559863ef079775604a2227d02f518/jetified-play-services-auth-16.0.1/AndroidManifest.xml:23:9-27:75
-223            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-223-->[com.google.android.gms:play-services-auth:16.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/908559863ef079775604a2227d02f518/jetified-play-services-auth-16.0.1/AndroidManifest.xml:24:13-93
-224            android:excludeFromRecents="true"
-224-->[com.google.android.gms:play-services-auth:16.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/908559863ef079775604a2227d02f518/jetified-play-services-auth-16.0.1/AndroidManifest.xml:25:13-46
-225            android:exported="false"
-225-->[com.google.android.gms:play-services-auth:16.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/908559863ef079775604a2227d02f518/jetified-play-services-auth-16.0.1/AndroidManifest.xml:26:13-37
-226            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-226-->[com.google.android.gms:play-services-auth:16.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/908559863ef079775604a2227d02f518/jetified-play-services-auth-16.0.1/AndroidManifest.xml:27:13-72
-227        <!--
-228            Service handling Google Sign-In user revocation. For apps that do not integrate with
-229            Google Sign-In, this service will never be started.
-230        -->
-231        <service
-231-->[com.google.android.gms:play-services-auth:16.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/908559863ef079775604a2227d02f518/jetified-play-services-auth-16.0.1/AndroidManifest.xml:33:9-36:110
-232            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-232-->[com.google.android.gms:play-services-auth:16.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/908559863ef079775604a2227d02f518/jetified-play-services-auth-16.0.1/AndroidManifest.xml:34:13-89
-233            android:exported="true"
-233-->[com.google.android.gms:play-services-auth:16.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/908559863ef079775604a2227d02f518/jetified-play-services-auth-16.0.1/AndroidManifest.xml:35:13-36
-234            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
-234-->[com.google.android.gms:play-services-auth:16.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/908559863ef079775604a2227d02f518/jetified-play-services-auth-16.0.1/AndroidManifest.xml:36:13-107
-235
-236        <receiver
-236-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:37:9-44:20
-237            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-237-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:38:13-78
-238            android:exported="true"
-238-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:39:13-36
-239            android:permission="com.google.android.c2dm.permission.SEND" >
-239-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:40:13-73
-240            <intent-filter>
-240-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:41:13-43:29
-241                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-241-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:42:17-81
-241-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:42:25-78
-242            </intent-filter>
-243        </receiver>
+146-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:79:17-82
+147            <meta-data
+147-->[com.google.firebase:firebase-datatransport:17.0.10] /Users/sh/.gradle/caches/transforms-2/files-2.1/e6e644f2293a360e35a562851f1e86fe/firebase-datatransport-17.0.10/AndroidManifest.xml:28:13-30:85
+148                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+148-->[com.google.firebase:firebase-datatransport:17.0.10] /Users/sh/.gradle/caches/transforms-2/files-2.1/e6e644f2293a360e35a562851f1e86fe/firebase-datatransport-17.0.10/AndroidManifest.xml:29:17-115
+149                android:value="com.google.firebase.components.ComponentRegistrar" />
+149-->[com.google.firebase:firebase-datatransport:17.0.10] /Users/sh/.gradle/caches/transforms-2/files-2.1/e6e644f2293a360e35a562851f1e86fe/firebase-datatransport-17.0.10/AndroidManifest.xml:30:17-82
+150            <!--
+151                This registrar is not defined in the dynamic-module-support sdk itself to allow non-firebase
+152                clients to use it as well, by defining this registrar in their own core/common library.
+153            -->
+154            <meta-data
+154-->[com.google.firebase:firebase-common:19.5.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/7c1bd8e9ce5ec96b7c00e6b7ba6d8237/jetified-firebase-common-19.5.0/AndroidManifest.xml:43:13-45:85
+155                android:name="com.google.firebase.components:com.google.firebase.dynamicloading.DynamicLoadingRegistrar"
+155-->[com.google.firebase:firebase-common:19.5.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/7c1bd8e9ce5ec96b7c00e6b7ba6d8237/jetified-firebase-common-19.5.0/AndroidManifest.xml:44:17-121
+156                android:value="com.google.firebase.components.ComponentRegistrar" />
+156-->[com.google.firebase:firebase-common:19.5.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/7c1bd8e9ce5ec96b7c00e6b7ba6d8237/jetified-firebase-common-19.5.0/AndroidManifest.xml:45:17-82
+157        </service>
+158
+159        <activity
+159-->[:url_launcher] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-11:74
+160            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+160-->[:url_launcher] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-74
+161            android:exported="false"
+161-->[:url_launcher] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-37
+162            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+162-->[:url_launcher] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-71
+163        <!--
+164             FirebaseMessagingService performs security checks at runtime,
+165             but set to not exported to explicitly avoid allowing another app to call it.
+166        -->
+167        <service
+167-->[com.google.firebase:firebase-messaging:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/6f9987c6e5ffd71a75712d9bee17a0df/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:28:9-35:19
+168            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+168-->[com.google.firebase:firebase-messaging:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/6f9987c6e5ffd71a75712d9bee17a0df/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:29:13-82
+169            android:directBootAware="true"
+169-->[com.google.firebase:firebase-messaging:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/6f9987c6e5ffd71a75712d9bee17a0df/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:30:13-43
+170            android:exported="false" >
+170-->[com.google.firebase:firebase-messaging:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/6f9987c6e5ffd71a75712d9bee17a0df/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:31:13-37
+171            <intent-filter android:priority="-500" >
+171-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:29
+172                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+172-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-78
+172-->[:firebase_messaging] /Users/sh/Documents/work/couponsgate/couponsgate-app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:10:25-75
+173            </intent-filter>
+174        </service>
+175
+176        <activity
+176-->[com.google.android.gms:play-services-auth:16.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/908559863ef079775604a2227d02f518/jetified-play-services-auth-16.0.1/AndroidManifest.xml:23:9-27:75
+177            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+177-->[com.google.android.gms:play-services-auth:16.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/908559863ef079775604a2227d02f518/jetified-play-services-auth-16.0.1/AndroidManifest.xml:24:13-93
+178            android:excludeFromRecents="true"
+178-->[com.google.android.gms:play-services-auth:16.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/908559863ef079775604a2227d02f518/jetified-play-services-auth-16.0.1/AndroidManifest.xml:25:13-46
+179            android:exported="false"
+179-->[com.google.android.gms:play-services-auth:16.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/908559863ef079775604a2227d02f518/jetified-play-services-auth-16.0.1/AndroidManifest.xml:26:13-37
+180            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+180-->[com.google.android.gms:play-services-auth:16.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/908559863ef079775604a2227d02f518/jetified-play-services-auth-16.0.1/AndroidManifest.xml:27:13-72
+181        <!--
+182            Service handling Google Sign-In user revocation. For apps that do not integrate with
+183            Google Sign-In, this service will never be started.
+184        -->
+185        <service
+185-->[com.google.android.gms:play-services-auth:16.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/908559863ef079775604a2227d02f518/jetified-play-services-auth-16.0.1/AndroidManifest.xml:33:9-36:110
+186            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+186-->[com.google.android.gms:play-services-auth:16.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/908559863ef079775604a2227d02f518/jetified-play-services-auth-16.0.1/AndroidManifest.xml:34:13-89
+187            android:exported="true"
+187-->[com.google.android.gms:play-services-auth:16.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/908559863ef079775604a2227d02f518/jetified-play-services-auth-16.0.1/AndroidManifest.xml:35:13-36
+188            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
+188-->[com.google.android.gms:play-services-auth:16.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/908559863ef079775604a2227d02f518/jetified-play-services-auth-16.0.1/AndroidManifest.xml:36:13-107
+189
+190        <receiver
+190-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:29:9-33:20
+191            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+191-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:30:13-85
+192            android:enabled="true"
+192-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:31:13-35
+193            android:exported="false" >
+193-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:32:13-37
+194        </receiver>
+195
+196        <service
+196-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:35:9-38:40
+197            android:name="com.google.android.gms.measurement.AppMeasurementService"
+197-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:36:13-84
+198            android:enabled="true"
+198-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:37:13-35
+199            android:exported="false" />
+199-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:38:13-37
+200        <service
+200-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:39:9-43:72
+201            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+201-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:40:13-87
+202            android:enabled="true"
+202-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:41:13-35
+203            android:exported="false"
+203-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:42:13-37
+204            android:permission="android.permission.BIND_JOB_SERVICE" />
+204-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:43:13-69
+205
+206        <receiver
+206-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:37:9-44:20
+207            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+207-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:38:13-78
+208            android:exported="true"
+208-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:39:13-36
+209            android:permission="com.google.android.c2dm.permission.SEND" >
+209-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:40:13-73
+210            <intent-filter>
+210-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:41:13-43:29
+211                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+211-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:42:17-81
+211-->[com.google.firebase:firebase-iid:21.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/81bc976a903d964a4896ed2092b73241/firebase-iid-21.0.1/AndroidManifest.xml:42:25-78
+212            </intent-filter>
+213        </receiver>
+214
+215        <activity
+215-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:27:9-44:20
+216            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+216-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:28:13-80
+217            android:excludeFromRecents="true"
+217-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:29:13-46
+218            android:exported="true"
+218-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:30:13-36
+219            android:launchMode="singleTask"
+219-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:31:13-44
+220            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+220-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:32:13-72
+221            <intent-filter>
+221-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:33:13-43:29
+222                <action android:name="android.intent.action.VIEW" />
+222-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:73:17-69
+222-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:73:25-66
+223
+224                <category android:name="android.intent.category.DEFAULT" />
+224-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:49:17-76
+224-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:49:27-73
+225                <category android:name="android.intent.category.BROWSABLE" />
+225-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:75:17-78
+225-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:75:27-75
+226
+227                <data
+227-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:76:17-75
+228                    android:host="firebase.auth"
+229                    android:path="/"
+230                    android:scheme="genericidp" />
+230-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:76:23-72
+231            </intent-filter>
+232        </activity>
+233        <activity
+233-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:45:9-62:20
+234            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+234-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:46:13-79
+235            android:excludeFromRecents="true"
+235-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:47:13-46
+236            android:exported="true"
+236-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:48:13-36
+237            android:launchMode="singleTask"
+237-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:49:13-44
+238            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+238-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:50:13-72
+239            <intent-filter>
+239-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:51:13-61:29
+240                <action android:name="android.intent.action.VIEW" />
+240-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:73:17-69
+240-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:73:25-66
+241
+242                <category android:name="android.intent.category.DEFAULT" />
+242-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:49:17-76
+242-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:49:27-73
+243                <category android:name="android.intent.category.BROWSABLE" />
+243-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:75:17-78
+243-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:75:27-75
 244
-245        <activity
-245-->[com.google.android.gms:play-services-base:17.1.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/12b2a981af48a4d34665a895e1a50203/play-services-base-17.1.0/AndroidManifest.xml:23:9-26:75
-246            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-246-->[com.google.android.gms:play-services-base:17.1.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/12b2a981af48a4d34665a895e1a50203/play-services-base-17.1.0/AndroidManifest.xml:24:13-79
-247            android:exported="false"
-247-->[com.google.android.gms:play-services-base:17.1.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/12b2a981af48a4d34665a895e1a50203/play-services-base-17.1.0/AndroidManifest.xml:25:13-37
-248            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-248-->[com.google.android.gms:play-services-base:17.1.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/12b2a981af48a4d34665a895e1a50203/play-services-base-17.1.0/AndroidManifest.xml:26:13-72
-249
-250        <receiver
-250-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:29:9-33:20
-251            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-251-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:30:13-85
-252            android:enabled="true"
-252-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:31:13-35
-253            android:exported="false" >
-253-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:32:13-37
-254        </receiver>
-255
-256        <service
-256-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:35:9-38:40
-257            android:name="com.google.android.gms.measurement.AppMeasurementService"
-257-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:36:13-84
-258            android:enabled="true"
-258-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:37:13-35
-259            android:exported="false" />
-259-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:38:13-37
-260        <service
-260-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:39:9-43:72
-261            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-261-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:40:13-87
-262            android:enabled="true"
-262-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:41:13-35
-263            android:exported="false"
-263-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:42:13-37
-264            android:permission="android.permission.BIND_JOB_SERVICE" />
-264-->[com.google.android.gms:play-services-measurement:18.0.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/ca08b22c284dcee426e12d80c7ff2a13/play-services-measurement-18.0.0/AndroidManifest.xml:43:13-69
-265
-266        <provider
-266-->[com.google.firebase:firebase-common:19.5.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/7c1bd8e9ce5ec96b7c00e6b7ba6d8237/jetified-firebase-common-19.5.0/AndroidManifest.xml:26:9-31:39
-267            android:name="com.google.firebase.provider.FirebaseInitProvider"
-267-->[com.google.firebase:firebase-common:19.5.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/7c1bd8e9ce5ec96b7c00e6b7ba6d8237/jetified-firebase-common-19.5.0/AndroidManifest.xml:27:13-77
-268            android:authorities="net.couponsgate.firebaseinitprovider"
-268-->[com.google.firebase:firebase-common:19.5.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/7c1bd8e9ce5ec96b7c00e6b7ba6d8237/jetified-firebase-common-19.5.0/AndroidManifest.xml:28:13-72
-269            android:directBootAware="true"
-269-->[com.google.firebase:firebase-common:19.5.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/7c1bd8e9ce5ec96b7c00e6b7ba6d8237/jetified-firebase-common-19.5.0/AndroidManifest.xml:29:13-43
-270            android:exported="false"
-270-->[com.google.firebase:firebase-common:19.5.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/7c1bd8e9ce5ec96b7c00e6b7ba6d8237/jetified-firebase-common-19.5.0/AndroidManifest.xml:30:13-37
-271            android:initOrder="100" />
-271-->[com.google.firebase:firebase-common:19.5.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/7c1bd8e9ce5ec96b7c00e6b7ba6d8237/jetified-firebase-common-19.5.0/AndroidManifest.xml:31:13-36
-272
-273        <meta-data
-273-->[com.google.android.gms:play-services-basement:17.1.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/816dcf0dbccf4c3fffacd9729e6d1f74/jetified-play-services-basement-17.1.0/AndroidManifest.xml:23:9-25:69
-274            android:name="com.google.android.gms.version"
-274-->[com.google.android.gms:play-services-basement:17.1.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/816dcf0dbccf4c3fffacd9729e6d1f74/jetified-play-services-basement-17.1.0/AndroidManifest.xml:24:13-58
-275            android:value="@integer/google_play_services_version" />
-275-->[com.google.android.gms:play-services-basement:17.1.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/816dcf0dbccf4c3fffacd9729e6d1f74/jetified-play-services-basement-17.1.0/AndroidManifest.xml:25:13-66
-276        <!--
-277         The initialization ContentProvider will call FacebookSdk.sdkInitialize automatically
-278         with the application context. This config is merged in with the host app's manifest,
-279         but there can only be one provider with the same authority activated at any given
-280         point; so if the end user has two or more different apps that use Facebook SDK, only the
-281         first one will be able to use the provider. To work around this problem, we use the
-282         following placeholder in the authority to identify each host application as if it was
-283         a completely different provider.
-284        -->
-285        <provider
-285-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:39:9-42:40
-286            android:name="com.facebook.internal.FacebookInitProvider"
-286-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:40:13-70
-287            android:authorities="net.couponsgate.FacebookInitProvider"
-287-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:41:13-72
-288            android:exported="false" />
-288-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:42:13-37
-289
-290        <receiver
-290-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:44:9-50:20
-291            android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver"
-291-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:45:13-86
-292            android:exported="false" >
-292-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:46:13-37
-293            <intent-filter>
-293-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:47:13-49:29
-294                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED" />
-294-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:48:17-95
-294-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:48:25-92
-295            </intent-filter>
-296        </receiver>
-297        <receiver
-297-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:51:9-58:20
-298            android:name="com.facebook.CampaignTrackingReceiver"
-298-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:52:13-65
-299            android:exported="true"
-299-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:53:13-36
-300            android:permission="android.permission.INSTALL_PACKAGES" >
-300-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:54:13-69
-301            <intent-filter>
-301-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:55:13-57:29
-302                <action android:name="com.android.vending.INSTALL_REFERRER" />
-302-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:56:17-79
-302-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:56:25-76
-303            </intent-filter>
-304        </receiver>
-305
-306        <service
-306-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/sh/.gradle/caches/transforms-2/files-2.1/4dd86b74c5eda8e14b3f48fdea856a0c/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:29:9-35:19
-307            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
-307-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/sh/.gradle/caches/transforms-2/files-2.1/4dd86b74c5eda8e14b3f48fdea856a0c/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:30:13-103
-308            android:exported="false" >
-308-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/sh/.gradle/caches/transforms-2/files-2.1/4dd86b74c5eda8e14b3f48fdea856a0c/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:31:13-37
-309            <meta-data
-309-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/sh/.gradle/caches/transforms-2/files-2.1/4dd86b74c5eda8e14b3f48fdea856a0c/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:32:13-34:39
-310                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
-310-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/sh/.gradle/caches/transforms-2/files-2.1/4dd86b74c5eda8e14b3f48fdea856a0c/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:33:17-94
-311                android:value="cct" />
-311-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/sh/.gradle/caches/transforms-2/files-2.1/4dd86b74c5eda8e14b3f48fdea856a0c/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:34:17-36
-312        </service>
-313        <service
-313-->[com.google.android.datatransport:transport-runtime:2.2.5] /Users/sh/.gradle/caches/transforms-2/files-2.1/b3fe9bdc28f06ce7d999024dc1349a2b/jetified-transport-runtime-2.2.5/AndroidManifest.xml:26:9-30:19
-314            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
-314-->[com.google.android.datatransport:transport-runtime:2.2.5] /Users/sh/.gradle/caches/transforms-2/files-2.1/b3fe9bdc28f06ce7d999024dc1349a2b/jetified-transport-runtime-2.2.5/AndroidManifest.xml:27:13-117
-315            android:exported="false"
-315-->[com.google.android.datatransport:transport-runtime:2.2.5] /Users/sh/.gradle/caches/transforms-2/files-2.1/b3fe9bdc28f06ce7d999024dc1349a2b/jetified-transport-runtime-2.2.5/AndroidManifest.xml:28:13-37
-316            android:permission="android.permission.BIND_JOB_SERVICE" >
-316-->[com.google.android.datatransport:transport-runtime:2.2.5] /Users/sh/.gradle/caches/transforms-2/files-2.1/b3fe9bdc28f06ce7d999024dc1349a2b/jetified-transport-runtime-2.2.5/AndroidManifest.xml:29:13-69
-317        </service>
-318
-319        <receiver
-319-->[com.google.android.datatransport:transport-runtime:2.2.5] /Users/sh/.gradle/caches/transforms-2/files-2.1/b3fe9bdc28f06ce7d999024dc1349a2b/jetified-transport-runtime-2.2.5/AndroidManifest.xml:32:9-34:40
-320            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
-320-->[com.google.android.datatransport:transport-runtime:2.2.5] /Users/sh/.gradle/caches/transforms-2/files-2.1/b3fe9bdc28f06ce7d999024dc1349a2b/jetified-transport-runtime-2.2.5/AndroidManifest.xml:33:13-132
-321            android:exported="false" />
-321-->[com.google.android.datatransport:transport-runtime:2.2.5] /Users/sh/.gradle/caches/transforms-2/files-2.1/b3fe9bdc28f06ce7d999024dc1349a2b/jetified-transport-runtime-2.2.5/AndroidManifest.xml:34:13-37
-322    </application>
-323
-324</manifest>
+245                <data
+245-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:76:17-75
+246                    android:host="firebase.auth"
+247                    android:path="/"
+248                    android:scheme="recaptcha" />
+248-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:76:23-72
+249            </intent-filter>
+250        </activity>
+251
+252        <service
+252-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:64:9-73:19
+253            android:name="com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService"
+253-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:65:13-101
+254            android:enabled="true"
+254-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:66:13-35
+255            android:exported="false" >
+255-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:67:13-37
+256            <intent-filter>
+256-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:68:13-72:29
+257                <action android:name="com.google.firebase.auth.api.gms.service.START" />
+257-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:69:17-89
+257-->[com.google.firebase:firebase-auth:20.0.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/8090f4f43ca8ff81324a70aa31acd5ed/jetified-firebase-auth-20.0.1/AndroidManifest.xml:69:25-86
+258
+259                <category android:name="android.intent.category.DEFAULT" />
+259-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:49:17-76
+259-->/Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:49:27-73
+260            </intent-filter>
+261        </service>
+262
+263        <provider
+263-->[com.google.firebase:firebase-common:19.5.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/7c1bd8e9ce5ec96b7c00e6b7ba6d8237/jetified-firebase-common-19.5.0/AndroidManifest.xml:26:9-31:39
+264            android:name="com.google.firebase.provider.FirebaseInitProvider"
+264-->[com.google.firebase:firebase-common:19.5.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/7c1bd8e9ce5ec96b7c00e6b7ba6d8237/jetified-firebase-common-19.5.0/AndroidManifest.xml:27:13-77
+265            android:authorities="net.couponsgate.firebaseinitprovider"
+265-->[com.google.firebase:firebase-common:19.5.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/7c1bd8e9ce5ec96b7c00e6b7ba6d8237/jetified-firebase-common-19.5.0/AndroidManifest.xml:28:13-72
+266            android:directBootAware="true"
+266-->[com.google.firebase:firebase-common:19.5.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/7c1bd8e9ce5ec96b7c00e6b7ba6d8237/jetified-firebase-common-19.5.0/AndroidManifest.xml:29:13-43
+267            android:exported="false"
+267-->[com.google.firebase:firebase-common:19.5.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/7c1bd8e9ce5ec96b7c00e6b7ba6d8237/jetified-firebase-common-19.5.0/AndroidManifest.xml:30:13-37
+268            android:initOrder="100" />
+268-->[com.google.firebase:firebase-common:19.5.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/7c1bd8e9ce5ec96b7c00e6b7ba6d8237/jetified-firebase-common-19.5.0/AndroidManifest.xml:31:13-36
+269
+270        <activity
+270-->[com.google.android.gms:play-services-base:17.1.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/12b2a981af48a4d34665a895e1a50203/play-services-base-17.1.0/AndroidManifest.xml:23:9-26:75
+271            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+271-->[com.google.android.gms:play-services-base:17.1.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/12b2a981af48a4d34665a895e1a50203/play-services-base-17.1.0/AndroidManifest.xml:24:13-79
+272            android:exported="false"
+272-->[com.google.android.gms:play-services-base:17.1.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/12b2a981af48a4d34665a895e1a50203/play-services-base-17.1.0/AndroidManifest.xml:25:13-37
+273            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+273-->[com.google.android.gms:play-services-base:17.1.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/12b2a981af48a4d34665a895e1a50203/play-services-base-17.1.0/AndroidManifest.xml:26:13-72
+274
+275        <meta-data
+275-->[com.google.android.gms:play-services-basement:17.4.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/d61f8ab045b1ba3a07640a84c18e9edc/jetified-play-services-basement-17.4.0/AndroidManifest.xml:23:9-25:69
+276            android:name="com.google.android.gms.version"
+276-->[com.google.android.gms:play-services-basement:17.4.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/d61f8ab045b1ba3a07640a84c18e9edc/jetified-play-services-basement-17.4.0/AndroidManifest.xml:24:13-58
+277            android:value="@integer/google_play_services_version" />
+277-->[com.google.android.gms:play-services-basement:17.4.0] /Users/sh/.gradle/caches/transforms-2/files-2.1/d61f8ab045b1ba3a07640a84c18e9edc/jetified-play-services-basement-17.4.0/AndroidManifest.xml:25:13-66
+278
+279        <activity android:name="com.facebook.CustomTabMainActivity" />
+279-->[com.facebook.android:facebook-common:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/38e162f7510b97df52007af7588d3b92/jetified-facebook-common-5.5.1/AndroidManifest.xml:33:9-71
+279-->[com.facebook.android:facebook-common:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/38e162f7510b97df52007af7588d3b92/jetified-facebook-common-5.5.1/AndroidManifest.xml:33:19-68
+280        <!--
+281         The initialization ContentProvider will call FacebookSdk.sdkInitialize automatically
+282         with the application context. This config is merged in with the host app's manifest,
+283         but there can only be one provider with the same authority activated at any given
+284         point; so if the end user has two or more different apps that use Facebook SDK, only the
+285         first one will be able to use the provider. To work around this problem, we use the
+286         following placeholder in the authority to identify each host application as if it was
+287         a completely different provider.
+288        -->
+289        <provider
+289-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:39:9-42:40
+290            android:name="com.facebook.internal.FacebookInitProvider"
+290-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:40:13-70
+291            android:authorities="net.couponsgate.FacebookInitProvider"
+291-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:41:13-72
+292            android:exported="false" />
+292-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:42:13-37
+293
+294        <receiver
+294-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:44:9-50:20
+295            android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver"
+295-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:45:13-86
+296            android:exported="false" >
+296-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:46:13-37
+297            <intent-filter>
+297-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:47:13-49:29
+298                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED" />
+298-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:48:17-95
+298-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:48:25-92
+299            </intent-filter>
+300        </receiver>
+301        <receiver
+301-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:51:9-58:20
+302            android:name="com.facebook.CampaignTrackingReceiver"
+302-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:52:13-65
+303            android:exported="true"
+303-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:53:13-36
+304            android:permission="android.permission.INSTALL_PACKAGES" >
+304-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:54:13-69
+305            <intent-filter>
+305-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:55:13-57:29
+306                <action android:name="com.android.vending.INSTALL_REFERRER" />
+306-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:56:17-79
+306-->[com.facebook.android:facebook-core:5.5.1] /Users/sh/.gradle/caches/transforms-2/files-2.1/957e3900857ef3ddee0e9f8a957fce6d/jetified-facebook-core-5.5.1/AndroidManifest.xml:56:25-76
+307            </intent-filter>
+308        </receiver>
+309
+310        <service
+310-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/sh/.gradle/caches/transforms-2/files-2.1/4dd86b74c5eda8e14b3f48fdea856a0c/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:29:9-35:19
+311            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+311-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/sh/.gradle/caches/transforms-2/files-2.1/4dd86b74c5eda8e14b3f48fdea856a0c/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:30:13-103
+312            android:exported="false" >
+312-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/sh/.gradle/caches/transforms-2/files-2.1/4dd86b74c5eda8e14b3f48fdea856a0c/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:31:13-37
+313            <meta-data
+313-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/sh/.gradle/caches/transforms-2/files-2.1/4dd86b74c5eda8e14b3f48fdea856a0c/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:32:13-34:39
+314                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+314-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/sh/.gradle/caches/transforms-2/files-2.1/4dd86b74c5eda8e14b3f48fdea856a0c/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:33:17-94
+315                android:value="cct" />
+315-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/sh/.gradle/caches/transforms-2/files-2.1/4dd86b74c5eda8e14b3f48fdea856a0c/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:34:17-36
+316        </service>
+317        <service
+317-->[com.google.android.datatransport:transport-runtime:2.2.5] /Users/sh/.gradle/caches/transforms-2/files-2.1/b3fe9bdc28f06ce7d999024dc1349a2b/jetified-transport-runtime-2.2.5/AndroidManifest.xml:26:9-30:19
+318            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+318-->[com.google.android.datatransport:transport-runtime:2.2.5] /Users/sh/.gradle/caches/transforms-2/files-2.1/b3fe9bdc28f06ce7d999024dc1349a2b/jetified-transport-runtime-2.2.5/AndroidManifest.xml:27:13-117
+319            android:exported="false"
+319-->[com.google.android.datatransport:transport-runtime:2.2.5] /Users/sh/.gradle/caches/transforms-2/files-2.1/b3fe9bdc28f06ce7d999024dc1349a2b/jetified-transport-runtime-2.2.5/AndroidManifest.xml:28:13-37
+320            android:permission="android.permission.BIND_JOB_SERVICE" >
+320-->[com.google.android.datatransport:transport-runtime:2.2.5] /Users/sh/.gradle/caches/transforms-2/files-2.1/b3fe9bdc28f06ce7d999024dc1349a2b/jetified-transport-runtime-2.2.5/AndroidManifest.xml:29:13-69
+321        </service>
+322
+323        <receiver
+323-->[com.google.android.datatransport:transport-runtime:2.2.5] /Users/sh/.gradle/caches/transforms-2/files-2.1/b3fe9bdc28f06ce7d999024dc1349a2b/jetified-transport-runtime-2.2.5/AndroidManifest.xml:32:9-34:40
+324            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+324-->[com.google.android.datatransport:transport-runtime:2.2.5] /Users/sh/.gradle/caches/transforms-2/files-2.1/b3fe9bdc28f06ce7d999024dc1349a2b/jetified-transport-runtime-2.2.5/AndroidManifest.xml:33:13-132
+325            android:exported="false" />
+325-->[com.google.android.datatransport:transport-runtime:2.2.5] /Users/sh/.gradle/caches/transforms-2/files-2.1/b3fe9bdc28f06ce7d999024dc1349a2b/jetified-transport-runtime-2.2.5/AndroidManifest.xml:34:13-37
+326    </application>
+327
+328</manifest>

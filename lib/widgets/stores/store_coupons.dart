@@ -529,12 +529,13 @@ class _StoryCouponsState extends State<StoryCoupon> {
                   )
 
                 ]),
-            SizedBox(height: 15,),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
 
               children: [
-                Container(width: MediaQuery.of(context).size.width-70,child: Column(
+                Container(width: MediaQuery.of(context).size.width-75,child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
 
@@ -641,19 +642,21 @@ class _StoryCouponsState extends State<StoryCoupon> {
 
                           crossAxisAlignment: CrossAxisAlignment.center,
                           //verticalDirection: VerticalDirection.up,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           mainAxisSize: MainAxisSize.max,
                           children: [
 
                             //shop now
                             Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 InkWell(onTap:(){
                                   if(homeApi.checkIfInCodes(_rCoupons[i].id, _rCodes) == null)
                                     _copyCode(_rCoupons[i].id , _rCoupons[i].code);
                                 } , child: Container(
-                                  width: MediaQuery.of(context).size.width-90,
-                                  padding: const EdgeInsets.all(3),
+                                  width: MediaQuery.of(context).size.width-225,
+                                  padding: const EdgeInsets.all(5),
                                   alignment: Alignment.center,
                                   decoration: BoxDecoration(
                                       border: Border.all(color: Colors.green),
@@ -693,13 +696,13 @@ class _StoryCouponsState extends State<StoryCoupon> {
 
 
                           ],)),
-                    Padding(
-                        padding: const EdgeInsets.only(left: 10,right: 10,bottom: 5),
+                    /*Padding(
+                        padding: const EdgeInsets.only(left: 10,right: 10,bottom: 10),
                         child:Row(
 
                           crossAxisAlignment: CrossAxisAlignment.center,
                           //verticalDirection: VerticalDirection.up,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           mainAxisSize: MainAxisSize.max,
                           children: [
 
@@ -707,8 +710,8 @@ class _StoryCouponsState extends State<StoryCoupon> {
                             InkWell(onTap:(){
                               _launchStoreURL(_rCoupons[i].storeUrl);
                             } , child: Container(
-                              width: MediaQuery.of(context).size.width-90,
-                              padding: const EdgeInsets.all(3),
+                              width: MediaQuery.of(context).size.width-225,
+                              padding: const EdgeInsets.all(5),
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                   border: Border.all(color: Colors.white),
@@ -739,11 +742,11 @@ class _StoryCouponsState extends State<StoryCoupon> {
 
 
 
-                          ],))
+                          ],))*/
                   ],
                 ),),
 
-                Container(width: 30, margin:const EdgeInsets.only(left: 10,right: 10),child: Column(
+                Container(width: 35, margin:const EdgeInsets.only(left: 10,right: 10),child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.end,
 
@@ -843,7 +846,7 @@ class _StoryCouponsState extends State<StoryCoupon> {
                           color: Color(0xFFffffff)),
                       child: Icon(Icons.share,color: Color(0xFF2196f3),),
                     ),),
-
+                    SizedBox(height: 10,),
                   ],
                 )),
               ],
