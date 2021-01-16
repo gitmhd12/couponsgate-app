@@ -83,7 +83,16 @@
   "about_us_title" : "About Us",
   "terms_title" : "Terms",
   "privacy_policy_title" : "Privacy Policy",
+
   "contact_us_title" : "Contact Us",
+  "contact_us_username_label" : "Your name",
+  "contact_us_email_label" : "Your E-mail",
+  "contact_us_message_label" : "Your message",
+  "contact_us_message_hint" : "Type your message here",
+  "contact_us_send_btn" : "Send",
+  "contact_us_alert_success_content" : "Your message has been sent successfully",
+  "contact_us_alert_md_message" : "Please type your message",
+  "contact_us_alert_Ind_content" : "Make sure you type your name , e-mail and the message correctly",
 
   "home_search_hint" : "Find a coupon or store",
   "home_search_btn" : "Search",

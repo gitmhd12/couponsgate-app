@@ -15,6 +15,7 @@ class ApiAssistant {
   bool resetPassStatus = false;
   bool isEmailUsed = false;
   bool updateLangStatus = false;
+  bool contactUsStatus = false;
   String pinCode;
 
   int fb_login_status;
@@ -432,6 +433,26 @@ class ApiAssistant {
       g_login_status = 0;
     }
 
+  }
+
+  sendMessage(String name , String email , String message) async {
+    //print('ok2');
+    String myUrl = "$serverUrl/contact_us/add_issue.php";
+    http.Response response = await http.post(myUrl, body: {
+
+      'username': name,
+      'email': email,
+      'issue': message,
+    });
+
+    print("result: ${response.body}");
+
+    if (response.body.toString().contains("process completed successfully")) {
+      contactUsStatus = true;
+    }
+    else {
+      contactUsStatus = false;
+    }
   }
 
 

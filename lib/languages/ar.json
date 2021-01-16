@@ -83,7 +83,16 @@
   "about_us_title" : "من نحن",
   "terms_title" : "شروط الاستخدام",
   "privacy_policy_title" : "سياسة الخصوصية",
+
   "contact_us_title" : "اتصل بنا",
+  "contact_us_username_label" : "اسمك",
+  "contact_us_email_label" : "بريدك الالكتروني",
+  "contact_us_message_label" : "رسالتك",
+  "contact_us_message_hint" : "ادخل رسالتك هنا",
+  "contact_us_send_btn" : "إرسال",
+  "contact_us_alert_success_content" : "تم إرسال رسالتك بنجاح",
+  "contact_us_alert_md_message" : "الرجاء إدخال الرسالة المراد إرسالها",
+  "contact_us_alert_Ind_content" : "الرجاء التأكد من إدخال الاسم و البريد الالكتروني و الرسالة المراد إرسالها بطريقة صحيحة",
 
   "home_search_hint" : "ابحث عن كوبون أو متجر",
   "home_search_btn" : "ابحث",
