@@ -141,6 +141,20 @@ class NavDrawerState extends State<NavDrawer> {
                   builder: (BuildContext context) => new AboutUs()))
             },
           ),
+          //contact us
+          ListTile(
+            leading: Icon(
+              Icons.mail,
+              color: Color(0xFF2196f3),
+            ),
+            title: Text(
+              getTranslated(context, 'drawer_contact_us'),
+            ),
+            onTap: () => {
+              Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) => new ContactUs()))
+            },
+          ),
           //terms
           ListTile(
             leading: Icon(
@@ -186,20 +200,7 @@ class NavDrawerState extends State<NavDrawer> {
           Divider(
             color: Color(0xFF2196f3),
           ),
-          //contact us
-          ListTile(
-            leading: Icon(
-              Icons.mail,
-              color: Color(0xFF2196f3),
-            ),
-            title: Text(
-              getTranslated(context, 'drawer_contact_us'),
-            ),
-            onTap: () => {
-              Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (BuildContext context) => new ContactUs()))
-            },
-          ),
+
           //log out
           ListTile(
             leading: Icon(
