@@ -906,7 +906,7 @@ class _CouponMainState extends State<CouponMain> {
               TabItem(icon: Icons.favorite, title: getTranslated(context, 'home_b_bar_fav')),
               TabItem(icon: Icons.people, title: getTranslated(context, 'home_b_bar_profile')),
             ],
-            initialActiveIndex: 0,//optional, default as 0
+            initialActiveIndex: 2,//optional, default as 0
             onTap: onTabTapped,
           )),
     );
