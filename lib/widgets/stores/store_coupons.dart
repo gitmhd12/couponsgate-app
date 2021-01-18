@@ -171,7 +171,7 @@ class _StoryCouponsState extends State<StoryCoupon> {
           _getCouponsRatings(_rCoupons);
         });
 
-        homeApi.getUserRatings().then((value) {
+        /*homeApi.getUserRatings().then((value) {
           setState(() {
             try{
               _rRatings = List.from(value);
@@ -179,7 +179,7 @@ class _StoryCouponsState extends State<StoryCoupon> {
               _rRatings = [];
             }
           });
-        });
+        });*/
 
 
     });
@@ -212,11 +212,13 @@ class _StoryCouponsState extends State<StoryCoupon> {
 
   }
 
-  _handlePositiveButton(String cid , List<Rating> ratings)
+  _handlePositiveButton(String cid )
   {
-    if(homeApi.checkIfInRatings(cid, ratings , 'pos') == null
+    _addRating(cid, 'pos');
+
+    /*if(homeApi.checkIfInRatings(cid, ratings , 'pos') == null
         && homeApi.checkIfInRatings(cid, ratings , 'neg') == null)
-      _addRating(cid, 'pos');
+
     else if(homeApi.checkIfInRatings(cid, ratings , 'pos') != null
         && homeApi.checkIfInRatings(cid, ratings , 'neg') == null)
       _deleteRating(homeApi.checkIfInRatings(cid, ratings , 'pos'));
@@ -224,14 +226,16 @@ class _StoryCouponsState extends State<StoryCoupon> {
         && homeApi.checkIfInRatings(cid, ratings , 'neg') != null)
     {
       // Do nothing
-    }
+    }*/
   }
 
-  _handleNegativeButton(String cid , List<Rating> ratings)
+  _handleNegativeButton(String cid)
   {
-    if(homeApi.checkIfInRatings(cid, ratings , 'pos') == null
+    _addRating(cid, 'neg');
+
+    /*if(homeApi.checkIfInRatings(cid, ratings , 'pos') == null
         && homeApi.checkIfInRatings(cid, ratings , 'neg') == null)
-      _addRating(cid, 'neg');
+
     else if(homeApi.checkIfInRatings(cid, ratings , 'neg') != null
         && homeApi.checkIfInRatings(cid, ratings , 'pos') == null)
       _deleteRating(homeApi.checkIfInRatings(cid, ratings , 'neg'));
@@ -239,8 +243,10 @@ class _StoryCouponsState extends State<StoryCoupon> {
         && homeApi.checkIfInRatings(cid, ratings , 'pos') != null)
     {
       // Do nothing
-    }
+    }*/
   }
+
+
 
   /// Coupons Code System
   ///-----------------------------------------------------------------
@@ -269,7 +275,7 @@ class _StoryCouponsState extends State<StoryCoupon> {
             code)
             .then((result) {
           final snackBar = SnackBar(
-            content: Text('Copied ' + code),
+            content: Text(getTranslated(context, 'Copied') + code),
           );
           setState(() {
             Scaffold.of(context).showSnackBar(snackBar);
@@ -293,43 +299,17 @@ class _StoryCouponsState extends State<StoryCoupon> {
 
       } else {
 
-        showDialog(
-            context: context,
-            builder: (_) => AssetGiffyDialog(
-              onlyOkButton: false,
-              buttonCancelText: Text(getTranslated(context, 'login_alert_d_cancel'),
-                  style: TextStyle(fontFamily: "CustomFont", fontSize: 16)),
-              buttonOkText: Text(getTranslated(context, 'home_alert_login_ok_btn'),
-                  style: TextStyle(
-                      fontFamily: "CustomFont",
-                      fontSize: 16,
-                      color: Colors.white)),
-              buttonOkColor: Colors.redAccent,
-              image: Image.asset('assets/images/alert.png', fit: BoxFit.cover),
-              title: Text(
-                getTranslated(context, 'home_alert_login_title'),
-                style: TextStyle(
-                    fontSize: 18.0,
-                    fontFamily: "CustomFont",
-                    color: Colors.redAccent),
-              ),
-              description: Text(
-                getTranslated(context, 'home_alert_c_login_content'),
-                textAlign: TextAlign.center,
-                style: TextStyle(fontFamily: "CustomFont", fontSize: 16),
-              ),
-              onOkButtonPressed: () {
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Login()),
-                      (Route<dynamic> route) => false,
-                );
-              },
-              onCancelButtonPressed: (){
-                Navigator.pop(context);
-              },
-            ));
+        ClipboardManager.copyToClipBoard(
+            code)
+            .then((result) {
+          final snackBar = SnackBar(
+            content: Text(getTranslated(context, 'Copied') + code),
+          );
+          setState(() {
+            Scaffold.of(context).showSnackBar(snackBar);
+          });
+
+        });
 
       }
     });
@@ -474,7 +454,7 @@ class _StoryCouponsState extends State<StoryCoupon> {
     }
   }
 
-  couponWidget(int i)
+  couponWidget(int i,BuildContext context)
   {
     return Card(
         shape: RoundedRectangleBorder(
@@ -542,7 +522,22 @@ class _StoryCouponsState extends State<StoryCoupon> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        InkWell(onTap:(){ } , child: Container(
+                        InkWell(onTap:(){
+                          ClipboardManager.copyToClipBoard(
+                              _rCoupons[i].code)
+                              .then((result) {
+                            final snackBar = SnackBar(
+                              content: Text(getTranslated(context, 'Copied') + _rCoupons[i].code),
+                            );
+                            setState(() {
+                              Scaffold.of(context).showSnackBar(snackBar);
+                            });
+
+                          });
+
+                          if(homeApi.checkIfInCodes(_rCoupons[i].id, _rCodes) == null)
+                            _copyCode(_rCoupons[i].id , _rCoupons[i].code);
+                        } , child: Container(
                             width: 100,
                             padding: const EdgeInsets.all(3),
                             alignment: Alignment.center,
@@ -756,7 +751,7 @@ class _StoryCouponsState extends State<StoryCoupon> {
                       children: [
                         InkWell(
                           onTap:(){
-                            _handlePositiveButton(_rCoupons[i].id, _rRatings);
+                            _handlePositiveButton(_rCoupons[i].id);
                           } , child: Container(
                           width: 50,
                           padding: const EdgeInsets.all(5),
@@ -765,7 +760,7 @@ class _StoryCouponsState extends State<StoryCoupon> {
                             //border: Border.all(color: Colors.white),
                             //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
                               borderRadius: BorderRadius.circular(5),
-                              color: homeApi.checkIfInRatings(_rCoupons[i].id, _rRatings , 'pos') == null ? Colors.white : Color(0xffdff9fb)),
+                              color:  Colors.white ),
                           child: Icon(MyIcons.up_circled,color: Colors.green,),
                         ),),
                         Text(_posRatings[i] ?? '0',style: TextStyle(
@@ -781,7 +776,7 @@ class _StoryCouponsState extends State<StoryCoupon> {
                     Column(
                       children: [
                         InkWell(onTap:(){
-                          _handleNegativeButton(_rCoupons[i].id, _rRatings);
+                          _handleNegativeButton(_rCoupons[i].id);
                         } , child: Container(
                           width: 50,
                           padding: const EdgeInsets.all(5),
@@ -984,7 +979,7 @@ class _StoryCouponsState extends State<StoryCoupon> {
         controller: _controller,
         child: Column(
           children: <Widget>[
-            for(int i = 0 ; i< _rCoupons.length ; i++) couponWidget(i),
+            for(int i = 0 ; i< _rCoupons.length ; i++) couponWidget(i,context),
             Visibility(
               visible: _isLoadMore,
               child: Padding(

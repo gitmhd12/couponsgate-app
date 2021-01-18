@@ -64,7 +64,8 @@ class NavDrawerState extends State<NavDrawer> {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          DrawerHeader(
+          Container(
+            height: 220,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -79,8 +80,7 @@ class NavDrawerState extends State<NavDrawer> {
                 SizedBox(
                   height: 5,
                 ),
-                FittedBox(
-                  child: Text(
+                 Text(
                     username,
                     style: TextStyle(
                         color: Colors.white,
@@ -88,10 +88,11 @@ class NavDrawerState extends State<NavDrawer> {
                         fontSize: 20),
                     textAlign: TextAlign.center,
                   ),
-                ),
+
               ],
             ),
             decoration: BoxDecoration(
+
               color: Color(0xFF2196f3),
             ),
           ),

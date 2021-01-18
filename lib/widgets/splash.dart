@@ -19,15 +19,10 @@ class _Splash extends State<Splash> {
     final is_login_value = prefs.get(key) ?? 0;
 
     if (is_login_value == "1") {
+      Navigator.pushReplacementNamed(context, '/home');
 
-      Locale currentLocale = Localizations.localeOf(context);
-      api.updateFirebaseToken(currentLocale.languageCode).whenComplete((){
-        if(api.firebaseStatus)
-        {
-          Navigator.pushReplacementNamed(context, '/home');
-        }
-      }
-      );
+
+
 
     } else {
 
@@ -67,10 +62,16 @@ class _Splash extends State<Splash> {
     // read();
     //check_login();
     startTimer();
+
+
   }
 
   @override
   Widget build(BuildContext context) {
+    Locale currentLocale = Localizations.localeOf(context);
+    api.updateFirebaseToken(currentLocale.languageCode).whenComplete((){}
+    );
+
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,

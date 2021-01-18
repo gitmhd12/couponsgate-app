@@ -67,12 +67,14 @@ class HomeApiAssistant {
     final value = prefs.get(key);
     //print('$value');
     var value3 = '0';
+    var value2 = '0';
     if (value == '1') {
       final key3 = 'user_id';
        value3 = prefs.get(key3);
-    }
       final key2 = 'token';
-      final value2 = prefs.get(key2);
+       value2 = prefs.get(key2);
+    }
+
 
 
 
@@ -89,7 +91,7 @@ class HomeApiAssistant {
       //print(res.body);
       //print('sending...');
       var body = json.decode(res.body);
-      //print(body);
+      print(body);
 
       return true;
 

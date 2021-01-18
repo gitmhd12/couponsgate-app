@@ -231,7 +231,7 @@ MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.3] /Users/sh/.gradle/ca
 	android:label
 		ADDED from /Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:16:9-36
 	android:icon
-		ADDED from /Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:17:9-43
+		ADDED from /Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:17:9-45
 	android:name
 		ADDED from /Users/sh/Documents/work/couponsgate/couponsgate-app/android/app/src/main/AndroidManifest.xml:15:9-57
 activity#net.couponsgate.MainActivity
