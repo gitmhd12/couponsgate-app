@@ -4,7 +4,7 @@
             "outputFile": "E:\\Android_Studio_Projects\\couponsgate-app\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-gl\\values-gl.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Nawar\\.gradle\\caches\\transforms-2\\files-2.1\\d77ff0f43adc839e648da3a51154d54e\\jetified-play-services-basement-17.1.0\\res\\values-gl\\values.xml",
+                    "source": "C:\\Users\\Nawar\\.gradle\\caches\\transforms-2\\files-2.1\\2f848bc40e3697b6e70e738e3d368d9d\\jetified-play-services-basement-17.4.0\\res\\values-gl\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",

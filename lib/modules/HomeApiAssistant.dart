@@ -66,12 +66,17 @@ class HomeApiAssistant {
     final key = 'is_login';
     final value = prefs.get(key);
     //print('$value');
+    var value3 = '0';
+    var value2 = '0';
     if (value == '1') {
-      final key2 = 'token';
-      final value2 = prefs.get(key2);
-
       final key3 = 'user_id';
-      final value3 = prefs.get(key3);
+       value3 = prefs.get(key3);
+      final key2 = 'token';
+       value2 = prefs.get(key2);
+    }
+
+
+
 
       var data = {
         'user_token': value2,
@@ -86,12 +91,10 @@ class HomeApiAssistant {
       //print(res.body);
       //print('sending...');
       var body = json.decode(res.body);
-      //print(body);
+      print(body);
 
       return true;
-    } else {
-      return false;
-    }
+
   }
 
   Future deleteRating(String fid) async {

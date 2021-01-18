@@ -1,0 +1,111 @@
+Flutter crash report.
+Please report a bug at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter --quiet assemble --depfile E:\Android_Studio_Projects\couponsgate-app\build\app\intermediates\flutter\debug/flutter_build.d --output E:\Android_Studio_Projects\couponsgate-app\build\app\intermediates\flutter\debug -dTargetFile=E:\Android_Studio_Projects\couponsgate-app\lib\main.dart -dTargetPlatform=android -dBuildMode=debug -dTrackWidgetCreation=true --DartDefines=flutter.inspector.structuredErrors%3Dtrue debug_android_application
+
+## exception
+
+FileSystemException: FileSystemException: Cannot open file, path = 'E:\Android_Studio_Projects\couponsgate-app\.dart_tool\flutter_build\fed94fe94098f0bb9369142e06e5a769\outputs.json' (OS Error: The requested operation cannot be performed on a file with a user-mapped section open.
+, errno = 1224)
+
+```
+#0      _File.throwIfError (dart:io/file_impl.dart:635:7)
+#1      _File.openSync (dart:io/file_impl.dart:479:5)
+#2      _File.writeAsBytesSync (dart:io/file_impl.dart:604:31)
+#3      _File.writeAsStringSync (dart:io/file_impl.dart:628:5)
+#4      ForwardingFile.writeAsStringSync (package:file/src/forwarding/forwarding_file.dart:148:16)
+#5      FlutterBuildSystem.build (package:flutter_tools/src/build_system/build_system.dart:594:8)
+#6      _rootRunUnary (dart:async/zone.dart:1198:47)
+#7      _CustomZone.runUnary (dart:async/zone.dart:1100:19)
+#8      _FutureListener.handleValue (dart:async/future_impl.dart:143:18)
+#9      Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:696:45)
+#10     Future._propagateToListeners (dart:async/future_impl.dart:725:32)
+#11     Future._completeWithValue (dart:async/future_impl.dart:529:5)
+#12     _AsyncAwaitCompleter.complete (dart:async-patch/async_patch.dart:40:15)
+#13     _completeOnAsyncReturn (dart:async-patch/async_patch.dart:311:13)
+#14     _BuildInstance.invokeTarget (package:flutter_tools/src/build_system/build_system.dart)
+#15     _rootRunUnary (dart:async/zone.dart:1198:47)
+#16     _CustomZone.runUnary (dart:async/zone.dart:1100:19)
+#17     _FutureListener.handleValue (dart:async/future_impl.dart:143:18)
+#18     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:696:45)
+#19     Future._propagateToListeners (dart:async/future_impl.dart:725:32)
+#20     Future._completeWithValue (dart:async/future_impl.dart:529:5)
+#21     Future.wait.<anonymous closure> (dart:async/future.dart:414:23)
+#22     _rootRunUnary (dart:async/zone.dart:1198:47)
+#23     _CustomZone.runUnary (dart:async/zone.dart:1100:19)
+#24     _FutureListener.handleValue (dart:async/future_impl.dart:143:18)
+#25     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:696:45)
+#26     Future._propagateToListeners (dart:async/future_impl.dart:725:32)
+#27     Future._completeWithValue (dart:async/future_impl.dart:529:5)
+#28     _AsyncAwaitCompleter.complete (dart:async-patch/async_patch.dart:40:15)
+#29     _completeOnAsyncReturn (dart:async-patch/async_patch.dart:311:13)
+#30     _BuildInstance._invokeInternal (package:flutter_tools/src/build_system/build_system.dart)
+#31     _asyncErrorWrapperHelper.errorCallback (dart:async-patch/async_patch.dart:91:64)
+#32     _rootRunBinary (dart:async/zone.dart:1214:47)
+#33     _CustomZone.runBinary (dart:async/zone.dart:1107:19)
+#34     _FutureListener.handleError (dart:async/future_impl.dart:157:20)
+#35     Future._propagateToListeners.handleError (dart:async/future_impl.dart:708:47)
+#36     Future._propagateToListeners (dart:async/future_impl.dart:729:24)
+#37     Future._completeError (dart:async/future_impl.dart:537:5)
+#38     _AsyncAwaitCompleter.completeError (dart:async-patch/async_patch.dart:47:15)
+#39     KernelSnapshot.build (package:flutter_tools/src/build_system/targets/common.dart)
+#40     _rootRunUnary (dart:async/zone.dart:1198:47)
+#41     _CustomZone.runUnary (dart:async/zone.dart:1100:19)
+#42     _FutureListener.handleValue (dart:async/future_impl.dart:143:18)
+#43     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:696:45)
+#44     Future._propagateToListeners (dart:async/future_impl.dart:725:32)
+#45     Future._completeWithValue (dart:async/future_impl.dart:529:5)
+#46     _AsyncAwaitCompleter.complete (dart:async-patch/async_patch.dart:40:15)
+#47     _completeOnAsyncReturn (dart:async-patch/async_patch.dart:311:13)
+#48     KernelCompiler.compile (package:flutter_tools/src/compile.dart)
+#49     _rootRunUnary (dart:async/zone.dart:1198:47)
+#50     _CustomZone.runUnary (dart:async/zone.dart:1100:19)
+#51     _FutureListener.handleValue (dart:async/future_impl.dart:143:18)
+#52     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:696:45)
+#53     Future._propagateToListeners (dart:async/future_impl.dart:725:32)
+#54     Future._completeWithValue (dart:async/future_impl.dart:529:5)
+#55     Future._asyncCompleteWithValue.<anonymous closure> (dart:async/future_impl.dart:567:7)
+#56     _rootRun (dart:async/zone.dart:1190:13)
+#57     _CustomZone.run (dart:async/zone.dart:1093:19)
+#58     _CustomZone.runGuarded (dart:async/zone.dart:997:7)
+#59     _CustomZone.bindCallbackGuarded.<anonymous closure> (dart:async/zone.dart:1037:23)
+#60     _microtaskLoop (dart:async/schedule_microtask.dart:41:21)
+#61     _startMicrotaskLoop (dart:async/schedule_microtask.dart:50:5)
+#62     _runPendingImmediateCallback (dart:isolate-patch/isolate_patch.dart:118:13)
+#63     _RawReceivePortImpl._handleMessage (dart:isolate-patch/isolate_patch.dart:169:5)
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel stable, 1.22.5, on Microsoft Windows [Version 10.0.17763.1282], locale en-US)
+    • Flutter version 1.22.5 at C:\Flutter SDK\flutter
+    • Framework revision 7891006299 (6 weeks ago), 2020-12-10 11:54:40 -0800
+    • Engine revision ae90085a84
+    • Dart version 2.10.4
+
+[✓] Android toolchain - develop for Android devices (Android SDK version 29.0.3)
+    • Android SDK at C:/Users/Nawar/AppData/Local/Android/Sdk
+    • Platform android-30, build-tools 29.0.3
+    • ANDROID_HOME = C:/Users/Nawar/AppData/Local/Android/Sdk
+    • Java binary at: C:\Program Files\Android\Android Studio\jre\bin\java
+    • Java version OpenJDK Runtime Environment (build 1.8.0_242-release-1644-b01)
+    • All Android licenses accepted.
+
+[!] Android Studio (version 4.1.0)
+    • Android Studio at C:\Program Files\Android\Android Studio
+    ✗ Flutter plugin not installed; this adds Flutter specific functionality.
+    ✗ Dart plugin not installed; this adds Dart specific functionality.
+    • Java version OpenJDK Runtime Environment (build 1.8.0_242-release-1644-b01)
+
+[✓] VS Code (version 1.52.1)
+    • VS Code at C:\Users\Nawar\AppData\Local\Programs\Microsoft VS Code
+    • Flutter extension version 3.18.0
+
+[✓] Connected device (1 available)
+    • DRA LX2 (mobile) • 5LX9K19403907299 • android-arm64 • Android 8.1.0 (API 27)
+
+! Doctor found issues in 1 category.
+```

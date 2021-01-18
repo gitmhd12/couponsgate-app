@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:couponsgate/widgets/coupon_main.dart';
 import 'package:couponsgate/widgets/settings.dart';
 import 'package:couponsgate/widgets/stores/all_stores.dart';
 import 'package:http/http.dart' as http;
@@ -200,30 +201,40 @@ class _FavoritesState extends State<Favorites> {
                                 child: Text(
                                   getTranslated(context, 'favorites_sign_in_note'),
                                   style: TextStyle(
-                                    fontFamily: 'CustomFont',
-                                  ),
+                                    fontFamily: 'CustomFont', fontSize: 20
+                                  ),textAlign: TextAlign.center,
                                 ),
                               ),
-                              FlatButton(
-                                color: Colors.white,
-                                textColor: Colors.black,
-                                disabledColor: Colors.white,
-                                disabledTextColor: Colors.white,
-                                padding: EdgeInsets.all(8.0),
-                                splashColor: Colors.tealAccent,
-                                onPressed: () {
-                                  Navigator.pushReplacementNamed(
-                                      context, '/');
-                                },
-                                child: Text(
-                                  getTranslated(context, 'favorites_sign_in_btn'),
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.black,
-                                    fontFamily: "CustomFont",
-                                  ),
-                                ),
-                              ),
+
+
+        SizedBox(height: 30,),
+        InkWell(onTap: () {
+        Navigator.pushReplacementNamed(
+        context, '/login');
+        } , child: Container(
+          width: MediaQuery.of(context).size.width,
+          padding: const EdgeInsets.all(7),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+              border: Border.all(color: Colors.white),
+              //borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5)),
+              borderRadius: BorderRadius.circular(5),
+              color: Color(0xFF2196f3)),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+
+              Text(
+                getTranslated(context, 'favorites_sign_in_btn'),
+                style: TextStyle(
+                  fontSize: 22,
+                  color: Colors.white,
+                  fontFamily: "CustomFont",
+                ),
+              ),
+            ],
+          ),
+        ),)
                             ],
                           ),
                         ),
@@ -289,6 +300,14 @@ class _FavoritesState extends State<Favorites> {
                     itemBuilder: (context, index) {
                       return Card(
                         child: ListTile(
+                          onTap: (){
+                            Navigator.of(context).push(
+                                new MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                    new CouponMain(
+                                      id: _rFavorites[index].couponId,
+                                    )));
+                          },
                           title: Text(
                             cPropertyByLocale(context, _rFavorites[index]),
                             style: TextStyle(

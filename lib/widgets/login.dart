@@ -52,7 +52,6 @@ class _LoginState extends State<Login>{
   Future checkIfFirstSkip() async
   {
     final prefs = await SharedPreferences.getInstance();
-    Locale currentLocale = Localizations.localeOf(context);
 
     final key = 'isFirstSkip';
     final value = prefs.getString(key);
@@ -63,9 +62,7 @@ class _LoginState extends State<Login>{
       }
     else
       {
-        api.subscribeToCountryGroup(currentLocale.languageCode).whenComplete((){
-          Navigator.pushReplacementNamed(context, '/home');
-        });
+        Navigator.pushReplacementNamed(context, '/home');
       }
 
   }
@@ -182,13 +179,14 @@ class _LoginState extends State<Login>{
 
 
   @override
-  void initState() {
+  Future<void> initState()  {
     super.initState();
 
     setState(() {
       _countryBtnHint = '+';
       _isLoading = false;
     });
+
 
 
   }
@@ -423,6 +421,10 @@ class _LoginState extends State<Login>{
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
 
+          loginBtnChildIndex == 1? CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+          ):
+
           Text(
             getTranslated(context, 'login_text'),
             style: TextStyle(
@@ -453,6 +455,10 @@ class _LoginState extends State<Login>{
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+
+          registerBtnChildIndex == 1? CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+          ):
 
           Text(
             getTranslated(context, 'new_account'),
@@ -821,6 +827,7 @@ class _LoginState extends State<Login>{
   }
 
   Widget _loginForm() {
+    print ('login');
     return Container(
       margin: EdgeInsets.only(top: 30, left: 30, right: 30),
       child: Column(
@@ -853,17 +860,21 @@ class _LoginState extends State<Login>{
   }
 
   _processLogin() {
+    print ('log in start');
     if (loginBtnChildIndex == 0) {
       setState(() {
         loginBtnChildIndex = 1;
       });
       if (_emailController.text.trim().isEmpty) {
         alertDialog(getTranslated(context, 'login_alert_md_email'), getTranslated(context, 'login_alert_md_title'),);
+        //alertDialog('test', getTranslated(context, 'login_alert_md_title'),);
         setState(() {
           loginBtnChildIndex = 0;
         });
       } else if (_passwordController.text.isEmpty) {
         alertDialog(getTranslated(context, 'login_alert_md_password'), getTranslated(context, 'login_alert_md_title'),);
+        //alertDialog('test', getTranslated(context, 'login_alert_md_title'),);
+
         setState(() {
           loginBtnChildIndex = 0;
         });
@@ -873,11 +884,13 @@ class _LoginState extends State<Login>{
             .loginData(_passwordController.text.toString(), _emailController.text.trim().toLowerCase().toString())
             .whenComplete(() {
           if (api.loginStatus == false) {
+            print('false');
             alertDialog(getTranslated(context, 'login_alert_Ind_content'), getTranslated(context, 'login_alert_Ind_title'),);
             setState(() {
               loginBtnChildIndex = 0;
             });
           } else {
+            Navigator.pushReplacementNamed(context, '/home');
             Locale currentLocale = Localizations.localeOf(context);
             api.updateFirebaseToken(currentLocale.languageCode).whenComplete((){
               if(api.firebaseStatus)

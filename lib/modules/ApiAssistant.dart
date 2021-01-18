@@ -21,7 +21,7 @@ class ApiAssistant {
   int fb_login_status;
   int g_login_status;
 
-  Future saveUserParams(
+  saveUserParams(
       String userId, String pass, String name, String email, String token , String countryCode ) async {
     final prefs = await SharedPreferences.getInstance();
     final key = 'is_login';
@@ -146,7 +146,7 @@ class ApiAssistant {
 
   }
 
-  Future subscribeToCountryGroup(String langCode) async{
+  Future subscribeAnonymousUser(String langCode) async{
 
     final prefs = await SharedPreferences.getInstance();
     final key = 'country_code';
@@ -157,44 +157,12 @@ class ApiAssistant {
       await _firebaseMessaging.subscribeToTopic('ar_all_countries');
       await _firebaseMessaging.subscribeToTopic(
           'ar_countryID_' + value.toString());
-
-      print('ar_countryID_' + value.toString());
     }
     else
     {
       await _firebaseMessaging.subscribeToTopic('en_all_countries');
       await _firebaseMessaging.subscribeToTopic(
           'en_countryID_' + value.toString());
-
-      print('en_countryID_' + value.toString());
-    }
-  }
-
-  Future changeCountryGroupSubscribtion(String langCode , String oldCountryId) async{
-
-    final prefs = await SharedPreferences.getInstance();
-    final key = 'country_code';
-    final value = prefs.getString(key);
-
-    if(langCode == 'ar')
-    {
-      print('ar case');
-      await _firebaseMessaging.unsubscribeFromTopic('ar_countryID_' + oldCountryId);
-      await _firebaseMessaging.subscribeToTopic(
-          'ar_countryID_' + value.toString());
-
-      print('old ar_countryID_' + oldCountryId);
-      print('new ar_countryID_' + value.toString());
-    }
-    else
-    {
-      print('en case');
-      await _firebaseMessaging.unsubscribeFromTopic('en_countryID_' + oldCountryId);
-      await _firebaseMessaging.subscribeToTopic(
-          'en_countryID_' + value.toString());
-
-      print('old en_countryID_' + oldCountryId);
-      print('new en_countryID_' + value.toString());
     }
   }
 

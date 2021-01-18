@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:couponsgate/localization/localizationValues.dart';
 import 'package:couponsgate/modules/ApiAssistant.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -18,24 +19,27 @@ class _Splash extends State<Splash> {
     final is_login_value = prefs.get(key) ?? 0;
 
     if (is_login_value == "1") {
+      Navigator.pushReplacementNamed(context, '/home');
 
-      Locale currentLocale = Localizations.localeOf(context);
-      api.updateFirebaseToken(currentLocale.languageCode).whenComplete((){
-        if(api.firebaseStatus)
-        {
-          Navigator.pushReplacementNamed(context, '/home');
-        }
-      }
-      );
+
+
 
     } else {
 
-      //check if first time go to home
-      final key = 'is_first_time';
-      final is_first_time = prefs.get(key) ?? 0;
+      final prefs = await SharedPreferences.getInstance();
 
-      //or go to login
-      Navigator.pushReplacementNamed(context, '/login');
+      final key = 'isFirstSkip';
+      final value = prefs.getString(key);
+
+      if(value == null)
+      {
+        Navigator.pushReplacementNamed(context, '/login');
+      }
+      else
+      {
+        Navigator.pushReplacementNamed(context, '/home');
+      }
+
     }
     print("is_login value: $is_login_value");
   }
@@ -58,20 +62,45 @@ class _Splash extends State<Splash> {
     // read();
     //check_login();
     startTimer();
+
+
   }
 
   @override
   Widget build(BuildContext context) {
+    Locale currentLocale = Localizations.localeOf(context);
+    api.updateFirebaseToken(currentLocale.languageCode).whenComplete((){}
+    );
+
     return Scaffold(
       body: Container(
+        height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           color: Colors.white,
 
         ),
         child: Center(
-          child: Image(image: new AssetImage("assets/images/logo.gif")
-          ,width: MediaQuery.of(context).size.width
-          ,height: MediaQuery.of(context).size.width),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+
+              Image(image: new AssetImage("assets/images/logo.gif")
+                  ,width: MediaQuery.of(context).size.width
+                  ,height: MediaQuery.of(context).size.width),
+
+              SizedBox(
+                height: 30,
+              ),
+
+              MaterialButton(
+                textColor: Color(0xff000000),
+                child: Text(getTranslated(context, 'skip'),style: TextStyle(fontFamily: 'CustomFont',fontSize: 25,fontWeight: FontWeight.bold),),
+                onPressed: () {
+                  checkLogin();
+                },
+              ),
+            ],
+          )
         ),
       ),
     );

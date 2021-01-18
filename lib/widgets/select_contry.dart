@@ -234,18 +234,16 @@ class _Select_Country_State extends State<Select_Country> {
                               print('user id is null');
                               if(firstSkip == null)
                                 {
-                                  await prefs.setString('country_code' , _countryID);
-                                  await prefs.setString(key2 , '1');
+                                  prefs.setString('country_code' , _countryID);
+                                  prefs.setString(key2 , '1');
 
-                                  print('country_code is: ' + _countryID);
-
-                                  api.subscribeToCountryGroup(currentLocale.languageCode).whenComplete((){
+                                  api.subscribeAnonymousUser(currentLocale.languageCode).whenComplete((){
                                     Navigator.pushReplacementNamed(context, '/home');
                                   });
                                 }
                               else
                                 {
-                                  api.subscribeToCountryGroup(currentLocale.languageCode).whenComplete((){
+                                  api.subscribeAnonymousUser(currentLocale.languageCode).whenComplete((){
                                     Navigator.pushReplacementNamed(context, '/home');
                                   });
                                 }
