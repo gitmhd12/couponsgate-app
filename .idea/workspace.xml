@@ -22,12 +22,21 @@
     <list default="true" id="fa83d736-4f00-493d-aee2-dd8f1abe403c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/lib/languages/ar.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/lib/languages/ar.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/lib/languages/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/lib/languages/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_build.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_build.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/lib/languages/ar.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/lib/languages/ar.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/lib/languages/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/lib/languages/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk.sha1" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk.sha1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/languages/ar.json" beforeDir="false" afterPath="$PROJECT_DIR$/lib/languages/ar.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/languages/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/lib/languages/en.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/modules/ApiAssistant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/ApiAssistant.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/NavDrawer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/NavDrawer.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/contact_us.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/contact_us.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/home.dart" afterDir="false" />
     </list>
     <list id="5a67cad3-059a-45f4-a387-4ed51b7867ff" name="setup register and login widget" comment="" />
     <list id="92637d7a-2783-47d6-b3f2-7b5ee3563f35" name="setup register and login widget_update" comment="" />
@@ -233,7 +242,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610702879018</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Setup contact-up widget">
+      <created>1610823255654</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1610823255656</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -277,7 +293,8 @@
     <MESSAGE value="Change country notification group" />
     <MESSAGE value="Setup image notification" />
     <MESSAGE value="Setup notification routes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Setup notification routes" />
+    <MESSAGE value="Setup contact-up widget" />
+    <option name="LAST_COMMIT_MESSAGE" value="Setup contact-up widget" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -293,10 +310,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="411" y="187" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.768@0.0.1366.768" timestamp="1609270799097" />
-    <state x="495" y="100" key="#com.intellij.ide.util.MemberChooser" timestamp="1610256403004">
+    <state x="495" y="100" key="#com.intellij.ide.util.MemberChooser" timestamp="1610921298478">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="495" y="100" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1610256403004" />
+    <state x="495" y="100" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1610921298478" />
     <state x="413" y="131" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1610287044786">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -305,33 +322,33 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="92" y="92" width="1182" height="584" key="AVDManager/0.0.1366.768@0.0.1366.768" timestamp="1609995759611" />
-    <state x="49" y="0" key="CommitChangelistDialog2" timestamp="1610702725947">
+    <state x="49" y="0" key="CommitChangelistDialog2" timestamp="1610823236371">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="49" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1610702725947" />
+    <state x="49" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1610823236371" />
     <state x="462" y="141" key="FileChooserDialogImpl" timestamp="1609956469056">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="462" y="141" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1609956469056" />
-    <state width="1323" height="203" key="GridCell.Tab.0.bottom" timestamp="1610822140237">
+    <state width="1323" height="203" key="GridCell.Tab.0.bottom" timestamp="1610927480128">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="203" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1610822140237" />
+    <state width="1323" height="203" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1610927480128" />
     <state width="1398" height="200" key="GridCell.Tab.0.bottom/0.25.1440.794@0.25.1440.794" timestamp="1608556527969" />
-    <state width="1323" height="203" key="GridCell.Tab.0.center" timestamp="1610822140237">
+    <state width="1323" height="203" key="GridCell.Tab.0.center" timestamp="1610927480128">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="203" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1610822140237" />
+    <state width="1323" height="203" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1610927480128" />
     <state width="1398" height="200" key="GridCell.Tab.0.center/0.25.1440.794@0.25.1440.794" timestamp="1608556527969" />
-    <state width="1323" height="203" key="GridCell.Tab.0.left" timestamp="1610822140233">
+    <state width="1323" height="203" key="GridCell.Tab.0.left" timestamp="1610927480125">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="203" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1610822140233" />
+    <state width="1323" height="203" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1610927480124" />
     <state width="1398" height="200" key="GridCell.Tab.0.left/0.25.1440.794@0.25.1440.794" timestamp="1608556527968" />
-    <state width="1323" height="203" key="GridCell.Tab.0.right" timestamp="1610822140237">
+    <state width="1323" height="203" key="GridCell.Tab.0.right" timestamp="1610927480128">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="203" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1610822140237" />
+    <state width="1323" height="203" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1610927480128" />
     <state width="1398" height="200" key="GridCell.Tab.0.right/0.25.1440.794@0.25.1440.794" timestamp="1608556527969" />
     <state x="129" y="59" key="MergeDialog" timestamp="1608770008914">
       <screen x="0" y="0" width="1366" height="768" />
@@ -359,10 +376,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="535" y="300" key="VCS.ChangelistChooser/0.0.1366.768@0.0.1366.768" timestamp="1608769599375" />
-    <state x="282" y="117" key="Vcs.Push.Dialog.v2" timestamp="1610703010633">
+    <state x="282" y="117" key="Vcs.Push.Dialog.v2" timestamp="1610823715364">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="282" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1610703010633" />
+    <state x="282" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1610823715364" />
     <state x="481" y="299" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609952446707">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

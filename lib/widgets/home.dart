@@ -71,6 +71,7 @@ class _HomeState extends State<Home> {
   String couponNotificationId = '0';
   String storeNotificationId = '0';
   String notificationUrl = '0';
+  String notificationID = '0';
 
   List<Country> _countries , _rCountries = [];
   String _countryBtnHint = '+';
@@ -92,7 +93,9 @@ class _HomeState extends State<Home> {
     //     );
     //   },
     // );
-    _foregroundNotificationRouter();
+    api.sendNotificationSeenAck(notificationID).then((value) {
+      _foregroundNotificationRouter();
+    });
 
   }
   void showNotification(String title, String body) async {
@@ -249,7 +252,7 @@ class _HomeState extends State<Home> {
           setState(() {
             notificationUrl = '0';
           });
-        });;
+        });
       }
       break;
     }
@@ -266,13 +269,17 @@ class _HomeState extends State<Home> {
         setState(() {
           couponNotificationId = message['data']['payload'];
 
-          Navigator.of(context).push(
-            new MaterialPageRoute(
-                builder: (BuildContext context) => new CouponMain(id: couponNotificationId,)),
-          ).whenComplete(() {
-            setState(() {
-              couponNotificationId = '0';
+          api.sendNotificationSeenAck(notificationID).then((value) {
+
+            Navigator.of(context).push(
+              new MaterialPageRoute(
+                  builder: (BuildContext context) => new CouponMain(id: couponNotificationId,)),
+            ).whenComplete(() {
+              setState(() {
+                couponNotificationId = '0';
+              });
             });
+
           });
 
         });
@@ -286,13 +293,17 @@ class _HomeState extends State<Home> {
 
           homeApi.getStoreById(storeNotificationId).then((store) {
 
-            Navigator.of(context).push(
-              new MaterialPageRoute(
-                  builder: (BuildContext context) => new StoryCoupon(country: store,)),
-            ).whenComplete(() {
-              setState(() {
-                storeNotificationId = '0';
+            api.sendNotificationSeenAck(notificationID).then((value) {
+
+              Navigator.of(context).push(
+                new MaterialPageRoute(
+                    builder: (BuildContext context) => new StoryCoupon(country: store,)),
+              ).whenComplete(() {
+                setState(() {
+                  storeNotificationId = '0';
+                });
               });
+
             });
 
           });
@@ -302,11 +313,32 @@ class _HomeState extends State<Home> {
 
       case 'url': if(message['data']['payload'] != null)
       {
-        _launchStoreURL(message['data']['payload']);
+        api.sendNotificationSeenAck(notificationID).then((value) {
+          _launchStoreURL(message['data']['payload']);
+        });
       }
       break;
     }
 
+  }
+
+  Future checkIfDuplicatedNotification (String receivedId) async
+  {
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'last_notification_id';
+    final value = prefs.get(key);
+
+    if(receivedId == value.toString())
+      return true;
+    else
+      return false;
+  }
+
+  Future setLastNotificationId (String receivedId) async
+  {
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'last_notification_id';
+    prefs.setString(key, receivedId);
   }
 
   void initializeNotificationsConfigs() {
@@ -322,13 +354,15 @@ class _HomeState extends State<Home> {
     _firebaseMessaging.configure(
       onMessage: (Map<String , dynamic> message) async {
 
-        if(message['data']['image'] == null)
+        api.sendNotificationDeliveryAck(message['data']['notification_id']).then((value) {
+
+          if(message['data']['image'] == null)
           {
             print('non-image notification test >>>>>');
             showNotification(
                 message['notification']['title'], message['notification']['body']);
           }
-        else if(message['data']['image'] != null)
+          else if(message['data']['image'] != null)
           {
             print('image notification test >>>>>');
             print(message['data']['image']);
@@ -343,49 +377,77 @@ class _HomeState extends State<Home> {
                 message['notification']['body']);
           }
 
-        print("onMessage: $message");
+          print("onMessage: $message");
 
-        setState(() {
-          notificationRouteType = message['data']['route_type'];
+          setState(() {
+            notificationRouteType = message['data']['route_type'];
+            notificationID = message['data']['notification_id'];
 
-          switch(message['data']['route_type'])
-          {
-            case 'local_coupon': if(message['data']['payload'] != null)
+            switch(message['data']['route_type'])
             {
-              setState(() {
-                couponNotificationId = message['data']['payload'];
-              });
-            }
-            break;
+              case 'local_coupon': if(message['data']['payload'] != null)
+              {
+                setState(() {
+                  couponNotificationId = message['data']['payload'];
+                });
+              }
+              break;
 
-            case 'local_store': if(message['data']['payload'] != null)
-            {
-              setState(() {
-                storeNotificationId = message['data']['payload'];
-              });
-            }
-            break;
+              case 'local_store': if(message['data']['payload'] != null)
+              {
+                setState(() {
+                  storeNotificationId = message['data']['payload'];
+                });
+              }
+              break;
 
-            case 'url': if(message['data']['payload'] != null)
-            {
-              setState(() {
-                notificationUrl = message['data']['payload'];
-              });
+              case 'url': if(message['data']['payload'] != null)
+              {
+                setState(() {
+                  notificationUrl = message['data']['payload'];
+                });
+              }
+              break;
             }
-            break;
-          }
+          });
+
         });
 
       },
       onLaunch: (Map<String, dynamic> message) async {
-        print("onLaunch: $message");
 
-        _backgroundNotificationRouter(message);
+        if(!await checkIfDuplicatedNotification(message['data']['notification_id']))
+          {
+            setLastNotificationId(message['data']['notification_id']).whenComplete(() {
+
+              print("onLaunch: $message");
+              setState(() {
+                notificationID = message['data']['notification_id'];
+                api.sendNotificationDeliveryAck(notificationID).then((value) {
+                  _backgroundNotificationRouter(message);
+                });
+              });
+
+            });
+          }
       },
       onResume: (Map<String, dynamic> message) async {
-        print("onResume: $message");
 
-        _backgroundNotificationRouter(message);
+        if(!await checkIfDuplicatedNotification(message['data']['notification_id']))
+        {
+          setLastNotificationId(message['data']['notification_id']).whenComplete(() {
+
+            print("onResume: $message");
+            setState(() {
+              notificationID = message['data']['notification_id'];
+              api.sendNotificationDeliveryAck(notificationID).then((value) {
+                _backgroundNotificationRouter(message);
+              });
+            });
+
+          });
+        }
+
       },
     );
 
@@ -1513,10 +1575,14 @@ class _HomeState extends State<Home> {
       });
     });
 
-
-    //print('initialize !');
-
     _getCountries();
+  }
+
+  @override
+  void dispose() {
+    flutterLocalNotificationsPlugin.cancelAll();
+
+    super.dispose();
   }
 
   @override

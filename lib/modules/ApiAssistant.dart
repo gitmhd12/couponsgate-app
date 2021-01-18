@@ -455,5 +455,37 @@ class ApiAssistant {
     }
   }
 
+  Future sendNotificationDeliveryAck(String notificationId) async {
+    String myUrl = "$serverUrl/notifications/notification_delivered.php";
+    http.Response response = await http.post(myUrl, body: {
+      'notification_id': notificationId,
+    });
+
+    print("result: ${response.body}");
+
+    if (response.body.toString().contains("process completed successfully")) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  Future sendNotificationSeenAck(String notificationId) async {
+    String myUrl = "$serverUrl/notifications/notification_checked.php";
+    http.Response response = await http.post(myUrl, body: {
+      'notification_id': notificationId,
+    });
+
+    print("result: ${response.body}");
+
+    if (response.body.toString().contains("process completed successfully")) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
 
 }
