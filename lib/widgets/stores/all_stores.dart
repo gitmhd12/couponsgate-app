@@ -145,7 +145,6 @@ class _AllStores extends State<AllStores> {
                                     storeName(context, _rStores[i]),
                                     style: TextStyle(
                                       fontSize: 18,
-                                      fontFamily: "CustomIcons",
                                     ),
                                   ),
                                 )

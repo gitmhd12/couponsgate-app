@@ -254,12 +254,6 @@ ADDED from E:\Android_Studio_Projects\couponsgate-app\android\app\src\main\Andro
 		ADDED from E:\Android_Studio_Projects\couponsgate-app\android\app\src\main\AndroidManifest.xml:31:17-54
 	android:name
 		ADDED from E:\Android_Studio_Projects\couponsgate-app\android\app\src\main\AndroidManifest.xml:30:17-72
-meta-data#io.flutter.embedding.android.SplashScreenDrawable
-ADDED from E:\Android_Studio_Projects\couponsgate-app\android\app\src\main\AndroidManifest.xml:38:13-41:19
-	android:resource
-		ADDED from E:\Android_Studio_Projects\couponsgate-app\android\app\src\main\AndroidManifest.xml:40:17-63
-	android:name
-		ADDED from E:\Android_Studio_Projects\couponsgate-app\android\app\src\main\AndroidManifest.xml:39:17-81
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from E:\Android_Studio_Projects\couponsgate-app\android\app\src\main\AndroidManifest.xml:43:13-46:29
 action#android.intent.action.MAIN

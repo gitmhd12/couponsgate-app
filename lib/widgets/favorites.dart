@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:couponsgate/widgets/coupon_main.dart';
 import 'package:couponsgate/widgets/settings.dart';
 import 'package:couponsgate/widgets/stores/all_stores.dart';
+import 'package:getwidget/components/loader/gf_loader.dart';
+import 'package:getwidget/types/gf_loader_type.dart';
 import 'package:http/http.dart' as http;
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:couponsgate/localization/localizationValues.dart';
@@ -31,63 +33,58 @@ class _FavoritesState extends State<Favorites> {
   bool _noResults = true;
   bool _isFavLoading;
 
-  void _checkIfGuest() async
-  {
-    final prefs = await SharedPreferences.getInstance();
-    final key = 'is_login';
-    final value = prefs.get(key);
-
-    if(value != '1')
-    {
-      setState(() {
-        _isGuest = true;
-      });
-    }
-    else
-      {
-        setState(() {
-          _isGuest = false;
-        });
-      }
-  }
 
   Future _getUserFavorites() async {
     final prefs = await SharedPreferences.getInstance();
     final key = 'is_login';
     final value = prefs.get(key);
     //print('$value');
-    if (value == '1') {
+    if (value == '1')
+    {
       final key2 = 'token';
       final value2 = prefs.get(key2);
 
       setState(() {
+        _isGuest = false;
         _token = value2;
       });
-    }
 
-    var data = {
-      'user_token': _token,
-    };
+      var data = {
+        'user_token': _token,
+      };
 
-    Favorite tFav;
-    _favorites = [];
+      Favorite tFav;
+      _favorites = [];
 
-    var res = await http.post('https://yalaphone.com/appdash/rest_api/favorites/get_favs_by_user.php',
-      body: data);
-    var body = json.decode(res.body);
-    //print(body);
+      var res = await http.post('https://yalaphone.com/appdash/rest_api/favorites/get_favs_by_user.php',
+          body: data);
+      var body = json.decode(res.body);
+      //print(body);
 
-    if (body['favorites'] != null) {
-      for (var fav in body['favorites']) {
-        tFav = Favorite.fromJson(fav);
-        _favorites.add(tFav);
+      if (body['favorites'] != null) {
+        for (var fav in body['favorites']) {
+          tFav = Favorite.fromJson(fav);
+          _favorites.add(tFav);
+        }
+
+        setState(() {
+          _noResults = false;
+        });
+
+        return _favorites;
       }
-
+      else
+      {
+        setState(() {
+          _noResults = true;
+        });
+      }
+    }
+    else
+    {
       setState(() {
-        _noResults = false;
+        _isGuest = true;
       });
-
-      return _favorites;
     }
   }
 
@@ -135,8 +132,6 @@ class _FavoritesState extends State<Favorites> {
   void initState() {
 
     super.initState();
-
-    _checkIfGuest();
 
     setState(() {
       _isFavLoading = true;
@@ -249,49 +244,59 @@ class _FavoritesState extends State<Favorites> {
       )
           :
           Container(
-            // child: _noResults ?
-            // InkWell(
-            //
-            //   borderRadius: BorderRadius.circular(5),
-            //   onTap: () {},
-            //   child: Card(
-            //
-            //     clipBehavior: Clip.antiAlias,
-            //     margin: const EdgeInsets.only(top:10.0),
-            //     elevation: 0,
-            //
-            //     child: Column(
-            //       crossAxisAlignment: CrossAxisAlignment.stretch,
-            //       children: <Widget>[
-            //
-            //         Padding(
-            //           padding: const EdgeInsets.all(10.0),
-            //           child: Row(
-            //             children: <Widget>[
-            //               Expanded(
-            //                 child: Container(
-            //                   child: Center(
-            //                     child: Padding(
-            //                       padding: const EdgeInsets.all(10.0),
-            //                       child: Text(
-            //                         getTranslated(context, 'favorites_no_result_note'),
-            //                         style: TextStyle(
-            //                           fontFamily: 'CustomFont',
-            //                         ),
-            //                       ),
-            //                     ),
-            //                   ),
-            //                 ),
-            //               ),
-            //             ],
-            //           ),
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // )
-            //     :
-            child: Container(child: Row(
+            child: _isFavLoading ?
+            Container(
+              child: Center(child: GFLoader(
+                type:GFLoaderType.circle,
+                loaderColorOne: Color(0xFF2196f3),
+                loaderColorTwo: Color(0xFF2196f3),
+                loaderColorThree: Color(0xFF2196f3),
+              ),),
+            )
+            :
+            Container(child: _noResults ?
+            InkWell(
+
+              borderRadius: BorderRadius.circular(5),
+              onTap: () {},
+              child: Card(
+
+                clipBehavior: Clip.antiAlias,
+                margin: const EdgeInsets.only(top:10.0),
+                elevation: 0,
+
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Container(
+                              child: Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Text(
+                                    getTranslated(context, 'favorites_no_result_note'),
+                                    style: TextStyle(
+                                      fontFamily: 'CustomFont',
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
+                :
+                Row(
               children: [
                 Expanded(
                   child: ListView.builder(

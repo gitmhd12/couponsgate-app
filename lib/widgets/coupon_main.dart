@@ -1052,7 +1052,9 @@ class _CouponMainState extends State<CouponMain> {
 
                               //shop now
                               InkWell(onTap:(){
-                                _launchStoreURL(_rCoupons[i].storeUrl);
+                                _launchStoreURL(_rCoupons[i].storeUrl).whenComplete(() {
+                                  homeApi.visitStore(_rCoupons[i].store);
+                                });
                               } , child: Container(
                                 width: MediaQuery.of(context).size.width-225,
                                 padding: const EdgeInsets.all(5),

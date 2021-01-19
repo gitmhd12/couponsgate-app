@@ -66,7 +66,6 @@ class _HomeState extends State<Home> {
   var _isCouponsEnd = false;
   var _isCountryLoading = true;
   var _isLoading = true;
-  var _isShopeNowVisible = false;
   String _currentCoupon = '0';
   int lsubmit_btn_child_index = 0;
   int loadModeChildIndicator = 0;
@@ -1584,8 +1583,11 @@ class _HomeState extends State<Home> {
 
                               //shop now
                               InkWell(onTap:(){
-                                _launchStoreURL(_rCoupons[i].storeUrl);
-                              } , child: Container(
+                                _launchStoreURL(_rCoupons[i].storeUrl).whenComplete(() {
+                                  homeApi.visitStore(_rCoupons[i].store);
+                                });
+                              },
+                                child: Container(
                                 width: MediaQuery.of(context).size.width-225,
                                 padding: const EdgeInsets.all(5),
                                 alignment: Alignment.center,

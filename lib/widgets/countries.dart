@@ -165,7 +165,6 @@ class _CountriesState extends State<Countries> {
                               countryName(context, _rCountries[i]),
                               style: TextStyle(
                                 fontSize: 18,
-                                fontFamily: "CustomIcons",
                               ),
                             ),
                           )
