@@ -11,6 +11,7 @@ import 'package:responsive_grid/responsive_grid.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../my_icons_icons.dart';
+import '../add_coupon.dart';
 import '../countries.dart';
 import '../favorites.dart';
 import '../home.dart';
@@ -168,11 +169,11 @@ class _AllStores extends State<AllStores> {
             items: [
               TabItem(icon: MyIcons.globe, title: getTranslated(context, 'home_b_bar_countries')),
               TabItem(icon: Icons.shopping_bag, title: getTranslated(context, 'home_b_bar_stores')),
-              TabItem(icon: Icons.home, title: getTranslated(context, 'home_b_bar_home')),
+              TabItem(icon: Icons.add_box, title: getTranslated(context, 'add_coupon_title')),
               TabItem(icon: Icons.favorite, title: getTranslated(context, 'home_b_bar_fav')),
-              TabItem(icon: Icons.people, title: getTranslated(context, 'home_b_bar_profile')),
+              TabItem(icon: Icons.home, title: getTranslated(context, 'home_b_bar_home')),
             ],
-            initialActiveIndex: 1,//optional, default as 0
+            initialActiveIndex: 2,//optional, default as 0
             onTap: onTabTapped,
           )),
     );
@@ -185,19 +186,21 @@ class _AllStores extends State<AllStores> {
             builder: (BuildContext context) => new Countries()),
       );
     } else if (index == 1) {
-      Navigator.of(context).push(
+      /*Navigator.of(context).push(
         new MaterialPageRoute(
             builder: (BuildContext context) => new AllStores()),
-      );
+      );*/
     } else if (index == 2) {
-      Navigator.of(context).push(new MaterialPageRoute(
-          builder: (BuildContext context) => new Home()));
+      Navigator.of(context).push(
+        new MaterialPageRoute(
+            builder: (BuildContext context) => new add_coupon()),
+      );
     } else if (index == 3) {
       Navigator.of(context).push(new MaterialPageRoute(
           builder: (BuildContext context) => new Favorites()));
     } else if (index == 4) {
       Navigator.of(context).push(new MaterialPageRoute(
-          builder: (BuildContext context) => new Settings()));
+          builder: (BuildContext context) => new Home()));
     }
   }
 }

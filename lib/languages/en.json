@@ -51,6 +51,8 @@
   "drawer_contact_us" : "Contact Us",
   "drawer_login" : "Sign in",
   "drawer_logout" : "Sign out",
+  "drawer_app_share" : "Share App",
+  "drawer_app_rate" : "Rate App",
 
   "settings_title" : "Profile",
   "settings_lang_label" : "Language",
@@ -126,7 +128,29 @@
   "new_account": "Sign Up",
   "login_facebook": "Continue with Facebook",
   "login_google": "Continue with Google",
+  "login_apple": "Continue with Apple",
   "Copied": " The code has been copied ",
   "search_results": "Search results for ",
-  "skip": "skip"
+  "skip": "skip",
+
+  "share_text": "I used this coupon from the CouponGate app: ",
+
+  "add_coupon_title": "Add Coupon",
+
+  "add_coupon_store_name": "Store Name",
+  "add_coupon_des": "Details",
+  "add_coupon_code": "Coupon's code",
+  "add_coupon_store_url": "Store url (optional)",
+  "add_coupon_email": "Your email (optional)",
+
+  "add_coupon_terms": "Terms of addition",
+  "add_coupon_terms1": "  - Added only for electronic stores",
+  "add_coupon_terms2": "  - The discount code is active",
+  "add_coupon_terms3": "  - If the store is in the app, the display should be different.",
+  "add_coupon_button": "Add coupon",
+  "missing_data_msg": "Please fill in all required fields",
+  "error_form_msg": "An error occurred, please try again later",
+  "next_btn": "Next",
+  "share_app_text":"I wanted to share this amazing App with you. \n\nCouponsGate finds you the best coupons and deals!\n\nYour wallet will thank you.  \n\nStart saving now - It's Free"
+
 }

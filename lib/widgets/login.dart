@@ -1,4 +1,7 @@
 import 'dart:convert';
+import 'dart:io';
+//import 'package:apple_sign_in/apple_sign_in.dart';
+import 'package:apple_sign_in/apple_sign_in.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:couponsgate/localization/localizationValues.dart';
 import 'package:couponsgate/modules/ApiAssistant.dart';
@@ -14,6 +17,7 @@ import 'package:giffy_dialog/giffy_dialog.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import '../main.dart';
 
@@ -48,15 +52,22 @@ class _LoginState extends State<Login>{
 
   var fb_btn_shild = true;
   var g_btn_shild = true;
+  var apple_btn_shild = true;
 
   Future checkIfFirstSkip() async
   {
     final prefs = await SharedPreferences.getInstance();
 
-    final key = 'isFirstSkip';
-    final value = prefs.getString(key);
+     final key = 'isFirstSkip';
+    final value = "1";
+    prefs.setString(key, value);
 
-    if(value == null)
+    final key2 = 'country_code';
+    final value2 = prefs.getString(key2);
+
+    print(value2);
+
+    if(value2 == null)
       {
         Navigator.pushReplacementNamed(context, '/SelectCountry');
       }
@@ -130,6 +141,8 @@ class _LoginState extends State<Login>{
     return null;
   }
 
+
+
   Future signInFB() async {
     setState(() {
       fb_btn_shild = false;
@@ -178,6 +191,123 @@ class _LoginState extends State<Login>{
     }
 
 
+
+  appleLogIn() async {
+    //print('dd');
+
+
+
+    /*if (await AppleSignIn.isAvailable()) {
+      final AuthorizationResult result = await AppleSignIn.performRequests([
+        AppleIdRequest(requestedScopes: [Scope.email, Scope.fullName])
+      ]);
+      switch (result.status) {
+        case AuthorizationStatus.authorized:
+          print(result.credential.email); //All the required credentials
+          print(result
+              .credential.fullName.givenName); //All the required credentials
+          print(result
+              .credential.fullName.familyName); //All the required credentials
+          print(result.credential.authorizationCode);
+          String fullname =
+              "${result.credential.fullName.givenName} ${result.credential.fullName.familyName}";
+
+          var data = {
+            'name': fullname,
+            'email': result.credential.email,
+            'id': result.credential.identityToken.toString(),
+          };
+
+          Locale currentLocale = Localizations.localeOf(context);
+
+          api.registerData_apple( fullname, result.credential.email.toLowerCase().toString(), result.credential.identityToken.toString() , currentLocale.languageCode)
+              .whenComplete(() {
+            print(api.apple_login_status.toString());
+            if (api.apple_login_status == 1 ) {
+              print('new register');
+              Navigator.pushReplacementNamed(context, '/SelectCountry');
+              //Navigator.pushReplacementNamed(context, '/select_country');
+            } else if(api.apple_login_status == 2){
+              api.updateFirebaseToken(currentLocale.languageCode).whenComplete((){
+                if(api.firebaseStatus)
+                {
+                  Navigator.pushReplacementNamed(context, '/home');
+                }
+              }
+              );
+            }
+
+            setState(() {
+              apple_btn_shild = true;
+            });
+
+          });
+          //All the required credentials
+          break; //All the required credentials
+        case AuthorizationStatus.error:
+          print("Sign in failed: ${result.error.localizedDescription}");
+          break;
+        case AuthorizationStatus.cancelled:
+          print('User cancelled');
+          break;
+      }
+    }*/
+
+
+
+    print('1');
+    setState(() {
+      apple_btn_shild = false;
+    });
+    print('2');
+    final credential = await SignInWithApple.getAppleIDCredential(
+      scopes: [
+        AppleIDAuthorizationScopes.email,
+        AppleIDAuthorizationScopes.fullName,
+      ],
+    );
+    print('3');
+    print(credential.email);
+    print(credential.userIdentifier);
+    print(credential.givenName);
+
+    String fullname =
+        "${credential.givenName} ${credential.familyName}";
+
+    var data = {
+      'name': fullname,
+      'email': credential.email,
+      'id': credential.identityToken.toString(),
+    };
+
+    Locale currentLocale = Localizations.localeOf(context);
+
+    api.registerData_apple( fullname, credential.email.toLowerCase().toString(), credential.identityToken.toString() , currentLocale.languageCode)
+        .whenComplete(() {
+      print(api.apple_login_status.toString());
+      if (api.apple_login_status == 1) {
+        print('new register');
+        Navigator.pushReplacementNamed(context, '/SelectCountry');
+        //Navigator.pushReplacementNamed(context, '/select_country');
+      } else if (api.apple_login_status == 2) {
+        api.updateFirebaseToken(currentLocale.languageCode).whenComplete(() {
+          if (api.firebaseStatus) {
+            Navigator.pushReplacementNamed(context, '/home');
+          }
+        }
+        );
+      }
+
+
+        setState(() {
+      apple_btn_shild = true;
+    });
+
+  });
+
+
+  }
+
   @override
   Future<void> initState()  {
     super.initState();
@@ -187,6 +317,12 @@ class _LoginState extends State<Login>{
       _isLoading = false;
     });
 
+    if (Platform.isIOS) {
+      //check for ios if developing for both android & ios
+      /*AppleSignIn.onCredentialRevoked.listen((_) {
+        print("Credentials revoked");
+      });*/
+    }
 
 
   }
@@ -697,6 +833,55 @@ class _LoginState extends State<Login>{
     );
   }
 
+  Widget _appleButton() {
+    return InkWell(
+        onTap: appleLogIn,
+        child: Container(
+          height: 50,
+          margin: EdgeInsets.symmetric(vertical: 5),
+          decoration: BoxDecoration(
+            color: Color(0xff000000),
+              border: Border.all(color: Colors.black),
+            borderRadius: BorderRadius.all(Radius.circular(5)),
+          ),
+          child: Row(
+            children: <Widget>[
+              Expanded(
+                flex: 1,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Color(0xff000000),
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                  ),
+                  alignment: Alignment.center,
+                  child: Icon(
+                    FontAwesomeIcons.apple,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 5,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Color(0xff000000),
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                  ),
+                  alignment: Alignment.center,
+                  child: apple_btn_shild? Text(getTranslated(context, 'login_apple'),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: "CustomFont",
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400)):CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white)),
+                ),
+              ),
+            ],
+          ),
+        ));
+  }
+
   Widget _backButton({formValue}) {
     return InkWell(
       onTap: () {
@@ -820,10 +1005,18 @@ class _LoginState extends State<Login>{
               ])),
           _facebookButton(),
           _googleButton(),
-
+          android_or_ios(),
         ],
       ),
     );
+  }
+
+  android_or_ios() {
+    if (Platform.isIOS) {
+      return _appleButton();
+    } else if (Platform.isAndroid) {
+      return Container();
+    }
   }
 
   Widget _loginForm() {

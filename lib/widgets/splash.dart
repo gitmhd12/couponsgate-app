@@ -60,8 +60,8 @@ class _Splash extends State<Splash> {
   initState() {
     super.initState();
     // read();
-    //check_login();
-    startTimer();
+    checkLogin();
+    //startTimer();
 
 
   }
@@ -84,11 +84,11 @@ class _Splash extends State<Splash> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
 
-              Image(image: new AssetImage("assets/images/logo.gif")
+              /*Image(image: new AssetImage("assets/images/logo.gif")
                   ,width: MediaQuery.of(context).size.width
                   ,height: MediaQuery.of(context).size.width),
-
-              SizedBox(
+*/
+              /*SizedBox(
                 height: 30,
               ),
 
@@ -98,7 +98,7 @@ class _Splash extends State<Splash> {
                 onPressed: () {
                   checkLogin();
                 },
-              ),
+              ),*/
             ],
           )
         ),

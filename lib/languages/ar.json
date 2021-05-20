@@ -51,6 +51,8 @@
   "drawer_contact_us" : "اتصل بنا",
   "drawer_login" : "تسجيل الدخول",
   "drawer_logout" : "تسجيل الخروج",
+  "drawer_app_share" : "مشاركة التطبيق",
+  "drawer_app_rate" : "تقييم التطبيق",
 
   "settings_title" : "الملف الشخصي",
   "settings_lang_label" : "اللغة",
@@ -125,9 +127,31 @@
   "login_text": "تسجيل الدخول",
   "new_account" : "حساب جديد",
   "login_facebook": "الإستمرار بإستخدام فيسبوك",
-  "login_google": "الإستمرار بإستخدام غوغل",
+  "login_google": "الإستمرار بإستخدام جوجل",
+  "login_apple": "الإستمرار بإستخدام Apple",
   "Copied": "تم نسخ الكود ",
   "search_results": "نتائج البحث عن ",
-  "skip": "تخطي"
+  "skip": "تخطي",
+
+  "share_text": "لقد استخدمت هذا الكوبون من تطبيق بوابة الكوبونات: ",
+
+
+  "add_coupon_title": "أضف كوبون",
+
+  "add_coupon_store_name": "اسم المتجر",
+  "add_coupon_des": "التفاصيل",
+  "add_coupon_code": "كود الخصم",
+  "add_coupon_store_url": "رابط المتجر (اختياري)",
+  "add_coupon_email": "البريد الإلكتروني للتواصل (اختياري)",
+
+  "add_coupon_terms": "شروط الإضافة",
+  "add_coupon_terms1": "  - أن يكون متجر إلكتروني",
+  "add_coupon_terms2": "  - أن يكون كود الخصم فعال",
+  "add_coupon_terms3": "  - إذا كان المتجر متكرر في التطبيق يجب أن يكون العرض مختلف",
+  "add_coupon_button": "أضف الكوبون",
+  "missing_data_msg": "يرجى تعبئة جميع الحقول المطلوبة",
+  "error_form_msg": "حدث خطأ يرجى المحاولة لاحقاً",
+  "next_btn": "التالي",
+  "share_app_text": "كوبونات وعروض خصم رهيبة!!\n\nتطبيق بوابة الكوبونات يوفر لك افضل العروض والكوبونات\n\nحمله الآن وابدأ بالتوفير"
 
 }

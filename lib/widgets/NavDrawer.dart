@@ -1,4 +1,6 @@
 import 'package:couponsgate/localization/localizationValues.dart';
+import 'package:couponsgate/modules/ApiAssistant.dart';
+import 'package:couponsgate/modules/Language.dart';
 import 'package:couponsgate/widgets/adbout_us.dart';
 import 'package:couponsgate/widgets/contact_us.dart';
 import 'package:couponsgate/widgets/favorites.dart';
@@ -10,8 +12,12 @@ import 'package:couponsgate/widgets/settings.dart';
 import 'package:couponsgate/widgets/terms.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:share/share.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../main.dart';
 
 
 class NavDrawer extends StatefulWidget {
@@ -43,8 +49,11 @@ class NavDrawerState extends State<NavDrawer> {
 
   _logout() async
   {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.clear();
+    if(guest == false){
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.clear();
+    }
+
 
     Navigator.of(context).popUntil((route) => route.isFirst);
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => Login()));
@@ -60,6 +69,9 @@ class NavDrawerState extends State<NavDrawer> {
 
   @override
   Widget build(BuildContext context) {
+
+    Locale currentLocale = Localizations.localeOf(context);
+
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -104,6 +116,7 @@ class NavDrawerState extends State<NavDrawer> {
             ),
             title: Text(
               getTranslated(context, 'drawer_settings'),
+              style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
             ),
             onTap: () => {
               Navigator.of(context).push(new MaterialPageRoute(
@@ -118,6 +131,7 @@ class NavDrawerState extends State<NavDrawer> {
             ),
             title: Text(
               getTranslated(context, 'drawer_favorites'),
+              style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
             ),
             onTap: () => {
               Navigator.of(context).push(new MaterialPageRoute(
@@ -136,6 +150,8 @@ class NavDrawerState extends State<NavDrawer> {
             ),
             title: Text(
               getTranslated(context, 'drawer_about_us'),
+              style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+
             ),
             onTap: () => {
               Navigator.of(context).push(new MaterialPageRoute(
@@ -150,6 +166,8 @@ class NavDrawerState extends State<NavDrawer> {
             ),
             title: Text(
               getTranslated(context, 'drawer_contact_us'),
+              style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+
             ),
             onTap: () => {
               Navigator.of(context).push(new MaterialPageRoute(
@@ -164,6 +182,8 @@ class NavDrawerState extends State<NavDrawer> {
             ),
             title: Text(
               getTranslated(context, 'drawer_terms'),
+              style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+
             ),
             onTap: () => {
               Navigator.of(context).push(new MaterialPageRoute(
@@ -178,6 +198,8 @@ class NavDrawerState extends State<NavDrawer> {
             ),
             title: Text(
               getTranslated(context, 'drawer_privacy_policy'),
+              style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+
             ),
             onTap: () => {
               Navigator.of(context).push(new MaterialPageRoute(
@@ -192,12 +214,88 @@ class NavDrawerState extends State<NavDrawer> {
             ),
             title: Text(
               getTranslated(context, 'drawer_faq'),
+              style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+
             ),
             onTap: () => {
               Navigator.of(context).push(new MaterialPageRoute(
                   builder: (BuildContext context) => new Terms()))
             },
           ),
+
+
+          Divider(
+            color: Color(0xFF2196f3),
+          ),
+
+          currentLocale.languageCode == 'ar'?
+          ListTile(
+            leading: Icon(
+              Icons.language,
+              color: Color(0xFF2196f3),
+            ),
+            title: Text(
+              'English',
+              style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+
+            ),
+            onTap: () => {
+              _changeLanguage(Language(1, 'English', 'en'))
+            },
+          ):ListTile(
+            leading: Icon(
+              Icons.language,
+              color: Color(0xFF2196f3),
+            ),
+            title: Text(
+              'العربية',
+              style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+
+            ),
+            onTap: () => {
+              _changeLanguage(Language(2, 'العربية', 'ar'))
+            },
+          ),
+
+          Divider(
+            color: Color(0xFF2196f3),
+          ),
+
+          ListTile(
+            leading: Icon(
+              Icons.share,
+              color: Color(0xFF2196f3),
+            ),
+            title: Text(
+              getTranslated(context, 'drawer_app_share'),
+              style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+
+            ),
+            onTap: () => {
+            Share.share(getTranslated(context, 'share_app_text') +
+            '''
+            
+            https://play.google.com/store/apps/details?id=net.couponsgate
+            ''' )
+            },
+          ),
+
+          ListTile(
+            leading: Icon(
+              Icons.star_rate,
+              color: Color(0xFF2196f3),
+            ),
+            title: Text(
+              getTranslated(context, 'drawer_app_rate'),
+              style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+
+            ),
+            onTap: () => {
+
+              _launchURL()
+            },
+          ),
+
           Divider(
             color: Color(0xFF2196f3),
           ),
@@ -211,14 +309,41 @@ class NavDrawerState extends State<NavDrawer> {
             title: guest
                 ? Text(
                     getTranslated(context, 'drawer_login'),
-                  )
+              style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+
+            )
                 : Text(
                     getTranslated(context, 'drawer_logout'),
-                  ),
+              style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+
+            ),
             onTap: _logout,
           ),
         ],
       ),
     );
+  }
+
+  ApiAssistant api = new ApiAssistant();
+
+  void _changeLanguage(Language lang) async {
+    Locale currentLocale = Localizations.localeOf(context);
+
+    print(lang.code);
+    print(currentLocale.languageCode);
+
+    Locale _locale = await setLocale(lang.code);
+    MyApp.setLocale(context, _locale);
+
+    api.getUserNotificationByLocal(currentLocale.languageCode, lang.code);
+  }
+
+  _launchURL() async {
+    const url = 'https://play.google.com/store/apps/details?id=net.couponsgate';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

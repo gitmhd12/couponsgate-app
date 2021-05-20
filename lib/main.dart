@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:couponsgate/localization/center_localization.dart';
 import 'package:couponsgate/routes/custom_router.dart';
 import 'package:couponsgate/routes/routes_names.dart';
@@ -32,6 +34,9 @@ class _MyAppState extends State<MyApp> {
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
   Locale _locale;
+
+  final String defaultLocale = Platform.localeName; // Returns locale string in the form 'en_US'
+
 
   void setLocale(Locale locale) {
     setState(() {
@@ -75,8 +80,8 @@ class _MyAppState extends State<MyApp> {
         ],
         localeResolutionCallback: (deviceLocale, supportedLocales) {
           for (var locale in supportedLocales) {
-            if (locale.languageCode == deviceLocale.languageCode &&
-                locale.countryCode == deviceLocale.countryCode) {
+            print(deviceLocale.languageCode);
+            if (locale.languageCode == deviceLocale.languageCode) {
               return deviceLocale;
             }
           }

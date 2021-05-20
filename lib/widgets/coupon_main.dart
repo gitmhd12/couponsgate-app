@@ -9,6 +9,7 @@ import 'package:couponsgate/widgets/login.dart';
 import 'package:couponsgate/widgets/settings.dart';
 import 'package:couponsgate/widgets/stores/all_stores.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:getwidget/components/loader/gf_loader.dart';
 import 'package:getwidget/types/gf_loader_type.dart';
 import 'package:http/http.dart' as http;
@@ -19,6 +20,7 @@ import 'package:couponsgate/modules/Favorite.dart';
 import 'package:couponsgate/widgets/home.dart';
 import 'package:flutter/material.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
+import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'my_icons_icons.dart';
@@ -860,13 +862,23 @@ class _CouponMainState extends State<CouponMain> {
                               _rCoupons[i].code)
                               .then((result) {
                             final snackBar = SnackBar(
-                              content: Text(getTranslated(context, 'Copied') + _rCoupons[i].code),
+                              content: Text(
+                                  getTranslated(context, 'Copied') +
+                                      _rCoupons[i].code),
                             );
                             setState(() {
                               _visibleShopBtn[i] = true;
-                              Scaffold.of(context).showSnackBar(snackBar);
+                              Fluttertoast.showToast(
+                                  msg: getTranslated(
+                                      context, 'Copied'),
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.CENTER,
+                                  timeInSecForIosWeb: 1,
+                                  backgroundColor: Colors.black,
+                                  textColor: Colors.white,
+                                  fontSize: 16.0);
+                              //Scaffold.of(context).showSnackBar(snackBar);
                             });
-
                           });
 
                           if(homeApi.checkIfInCodes(_rCoupons[i].id, _rCodes) == null)
@@ -985,13 +997,23 @@ class _CouponMainState extends State<CouponMain> {
                                       _rCoupons[i].code)
                                       .then((result) {
                                     final snackBar = SnackBar(
-                                      content: Text(getTranslated(context, 'Copied') + _rCoupons[i].code),
+                                      content: Text(
+                                          getTranslated(context, 'Copied') +
+                                              _rCoupons[i].code),
                                     );
                                     setState(() {
                                       _visibleShopBtn[i] = true;
-                                      Scaffold.of(context).showSnackBar(snackBar);
+                                      Fluttertoast.showToast(
+                                          msg: getTranslated(
+                                              context, 'Copied'),
+                                          toastLength: Toast.LENGTH_SHORT,
+                                          gravity: ToastGravity.CENTER,
+                                          timeInSecForIosWeb: 1,
+                                          backgroundColor: Colors.black,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0);
+                                      //Scaffold.of(context).showSnackBar(snackBar);
                                     });
-
                                   });
 
                                   if(homeApi.checkIfInCodes(_rCoupons[i].id, _rCodes) == null)
@@ -1206,7 +1228,10 @@ class _CouponMainState extends State<CouponMain> {
                     ),),
 
                     SizedBox(height: 15,),
-                    InkWell(onTap:(){ } , child: Container(
+                    //share
+                    InkWell(onTap:(){
+                      Share.share(getTranslated(context, 'share_text')+cPropertyByLocale(context, _rCoupons[i], 'name')+" "+_rCoupons[i].code);
+                    } , child: Container(
                       width: 50,
                       padding: const EdgeInsets.all(3),
                       alignment: Alignment.center,

@@ -5,11 +5,14 @@ import 'package:couponsgate/modules/Country.dart';
 import 'package:couponsgate/modules/HomeApiAssistant.dart';
 import 'package:couponsgate/modules/Rating.dart';
 import 'package:couponsgate/modules/Store.dart';
+import 'package:couponsgate/widgets/add_coupon.dart';
 import 'package:couponsgate/widgets/countries.dart';
 import 'package:couponsgate/widgets/favorites.dart';
 import 'package:couponsgate/widgets/login.dart';
 import 'package:couponsgate/widgets/settings.dart';
+import 'package:couponsgate/widgets/stores/all_stores.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:getwidget/components/loader/gf_loader.dart';
 import 'package:getwidget/types/gf_loader_type.dart';
 import 'package:http/http.dart' as http;
@@ -20,6 +23,8 @@ import 'package:couponsgate/modules/Favorite.dart';
 import 'package:couponsgate/widgets/home.dart';
 import 'package:flutter/material.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
+import 'package:share/share.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../my_icons_icons.dart';
@@ -532,7 +537,16 @@ class _StoryCouponsState extends State<StoryCoupon> {
                             );
                             setState(() {
                               _visibleShopBtn[i] = true;
-                              Scaffold.of(context).showSnackBar(snackBar);
+                              Fluttertoast.showToast(
+                                  msg: getTranslated(context, 'Copied'),
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.CENTER,
+                                  timeInSecForIosWeb: 1,
+                                  backgroundColor: Colors.black,
+                                  textColor: Colors.white,
+                                  fontSize: 16.0
+                              );
+                              //Scaffold.of(context).showSnackBar(snackBar);
                             });
 
                           });
@@ -657,7 +671,16 @@ class _StoryCouponsState extends State<StoryCoupon> {
                                     );
                                     setState(() {
                                       _visibleShopBtn[i] = true;
-                                      Scaffold.of(context).showSnackBar(snackBar);
+                                      Fluttertoast.showToast(
+                                          msg: getTranslated(context, 'Copied'),
+                                          toastLength: Toast.LENGTH_SHORT,
+                                          gravity: ToastGravity.CENTER,
+                                          timeInSecForIosWeb: 1,
+                                          backgroundColor: Colors.black,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0
+                                      );
+                                      //Scaffold.of(context).showSnackBar(snackBar);
                                     });
 
                                   });
@@ -875,7 +898,9 @@ class _StoryCouponsState extends State<StoryCoupon> {
                     ),),
 
                     SizedBox(height: 15,),
-                    InkWell(onTap:(){ } , child: Container(
+                    InkWell(onTap:(){
+                      Share.share(getTranslated(context, 'share_text')+cPropertyByLocale(context, _rCoupons[i], 'name')+" "+_rCoupons[i].code);
+                    } , child: Container(
                       width: 50,
                       padding: const EdgeInsets.all(3),
                       alignment: Alignment.center,
@@ -1083,11 +1108,11 @@ class _StoryCouponsState extends State<StoryCoupon> {
             items: [
               TabItem(icon: MyIcons.globe, title: getTranslated(context, 'home_b_bar_countries')),
               TabItem(icon: Icons.shopping_bag, title: getTranslated(context, 'home_b_bar_stores')),
-              TabItem(icon: Icons.home, title: getTranslated(context, 'home_b_bar_home')),
+              TabItem(icon: Icons.add_box, title: getTranslated(context, 'add_coupon_title')),
               TabItem(icon: Icons.favorite, title: getTranslated(context, 'home_b_bar_fav')),
-              TabItem(icon: Icons.people, title: getTranslated(context, 'home_b_bar_profile')),
+              TabItem(icon: Icons.home, title: getTranslated(context, 'home_b_bar_home')),
             ],
-            initialActiveIndex: 1,//optional, default as 0
+            initialActiveIndex: 2,//optional, default as 0
             onTap: onTabTapped,
           )),
     );
@@ -1102,17 +1127,17 @@ class _StoryCouponsState extends State<StoryCoupon> {
     } else if (index == 1) {
       Navigator.of(context).push(
         new MaterialPageRoute(
-            builder: (BuildContext context) => null),
+            builder: (BuildContext context) => new AllStores()),
       );
     } else if (index == 2) {
       Navigator.of(context).push(new MaterialPageRoute(
-          builder: (BuildContext context) => new Home()));
+          builder: (BuildContext context) => new add_coupon()));
     } else if (index == 3) {
       Navigator.of(context).push(new MaterialPageRoute(
           builder: (BuildContext context) => new Favorites()));
     } else if (index == 4) {
       Navigator.of(context).push(new MaterialPageRoute(
-          builder: (BuildContext context) => new Settings()));
+          builder: (BuildContext context) => new Home()));
     }
   }
 }

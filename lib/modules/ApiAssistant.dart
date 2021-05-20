@@ -16,9 +16,11 @@ class ApiAssistant {
   bool isEmailUsed = false;
   bool updateLangStatus = false;
   bool contactUsStatus = false;
+  bool addCouponStatus = false;
   String pinCode;
 
   int fb_login_status;
+  int apple_login_status;
   int g_login_status;
 
   saveUserParams(
@@ -403,6 +405,83 @@ class ApiAssistant {
 
   }
 
+  registerData_apple( String name , String email , String apple_id , String lang) async {
+    fb_login_status = 0;
+    //print('ok2');
+    String myUrl = "$serverUrl/apple_register.php";
+    http.Response response = await http.post(myUrl, body: {
+      'email': email,
+      'name': name,
+      'apple_id': apple_id,
+      'lang': lang,
+    });
+    print('apple id: $apple_id');
+    print("result: ${response.body}");
+    var data = json.decode(response.body);
+
+    if (data['Succes'] == 1) {
+
+      final prefs = await SharedPreferences.getInstance();
+      final key = 'is_login';
+      final value = "1";
+      prefs.setString(key, value);
+
+      final key1 = 'user_id';
+      final value1 = data['user']['id'];
+      prefs.setString(key1, value1);
+
+      final key2 = 'name';
+      final value2 = data['user']['name'];
+      prefs.setString(key2, value2);
+
+      final key4 = 'email';
+      final value4 = data['user']['email'];
+      prefs.setString(key4, value4);
+
+      final key5 = 'token';
+      final value5 = data['user']['token'];
+      prefs.setString(key5, value5);
+
+      apple_login_status = 1;
+
+    } else if (data['Succes'] == 2) {
+
+      final prefs = await SharedPreferences.getInstance();
+      final key = 'is_login';
+      final value = "1";
+      prefs.setString(key, value);
+
+      final key1 = 'user_id';
+      final value1 = data['user']['id'];
+      prefs.setString(key1, value1);
+
+      final key3 = 'pass';
+      final value3 = data['user']['password'];
+      prefs.setString(key3, value3);
+
+      final key6 = 'country_code';
+      final value6 = data['user']['country'];
+      prefs.setString(key6, value6);
+
+      final key2 = 'name';
+      final value2 = data['user']['name'];
+      prefs.setString(key2, value2);
+
+      final key4 = 'email';
+      final value4 = data['user']['email'];
+      prefs.setString(key4, value4);
+
+      final key5 = 'token';
+      final value5 = data['user']['token'];
+      prefs.setString(key5, value5);
+
+      apple_login_status = 2;
+    }else{
+      apple_login_status = 0;
+    }
+
+  }
+
   sendMessage(String name , String email , String message) async {
     //print('ok2');
     String myUrl = "$serverUrl/contact_us/add_issue.php";
@@ -420,6 +499,29 @@ class ApiAssistant {
     }
     else {
       contactUsStatus = false;
+    }
+  }
+
+  sendCoupon(String storeName , String des , String code,String url,String email,String user_id ) async {
+    //print('ok2');
+    String myUrl = "$serverUrl/coupons/add_coupon.php";
+    http.Response response = await http.post(myUrl, body: {
+
+      'storeName': storeName,
+      'des': des,
+      'code': code,
+      'url': url,
+      'email': email,
+      'user_id': user_id,
+    });
+
+    print("result: ${response.body}");
+
+    if (response.body.toString().contains("process completed successfully")) {
+      addCouponStatus = true;
+    }
+    else {
+      addCouponStatus = false;
     }
   }
 

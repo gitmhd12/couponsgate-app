@@ -4,7 +4,7 @@
             "outputFile": "E:\\Android_Studio_Projects\\couponsgate-app\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Nawar\\.gradle\\caches\\transforms-2\\files-2.1\\dbabb0955c9a18fb8a3cef391fb10ab5\\jetified-play-services-auth-16.0.1\\res\\values-watch-v20\\values.xml",
+                    "source": "C:\\Users\\Nawar\\.gradle\\caches\\transforms-2\\files-2.1\\8b0d51d15f94850da99079a3f30120c6\\jetified-play-services-auth-16.0.1\\res\\values-watch-v20\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",

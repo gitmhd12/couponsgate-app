@@ -69,18 +69,18 @@ public final class R {
     public static final class drawable {
         private drawable() {}
 
-        public static final int notification_action_background = 0x7f06007d;
-        public static final int notification_bg = 0x7f06007e;
-        public static final int notification_bg_low = 0x7f06007f;
-        public static final int notification_bg_low_normal = 0x7f060080;
-        public static final int notification_bg_low_pressed = 0x7f060081;
-        public static final int notification_bg_normal = 0x7f060082;
-        public static final int notification_bg_normal_pressed = 0x7f060083;
-        public static final int notification_icon_background = 0x7f060084;
-        public static final int notification_template_icon_bg = 0x7f060085;
-        public static final int notification_template_icon_low_bg = 0x7f060086;
-        public static final int notification_tile_bg = 0x7f060087;
-        public static final int notify_panel_notification_icon_bg = 0x7f060088;
+        public static final int notification_action_background = 0x7f06007e;
+        public static final int notification_bg = 0x7f06007f;
+        public static final int notification_bg_low = 0x7f060080;
+        public static final int notification_bg_low_normal = 0x7f060081;
+        public static final int notification_bg_low_pressed = 0x7f060082;
+        public static final int notification_bg_normal = 0x7f060083;
+        public static final int notification_bg_normal_pressed = 0x7f060084;
+        public static final int notification_icon_background = 0x7f060085;
+        public static final int notification_template_icon_bg = 0x7f060086;
+        public static final int notification_template_icon_low_bg = 0x7f060087;
+        public static final int notification_tile_bg = 0x7f060088;
+        public static final int notify_panel_notification_icon_bg = 0x7f060089;
     }
     public static final class id {
         private id() {}
@@ -187,7 +187,7 @@ public final class R {
     public static final class string {
         private string() {}
 
-        public static final int status_bar_notification_info_overflow = 0x7f0b005d;
+        public static final int status_bar_notification_info_overflow = 0x7f0b0061;
     }
     public static final class style {
         private style() {}

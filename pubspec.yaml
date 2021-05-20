@@ -50,6 +50,10 @@ dependencies:
   flutter_local_notifications: ^3.0.2
   flutter_launcher_icons: ^0.8.1
   path_provider: ^1.6.27
+  share: ^0.6.5+4
+  fluttertoast: ^7.1.6
+  sign_in_with_apple: ^2.5.4
+  apple_sign_in: ^0.1.0
 
 
 dev_dependencies:

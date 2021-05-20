@@ -3200,23 +3200,25 @@ public final class R {
     public static final int common_google_signin_btn_text_light_focused=0x7f060077;
     public static final int common_google_signin_btn_text_light_normal=0x7f060078;
     public static final int common_google_signin_btn_text_light_normal_background=0x7f060079;
-    public static final int googleg_disabled_color_18=0x7f06007a;
-    public static final int googleg_standard_color_18=0x7f06007b;
-    public static final int launch_background=0x7f06007c;
-    public static final int notification_action_background=0x7f06007d;
-    public static final int notification_bg=0x7f06007e;
-    public static final int notification_bg_low=0x7f06007f;
-    public static final int notification_bg_low_normal=0x7f060080;
-    public static final int notification_bg_low_pressed=0x7f060081;
-    public static final int notification_bg_normal=0x7f060082;
-    public static final int notification_bg_normal_pressed=0x7f060083;
-    public static final int notification_icon_background=0x7f060084;
-    public static final int notification_template_icon_bg=0x7f060085;
-    public static final int notification_template_icon_low_bg=0x7f060086;
-    public static final int notification_tile_bg=0x7f060087;
-    public static final int notify_panel_notification_icon_bg=0x7f060088;
-    public static final int tooltip_frame_dark=0x7f060089;
-    public static final int tooltip_frame_light=0x7f06008a;
+    public static final int corner=0x7f06007a;
+    public static final int googleg_disabled_color_18=0x7f06007b;
+    public static final int googleg_standard_color_18=0x7f06007c;
+    public static final int launch_background=0x7f06007d;
+    public static final int notification_action_background=0x7f06007e;
+    public static final int notification_bg=0x7f06007f;
+    public static final int notification_bg_low=0x7f060080;
+    public static final int notification_bg_low_normal=0x7f060081;
+    public static final int notification_bg_low_pressed=0x7f060082;
+    public static final int notification_bg_normal=0x7f060083;
+    public static final int notification_bg_normal_pressed=0x7f060084;
+    public static final int notification_icon_background=0x7f060085;
+    public static final int notification_template_icon_bg=0x7f060086;
+    public static final int notification_template_icon_low_bg=0x7f060087;
+    public static final int notification_tile_bg=0x7f060088;
+    public static final int notify_panel_notification_icon_bg=0x7f060089;
+    public static final int toast_bg=0x7f06008a;
+    public static final int tooltip_frame_dark=0x7f06008b;
+    public static final int tooltip_frame_light=0x7f06008c;
   }
   public static final class id {
     public static final int ALT=0x7f070000;
@@ -3498,6 +3500,7 @@ public final class R {
     public static final int select_dialog_multichoice_material=0x7f090034;
     public static final int select_dialog_singlechoice_material=0x7f090035;
     public static final int support_simple_spinner_dropdown_item=0x7f090036;
+    public static final int toast_custom=0x7f090037;
   }
   public static final class mipmap {
     public static final int ic_launcher=0x7f0a0000;
@@ -3585,19 +3588,23 @@ public final class R {
     public static final int common_open_on_phone=0x7f0b004e;
     public static final int common_signin_button_text=0x7f0b004f;
     public static final int common_signin_button_text_long=0x7f0b0050;
-    public static final int default_notification_channel_id=0x7f0b0051;
-    public static final int default_web_client_id=0x7f0b0052;
-    public static final int facebook_app_id=0x7f0b0053;
-    public static final int fb_login_protocol_scheme=0x7f0b0054;
-    public static final int fcm_fallback_notification_channel_label=0x7f0b0055;
-    public static final int gcm_defaultSenderId=0x7f0b0056;
-    public static final int google_api_key=0x7f0b0057;
-    public static final int google_app_id=0x7f0b0058;
-    public static final int google_crash_reporting_api_key=0x7f0b0059;
-    public static final int google_storage_bucket=0x7f0b005a;
-    public static final int project_id=0x7f0b005b;
-    public static final int search_menu_title=0x7f0b005c;
-    public static final int status_bar_notification_info_overflow=0x7f0b005d;
+    public static final int copy_toast_msg=0x7f0b0051;
+    public static final int default_notification_channel_id=0x7f0b0052;
+    public static final int default_web_client_id=0x7f0b0053;
+    public static final int facebook_app_id=0x7f0b0054;
+    public static final int fallback_menu_item_copy_link=0x7f0b0055;
+    public static final int fallback_menu_item_open_in_browser=0x7f0b0056;
+    public static final int fallback_menu_item_share_link=0x7f0b0057;
+    public static final int fb_login_protocol_scheme=0x7f0b0058;
+    public static final int fcm_fallback_notification_channel_label=0x7f0b0059;
+    public static final int gcm_defaultSenderId=0x7f0b005a;
+    public static final int google_api_key=0x7f0b005b;
+    public static final int google_app_id=0x7f0b005c;
+    public static final int google_crash_reporting_api_key=0x7f0b005d;
+    public static final int google_storage_bucket=0x7f0b005e;
+    public static final int project_id=0x7f0b005f;
+    public static final int search_menu_title=0x7f0b0060;
+    public static final int status_bar_notification_info_overflow=0x7f0b0061;
   }
   public static final class style {
     public static final int AlertDialog_AppCompat=0x7f0c0000;
@@ -11955,5 +11962,9 @@ public final class R {
      * @attr name net.couponsgate:com_facebook_preset_size
      */
     public static final int com_facebook_profile_picture_view_com_facebook_preset_size=1;
+  }
+  public static final class xml {
+    public static final int flutter_share_file_paths=0x7f0e0000;
+    public static final int image_share_filepaths=0x7f0e0001;
   }
 }

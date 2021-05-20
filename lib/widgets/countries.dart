@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:couponsgate/modules/Country.dart';
+import 'package:couponsgate/widgets/add_coupon.dart';
 import 'package:couponsgate/widgets/country_coupons.dart';
 import 'package:couponsgate/widgets/favorites.dart';
 import 'package:couponsgate/widgets/settings.dart';
@@ -188,11 +189,11 @@ class _CountriesState extends State<Countries> {
             items: [
               TabItem(icon: MyIcons.globe, title: getTranslated(context, 'home_b_bar_countries')),
               TabItem(icon: Icons.shopping_bag, title: getTranslated(context, 'home_b_bar_stores')),
-              TabItem(icon: Icons.home, title: getTranslated(context, 'home_b_bar_home')),
+              TabItem(icon: Icons.add_box, title: getTranslated(context, 'add_coupon_title')),
               TabItem(icon: Icons.favorite, title: getTranslated(context, 'home_b_bar_fav')),
-              TabItem(icon: Icons.people, title: getTranslated(context, 'home_b_bar_profile')),
+              TabItem(icon: Icons.home, title: getTranslated(context, 'home_b_bar_home')),
             ],
-            initialActiveIndex: 0,//optional, default as 0
+            initialActiveIndex: 2,//optional, default as 0
             onTap: onTabTapped,
           )),
     );
@@ -211,13 +212,13 @@ class _CountriesState extends State<Countries> {
       );
     } else if (index == 2) {
       Navigator.of(context).push(new MaterialPageRoute(
-          builder: (BuildContext context) => new Home()));
+          builder: (BuildContext context) => new add_coupon()));
     } else if (index == 3) {
       Navigator.of(context).push(new MaterialPageRoute(
           builder: (BuildContext context) => new Favorites()));
     } else if (index == 4) {
       Navigator.of(context).push(new MaterialPageRoute(
-          builder: (BuildContext context) => new Settings()));
+          builder: (BuildContext context) => new Home()));
     }
   }
 }

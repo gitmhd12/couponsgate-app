@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:couponsgate/widgets/add_coupon.dart';
 import 'package:couponsgate/widgets/coupon_main.dart';
 import 'package:couponsgate/widgets/settings.dart';
 import 'package:couponsgate/widgets/stores/all_stores.dart';
@@ -391,15 +392,15 @@ class _FavoritesState extends State<Favorites> {
             height: 50,
             //top: -30,
             //curveSize: 100,
-            style: TabStyle.react,
+            style: TabStyle.fixed,
             items: [
               TabItem(icon: MyIcons.globe, title: getTranslated(context, 'home_b_bar_countries')),
               TabItem(icon: Icons.shopping_bag, title: getTranslated(context, 'home_b_bar_stores')),
-              TabItem(icon: Icons.home, title: getTranslated(context, 'home_b_bar_home')),
+              TabItem(icon: Icons.add_box, title: getTranslated(context, 'add_coupon_title')),
               TabItem(icon: Icons.favorite, title: getTranslated(context, 'home_b_bar_fav')),
-              TabItem(icon: Icons.people, title: getTranslated(context, 'home_b_bar_profile')),
+              TabItem(icon: Icons.home, title: getTranslated(context, 'home_b_bar_home')),
             ],
-            initialActiveIndex: 3,//optional, default as 0
+            initialActiveIndex: 2,//optional, default as 0
             onTap: onTabTapped,
           )),
     );
@@ -418,13 +419,13 @@ class _FavoritesState extends State<Favorites> {
       );
     } else if (index == 2) {
       Navigator.of(context).push(new MaterialPageRoute(
-          builder: (BuildContext context) => new Home()));
+          builder: (BuildContext context) => new add_coupon()));
     } else if (index == 3) {
       /*Navigator.of(context).push(new MaterialPageRoute(
           builder: (BuildContext context) => new Favorites()));*/
     } else if (index == 4) {
       Navigator.of(context).push(new MaterialPageRoute(
-          builder: (BuildContext context) => new Settings()));
+          builder: (BuildContext context) => new Home()));
     }
   }
 }

@@ -247,6 +247,7 @@ class _SettingsState extends State<Settings> {
 
   Future _submitUserData(String token , String name , String email , String pass , String cc) async
   {
+
     var csResponse = await http
         .post('https://yalaphone.com/appdash/rest_api/update_user.php',
     body: {'token' : token,
@@ -408,6 +409,7 @@ class _SettingsState extends State<Settings> {
 
   _processSaveChanges()
   {
+
     if (_saveBtnChildIndex == 0) {
       setState(() {
         _saveBtnChildIndex = 1;
@@ -463,10 +465,16 @@ class _SettingsState extends State<Settings> {
 
         } else {
         print('ok');
+        print(_token);
+        print(_usernameController.text);
+        print(_emailController.text.trim().toLowerCase());
+        print(_password);
+        print(_countryCode);
+
         _submitUserData(_token,
             _usernameController.text,
             _emailController.text.trim().toLowerCase(),
-            _password,
+            '',
             _countryCode).then((value) {
           if (value.toString().contains('server error')) {
             alertDialog(getTranslated(context, 'login_alert_Ind_content'), getTranslated(context, 'login_alert_Ind_title'),);

@@ -4,6 +4,7 @@ import 'package:couponsgate/localization/localizationValues.dart';
 import 'package:couponsgate/modules/ApiAssistant.dart';
 import 'package:couponsgate/modules/Country.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -33,7 +34,7 @@ class _Select_Country_State extends State<Select_Country> {
 
     for (var ques in csData['countries']) {
       tCountry = Country.fromJson(ques);
-      print(tCountry.id);
+      //print(tCountry.id);
 
       _countries.add(tCountry);
       //print('depart length is : ' + departs.length.toString());
@@ -44,6 +45,8 @@ class _Select_Country_State extends State<Select_Country> {
 
   Future _updateCountries(String user_id, String country_id) async
   {
+    print ('country id $country_id');
+    print ('user id $user_id');
     int success = 0;
 
     String myUrl = "https://yalaphone.com/appdash/rest_api/countries/update_user_country.php";
@@ -56,8 +59,15 @@ class _Select_Country_State extends State<Select_Country> {
 
     if(response.body.toString().trim() == 'success')
       {
+        final prefs = await SharedPreferences.getInstance();
+        final key6 = 'country_code';
+        final value6 = country_id;
+        prefs.setString(key6, value6);
+
         success = 1;
-      }
+      }else{
+      success = 0;
+    }
 
 
 
@@ -90,9 +100,10 @@ class _Select_Country_State extends State<Select_Country> {
   void initState() {
     super.initState();
 
+   // _countryBtnHint = getTranslated(context, 'login_country_btn');
   }
 
-  void _showCountriesDialog(context, List<Country> countries) {
+  /*void _showCountriesDialog(context, List<Country> countries) {
 
 
 
@@ -156,10 +167,90 @@ class _Select_Country_State extends State<Select_Country> {
             }),
           );
         });
+  }*/
+
+  void _showCountriesDialog(context, List<Country> countries) {
+
+    showDialog(
+        context: context,
+        builder: (BuildContext bc) {
+          return Dialog(
+            shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+            elevation: 16,
+            child: StatefulBuilder(builder: (context, setState) {
+              return _isLoading ? Container(child: Center(child: CircularProgressIndicator(),),) : Container(
+                height: countries.length <= 4
+                    ? MediaQuery.of(context).size.height * 0.1 * countries.length
+                    : MediaQuery.of(context).size.height * 0.6,
+                child: Column(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Center(
+                        child: Text(
+                          getTranslated(context, 'login_country_btn'),
+                          style: TextStyle(
+                            fontFamily: 'CustomFont',
+                            fontSize: 20.0,
+                            color: Color(0xff275879),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Divider(
+                        thickness: 1.0,
+                        color: Colors.black54,
+                      ),
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: countries.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ListTile(
+                              title: Text(
+                                countryName(context, countries[index]),
+                              ),
+                              trailing: FittedBox(
+                                child: Container(
+                                  height: MediaQuery.of(context).size.width*0.1 ,
+                                  width: MediaQuery.of(context).size.width*0.15,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    image: DecorationImage(
+                                        image: NetworkImage(
+                                            'https://yalaphone.com/appdash/' +
+                                                countries[index].flag),
+                                        fit: BoxFit.cover),
+                                    borderRadius: BorderRadius.circular(7.0),
+                                  ),
+                                ),
+                              ),
+                              onTap: () {
+                                changeCountry(context, countries[index]);
+                                Navigator.of(context, rootNavigator: true)
+                                    .pop();
+                              },
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            }),
+          );
+        });
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body:Center(
             child:Column(
@@ -185,9 +276,7 @@ class _Select_Country_State extends State<Select_Country> {
                     });
                   });
 
-                  setState(() {
-                    _isLoading = false;
-                  });
+
                 },
                 child: Container(
                   height: 50,
@@ -207,56 +296,68 @@ class _Select_Country_State extends State<Select_Country> {
                   ),
                 ),
               ),
-                SizedBox(height: 10,),
+                SizedBox(height: 50,),
                 InkWell(
                   onTap: () async {
+                    //show loading
+
+
                           if(_countryID == null)
                             {
                               print('country id is null');
-                              var snackBar = SnackBar(content: Text(getTranslated(context, 'login_country_btn')));
-                              Scaffold.of(context).showSnackBar(snackBar);
+                              Fluttertoast.showToast(
+                                  msg: getTranslated(context, 'login_country_btn'),
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.CENTER,
+                                  timeInSecForIosWeb: 1,
+                                  backgroundColor: Colors.red,
+                                  textColor: Colors.white,
+                                  fontSize: 16.0
+                              );
+
                             }
                           else
                             {
+                              setState(() {
+                                _sendLoading = true;
+                              });
+
                               Locale currentLocale = Localizations.localeOf(context);
                             //get user id
                             print('get user id ');
                             final prefs = await SharedPreferences.getInstance();
                             final key = 'user_id';
-                            final user_id = prefs.get(key);
+                            final UserId = prefs.get(key);
 
                             final key2 = 'isFirstSkip';
                             final firstSkip = prefs.get(key2);
 
+                              print('user id $UserId');
+
                             //check if user id is not null
-                            if(user_id == null)
+                            if(UserId == null)
                             {
                               print('user id is null');
-                              if(firstSkip == null)
-                                {
+
                                   prefs.setString('country_code' , _countryID);
                                   prefs.setString(key2 , '1');
 
                                   api.subscribeAnonymousUser(currentLocale.languageCode).whenComplete((){
                                     Navigator.pushReplacementNamed(context, '/home');
+                                    setState(() {
+                                      _sendLoading = false;
+                                    });
                                   });
-                                }
-                              else
-                                {
-                                  api.subscribeAnonymousUser(currentLocale.languageCode).whenComplete((){
-                                    Navigator.pushReplacementNamed(context, '/home');
-                                  });
-                                }
+
+
+
                             }
                             else
                               {
-                              //show loading
-                              setState(() {
-                                _sendLoading = true;
-                              });
+
 
                               //send data to update user country
-                              _updateCountries(user_id,_countryID).then((value) {
+                              _updateCountries(UserId,_countryID).then((value) {
                                 print('send data');
                                 print('value is $value');
                                 if(value == 1){
@@ -266,15 +367,18 @@ class _Select_Country_State extends State<Select_Country> {
                                     {
                                       Navigator.pushReplacementNamed(context, '/home');
                                     }
+                                    setState(() {
+                                      _sendLoading = false;
+                                    });
                                   }
                                   );
                                 }
+
+
                               });
 
-                              //hide loading
-                              setState(() {
-                                _sendLoading = false;
-                              });
+
+
 
                             }
                           }
@@ -287,14 +391,13 @@ class _Select_Country_State extends State<Select_Country> {
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(5)),
-                      //color: Colors.grey,
+                      color: Color(0xff275879),
                     ),
                     child: _sendLoading?CircularProgressIndicator(
                       valueColor: AlwaysStoppedAnimation<Color>(Colors.blue,),
-                    ):  Icon(
-                    Icons.arrow_forward_rounded,
-                    color: Colors.blue,
-                    size: 35,
+                    ):  Text(
+                      getTranslated(context, 'next_btn'),
+                    style: TextStyle(color: Colors.white,fontSize: 24),
                     ),
                   ),
                 ),
